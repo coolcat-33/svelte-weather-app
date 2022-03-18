@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<link rel="icon" href="/svelte-weather-app/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="content-security-policy" content="">
+	<link rel="modulepreload" href="/svelte-weather-app/_app/start-aabb92d2.js">
+	<link rel="modulepreload" href="/svelte-weather-app/_app/chunks/vendor-ec34ed73.js">
+	<!-- Material Icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<!-- Roboto -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
+	<!-- Roboto Mono -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono" />
+	<link rel="stylesheet" href="node_modules/svelte-material-ui/bare.css" />
+
+	<link rel="stylesheet" href="/static/smui.css" media="(prefers-color-scheme: light)" />
+	<link rel="stylesheet" href="/static/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
+</head>
+
+<body>
+	<div>
+		<script type="module" data-hydrate="45h">
+		import { start } from "/svelte-weather-app/_app/start-aabb92d2.js";
+		start({
+			target: document.querySelector('[data-hydrate="45h"]').parentNode,
+			paths: {"base":"/svelte-weather-app","assets":"/svelte-weather-app"},
+			session: {},
+			route: true,
+			spa: true,
+			trailing_slash: "never",
+			hydrate: null
+		});
+	</script></div>
+</body>
+
+</html>
