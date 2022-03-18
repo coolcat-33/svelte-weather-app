@@ -2,7 +2,7 @@
   "name": "weather-app",
   "version": "0.0.1",
   "engines": {
-    "node": "17.x"
+    "node": "16.x"
   },
   "scripts": {
     "dev": "svelte-kit dev --host",
