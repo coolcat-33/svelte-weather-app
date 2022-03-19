@@ -1,5 +1,5 @@
 import { S as SvelteComponent, i as init, s as safe_not_equal, v as onMount } from "../chunks/vendor-952a8a66.js";
-import { u as update_store } from "../chunks/weather-a3c2c240.js";
+import { u as update_store } from "../chunks/weather-833a9176.js";
 function instance($$self) {
   let loc = "";
   async function getPosition(position) {

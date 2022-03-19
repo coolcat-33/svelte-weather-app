@@ -770,11 +770,11 @@ const __vitePreload = function preload(baseModule, deps) {
   })).then(() => baseModule());
 };
 const c = [
-  () => __vitePreload(() => import("./pages/__layout.svelte-dd997e27.js"), true ? ["pages/__layout.svelte-dd997e27.js","chunks/vendor-952a8a66.js","pages/current.svelte-e7418c89.js","chunks/weather-a3c2c240.js","pages/forecast.svelte-18a2d6bf.js"] : void 0),
+  () => __vitePreload(() => import("./pages/__layout.svelte-fe8edfc0.js"), true ? ["pages/__layout.svelte-fe8edfc0.js","chunks/vendor-952a8a66.js","pages/current.svelte-e262cb0a.js","chunks/weather-833a9176.js","pages/forecast.svelte-dbb522ef.js"] : void 0),
   () => __vitePreload(() => import("./error.svelte-13842a49.js"), true ? ["error.svelte-13842a49.js","chunks/vendor-952a8a66.js"] : void 0),
-  () => __vitePreload(() => import("./pages/index.svelte-f0b42ac7.js"), true ? ["pages/index.svelte-f0b42ac7.js","chunks/vendor-952a8a66.js","chunks/weather-a3c2c240.js"] : void 0),
-  () => __vitePreload(() => import("./pages/forecast.svelte-18a2d6bf.js"), true ? ["pages/forecast.svelte-18a2d6bf.js","chunks/vendor-952a8a66.js","chunks/weather-a3c2c240.js"] : void 0),
-  () => __vitePreload(() => import("./pages/current.svelte-e7418c89.js"), true ? ["pages/current.svelte-e7418c89.js","chunks/vendor-952a8a66.js","chunks/weather-a3c2c240.js"] : void 0)
+  () => __vitePreload(() => import("./pages/index.svelte-eede064a.js"), true ? ["pages/index.svelte-eede064a.js","chunks/vendor-952a8a66.js","chunks/weather-833a9176.js"] : void 0),
+  () => __vitePreload(() => import("./pages/forecast.svelte-dbb522ef.js"), true ? ["pages/forecast.svelte-dbb522ef.js","chunks/vendor-952a8a66.js","chunks/weather-833a9176.js"] : void 0),
+  () => __vitePreload(() => import("./pages/current.svelte-e262cb0a.js"), true ? ["pages/current.svelte-e262cb0a.js","chunks/vendor-952a8a66.js","chunks/weather-833a9176.js"] : void 0)
 ];
 const routes = [
   [/^\/$/, [c[0], c[2]], [c[1]]],
@@ -893,7 +893,7 @@ function notifiable_store(value) {
 }
 function create_updated_store() {
   const { set, subscribe } = writable(false);
-  const initial = "1647692107119";
+  const initial = "1647692243320";
   let timeout;
   async function check() {
     clearTimeout(timeout);

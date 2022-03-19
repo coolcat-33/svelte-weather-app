@@ -22,7 +22,7 @@ async function update_store(loc) {
 }
 async function getPosition(position) {
   console.log(position);
-  let res = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=d36b7ad4bedaeb47cb38553a4123c082`);
+  let res = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=d36b7ad4bedaeb47cb38553a4123c082`);
   let data = await res.json();
   console.log(data);
   update_store(data[0]["name"] + "," + data[0]["state"] + "," + data[0]["country"]);
