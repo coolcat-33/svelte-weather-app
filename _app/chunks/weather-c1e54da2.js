@@ -1,4 +1,4 @@
-import { D as writable } from "./vendor-ec34ed73.js";
+import { D as writable } from "./vendor-7769e93b.js";
 const weather_data = writable({ "list": [] });
 const forecast_data = writable({});
 const current_data = writable({});

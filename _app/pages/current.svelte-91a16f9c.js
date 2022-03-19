@@ -1,36 +1,5 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, P as Paper, e as element, w as create_component, c as claim_element, a as children, x as claim_component, d as detach, b as attr, g as insert_hydration, y as mount_component, q as transition_in, o as transition_out, B as destroy_component, M as component_subscribe, N as Title, O as Content, k as space, m as claim_space, t as text, h as claim_text, Q as noop, j as set_data, R as LayoutGrid, l as empty, p as check_outros, U as Cell, V as Title$1, W as Content$1, n as group_outros, X as Card, Y as CircularProgress, f as set_style, Z as destroy_each, _ as src_url_equal } from "../chunks/vendor-ec34ed73.js";
-import { c as current_data, f as forecast_data } from "../chunks/weather-7c57c533.js";
-function create_default_slot_2$1(ctx) {
-  let t0;
-  let t1;
-  let t2;
-  return {
-    c() {
-      t0 = text(ctx[1]);
-      t1 = space();
-      t2 = text(ctx[7]);
-    },
-    l(nodes) {
-      t0 = claim_text(nodes, ctx[1]);
-      t1 = claim_space(nodes);
-      t2 = claim_text(nodes, ctx[7]);
-    },
-    m(target, anchor) {
-      insert_hydration(target, t0, anchor);
-      insert_hydration(target, t1, anchor);
-      insert_hydration(target, t2, anchor);
-    },
-    p: noop,
-    d(detaching) {
-      if (detaching)
-        detach(t0);
-      if (detaching)
-        detach(t1);
-      if (detaching)
-        detach(t2);
-    }
-  };
-}
+import { S as SvelteComponent, i as init, s as safe_not_equal, M as Card, e as element, w as create_component, c as claim_element, a as children, x as claim_component, d as detach, b as attr, g as insert_hydration, y as mount_component, q as transition_in, o as transition_out, B as destroy_component, N as component_subscribe, O as Content, t as text, k as space, h as claim_text, m as claim_space, P as append_hydration, j as set_data, Q as LayoutGrid, l as empty, p as check_outros, R as Cell, U as Paper, V as Title, W as Content$1, n as group_outros, X as CircularProgress, f as set_style, Y as noop, Z as destroy_each, _ as src_url_equal } from "../chunks/vendor-7769e93b.js";
+import { c as current_data, f as forecast_data } from "../chunks/weather-c1e54da2.js";
 function create_default_slot_1$1(ctx) {
   let t0;
   let t1;
@@ -150,16 +119,13 @@ function create_default_slot_1$1(ctx) {
   };
 }
 function create_default_slot$1(ctx) {
-  let title;
-  let t;
+  let h2;
+  let t0;
+  let t1;
+  let t2;
+  let t3;
   let content;
   let current;
-  title = new Title({
-    props: {
-      $$slots: { default: [create_default_slot_2$1] },
-      $$scope: { ctx }
-    }
-  });
   content = new Content({
     props: {
       $$slots: { default: [create_default_slot_1$1] },
@@ -168,27 +134,33 @@ function create_default_slot$1(ctx) {
   });
   return {
     c() {
-      create_component(title.$$.fragment);
-      t = space();
+      h2 = element("h2");
+      t0 = text(ctx[1]);
+      t1 = space();
+      t2 = text(ctx[7]);
+      t3 = space();
       create_component(content.$$.fragment);
     },
     l(nodes) {
-      claim_component(title.$$.fragment, nodes);
-      t = claim_space(nodes);
+      h2 = claim_element(nodes, "H2", {});
+      var h2_nodes = children(h2);
+      t0 = claim_text(h2_nodes, ctx[1]);
+      t1 = claim_space(h2_nodes);
+      t2 = claim_text(h2_nodes, ctx[7]);
+      h2_nodes.forEach(detach);
+      t3 = claim_space(nodes);
       claim_component(content.$$.fragment, nodes);
     },
     m(target, anchor) {
-      mount_component(title, target, anchor);
-      insert_hydration(target, t, anchor);
+      insert_hydration(target, h2, anchor);
+      append_hydration(h2, t0);
+      append_hydration(h2, t1);
+      append_hydration(h2, t2);
+      insert_hydration(target, t3, anchor);
       mount_component(content, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const title_changes = {};
-      if (dirty & 8192) {
-        title_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      title.$set(title_changes);
       const content_changes = {};
       if (dirty & 8193) {
         content_changes.$$scope = { dirty, ctx: ctx2 };
@@ -198,32 +170,29 @@ function create_default_slot$1(ctx) {
     i(local) {
       if (current)
         return;
-      transition_in(title.$$.fragment, local);
       transition_in(content.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(title.$$.fragment, local);
       transition_out(content.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(title, detaching);
       if (detaching)
-        detach(t);
+        detach(h2);
+      if (detaching)
+        detach(t3);
       destroy_component(content, detaching);
     }
   };
 }
 function create_fragment$1(ctx) {
   let div;
-  let paper;
+  let card;
   let current;
-  paper = new Paper({
+  card = new Card({
     props: {
-      color: "primary",
-      variant: "outlined",
-      class: "mdc-theme--primary",
+      style: "min-width: 300px;",
       $$slots: { default: [create_default_slot$1] },
       $$scope: { ctx }
     }
@@ -231,13 +200,13 @@ function create_fragment$1(ctx) {
   return {
     c() {
       div = element("div");
-      create_component(paper.$$.fragment);
+      create_component(card.$$.fragment);
       this.h();
     },
     l(nodes) {
       div = claim_element(nodes, "DIV", { class: true });
       var div_nodes = children(div);
-      claim_component(paper.$$.fragment, div_nodes);
+      claim_component(card.$$.fragment, div_nodes);
       div_nodes.forEach(detach);
       this.h();
     },
@@ -246,30 +215,30 @@ function create_fragment$1(ctx) {
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
-      mount_component(paper, div, null);
+      mount_component(card, div, null);
       current = true;
     },
     p(ctx2, [dirty]) {
-      const paper_changes = {};
+      const card_changes = {};
       if (dirty & 8193) {
-        paper_changes.$$scope = { dirty, ctx: ctx2 };
+        card_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      paper.$set(paper_changes);
+      card.$set(card_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(paper.$$.fragment, local);
+      transition_in(card.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(paper.$$.fragment, local);
+      transition_out(card.$$.fragment, local);
       current = false;
     },
     d(detaching) {
       if (detaching)
         detach(div);
-      destroy_component(paper);
+      destroy_component(card);
     }
   };
 }
@@ -1056,7 +1025,7 @@ function create_if_block_1(ctx) {
       this.h();
     },
     l(nodes) {
-      div = claim_element(nodes, "DIV", { class: true, span: true });
+      div = claim_element(nodes, "DIV", { class: true });
       var div_nodes = children(div);
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].l(div_nodes);
@@ -1066,7 +1035,6 @@ function create_if_block_1(ctx) {
     },
     h() {
       attr(div, "class", "container");
-      attr(div, "span", "1");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -1120,32 +1088,58 @@ function create_if_block_1(ctx) {
     }
   };
 }
+function create_if_block_2(ctx) {
+  let div;
+  return {
+    c() {
+      div = element("div");
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      children(div).forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "break");
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+    }
+  };
+}
 function create_each_block(ctx) {
-  let hour;
   let t;
-  let paper;
+  let hour;
   let current;
+  let if_block = ctx[10] % 4 == 0 && create_if_block_2();
   hour = new Hour({
     props: {
       data: ctx[6]["hourly"][ctx[10]]
     }
   });
-  paper = new Paper({});
   return {
     c() {
-      create_component(hour.$$.fragment);
+      if (if_block)
+        if_block.c();
       t = space();
-      create_component(paper.$$.fragment);
+      create_component(hour.$$.fragment);
     },
     l(nodes) {
-      claim_component(hour.$$.fragment, nodes);
+      if (if_block)
+        if_block.l(nodes);
       t = claim_space(nodes);
-      claim_component(paper.$$.fragment, nodes);
+      claim_component(hour.$$.fragment, nodes);
     },
     m(target, anchor) {
-      mount_component(hour, target, anchor);
+      if (if_block)
+        if_block.m(target, anchor);
       insert_hydration(target, t, anchor);
-      mount_component(paper, target, anchor);
+      mount_component(hour, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
@@ -1158,19 +1152,18 @@ function create_each_block(ctx) {
       if (current)
         return;
       transition_in(hour.$$.fragment, local);
-      transition_in(paper.$$.fragment, local);
       current = true;
     },
     o(local) {
       transition_out(hour.$$.fragment, local);
-      transition_out(paper.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(hour, detaching);
+      if (if_block)
+        if_block.d(detaching);
       if (detaching)
         detach(t);
-      destroy_component(paper, detaching);
+      destroy_component(hour, detaching);
     }
   };
 }
@@ -1316,7 +1309,7 @@ function create_default_slot(ctx) {
   let t;
   let content;
   let current;
-  title = new Title$1({
+  title = new Title({
     props: {
       $$slots: { default: [create_default_slot_2] },
       $$scope: { ctx }
@@ -1383,10 +1376,6 @@ function create_fragment(ctx) {
   let current_block_type_index;
   let if_block0;
   let t1;
-  let paper0;
-  let t2;
-  let paper1;
-  let t3;
   let if_block1_anchor;
   let current;
   layoutgrid = new LayoutGrid({
@@ -1404,8 +1393,6 @@ function create_fragment(ctx) {
   }
   current_block_type_index = select_block_type(ctx);
   if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-  paper0 = new Paper({});
-  paper1 = new Paper({});
   let if_block1 = ctx[6]["alerts"] !== void 0 && create_if_block(ctx);
   return {
     c() {
@@ -1413,10 +1400,6 @@ function create_fragment(ctx) {
       t0 = space();
       if_block0.c();
       t1 = space();
-      create_component(paper0.$$.fragment);
-      t2 = space();
-      create_component(paper1.$$.fragment);
-      t3 = space();
       if (if_block1)
         if_block1.c();
       if_block1_anchor = empty();
@@ -1426,10 +1409,6 @@ function create_fragment(ctx) {
       t0 = claim_space(nodes);
       if_block0.l(nodes);
       t1 = claim_space(nodes);
-      claim_component(paper0.$$.fragment, nodes);
-      t2 = claim_space(nodes);
-      claim_component(paper1.$$.fragment, nodes);
-      t3 = claim_space(nodes);
       if (if_block1)
         if_block1.l(nodes);
       if_block1_anchor = empty();
@@ -1439,10 +1418,6 @@ function create_fragment(ctx) {
       insert_hydration(target, t0, anchor);
       if_blocks[current_block_type_index].m(target, anchor);
       insert_hydration(target, t1, anchor);
-      mount_component(paper0, target, anchor);
-      insert_hydration(target, t2, anchor);
-      mount_component(paper1, target, anchor);
-      insert_hydration(target, t3, anchor);
       if (if_block1)
         if_block1.m(target, anchor);
       insert_hydration(target, if_block1_anchor, anchor);
@@ -1499,16 +1474,12 @@ function create_fragment(ctx) {
         return;
       transition_in(layoutgrid.$$.fragment, local);
       transition_in(if_block0);
-      transition_in(paper0.$$.fragment, local);
-      transition_in(paper1.$$.fragment, local);
       transition_in(if_block1);
       current = true;
     },
     o(local) {
       transition_out(layoutgrid.$$.fragment, local);
       transition_out(if_block0);
-      transition_out(paper0.$$.fragment, local);
-      transition_out(paper1.$$.fragment, local);
       transition_out(if_block1);
       current = false;
     },
@@ -1519,12 +1490,6 @@ function create_fragment(ctx) {
       if_blocks[current_block_type_index].d(detaching);
       if (detaching)
         detach(t1);
-      destroy_component(paper0, detaching);
-      if (detaching)
-        detach(t2);
-      destroy_component(paper1, detaching);
-      if (detaching)
-        detach(t3);
       if (if_block1)
         if_block1.d(detaching);
       if (detaching)
