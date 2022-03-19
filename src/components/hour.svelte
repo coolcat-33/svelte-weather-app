@@ -1,7 +1,11 @@
 <script>
 
 	import { current_data } from '../stores/weather.js';
-	import Paper, { Title, Content } from '@smui/paper';
+
+	import Card, {
+    Content
+  } from '@smui/card';
+ 
     export let data
 
 	let hour = new Date(data['dt']*1000).toLocaleTimeString()
@@ -67,14 +71,14 @@
 	<br /><br /> UV Index: {uvi} <br /><br /> Pressure: {pressure} mb <br /><br />Wind Speed: {wind_speed}
 	mph {wind_dir}</Card>  -->
 <div class='container'>
-	<Paper color="primary" variant="outlined" class="mdc-theme--primary">
-		<Title>{hour} {day}</Title>
+	<Card style="min-width: 300px;">
+		<h2>{hour} {day}</h2>
 		<Content>
 			Temp: {temp}<br />Feels like: {feels_like}<br /> Humidity: {humidity}
 		<br /> UV Index: {uvi}<br /> Wind Speed: {wind_speed}
 		mph {wind_dir}
 		</Content>
-	</Paper>
+	</Card>
 
 </div>
 

@@ -48,10 +48,9 @@ import Card from '@smui/card';
 	<Cell span={3}>
 		<Card
 			padded
-			style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"
 		>
-			<img
-				src={`http://openweathermap.org/img/wn/${$forecast_data['weather'][0]['icon']}@2x.png`}
+			<img alt=''
+				src={`https://openweathermap.org/img/wn/${$forecast_data['weather'][0]['icon']}@2x.png`}
 				width="100px"
 				height="100px"
 			/>
@@ -90,12 +89,15 @@ import Card from '@smui/card';
 	</Cell>
 </LayoutGrid>
 {#if $current_data['hourly']!==undefined}
-<div class="container" span=1>
+<div class="container">
     
 
     {#each Array(12) as _, i}
+	{#if i % 4 == 0}
+	<div class="break"></div>
+	{/if}
       <Hour data={$current_data["hourly"][i]}/>
-      <Paper/>
+
     {/each}
 
 </div>
@@ -109,11 +111,10 @@ import Card from '@smui/card';
     />
   </div>
 {/if}
-<Paper/>
-<Paper/>
+
 {#if $current_data["alerts"] !== undefined}
 <div>
-  <Paper style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" color="primary" variant="outlined" class="mdc-theme--primary">
+  <Paper  color="primary" variant="outlined" class="mdc-theme--primary">
 		<Title>{alert_event}</Title>
 		<Content>
       {alert_start} - {alert_end}
@@ -123,20 +124,3 @@ import Card from '@smui/card';
 	</Paper>
 </div>
 {/if}
-<style>
-    .container {
-		display: flex;
-		flex-wrap: wrap;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-	}
-  .card-container {
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
-			Geneva, Verdana, sans-serif;
-		height: 60px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-   
-</style>

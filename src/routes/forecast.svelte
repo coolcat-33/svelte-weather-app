@@ -39,22 +39,3 @@
 
 	{/each}
 </div>
-
-<style>
-	LayoutGrid {
-		display: flex;
-	}
-	.break {
-		flex-basis: 100%;
-		height: 0;
-	}
-	.container {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	Day {
-		margin-right: 10px;
-		margin-bottom: 10px;
-	}
-	
-</style>

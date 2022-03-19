@@ -5,12 +5,6 @@
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
 
-	export let weather_img;
-
-	export let today_temp;
-	export let wind_speed;
-	export let precip;
-	export let pressure;
 
 	
 	let loc='';
@@ -24,16 +18,3 @@
 		}
 	};
 </script>
-
-
-
-<style>
-	.card-container {
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
-			Geneva, Verdana, sans-serif;
-		height: 60px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-</style>

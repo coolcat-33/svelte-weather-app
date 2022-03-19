@@ -22,15 +22,7 @@
         {date} <br/> 
         {hour}
         <br/>
-        <img src={`http://openweathermap.org/img/wn/${img}@2x.png`} width=100 height=100px/> <br/> 
+        <img alt="" src={`https://openweathermap.org/img/wn/${img}@2x.png`} width=100 height=100px/> <br/> 
         {temp}ºF
     </div>   
 </Card>
-
-<style>
-    .day {
-        text-align: center;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        margin: 10px 53px;
-    }
-</style>
