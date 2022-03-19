@@ -5,14 +5,17 @@
     import Forecast from './forecast.svelte'
     import Textfield from '@smui/textfield'
     import HelperText from '@smui/textfield/helper-text';
-    import { update_store } from '../stores/weather.js'
+    import { update_store, location } from '../stores/weather.js'
+  
+
     let active="Forecast"
-    let loc='Irving,TX,USA';
+    $: loc=$location;
   
     const onKeyPress = (e) => {
     if (e.charCode === 13) {
       update_store(loc.trim())
     }
+
 }
 
 </script>

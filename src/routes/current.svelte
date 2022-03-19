@@ -1,6 +1,6 @@
 <script>
 
-  import { current_data, update_store_1, forecast_data } from '../stores/weather.js'
+  import { current_data, forecast_data } from '../stores/weather.js'
   import CircularProgress from '@smui/circular-progress';
   import Paper from '@smui/paper';
   import Hour from "../components/hour.svelte"

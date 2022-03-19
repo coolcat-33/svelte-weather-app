@@ -1,24 +1,11 @@
 <script>
 	import Day from '../components/day.svelte';
-	import Weather from '../components/weather.svelte';
 	import {weather_data, forecast_data} from '../stores/weather'
 	import CircularProgress from '@smui/circular-progress';
-
-
-	let img 
-	let temp
-	let pressure 
-	let wind_speed 
-	let precip 
-
-
-	
-	
 </script>
 
-{#if $forecast_data["wind"] }
-<Weather weather_img={img} today_temp={temp} {pressure} {wind_speed} {precip} />
-{:else}
+{#if $forecast_data["wind"] === undefined}
+
 <div style="display: flex; justify-content: center">
     <CircularProgress
       class="my-four-colors"
