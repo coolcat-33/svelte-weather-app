@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-f7237a2f.js",
+    "file": "start-6484643d.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -9,12 +9,13 @@
     "dynamicImports": [
       "src/routes/__layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
+      "src/routes/index.svelte",
       "src/routes/forecast.svelte",
       "src/routes/current.svelte"
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-9865dd86.js",
+    "file": "pages/__layout.svelte-d7adc798.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -22,27 +23,27 @@
       "_vendor-ec34ed73.js",
       "src/routes/current.svelte",
       "src/routes/forecast.svelte",
-      "_weather-cd971f37.js"
+      "_weather-7c57c533.js"
     ]
   },
   "src/routes/current.svelte": {
-    "file": "pages/current.svelte-59de5f11.js",
+    "file": "pages/current.svelte-5ad3a2bf.js",
     "src": "src/routes/current.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-ec34ed73.js",
-      "_weather-cd971f37.js"
+      "_weather-7c57c533.js"
     ]
   },
   "src/routes/forecast.svelte": {
-    "file": "pages/forecast.svelte-d6acd1cd.js",
+    "file": "pages/forecast.svelte-978f51f4.js",
     "src": "src/routes/forecast.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-ec34ed73.js",
-      "_weather-cd971f37.js"
+      "_weather-7c57c533.js"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -54,11 +55,20 @@
       "_vendor-ec34ed73.js"
     ]
   },
+  "src/routes/index.svelte": {
+    "file": "pages/index.svelte-c364d9d5.js",
+    "src": "src/routes/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-ec34ed73.js"
+    ]
+  },
   "_vendor-ec34ed73.js": {
     "file": "chunks/vendor-ec34ed73.js"
   },
-  "_weather-cd971f37.js": {
-    "file": "chunks/weather-cd971f37.js",
+  "_weather-7c57c533.js": {
+    "file": "chunks/weather-7c57c533.js",
     "imports": [
       "_vendor-ec34ed73.js"
     ]

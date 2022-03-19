@@ -1,4 +1,798 @@
-var fl=Object.defineProperty;var en=Object.getOwnPropertySymbols;var dl=Object.prototype.hasOwnProperty,hl=Object.prototype.propertyIsEnumerable;var tn=(n,e,t)=>e in n?fl(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t,fe=(n,e)=>{for(var t in e||(e={}))dl.call(e,t)&&tn(n,t,e[t]);if(en)for(var t of en(e))hl.call(e,t)&&tn(n,t,e[t]);return n};function He(){}function H(n,e){for(const t in e)n[t]=e[t];return n}function li(n){return n()}function nn(){return Object.create(null)}function oe(n){n.forEach(li)}function ie(n){return typeof n=="function"}function me(n,e){return n!=n?e==e:n!==e||n&&typeof n=="object"||typeof n=="function"}let It;function Is(n,e){return It||(It=document.createElement("a")),It.href=e,n===It.href}function ml(n){return Object.keys(n).length===0}function gl(n,...e){if(n==null)return He;const t=n.subscribe(...e);return t.unsubscribe?()=>t.unsubscribe():t}function pl(n,e,t){n.$$.on_destroy.push(gl(e,t))}function x(n,e,t,i){if(n){const l=ri(n,e,t,i);return n[0](l)}}function ri(n,e,t,i){return n[1]&&i?H(t.ctx.slice(),n[1](i(e))):t.ctx}function $(n,e,t,i){if(n[2]&&i){const l=n[2](i(t));if(e.dirty===void 0)return l;if(typeof l=="object"){const r=[],s=Math.max(e.dirty.length,l.length);for(let a=0;a<s;a+=1)r[a]=e.dirty[a]|l[a];return r}return e.dirty|l}return e.dirty}function ee(n,e,t,i,l,r){if(l){const s=ri(e,t,i,r);n.p(s,l)}}function te(n){if(n.ctx.length>32){const e=[],t=n.ctx.length/32;for(let i=0;i<t;i++)e[i]=-1;return e}return-1}function Ce(n){const e={};for(const t in n)t[0]!=="$"&&(e[t]=n[t]);return e}function Y(n,e){const t={};e=new Set(e);for(const i in n)!e.has(i)&&i[0]!=="$"&&(t[i]=n[i]);return t}function _l(n){const e={};for(const t in n)e[t]=!0;return e}function bl(n,e,t){return n.set(t),e}function G(n){return n&&ie(n.destroy)?n.destroy:He}let Ht=!1;function vl(){Ht=!0}function Al(){Ht=!1}function Cl(n,e,t,i){for(;n<e;){const l=n+(e-n>>1);t(l)<=i?n=l+1:e=l}return n}function yl(n){if(n.hydrate_init)return;n.hydrate_init=!0;let e=n.childNodes;if(n.nodeName==="HEAD"){const o=[];for(let c=0;c<e.length;c++){const u=e[c];u.claim_order!==void 0&&o.push(u)}e=o}const t=new Int32Array(e.length+1),i=new Int32Array(e.length);t[0]=-1;let l=0;for(let o=0;o<e.length;o++){const c=e[o].claim_order,u=(l>0&&e[t[l]].claim_order<=c?l+1:Cl(1,l,d=>e[t[d]].claim_order,c))-1;i[o]=t[u]+1;const f=u+1;t[f]=o,l=Math.max(f,l)}const r=[],s=[];let a=e.length-1;for(let o=t[l]+1;o!=0;o=i[o-1]){for(r.push(e[o-1]);a>=o;a--)s.push(e[a]);a--}for(;a>=0;a--)s.push(e[a]);r.reverse(),s.sort((o,c)=>o.claim_order-c.claim_order);for(let o=0,c=0;o<s.length;o++){for(;c<r.length&&s[o].claim_order>=r[c].claim_order;)c++;const u=c<r.length?r[c]:null;n.insertBefore(s[o],u)}}function ne(n,e){if(Ht){for(yl(n),(n.actual_end_child===void 0||n.actual_end_child!==null&&n.actual_end_child.parentElement!==n)&&(n.actual_end_child=n.firstChild);n.actual_end_child!==null&&n.actual_end_child.claim_order===void 0;)n.actual_end_child=n.actual_end_child.nextSibling;e!==n.actual_end_child?(e.claim_order!==void 0||e.parentNode!==n)&&n.insertBefore(e,n.actual_end_child):n.actual_end_child=e.nextSibling}else(e.parentNode!==n||e.nextSibling!==null)&&n.appendChild(e)}function K(n,e,t){Ht&&!t?ne(n,e):(e.parentNode!==n||e.nextSibling!=t)&&n.insertBefore(e,t||null)}function P(n){n.parentNode.removeChild(n)}function El(n,e){for(let t=0;t<n.length;t+=1)n[t]&&n[t].d(e)}function Z(n){return document.createElement(n)}function we(n){return document.createElementNS("http://www.w3.org/2000/svg",n)}function tt(n){return document.createTextNode(n)}function _e(){return tt(" ")}function Pe(){return tt("")}function re(n,e,t,i){return n.addEventListener(e,t,i),()=>n.removeEventListener(e,t,i)}function Il(n){return function(e){return e.preventDefault(),n.call(this,e)}}function Sl(n){return function(e){return e.stopPropagation(),n.call(this,e)}}function q(n,e,t){t==null?n.removeAttribute(e):n.getAttribute(e)!==t&&n.setAttribute(e,t)}function W(n,e){const t=Object.getOwnPropertyDescriptors(n.__proto__);for(const i in e)e[i]==null?n.removeAttribute(i):i==="style"?n.style.cssText=e[i]:i==="__value"?n.value=n[i]=e[i]:t[i]&&t[i].set?n[i]=e[i]:q(n,i,e[i])}function ln(n,e){for(const t in e)q(n,t,e[t])}function w(n){return Array.from(n.childNodes)}function Ll(n){n.claim_info===void 0&&(n.claim_info={last_index:0,total_claimed:0})}function ai(n,e,t,i,l=!1){Ll(n);const r=(()=>{for(let s=n.claim_info.last_index;s<n.length;s++){const a=n[s];if(e(a)){const o=t(a);return o===void 0?n.splice(s,1):n[s]=o,l||(n.claim_info.last_index=s),a}}for(let s=n.claim_info.last_index-1;s>=0;s--){const a=n[s];if(e(a)){const o=t(a);return o===void 0?n.splice(s,1):n[s]=o,l?o===void 0&&n.claim_info.last_index--:n.claim_info.last_index=s,a}}return i()})();return r.claim_order=n.claim_info.total_claimed,n.claim_info.total_claimed+=1,r}function si(n,e,t,i){return ai(n,l=>l.nodeName===e,l=>{const r=[];for(let s=0;s<l.attributes.length;s++){const a=l.attributes[s];t[a.name]||r.push(a.name)}r.forEach(s=>l.removeAttribute(s))},()=>i(e))}function J(n,e,t){return si(n,e,t,Z)}function Qe(n,e,t){return si(n,e,t,we)}function gt(n,e){return ai(n,t=>t.nodeType===3,t=>{const i=""+e;if(t.data.startsWith(i)){if(t.data.length!==i.length)return t.splitText(i.length)}else t.data=i},()=>tt(e),!0)}function be(n){return gt(n," ")}function Ct(n,e){e=""+e,n.wholeText!==e&&(n.data=e)}function rn(n,e){n.value=e==null?"":e}function Ss(n,e,t,i){t===null?n.style.removeProperty(e):n.style.setProperty(e,t,i?"important":"")}let vt;function bt(n){vt=n}function ae(){if(!vt)throw new Error("Function called outside component initialization");return vt}function Ge(n){ae().$$.on_mount.push(n)}function Ls(n){ae().$$.after_update.push(n)}function Xt(n){ae().$$.on_destroy.push(n)}function mt(n,e){ae().$$.context.set(n,e)}function et(n){return ae().$$.context.get(n)}function At(n,e){const t=n.$$.callbacks[e.type];t&&t.slice().forEach(i=>i.call(this,e))}const _t=[],X=[],Dt=[],Gt=[],oi=Promise.resolve();let qt=!1;function ui(){qt||(qt=!0,oi.then(ci))}function Tl(){return ui(),oi}function zt(n){Dt.push(n)}function rt(n){Gt.push(n)}const Nt=new Set;let St=0;function ci(){const n=vt;do{for(;St<_t.length;){const e=_t[St];St++,bt(e),Rl(e.$$)}for(bt(null),_t.length=0,St=0;X.length;)X.pop()();for(let e=0;e<Dt.length;e+=1){const t=Dt[e];Nt.has(t)||(Nt.add(t),t())}Dt.length=0}while(_t.length);for(;Gt.length;)Gt.pop()();qt=!1,Nt.clear(),bt(n)}function Rl(n){if(n.fragment!==null){n.update(),oe(n.before_update);const e=n.dirty;n.dirty=[-1],n.fragment&&n.fragment.p(n.ctx,e),n.after_update.forEach(zt)}}const Mt=new Set;let at;function De(){at={r:0,c:[],p:at}}function Me(){at.r||oe(at.c),at=at.p}function M(n,e){n&&n.i&&(Mt.delete(n),n.i(e))}function k(n,e,t,i){if(n&&n.o){if(Mt.has(n))return;Mt.add(n),at.c.push(()=>{Mt.delete(n),i&&(t&&n.d(1),i())}),n.o(e)}}function Ol(n,e){k(n,1,1,()=>{e.delete(n.key)})}function Dl(n,e,t,i,l,r,s,a,o,c,u,f){let d=n.length,m=r.length,v=d;const p={};for(;v--;)p[n[v].key]=v;const g=[],_=new Map,b=new Map;for(v=m;v--;){const S=f(l,r,v),h=t(S);let C=s.get(h);C?i&&C.p(S,e):(C=c(h,S),C.c()),_.set(h,g[v]=C),h in p&&b.set(h,Math.abs(v-p[h]))}const y=new Set,I=new Set;function T(S){M(S,1),S.m(a,u),s.set(S.key,S),u=S.first,m--}for(;d&&m;){const S=g[m-1],h=n[d-1],C=S.key,N=h.key;S===h?(u=S.first,d--,m--):_.has(N)?!s.has(C)||y.has(C)?T(S):I.has(N)?d--:b.get(C)>b.get(N)?(I.add(C),T(S)):(y.add(N),d--):(o(h,s),d--)}for(;d--;){const S=n[d];_.has(S.key)||o(S,s)}for(;m;)T(g[m-1]);return g}function Q(n,e){const t={},i={},l={$$scope:1};let r=n.length;for(;r--;){const s=n[r],a=e[r];if(a){for(const o in s)o in a||(i[o]=1);for(const o in a)l[o]||(t[o]=a[o],l[o]=1);n[r]=a}else for(const o in s)l[o]=1}for(const s in i)s in t||(t[s]=void 0);return t}function Fe(n){return typeof n=="object"&&n!==null?n:{}}function st(n,e,t){const i=n.$$.props[e];i!==void 0&&(n.$$.bound[i]=t,t(n.$$.ctx[i]))}function Ie(n){n&&n.c()}function Oe(n,e){n&&n.l(e)}function ye(n,e,t,i){const{fragment:l,on_mount:r,on_destroy:s,after_update:a}=n.$$;l&&l.m(e,t),i||zt(()=>{const o=r.map(li).filter(ie);s?s.push(...o):oe(o),n.$$.on_mount=[]}),a.forEach(zt)}function Ee(n,e){const t=n.$$;t.fragment!==null&&(oe(t.on_destroy),t.fragment&&t.fragment.d(e),t.on_destroy=t.fragment=null,t.ctx=[])}function Ml(n,e){n.$$.dirty[0]===-1&&(_t.push(n),ui(),n.$$.dirty.fill(0)),n.$$.dirty[e/31|0]|=1<<e%31}function ge(n,e,t,i,l,r,s,a=[-1]){const o=vt;bt(n);const c=n.$$={fragment:null,ctx:null,props:r,update:He,not_equal:l,bound:nn(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(e.context||(o?o.$$.context:[])),callbacks:nn(),dirty:a,skip_bound:!1,root:e.target||o.$$.root};s&&s(c.root);let u=!1;if(c.ctx=t?t(n,e.props||{},(f,d,...m)=>{const v=m.length?m[0]:d;return c.ctx&&l(c.ctx[f],c.ctx[f]=v)&&(!c.skip_bound&&c.bound[f]&&c.bound[f](v),u&&Ml(n,f)),d}):[],c.update(),u=!0,oe(c.before_update),c.fragment=i?i(c.ctx):!1,e.target){if(e.hydrate){vl();const f=w(e.target);c.fragment&&c.fragment.l(f),f.forEach(P)}else c.fragment&&c.fragment.c();e.intro&&M(n.$$.fragment),ye(n,e.target,e.anchor,e.customElement),Al(),ci()}bt(o)}class pe{$destroy(){Ee(this,1),this.$destroy=He}$on(e,t){const i=this.$$.callbacks[e]||(this.$$.callbacks[e]=[]);return i.push(t),()=>{const l=i.indexOf(t);l!==-1&&i.splice(l,1)}}$set(e){this.$$set&&!ml(e)&&(this.$$.skip_bound=!0,this.$$set(e),this.$$.skip_bound=!1)}}const ht=[];function Pl(n,e=He){let t;const i=new Set;function l(a){if(me(n,a)&&(n=a,t)){const o=!ht.length;for(const c of i)c[1](),ht.push(c,n);if(o){for(let c=0;c<ht.length;c+=2)ht[c][0](ht[c+1]);ht.length=0}}}function r(a){l(a(n))}function s(a,o=He){const c=[a,o];return i.add(c),i.size===1&&(t=e(l)||He),a(n),()=>{i.delete(c),i.size===0&&(t(),t=null)}}return{set:l,update:r,subscribe:s}}/*! *****************************************************************************
+var __defProp = Object.defineProperty;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+function noop() {
+}
+function assign(tar, src) {
+  for (const k in src)
+    tar[k] = src[k];
+  return tar;
+}
+function run(fn) {
+  return fn();
+}
+function blank_object() {
+  return /* @__PURE__ */ Object.create(null);
+}
+function run_all(fns) {
+  fns.forEach(run);
+}
+function is_function(thing) {
+  return typeof thing === "function";
+}
+function safe_not_equal(a, b) {
+  return a != a ? b == b : a !== b || (a && typeof a === "object" || typeof a === "function");
+}
+let src_url_equal_anchor;
+function src_url_equal(element_src, url) {
+  if (!src_url_equal_anchor) {
+    src_url_equal_anchor = document.createElement("a");
+  }
+  src_url_equal_anchor.href = url;
+  return element_src === src_url_equal_anchor.href;
+}
+function is_empty(obj) {
+  return Object.keys(obj).length === 0;
+}
+function subscribe(store, ...callbacks) {
+  if (store == null) {
+    return noop;
+  }
+  const unsub = store.subscribe(...callbacks);
+  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+}
+function component_subscribe(component, store, callback) {
+  component.$$.on_destroy.push(subscribe(store, callback));
+}
+function create_slot(definition, ctx, $$scope, fn) {
+  if (definition) {
+    const slot_ctx = get_slot_context(definition, ctx, $$scope, fn);
+    return definition[0](slot_ctx);
+  }
+}
+function get_slot_context(definition, ctx, $$scope, fn) {
+  return definition[1] && fn ? assign($$scope.ctx.slice(), definition[1](fn(ctx))) : $$scope.ctx;
+}
+function get_slot_changes(definition, $$scope, dirty, fn) {
+  if (definition[2] && fn) {
+    const lets = definition[2](fn(dirty));
+    if ($$scope.dirty === void 0) {
+      return lets;
+    }
+    if (typeof lets === "object") {
+      const merged = [];
+      const len = Math.max($$scope.dirty.length, lets.length);
+      for (let i = 0; i < len; i += 1) {
+        merged[i] = $$scope.dirty[i] | lets[i];
+      }
+      return merged;
+    }
+    return $$scope.dirty | lets;
+  }
+  return $$scope.dirty;
+}
+function update_slot_base(slot, slot_definition, ctx, $$scope, slot_changes, get_slot_context_fn) {
+  if (slot_changes) {
+    const slot_context = get_slot_context(slot_definition, ctx, $$scope, get_slot_context_fn);
+    slot.p(slot_context, slot_changes);
+  }
+}
+function get_all_dirty_from_scope($$scope) {
+  if ($$scope.ctx.length > 32) {
+    const dirty = [];
+    const length = $$scope.ctx.length / 32;
+    for (let i = 0; i < length; i++) {
+      dirty[i] = -1;
+    }
+    return dirty;
+  }
+  return -1;
+}
+function exclude_internal_props(props) {
+  const result = {};
+  for (const k in props)
+    if (k[0] !== "$")
+      result[k] = props[k];
+  return result;
+}
+function compute_rest_props(props, keys) {
+  const rest = {};
+  keys = new Set(keys);
+  for (const k in props)
+    if (!keys.has(k) && k[0] !== "$")
+      rest[k] = props[k];
+  return rest;
+}
+function compute_slots(slots) {
+  const result = {};
+  for (const key in slots) {
+    result[key] = true;
+  }
+  return result;
+}
+function set_store_value(store, ret, value) {
+  store.set(value);
+  return ret;
+}
+function action_destroyer(action_result) {
+  return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
+}
+let is_hydrating = false;
+function start_hydrating() {
+  is_hydrating = true;
+}
+function end_hydrating() {
+  is_hydrating = false;
+}
+function upper_bound(low, high, key, value) {
+  while (low < high) {
+    const mid = low + (high - low >> 1);
+    if (key(mid) <= value) {
+      low = mid + 1;
+    } else {
+      high = mid;
+    }
+  }
+  return low;
+}
+function init_hydrate(target) {
+  if (target.hydrate_init)
+    return;
+  target.hydrate_init = true;
+  let children2 = target.childNodes;
+  if (target.nodeName === "HEAD") {
+    const myChildren = [];
+    for (let i = 0; i < children2.length; i++) {
+      const node = children2[i];
+      if (node.claim_order !== void 0) {
+        myChildren.push(node);
+      }
+    }
+    children2 = myChildren;
+  }
+  const m = new Int32Array(children2.length + 1);
+  const p = new Int32Array(children2.length);
+  m[0] = -1;
+  let longest = 0;
+  for (let i = 0; i < children2.length; i++) {
+    const current = children2[i].claim_order;
+    const seqLen = (longest > 0 && children2[m[longest]].claim_order <= current ? longest + 1 : upper_bound(1, longest, (idx) => children2[m[idx]].claim_order, current)) - 1;
+    p[i] = m[seqLen] + 1;
+    const newLen = seqLen + 1;
+    m[newLen] = i;
+    longest = Math.max(newLen, longest);
+  }
+  const lis = [];
+  const toMove = [];
+  let last = children2.length - 1;
+  for (let cur = m[longest] + 1; cur != 0; cur = p[cur - 1]) {
+    lis.push(children2[cur - 1]);
+    for (; last >= cur; last--) {
+      toMove.push(children2[last]);
+    }
+    last--;
+  }
+  for (; last >= 0; last--) {
+    toMove.push(children2[last]);
+  }
+  lis.reverse();
+  toMove.sort((a, b) => a.claim_order - b.claim_order);
+  for (let i = 0, j = 0; i < toMove.length; i++) {
+    while (j < lis.length && toMove[i].claim_order >= lis[j].claim_order) {
+      j++;
+    }
+    const anchor = j < lis.length ? lis[j] : null;
+    target.insertBefore(toMove[i], anchor);
+  }
+}
+function append_hydration(target, node) {
+  if (is_hydrating) {
+    init_hydrate(target);
+    if (target.actual_end_child === void 0 || target.actual_end_child !== null && target.actual_end_child.parentElement !== target) {
+      target.actual_end_child = target.firstChild;
+    }
+    while (target.actual_end_child !== null && target.actual_end_child.claim_order === void 0) {
+      target.actual_end_child = target.actual_end_child.nextSibling;
+    }
+    if (node !== target.actual_end_child) {
+      if (node.claim_order !== void 0 || node.parentNode !== target) {
+        target.insertBefore(node, target.actual_end_child);
+      }
+    } else {
+      target.actual_end_child = node.nextSibling;
+    }
+  } else if (node.parentNode !== target || node.nextSibling !== null) {
+    target.appendChild(node);
+  }
+}
+function insert_hydration(target, node, anchor) {
+  if (is_hydrating && !anchor) {
+    append_hydration(target, node);
+  } else if (node.parentNode !== target || node.nextSibling != anchor) {
+    target.insertBefore(node, anchor || null);
+  }
+}
+function detach(node) {
+  node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+  for (let i = 0; i < iterations.length; i += 1) {
+    if (iterations[i])
+      iterations[i].d(detaching);
+  }
+}
+function element(name) {
+  return document.createElement(name);
+}
+function svg_element(name) {
+  return document.createElementNS("http://www.w3.org/2000/svg", name);
+}
+function text(data) {
+  return document.createTextNode(data);
+}
+function space() {
+  return text(" ");
+}
+function empty() {
+  return text("");
+}
+function listen(node, event, handler, options) {
+  node.addEventListener(event, handler, options);
+  return () => node.removeEventListener(event, handler, options);
+}
+function prevent_default(fn) {
+  return function(event) {
+    event.preventDefault();
+    return fn.call(this, event);
+  };
+}
+function stop_propagation(fn) {
+  return function(event) {
+    event.stopPropagation();
+    return fn.call(this, event);
+  };
+}
+function attr(node, attribute, value) {
+  if (value == null)
+    node.removeAttribute(attribute);
+  else if (node.getAttribute(attribute) !== value)
+    node.setAttribute(attribute, value);
+}
+function set_attributes(node, attributes) {
+  const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
+  for (const key in attributes) {
+    if (attributes[key] == null) {
+      node.removeAttribute(key);
+    } else if (key === "style") {
+      node.style.cssText = attributes[key];
+    } else if (key === "__value") {
+      node.value = node[key] = attributes[key];
+    } else if (descriptors[key] && descriptors[key].set) {
+      node[key] = attributes[key];
+    } else {
+      attr(node, key, attributes[key]);
+    }
+  }
+}
+function set_svg_attributes(node, attributes) {
+  for (const key in attributes) {
+    attr(node, key, attributes[key]);
+  }
+}
+function children(element2) {
+  return Array.from(element2.childNodes);
+}
+function init_claim_info(nodes) {
+  if (nodes.claim_info === void 0) {
+    nodes.claim_info = { last_index: 0, total_claimed: 0 };
+  }
+}
+function claim_node(nodes, predicate, processNode, createNode, dontUpdateLastIndex = false) {
+  init_claim_info(nodes);
+  const resultNode = (() => {
+    for (let i = nodes.claim_info.last_index; i < nodes.length; i++) {
+      const node = nodes[i];
+      if (predicate(node)) {
+        const replacement = processNode(node);
+        if (replacement === void 0) {
+          nodes.splice(i, 1);
+        } else {
+          nodes[i] = replacement;
+        }
+        if (!dontUpdateLastIndex) {
+          nodes.claim_info.last_index = i;
+        }
+        return node;
+      }
+    }
+    for (let i = nodes.claim_info.last_index - 1; i >= 0; i--) {
+      const node = nodes[i];
+      if (predicate(node)) {
+        const replacement = processNode(node);
+        if (replacement === void 0) {
+          nodes.splice(i, 1);
+        } else {
+          nodes[i] = replacement;
+        }
+        if (!dontUpdateLastIndex) {
+          nodes.claim_info.last_index = i;
+        } else if (replacement === void 0) {
+          nodes.claim_info.last_index--;
+        }
+        return node;
+      }
+    }
+    return createNode();
+  })();
+  resultNode.claim_order = nodes.claim_info.total_claimed;
+  nodes.claim_info.total_claimed += 1;
+  return resultNode;
+}
+function claim_element_base(nodes, name, attributes, create_element) {
+  return claim_node(nodes, (node) => node.nodeName === name, (node) => {
+    const remove = [];
+    for (let j = 0; j < node.attributes.length; j++) {
+      const attribute = node.attributes[j];
+      if (!attributes[attribute.name]) {
+        remove.push(attribute.name);
+      }
+    }
+    remove.forEach((v) => node.removeAttribute(v));
+    return void 0;
+  }, () => create_element(name));
+}
+function claim_element(nodes, name, attributes) {
+  return claim_element_base(nodes, name, attributes, element);
+}
+function claim_svg_element(nodes, name, attributes) {
+  return claim_element_base(nodes, name, attributes, svg_element);
+}
+function claim_text(nodes, data) {
+  return claim_node(nodes, (node) => node.nodeType === 3, (node) => {
+    const dataStr = "" + data;
+    if (node.data.startsWith(dataStr)) {
+      if (node.data.length !== dataStr.length) {
+        return node.splitText(dataStr.length);
+      }
+    } else {
+      node.data = dataStr;
+    }
+  }, () => text(data), true);
+}
+function claim_space(nodes) {
+  return claim_text(nodes, " ");
+}
+function set_data(text2, data) {
+  data = "" + data;
+  if (text2.wholeText !== data)
+    text2.data = data;
+}
+function set_input_value(input, value) {
+  input.value = value == null ? "" : value;
+}
+function set_style(node, key, value, important) {
+  if (value === null) {
+    node.style.removeProperty(key);
+  } else {
+    node.style.setProperty(key, value, important ? "important" : "");
+  }
+}
+let current_component;
+function set_current_component(component) {
+  current_component = component;
+}
+function get_current_component() {
+  if (!current_component)
+    throw new Error("Function called outside component initialization");
+  return current_component;
+}
+function onMount(fn) {
+  get_current_component().$$.on_mount.push(fn);
+}
+function afterUpdate(fn) {
+  get_current_component().$$.after_update.push(fn);
+}
+function onDestroy(fn) {
+  get_current_component().$$.on_destroy.push(fn);
+}
+function setContext(key, context) {
+  get_current_component().$$.context.set(key, context);
+}
+function getContext(key) {
+  return get_current_component().$$.context.get(key);
+}
+function bubble(component, event) {
+  const callbacks = component.$$.callbacks[event.type];
+  if (callbacks) {
+    callbacks.slice().forEach((fn) => fn.call(this, event));
+  }
+}
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+  if (!update_scheduled) {
+    update_scheduled = true;
+    resolved_promise.then(flush);
+  }
+}
+function tick() {
+  schedule_update();
+  return resolved_promise;
+}
+function add_render_callback(fn) {
+  render_callbacks.push(fn);
+}
+function add_flush_callback(fn) {
+  flush_callbacks.push(fn);
+}
+const seen_callbacks = /* @__PURE__ */ new Set();
+let flushidx = 0;
+function flush() {
+  const saved_component = current_component;
+  do {
+    while (flushidx < dirty_components.length) {
+      const component = dirty_components[flushidx];
+      flushidx++;
+      set_current_component(component);
+      update(component.$$);
+    }
+    set_current_component(null);
+    dirty_components.length = 0;
+    flushidx = 0;
+    while (binding_callbacks.length)
+      binding_callbacks.pop()();
+    for (let i = 0; i < render_callbacks.length; i += 1) {
+      const callback = render_callbacks[i];
+      if (!seen_callbacks.has(callback)) {
+        seen_callbacks.add(callback);
+        callback();
+      }
+    }
+    render_callbacks.length = 0;
+  } while (dirty_components.length);
+  while (flush_callbacks.length) {
+    flush_callbacks.pop()();
+  }
+  update_scheduled = false;
+  seen_callbacks.clear();
+  set_current_component(saved_component);
+}
+function update($$) {
+  if ($$.fragment !== null) {
+    $$.update();
+    run_all($$.before_update);
+    const dirty = $$.dirty;
+    $$.dirty = [-1];
+    $$.fragment && $$.fragment.p($$.ctx, dirty);
+    $$.after_update.forEach(add_render_callback);
+  }
+}
+const outroing = /* @__PURE__ */ new Set();
+let outros;
+function group_outros() {
+  outros = {
+    r: 0,
+    c: [],
+    p: outros
+  };
+}
+function check_outros() {
+  if (!outros.r) {
+    run_all(outros.c);
+  }
+  outros = outros.p;
+}
+function transition_in(block, local) {
+  if (block && block.i) {
+    outroing.delete(block);
+    block.i(local);
+  }
+}
+function transition_out(block, local, detach2, callback) {
+  if (block && block.o) {
+    if (outroing.has(block))
+      return;
+    outroing.add(block);
+    outros.c.push(() => {
+      outroing.delete(block);
+      if (callback) {
+        if (detach2)
+          block.d(1);
+        callback();
+      }
+    });
+    block.o(local);
+  }
+}
+function outro_and_destroy_block(block, lookup) {
+  transition_out(block, 1, 1, () => {
+    lookup.delete(block.key);
+  });
+}
+function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block2, next, get_context) {
+  let o = old_blocks.length;
+  let n = list.length;
+  let i = o;
+  const old_indexes = {};
+  while (i--)
+    old_indexes[old_blocks[i].key] = i;
+  const new_blocks = [];
+  const new_lookup = /* @__PURE__ */ new Map();
+  const deltas = /* @__PURE__ */ new Map();
+  i = n;
+  while (i--) {
+    const child_ctx = get_context(ctx, list, i);
+    const key = get_key(child_ctx);
+    let block = lookup.get(key);
+    if (!block) {
+      block = create_each_block2(key, child_ctx);
+      block.c();
+    } else if (dynamic) {
+      block.p(child_ctx, dirty);
+    }
+    new_lookup.set(key, new_blocks[i] = block);
+    if (key in old_indexes)
+      deltas.set(key, Math.abs(i - old_indexes[key]));
+  }
+  const will_move = /* @__PURE__ */ new Set();
+  const did_move = /* @__PURE__ */ new Set();
+  function insert(block) {
+    transition_in(block, 1);
+    block.m(node, next);
+    lookup.set(block.key, block);
+    next = block.first;
+    n--;
+  }
+  while (o && n) {
+    const new_block = new_blocks[n - 1];
+    const old_block = old_blocks[o - 1];
+    const new_key = new_block.key;
+    const old_key = old_block.key;
+    if (new_block === old_block) {
+      next = new_block.first;
+      o--;
+      n--;
+    } else if (!new_lookup.has(old_key)) {
+      destroy(old_block, lookup);
+      o--;
+    } else if (!lookup.has(new_key) || will_move.has(new_key)) {
+      insert(new_block);
+    } else if (did_move.has(old_key)) {
+      o--;
+    } else if (deltas.get(new_key) > deltas.get(old_key)) {
+      did_move.add(new_key);
+      insert(new_block);
+    } else {
+      will_move.add(old_key);
+      o--;
+    }
+  }
+  while (o--) {
+    const old_block = old_blocks[o];
+    if (!new_lookup.has(old_block.key))
+      destroy(old_block, lookup);
+  }
+  while (n)
+    insert(new_blocks[n - 1]);
+  return new_blocks;
+}
+function get_spread_update(levels, updates) {
+  const update2 = {};
+  const to_null_out = {};
+  const accounted_for = { $$scope: 1 };
+  let i = levels.length;
+  while (i--) {
+    const o = levels[i];
+    const n = updates[i];
+    if (n) {
+      for (const key in o) {
+        if (!(key in n))
+          to_null_out[key] = 1;
+      }
+      for (const key in n) {
+        if (!accounted_for[key]) {
+          update2[key] = n[key];
+          accounted_for[key] = 1;
+        }
+      }
+      levels[i] = n;
+    } else {
+      for (const key in o) {
+        accounted_for[key] = 1;
+      }
+    }
+  }
+  for (const key in to_null_out) {
+    if (!(key in update2))
+      update2[key] = void 0;
+  }
+  return update2;
+}
+function get_spread_object(spread_props) {
+  return typeof spread_props === "object" && spread_props !== null ? spread_props : {};
+}
+function bind(component, name, callback) {
+  const index = component.$$.props[name];
+  if (index !== void 0) {
+    component.$$.bound[index] = callback;
+    callback(component.$$.ctx[index]);
+  }
+}
+function create_component(block) {
+  block && block.c();
+}
+function claim_component(block, parent_nodes) {
+  block && block.l(parent_nodes);
+}
+function mount_component(component, target, anchor, customElement) {
+  const { fragment, on_mount, on_destroy, after_update } = component.$$;
+  fragment && fragment.m(target, anchor);
+  if (!customElement) {
+    add_render_callback(() => {
+      const new_on_destroy = on_mount.map(run).filter(is_function);
+      if (on_destroy) {
+        on_destroy.push(...new_on_destroy);
+      } else {
+        run_all(new_on_destroy);
+      }
+      component.$$.on_mount = [];
+    });
+  }
+  after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+  const $$ = component.$$;
+  if ($$.fragment !== null) {
+    run_all($$.on_destroy);
+    $$.fragment && $$.fragment.d(detaching);
+    $$.on_destroy = $$.fragment = null;
+    $$.ctx = [];
+  }
+}
+function make_dirty(component, i) {
+  if (component.$$.dirty[0] === -1) {
+    dirty_components.push(component);
+    schedule_update();
+    component.$$.dirty.fill(0);
+  }
+  component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
+}
+function init(component, options, instance2, create_fragment2, not_equal, props, append_styles, dirty = [-1]) {
+  const parent_component = current_component;
+  set_current_component(component);
+  const $$ = component.$$ = {
+    fragment: null,
+    ctx: null,
+    props,
+    update: noop,
+    not_equal,
+    bound: blank_object(),
+    on_mount: [],
+    on_destroy: [],
+    on_disconnect: [],
+    before_update: [],
+    after_update: [],
+    context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+    callbacks: blank_object(),
+    dirty,
+    skip_bound: false,
+    root: options.target || parent_component.$$.root
+  };
+  append_styles && append_styles($$.root);
+  let ready = false;
+  $$.ctx = instance2 ? instance2(component, options.props || {}, (i, ret, ...rest) => {
+    const value = rest.length ? rest[0] : ret;
+    if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+      if (!$$.skip_bound && $$.bound[i])
+        $$.bound[i](value);
+      if (ready)
+        make_dirty(component, i);
+    }
+    return ret;
+  }) : [];
+  $$.update();
+  ready = true;
+  run_all($$.before_update);
+  $$.fragment = create_fragment2 ? create_fragment2($$.ctx) : false;
+  if (options.target) {
+    if (options.hydrate) {
+      start_hydrating();
+      const nodes = children(options.target);
+      $$.fragment && $$.fragment.l(nodes);
+      nodes.forEach(detach);
+    } else {
+      $$.fragment && $$.fragment.c();
+    }
+    if (options.intro)
+      transition_in(component.$$.fragment);
+    mount_component(component, options.target, options.anchor, options.customElement);
+    end_hydrating();
+    flush();
+  }
+  set_current_component(parent_component);
+}
+class SvelteComponent {
+  $destroy() {
+    destroy_component(this, 1);
+    this.$destroy = noop;
+  }
+  $on(type, callback) {
+    const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
+    callbacks.push(callback);
+    return () => {
+      const index = callbacks.indexOf(callback);
+      if (index !== -1)
+        callbacks.splice(index, 1);
+    };
+  }
+  $set($$props) {
+    if (this.$$set && !is_empty($$props)) {
+      this.$$.skip_bound = true;
+      this.$$set($$props);
+      this.$$.skip_bound = false;
+    }
+  }
+}
+const subscriber_queue = [];
+function writable(value, start = noop) {
+  let stop;
+  const subscribers = /* @__PURE__ */ new Set();
+  function set(new_value) {
+    if (safe_not_equal(value, new_value)) {
+      value = new_value;
+      if (stop) {
+        const run_queue = !subscriber_queue.length;
+        for (const subscriber of subscribers) {
+          subscriber[1]();
+          subscriber_queue.push(subscriber, value);
+        }
+        if (run_queue) {
+          for (let i = 0; i < subscriber_queue.length; i += 2) {
+            subscriber_queue[i][0](subscriber_queue[i + 1]);
+          }
+          subscriber_queue.length = 0;
+        }
+      }
+    }
+  }
+  function update2(fn) {
+    set(fn(value));
+  }
+  function subscribe2(run2, invalidate = noop) {
+    const subscriber = [run2, invalidate];
+    subscribers.add(subscriber);
+    if (subscribers.size === 1) {
+      stop = start(set) || noop;
+    }
+    run2(value);
+    return () => {
+      subscribers.delete(subscriber);
+      if (subscribers.size === 0) {
+        stop();
+        stop = null;
+      }
+    };
+  }
+  return { set, update: update2, subscribe: subscribe2 };
+}
+/*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -11,7 +805,74 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */var Kt=function(n,e){return Kt=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,i){t.__proto__=i}||function(t,i){for(var l in i)Object.prototype.hasOwnProperty.call(i,l)&&(t[l]=i[l])},Kt(n,e)};function ke(n,e){if(typeof e!="function"&&e!==null)throw new TypeError("Class extends value "+String(e)+" is not a constructor or null");Kt(n,e);function t(){this.constructor=n}n.prototype=e===null?Object.create(e):(t.prototype=e.prototype,new t)}var Ae=function(){return Ae=Object.assign||function(e){for(var t,i=1,l=arguments.length;i<l;i++){t=arguments[i];for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])}return e},Ae.apply(this,arguments)};function $e(n){var e=typeof Symbol=="function"&&Symbol.iterator,t=e&&n[e],i=0;if(t)return t.call(n);if(n&&typeof n.length=="number")return{next:function(){return n&&i>=n.length&&(n=void 0),{value:n&&n[i++],done:!n}}};throw new TypeError(e?"Object is not iterable.":"Symbol.iterator is not defined.")}function Fl(n,e){var t=typeof Symbol=="function"&&n[Symbol.iterator];if(!t)return n;var i=t.call(n),l,r=[],s;try{for(;(e===void 0||e-- >0)&&!(l=i.next()).done;)r.push(l.value)}catch(a){s={error:a}}finally{try{l&&!l.done&&(t=i.return)&&t.call(i)}finally{if(s)throw s.error}}return r}/**
+***************************************************************************** */
+var extendStatics = function(d, b) {
+  extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+    d2.__proto__ = b2;
+  } || function(d2, b2) {
+    for (var p in b2)
+      if (Object.prototype.hasOwnProperty.call(b2, p))
+        d2[p] = b2[p];
+  };
+  return extendStatics(d, b);
+};
+function __extends(d, b) {
+  if (typeof b !== "function" && b !== null)
+    throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+  extendStatics(d, b);
+  function __() {
+    this.constructor = d;
+  }
+  d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+var __assign = function() {
+  __assign = Object.assign || function __assign2(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s)
+        if (Object.prototype.hasOwnProperty.call(s, p))
+          t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+function __values(o) {
+  var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+  if (m)
+    return m.call(o);
+  if (o && typeof o.length === "number")
+    return {
+      next: function() {
+        if (o && i >= o.length)
+          o = void 0;
+        return { value: o && o[i++], done: !o };
+      }
+    };
+  throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+function __read(o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m)
+    return o;
+  var i = m.call(o), r, ar = [], e;
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
+      ar.push(r.value);
+  } catch (error) {
+    e = { error };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"]))
+        m.call(i);
+    } finally {
+      if (e)
+        throw e.error;
+    }
+  }
+  return ar;
+}
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -32,7 +893,49 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var ze=function(){function n(e){e===void 0&&(e={}),this.adapter=e}return Object.defineProperty(n,"cssClasses",{get:function(){return{}},enumerable:!1,configurable:!0}),Object.defineProperty(n,"strings",{get:function(){return{}},enumerable:!1,configurable:!0}),Object.defineProperty(n,"numbers",{get:function(){return{}},enumerable:!1,configurable:!0}),Object.defineProperty(n,"defaultAdapter",{get:function(){return{}},enumerable:!1,configurable:!0}),n.prototype.init=function(){},n.prototype.destroy=function(){},n}();/**
+ */
+var MDCFoundation = function() {
+  function MDCFoundation2(adapter) {
+    if (adapter === void 0) {
+      adapter = {};
+    }
+    this.adapter = adapter;
+  }
+  Object.defineProperty(MDCFoundation2, "cssClasses", {
+    get: function() {
+      return {};
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCFoundation2, "strings", {
+    get: function() {
+      return {};
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCFoundation2, "numbers", {
+    get: function() {
+      return {};
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCFoundation2, "defaultAdapter", {
+    get: function() {
+      return {};
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCFoundation2.prototype.init = function() {
+  };
+  MDCFoundation2.prototype.destroy = function() {
+  };
+  return MDCFoundation2;
+}();
+/**
  * @license
  * Copyright 2019 Google Inc.
  *
@@ -53,7 +956,39 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */function Hl(n){return n===void 0&&(n=window),kl(n)?{passive:!0}:!1}function kl(n){n===void 0&&(n=window);var e=!1;try{var t={get passive(){return e=!0,!1}},i=function(){};n.document.addEventListener("test",i,t),n.document.removeEventListener("test",i,t)}catch{e=!1}return e}var fi=Object.freeze(Object.defineProperty({__proto__:null,applyPassive:Hl},Symbol.toStringTag,{value:"Module"}));/**
+ */
+function applyPassive$1(globalObj) {
+  if (globalObj === void 0) {
+    globalObj = window;
+  }
+  return supportsPassiveOption(globalObj) ? { passive: true } : false;
+}
+function supportsPassiveOption(globalObj) {
+  if (globalObj === void 0) {
+    globalObj = window;
+  }
+  var passiveSupported = false;
+  try {
+    var options = {
+      get passive() {
+        passiveSupported = true;
+        return false;
+      }
+    };
+    var handler = function() {
+    };
+    globalObj.document.addEventListener("test", handler, options);
+    globalObj.document.removeEventListener("test", handler, options);
+  } catch (err) {
+    passiveSupported = false;
+  }
+  return passiveSupported;
+}
+var events = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  applyPassive: applyPassive$1
+}, Symbol.toStringTag, { value: "Module" }));
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -74,7 +1009,44 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */function Vl(n,e){if(n.closest)return n.closest(e);for(var t=n;t;){if(di(t,e))return t;t=t.parentElement}return null}function di(n,e){var t=n.matches||n.webkitMatchesSelector||n.msMatchesSelector;return t.call(n,e)}function Ul(n){var e=n;if(e.offsetParent!==null)return e.scrollWidth;var t=e.cloneNode(!0);t.style.setProperty("position","absolute"),t.style.setProperty("transform","translate(-9999px, -9999px)"),document.documentElement.appendChild(t);var i=t.scrollWidth;return document.documentElement.removeChild(t),i}var hi=Object.freeze(Object.defineProperty({__proto__:null,closest:Vl,matches:di,estimateScrollWidth:Ul},Symbol.toStringTag,{value:"Module"}));/**
+ */
+function closest(element2, selector) {
+  if (element2.closest) {
+    return element2.closest(selector);
+  }
+  var el = element2;
+  while (el) {
+    if (matches$1(el, selector)) {
+      return el;
+    }
+    el = el.parentElement;
+  }
+  return null;
+}
+function matches$1(element2, selector) {
+  var nativeMatches = element2.matches || element2.webkitMatchesSelector || element2.msMatchesSelector;
+  return nativeMatches.call(element2, selector);
+}
+function estimateScrollWidth(element2) {
+  var htmlEl = element2;
+  if (htmlEl.offsetParent !== null) {
+    return htmlEl.scrollWidth;
+  }
+  var clone = htmlEl.cloneNode(true);
+  clone.style.setProperty("position", "absolute");
+  clone.style.setProperty("transform", "translate(-9999px, -9999px)");
+  document.documentElement.appendChild(clone);
+  var scrollWidth = clone.scrollWidth;
+  document.documentElement.removeChild(clone);
+  return scrollWidth;
+}
+var ponyfill = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  closest,
+  matches: matches$1,
+  estimateScrollWidth
+}, Symbol.toStringTag, { value: "Module" }));
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -95,7 +1067,17 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var mi={ANIMATING:"mdc-tab-scroller--animating",SCROLL_AREA_SCROLL:"mdc-tab-scroller__scroll-area--scroll",SCROLL_TEST:"mdc-tab-scroller__test"},jl={AREA_SELECTOR:".mdc-tab-scroller__scroll-area",CONTENT_SELECTOR:".mdc-tab-scroller__scroll-content"};/**
+ */
+var cssClasses$9 = {
+  ANIMATING: "mdc-tab-scroller--animating",
+  SCROLL_AREA_SCROLL: "mdc-tab-scroller__scroll-area--scroll",
+  SCROLL_TEST: "mdc-tab-scroller__test"
+};
+var strings$8 = {
+  AREA_SELECTOR: ".mdc-tab-scroller__scroll-area",
+  CONTENT_SELECTOR: ".mdc-tab-scroller__scroll-content"
+};
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -116,7 +1098,14 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var wt=function(){function n(e){this.adapter=e}return n}();/**
+ */
+var MDCTabScrollerRTL = function() {
+  function MDCTabScrollerRTL2(adapter) {
+    this.adapter = adapter;
+  }
+  return MDCTabScrollerRTL2;
+}();
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -137,7 +1126,52 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Nl=function(n){ke(e,n);function e(){return n!==null&&n.apply(this,arguments)||this}return e.prototype.getScrollPositionRTL=function(){var t=this.adapter.getScrollAreaScrollLeft(),i=this.calculateScrollEdges().right;return Math.round(i-t)},e.prototype.scrollToRTL=function(t){var i=this.calculateScrollEdges(),l=this.adapter.getScrollAreaScrollLeft(),r=this.clampScrollValue(i.right-t);return{finalScrollPosition:r,scrollDelta:r-l}},e.prototype.incrementScrollRTL=function(t){var i=this.adapter.getScrollAreaScrollLeft(),l=this.clampScrollValue(i-t);return{finalScrollPosition:l,scrollDelta:l-i}},e.prototype.getAnimatingScrollPosition=function(t){return t},e.prototype.calculateScrollEdges=function(){var t=this.adapter.getScrollContentOffsetWidth(),i=this.adapter.getScrollAreaOffsetWidth();return{left:0,right:t-i}},e.prototype.clampScrollValue=function(t){var i=this.calculateScrollEdges();return Math.min(Math.max(i.left,t),i.right)},e}(wt);/**
+ */
+var MDCTabScrollerRTLDefault = function(_super) {
+  __extends(MDCTabScrollerRTLDefault2, _super);
+  function MDCTabScrollerRTLDefault2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  MDCTabScrollerRTLDefault2.prototype.getScrollPositionRTL = function() {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    var right = this.calculateScrollEdges().right;
+    return Math.round(right - currentScrollLeft);
+  };
+  MDCTabScrollerRTLDefault2.prototype.scrollToRTL = function(scrollX) {
+    var edges = this.calculateScrollEdges();
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    var clampedScrollLeft = this.clampScrollValue(edges.right - scrollX);
+    return {
+      finalScrollPosition: clampedScrollLeft,
+      scrollDelta: clampedScrollLeft - currentScrollLeft
+    };
+  };
+  MDCTabScrollerRTLDefault2.prototype.incrementScrollRTL = function(scrollX) {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    var clampedScrollLeft = this.clampScrollValue(currentScrollLeft - scrollX);
+    return {
+      finalScrollPosition: clampedScrollLeft,
+      scrollDelta: clampedScrollLeft - currentScrollLeft
+    };
+  };
+  MDCTabScrollerRTLDefault2.prototype.getAnimatingScrollPosition = function(scrollX) {
+    return scrollX;
+  };
+  MDCTabScrollerRTLDefault2.prototype.calculateScrollEdges = function() {
+    var contentWidth = this.adapter.getScrollContentOffsetWidth();
+    var rootWidth = this.adapter.getScrollAreaOffsetWidth();
+    return {
+      left: 0,
+      right: contentWidth - rootWidth
+    };
+  };
+  MDCTabScrollerRTLDefault2.prototype.clampScrollValue = function(scrollX) {
+    var edges = this.calculateScrollEdges();
+    return Math.min(Math.max(edges.left, scrollX), edges.right);
+  };
+  return MDCTabScrollerRTLDefault2;
+}(MDCTabScrollerRTL);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -158,7 +1192,50 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Bl=function(n){ke(e,n);function e(){return n!==null&&n.apply(this,arguments)||this}return e.prototype.getScrollPositionRTL=function(t){var i=this.adapter.getScrollAreaScrollLeft();return Math.round(t-i)},e.prototype.scrollToRTL=function(t){var i=this.adapter.getScrollAreaScrollLeft(),l=this.clampScrollValue(-t);return{finalScrollPosition:l,scrollDelta:l-i}},e.prototype.incrementScrollRTL=function(t){var i=this.adapter.getScrollAreaScrollLeft(),l=this.clampScrollValue(i-t);return{finalScrollPosition:l,scrollDelta:l-i}},e.prototype.getAnimatingScrollPosition=function(t,i){return t-i},e.prototype.calculateScrollEdges=function(){var t=this.adapter.getScrollContentOffsetWidth(),i=this.adapter.getScrollAreaOffsetWidth();return{left:i-t,right:0}},e.prototype.clampScrollValue=function(t){var i=this.calculateScrollEdges();return Math.max(Math.min(i.right,t),i.left)},e}(wt);/**
+ */
+var MDCTabScrollerRTLNegative = function(_super) {
+  __extends(MDCTabScrollerRTLNegative2, _super);
+  function MDCTabScrollerRTLNegative2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  MDCTabScrollerRTLNegative2.prototype.getScrollPositionRTL = function(translateX) {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    return Math.round(translateX - currentScrollLeft);
+  };
+  MDCTabScrollerRTLNegative2.prototype.scrollToRTL = function(scrollX) {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    var clampedScrollLeft = this.clampScrollValue(-scrollX);
+    return {
+      finalScrollPosition: clampedScrollLeft,
+      scrollDelta: clampedScrollLeft - currentScrollLeft
+    };
+  };
+  MDCTabScrollerRTLNegative2.prototype.incrementScrollRTL = function(scrollX) {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    var clampedScrollLeft = this.clampScrollValue(currentScrollLeft - scrollX);
+    return {
+      finalScrollPosition: clampedScrollLeft,
+      scrollDelta: clampedScrollLeft - currentScrollLeft
+    };
+  };
+  MDCTabScrollerRTLNegative2.prototype.getAnimatingScrollPosition = function(scrollX, translateX) {
+    return scrollX - translateX;
+  };
+  MDCTabScrollerRTLNegative2.prototype.calculateScrollEdges = function() {
+    var contentWidth = this.adapter.getScrollContentOffsetWidth();
+    var rootWidth = this.adapter.getScrollAreaOffsetWidth();
+    return {
+      left: rootWidth - contentWidth,
+      right: 0
+    };
+  };
+  MDCTabScrollerRTLNegative2.prototype.clampScrollValue = function(scrollX) {
+    var edges = this.calculateScrollEdges();
+    return Math.max(Math.min(edges.right, scrollX), edges.left);
+  };
+  return MDCTabScrollerRTLNegative2;
+}(MDCTabScrollerRTL);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -179,7 +1256,50 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Wl=function(n){ke(e,n);function e(){return n!==null&&n.apply(this,arguments)||this}return e.prototype.getScrollPositionRTL=function(t){var i=this.adapter.getScrollAreaScrollLeft();return Math.round(i-t)},e.prototype.scrollToRTL=function(t){var i=this.adapter.getScrollAreaScrollLeft(),l=this.clampScrollValue(t);return{finalScrollPosition:l,scrollDelta:i-l}},e.prototype.incrementScrollRTL=function(t){var i=this.adapter.getScrollAreaScrollLeft(),l=this.clampScrollValue(i+t);return{finalScrollPosition:l,scrollDelta:i-l}},e.prototype.getAnimatingScrollPosition=function(t,i){return t+i},e.prototype.calculateScrollEdges=function(){var t=this.adapter.getScrollContentOffsetWidth(),i=this.adapter.getScrollAreaOffsetWidth();return{left:t-i,right:0}},e.prototype.clampScrollValue=function(t){var i=this.calculateScrollEdges();return Math.min(Math.max(i.right,t),i.left)},e}(wt);/**
+ */
+var MDCTabScrollerRTLReverse = function(_super) {
+  __extends(MDCTabScrollerRTLReverse2, _super);
+  function MDCTabScrollerRTLReverse2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  MDCTabScrollerRTLReverse2.prototype.getScrollPositionRTL = function(translateX) {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    return Math.round(currentScrollLeft - translateX);
+  };
+  MDCTabScrollerRTLReverse2.prototype.scrollToRTL = function(scrollX) {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    var clampedScrollLeft = this.clampScrollValue(scrollX);
+    return {
+      finalScrollPosition: clampedScrollLeft,
+      scrollDelta: currentScrollLeft - clampedScrollLeft
+    };
+  };
+  MDCTabScrollerRTLReverse2.prototype.incrementScrollRTL = function(scrollX) {
+    var currentScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    var clampedScrollLeft = this.clampScrollValue(currentScrollLeft + scrollX);
+    return {
+      finalScrollPosition: clampedScrollLeft,
+      scrollDelta: currentScrollLeft - clampedScrollLeft
+    };
+  };
+  MDCTabScrollerRTLReverse2.prototype.getAnimatingScrollPosition = function(scrollX, translateX) {
+    return scrollX + translateX;
+  };
+  MDCTabScrollerRTLReverse2.prototype.calculateScrollEdges = function() {
+    var contentWidth = this.adapter.getScrollContentOffsetWidth();
+    var rootWidth = this.adapter.getScrollAreaOffsetWidth();
+    return {
+      left: contentWidth - rootWidth,
+      right: 0
+    };
+  };
+  MDCTabScrollerRTLReverse2.prototype.clampScrollValue = function(scrollX) {
+    var edges = this.calculateScrollEdges();
+    return Math.min(Math.max(edges.right, scrollX), edges.left);
+  };
+  return MDCTabScrollerRTLReverse2;
+}(MDCTabScrollerRTL);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -200,7 +1320,249 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Gl=function(n){ke(e,n);function e(t){var i=n.call(this,Ae(Ae({},e.defaultAdapter),t))||this;return i.isAnimating=!1,i}return Object.defineProperty(e,"cssClasses",{get:function(){return mi},enumerable:!1,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return jl},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{eventTargetMatchesSelector:function(){return!1},addClass:function(){},removeClass:function(){},addScrollAreaClass:function(){},setScrollAreaStyleProperty:function(){},setScrollContentStyleProperty:function(){},getScrollContentStyleValue:function(){return""},setScrollAreaScrollLeft:function(){},getScrollAreaScrollLeft:function(){return 0},getScrollContentOffsetWidth:function(){return 0},getScrollAreaOffsetWidth:function(){return 0},computeScrollAreaClientRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},computeScrollContentClientRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},computeHorizontalScrollbarHeight:function(){return 0}}},enumerable:!1,configurable:!0}),e.prototype.init=function(){var t=this.adapter.computeHorizontalScrollbarHeight();this.adapter.setScrollAreaStyleProperty("margin-bottom",-t+"px"),this.adapter.addScrollAreaClass(e.cssClasses.SCROLL_AREA_SCROLL)},e.prototype.getScrollPosition=function(){if(this.isRTL())return this.computeCurrentScrollPositionRTL();var t=this.calculateCurrentTranslateX(),i=this.adapter.getScrollAreaScrollLeft();return i-t},e.prototype.handleInteraction=function(){!this.isAnimating||this.stopScrollAnimation()},e.prototype.handleTransitionEnd=function(t){var i=t.target;!this.isAnimating||!this.adapter.eventTargetMatchesSelector(i,e.strings.CONTENT_SELECTOR)||(this.isAnimating=!1,this.adapter.removeClass(e.cssClasses.ANIMATING))},e.prototype.incrementScroll=function(t){t!==0&&this.animate(this.getIncrementScrollOperation(t))},e.prototype.incrementScrollImmediate=function(t){if(t!==0){var i=this.getIncrementScrollOperation(t);i.scrollDelta!==0&&(this.stopScrollAnimation(),this.adapter.setScrollAreaScrollLeft(i.finalScrollPosition))}},e.prototype.scrollTo=function(t){if(this.isRTL()){this.scrollToImplRTL(t);return}this.scrollToImpl(t)},e.prototype.getRTLScroller=function(){return this.rtlScrollerInstance||(this.rtlScrollerInstance=this.rtlScrollerFactory()),this.rtlScrollerInstance},e.prototype.calculateCurrentTranslateX=function(){var t=this.adapter.getScrollContentStyleValue("transform");if(t==="none")return 0;var i=/\((.+?)\)/.exec(t);if(!i)return 0;var l=i[1],r=Fl(l.split(","),6);r[0],r[1],r[2],r[3];var s=r[4];return r[5],parseFloat(s)},e.prototype.clampScrollValue=function(t){var i=this.calculateScrollEdges();return Math.min(Math.max(i.left,t),i.right)},e.prototype.computeCurrentScrollPositionRTL=function(){var t=this.calculateCurrentTranslateX();return this.getRTLScroller().getScrollPositionRTL(t)},e.prototype.calculateScrollEdges=function(){var t=this.adapter.getScrollContentOffsetWidth(),i=this.adapter.getScrollAreaOffsetWidth();return{left:0,right:t-i}},e.prototype.scrollToImpl=function(t){var i=this.getScrollPosition(),l=this.clampScrollValue(t),r=l-i;this.animate({finalScrollPosition:l,scrollDelta:r})},e.prototype.scrollToImplRTL=function(t){var i=this.getRTLScroller().scrollToRTL(t);this.animate(i)},e.prototype.getIncrementScrollOperation=function(t){if(this.isRTL())return this.getRTLScroller().incrementScrollRTL(t);var i=this.getScrollPosition(),l=t+i,r=this.clampScrollValue(l),s=r-i;return{finalScrollPosition:r,scrollDelta:s}},e.prototype.animate=function(t){var i=this;t.scrollDelta!==0&&(this.stopScrollAnimation(),this.adapter.setScrollAreaScrollLeft(t.finalScrollPosition),this.adapter.setScrollContentStyleProperty("transform","translateX("+t.scrollDelta+"px)"),this.adapter.computeScrollAreaClientRect(),requestAnimationFrame(function(){i.adapter.addClass(e.cssClasses.ANIMATING),i.adapter.setScrollContentStyleProperty("transform","none")}),this.isAnimating=!0)},e.prototype.stopScrollAnimation=function(){this.isAnimating=!1;var t=this.getAnimatingScrollPosition();this.adapter.removeClass(e.cssClasses.ANIMATING),this.adapter.setScrollContentStyleProperty("transform","translateX(0px)"),this.adapter.setScrollAreaScrollLeft(t)},e.prototype.getAnimatingScrollPosition=function(){var t=this.calculateCurrentTranslateX(),i=this.adapter.getScrollAreaScrollLeft();return this.isRTL()?this.getRTLScroller().getAnimatingScrollPosition(i,t):i-t},e.prototype.rtlScrollerFactory=function(){var t=this.adapter.getScrollAreaScrollLeft();this.adapter.setScrollAreaScrollLeft(t-1);var i=this.adapter.getScrollAreaScrollLeft();if(i<0)return this.adapter.setScrollAreaScrollLeft(t),new Bl(this.adapter);var l=this.adapter.computeScrollAreaClientRect(),r=this.adapter.computeScrollContentClientRect(),s=Math.round(r.right-l.right);return this.adapter.setScrollAreaScrollLeft(t),s===i?new Wl(this.adapter):new Nl(this.adapter)},e.prototype.isRTL=function(){return this.adapter.getScrollContentStyleValue("direction")==="rtl"},e}(ze);/**
+ */
+var MDCTabScrollerFoundation = function(_super) {
+  __extends(MDCTabScrollerFoundation2, _super);
+  function MDCTabScrollerFoundation2(adapter) {
+    var _this = _super.call(this, __assign(__assign({}, MDCTabScrollerFoundation2.defaultAdapter), adapter)) || this;
+    _this.isAnimating = false;
+    return _this;
+  }
+  Object.defineProperty(MDCTabScrollerFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$9;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabScrollerFoundation2, "strings", {
+    get: function() {
+      return strings$8;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabScrollerFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        eventTargetMatchesSelector: function() {
+          return false;
+        },
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        addScrollAreaClass: function() {
+          return void 0;
+        },
+        setScrollAreaStyleProperty: function() {
+          return void 0;
+        },
+        setScrollContentStyleProperty: function() {
+          return void 0;
+        },
+        getScrollContentStyleValue: function() {
+          return "";
+        },
+        setScrollAreaScrollLeft: function() {
+          return void 0;
+        },
+        getScrollAreaScrollLeft: function() {
+          return 0;
+        },
+        getScrollContentOffsetWidth: function() {
+          return 0;
+        },
+        getScrollAreaOffsetWidth: function() {
+          return 0;
+        },
+        computeScrollAreaClientRect: function() {
+          return { top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 };
+        },
+        computeScrollContentClientRect: function() {
+          return { top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 };
+        },
+        computeHorizontalScrollbarHeight: function() {
+          return 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCTabScrollerFoundation2.prototype.init = function() {
+    var horizontalScrollbarHeight = this.adapter.computeHorizontalScrollbarHeight();
+    this.adapter.setScrollAreaStyleProperty("margin-bottom", -horizontalScrollbarHeight + "px");
+    this.adapter.addScrollAreaClass(MDCTabScrollerFoundation2.cssClasses.SCROLL_AREA_SCROLL);
+  };
+  MDCTabScrollerFoundation2.prototype.getScrollPosition = function() {
+    if (this.isRTL()) {
+      return this.computeCurrentScrollPositionRTL();
+    }
+    var currentTranslateX = this.calculateCurrentTranslateX();
+    var scrollLeft = this.adapter.getScrollAreaScrollLeft();
+    return scrollLeft - currentTranslateX;
+  };
+  MDCTabScrollerFoundation2.prototype.handleInteraction = function() {
+    if (!this.isAnimating) {
+      return;
+    }
+    this.stopScrollAnimation();
+  };
+  MDCTabScrollerFoundation2.prototype.handleTransitionEnd = function(evt) {
+    var evtTarget = evt.target;
+    if (!this.isAnimating || !this.adapter.eventTargetMatchesSelector(evtTarget, MDCTabScrollerFoundation2.strings.CONTENT_SELECTOR)) {
+      return;
+    }
+    this.isAnimating = false;
+    this.adapter.removeClass(MDCTabScrollerFoundation2.cssClasses.ANIMATING);
+  };
+  MDCTabScrollerFoundation2.prototype.incrementScroll = function(scrollXIncrement) {
+    if (scrollXIncrement === 0) {
+      return;
+    }
+    this.animate(this.getIncrementScrollOperation(scrollXIncrement));
+  };
+  MDCTabScrollerFoundation2.prototype.incrementScrollImmediate = function(scrollXIncrement) {
+    if (scrollXIncrement === 0) {
+      return;
+    }
+    var operation = this.getIncrementScrollOperation(scrollXIncrement);
+    if (operation.scrollDelta === 0) {
+      return;
+    }
+    this.stopScrollAnimation();
+    this.adapter.setScrollAreaScrollLeft(operation.finalScrollPosition);
+  };
+  MDCTabScrollerFoundation2.prototype.scrollTo = function(scrollX) {
+    if (this.isRTL()) {
+      this.scrollToImplRTL(scrollX);
+      return;
+    }
+    this.scrollToImpl(scrollX);
+  };
+  MDCTabScrollerFoundation2.prototype.getRTLScroller = function() {
+    if (!this.rtlScrollerInstance) {
+      this.rtlScrollerInstance = this.rtlScrollerFactory();
+    }
+    return this.rtlScrollerInstance;
+  };
+  MDCTabScrollerFoundation2.prototype.calculateCurrentTranslateX = function() {
+    var transformValue = this.adapter.getScrollContentStyleValue("transform");
+    if (transformValue === "none") {
+      return 0;
+    }
+    var match = /\((.+?)\)/.exec(transformValue);
+    if (!match) {
+      return 0;
+    }
+    var matrixParams = match[1];
+    var _a = __read(matrixParams.split(","), 6);
+    _a[0];
+    _a[1];
+    _a[2];
+    _a[3];
+    var tx = _a[4];
+    _a[5];
+    return parseFloat(tx);
+  };
+  MDCTabScrollerFoundation2.prototype.clampScrollValue = function(scrollX) {
+    var edges = this.calculateScrollEdges();
+    return Math.min(Math.max(edges.left, scrollX), edges.right);
+  };
+  MDCTabScrollerFoundation2.prototype.computeCurrentScrollPositionRTL = function() {
+    var translateX = this.calculateCurrentTranslateX();
+    return this.getRTLScroller().getScrollPositionRTL(translateX);
+  };
+  MDCTabScrollerFoundation2.prototype.calculateScrollEdges = function() {
+    var contentWidth = this.adapter.getScrollContentOffsetWidth();
+    var rootWidth = this.adapter.getScrollAreaOffsetWidth();
+    return {
+      left: 0,
+      right: contentWidth - rootWidth
+    };
+  };
+  MDCTabScrollerFoundation2.prototype.scrollToImpl = function(scrollX) {
+    var currentScrollX = this.getScrollPosition();
+    var safeScrollX = this.clampScrollValue(scrollX);
+    var scrollDelta = safeScrollX - currentScrollX;
+    this.animate({
+      finalScrollPosition: safeScrollX,
+      scrollDelta
+    });
+  };
+  MDCTabScrollerFoundation2.prototype.scrollToImplRTL = function(scrollX) {
+    var animation = this.getRTLScroller().scrollToRTL(scrollX);
+    this.animate(animation);
+  };
+  MDCTabScrollerFoundation2.prototype.getIncrementScrollOperation = function(scrollX) {
+    if (this.isRTL()) {
+      return this.getRTLScroller().incrementScrollRTL(scrollX);
+    }
+    var currentScrollX = this.getScrollPosition();
+    var targetScrollX = scrollX + currentScrollX;
+    var safeScrollX = this.clampScrollValue(targetScrollX);
+    var scrollDelta = safeScrollX - currentScrollX;
+    return {
+      finalScrollPosition: safeScrollX,
+      scrollDelta
+    };
+  };
+  MDCTabScrollerFoundation2.prototype.animate = function(animation) {
+    var _this = this;
+    if (animation.scrollDelta === 0) {
+      return;
+    }
+    this.stopScrollAnimation();
+    this.adapter.setScrollAreaScrollLeft(animation.finalScrollPosition);
+    this.adapter.setScrollContentStyleProperty("transform", "translateX(" + animation.scrollDelta + "px)");
+    this.adapter.computeScrollAreaClientRect();
+    requestAnimationFrame(function() {
+      _this.adapter.addClass(MDCTabScrollerFoundation2.cssClasses.ANIMATING);
+      _this.adapter.setScrollContentStyleProperty("transform", "none");
+    });
+    this.isAnimating = true;
+  };
+  MDCTabScrollerFoundation2.prototype.stopScrollAnimation = function() {
+    this.isAnimating = false;
+    var currentScrollPosition = this.getAnimatingScrollPosition();
+    this.adapter.removeClass(MDCTabScrollerFoundation2.cssClasses.ANIMATING);
+    this.adapter.setScrollContentStyleProperty("transform", "translateX(0px)");
+    this.adapter.setScrollAreaScrollLeft(currentScrollPosition);
+  };
+  MDCTabScrollerFoundation2.prototype.getAnimatingScrollPosition = function() {
+    var currentTranslateX = this.calculateCurrentTranslateX();
+    var scrollLeft = this.adapter.getScrollAreaScrollLeft();
+    if (this.isRTL()) {
+      return this.getRTLScroller().getAnimatingScrollPosition(scrollLeft, currentTranslateX);
+    }
+    return scrollLeft - currentTranslateX;
+  };
+  MDCTabScrollerFoundation2.prototype.rtlScrollerFactory = function() {
+    var initialScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    this.adapter.setScrollAreaScrollLeft(initialScrollLeft - 1);
+    var newScrollLeft = this.adapter.getScrollAreaScrollLeft();
+    if (newScrollLeft < 0) {
+      this.adapter.setScrollAreaScrollLeft(initialScrollLeft);
+      return new MDCTabScrollerRTLNegative(this.adapter);
+    }
+    var rootClientRect = this.adapter.computeScrollAreaClientRect();
+    var contentClientRect = this.adapter.computeScrollContentClientRect();
+    var rightEdgeDelta = Math.round(contentClientRect.right - rootClientRect.right);
+    this.adapter.setScrollAreaScrollLeft(initialScrollLeft);
+    if (rightEdgeDelta === newScrollLeft) {
+      return new MDCTabScrollerRTLReverse(this.adapter);
+    }
+    return new MDCTabScrollerRTLDefault(this.adapter);
+  };
+  MDCTabScrollerFoundation2.prototype.isRTL = function() {
+    return this.adapter.getScrollContentStyleValue("direction") === "rtl";
+  };
+  return MDCTabScrollerFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -221,7 +1583,26 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Bt;function ql(n,e){if(e===void 0&&(e=!0),e&&typeof Bt!="undefined")return Bt;var t=n.createElement("div");t.classList.add(mi.SCROLL_TEST),n.body.appendChild(t);var i=t.offsetHeight-t.clientHeight;return n.body.removeChild(t),e&&(Bt=i),i}/**
+ */
+var horizontalScrollbarHeight_;
+function computeHorizontalScrollbarHeight(documentObj, shouldCacheResult) {
+  if (shouldCacheResult === void 0) {
+    shouldCacheResult = true;
+  }
+  if (shouldCacheResult && typeof horizontalScrollbarHeight_ !== "undefined") {
+    return horizontalScrollbarHeight_;
+  }
+  var el = documentObj.createElement("div");
+  el.classList.add(cssClasses$9.SCROLL_TEST);
+  documentObj.body.appendChild(el);
+  var horizontalScrollbarHeight = el.offsetHeight - el.clientHeight;
+  documentObj.body.removeChild(el);
+  if (shouldCacheResult) {
+    horizontalScrollbarHeight_ = horizontalScrollbarHeight;
+  }
+  return horizontalScrollbarHeight;
+}
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -242,7 +1623,72 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var zl={BG_FOCUSED:"mdc-ripple-upgraded--background-focused",FG_ACTIVATION:"mdc-ripple-upgraded--foreground-activation",FG_DEACTIVATION:"mdc-ripple-upgraded--foreground-deactivation",ROOT:"mdc-ripple-upgraded",UNBOUNDED:"mdc-ripple-upgraded--unbounded"},Kl={VAR_FG_SCALE:"--mdc-ripple-fg-scale",VAR_FG_SIZE:"--mdc-ripple-fg-size",VAR_FG_TRANSLATE_END:"--mdc-ripple-fg-translate-end",VAR_FG_TRANSLATE_START:"--mdc-ripple-fg-translate-start",VAR_LEFT:"--mdc-ripple-left",VAR_TOP:"--mdc-ripple-top"},an={DEACTIVATION_TIMEOUT_MS:225,FG_DEACTIVATION_MS:150,INITIAL_ORIGIN_SCALE:.6,PADDING:10,TAP_DELAY_MS:300},Lt;function Xl(n,e){e===void 0&&(e=!1);var t=n.CSS,i=Lt;if(typeof Lt=="boolean"&&!e)return Lt;var l=t&&typeof t.supports=="function";if(!l)return!1;var r=t.supports("--css-vars","yes"),s=t.supports("(--css-vars: yes)")&&t.supports("color","#00000000");return i=r||s,e||(Lt=i),i}function wl(n,e,t){if(!n)return{x:0,y:0};var i=e.x,l=e.y,r=i+t.left,s=l+t.top,a,o;if(n.type==="touchstart"){var c=n;a=c.changedTouches[0].pageX-r,o=c.changedTouches[0].pageY-s}else{var u=n;a=u.pageX-r,o=u.pageY-s}return{x:a,y:o}}/**
+ */
+var cssClasses$8 = {
+  BG_FOCUSED: "mdc-ripple-upgraded--background-focused",
+  FG_ACTIVATION: "mdc-ripple-upgraded--foreground-activation",
+  FG_DEACTIVATION: "mdc-ripple-upgraded--foreground-deactivation",
+  ROOT: "mdc-ripple-upgraded",
+  UNBOUNDED: "mdc-ripple-upgraded--unbounded"
+};
+var strings$7 = {
+  VAR_FG_SCALE: "--mdc-ripple-fg-scale",
+  VAR_FG_SIZE: "--mdc-ripple-fg-size",
+  VAR_FG_TRANSLATE_END: "--mdc-ripple-fg-translate-end",
+  VAR_FG_TRANSLATE_START: "--mdc-ripple-fg-translate-start",
+  VAR_LEFT: "--mdc-ripple-left",
+  VAR_TOP: "--mdc-ripple-top"
+};
+var numbers$3 = {
+  DEACTIVATION_TIMEOUT_MS: 225,
+  FG_DEACTIVATION_MS: 150,
+  INITIAL_ORIGIN_SCALE: 0.6,
+  PADDING: 10,
+  TAP_DELAY_MS: 300
+};
+var supportsCssVariables_;
+function supportsCssVariables(windowObj, forceRefresh) {
+  if (forceRefresh === void 0) {
+    forceRefresh = false;
+  }
+  var CSS = windowObj.CSS;
+  var supportsCssVars = supportsCssVariables_;
+  if (typeof supportsCssVariables_ === "boolean" && !forceRefresh) {
+    return supportsCssVariables_;
+  }
+  var supportsFunctionPresent = CSS && typeof CSS.supports === "function";
+  if (!supportsFunctionPresent) {
+    return false;
+  }
+  var explicitlySupportsCssVars = CSS.supports("--css-vars", "yes");
+  var weAreFeatureDetectingSafari10plus = CSS.supports("(--css-vars: yes)") && CSS.supports("color", "#00000000");
+  supportsCssVars = explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus;
+  if (!forceRefresh) {
+    supportsCssVariables_ = supportsCssVars;
+  }
+  return supportsCssVars;
+}
+function getNormalizedEventCoords(evt, pageOffset, clientRect) {
+  if (!evt) {
+    return { x: 0, y: 0 };
+  }
+  var x = pageOffset.x, y = pageOffset.y;
+  var documentX = x + clientRect.left;
+  var documentY = y + clientRect.top;
+  var normalizedX;
+  var normalizedY;
+  if (evt.type === "touchstart") {
+    var touchEvent = evt;
+    normalizedX = touchEvent.changedTouches[0].pageX - documentX;
+    normalizedY = touchEvent.changedTouches[0].pageY - documentY;
+  } else {
+    var mouseEvent = evt;
+    normalizedX = mouseEvent.pageX - documentX;
+    normalizedY = mouseEvent.pageY - documentY;
+  }
+  return { x: normalizedX, y: normalizedY };
+}
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -263,7 +1709,505 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var sn=["touchstart","pointerdown","mousedown","keydown"],on=["touchend","pointerup","mouseup","contextmenu"],Tt=[],Yl=function(n){ke(e,n);function e(t){var i=n.call(this,Ae(Ae({},e.defaultAdapter),t))||this;return i.activationAnimationHasEnded=!1,i.activationTimer=0,i.fgDeactivationRemovalTimer=0,i.fgScale="0",i.frame={width:0,height:0},i.initialSize=0,i.layoutFrame=0,i.maxRadius=0,i.unboundedCoords={left:0,top:0},i.activationState=i.defaultActivationState(),i.activationTimerCallback=function(){i.activationAnimationHasEnded=!0,i.runDeactivationUXLogicIfReady()},i.activateHandler=function(l){i.activateImpl(l)},i.deactivateHandler=function(){i.deactivateImpl()},i.focusHandler=function(){i.handleFocus()},i.blurHandler=function(){i.handleBlur()},i.resizeHandler=function(){i.layout()},i}return Object.defineProperty(e,"cssClasses",{get:function(){return zl},enumerable:!1,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return Kl},enumerable:!1,configurable:!0}),Object.defineProperty(e,"numbers",{get:function(){return an},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},browserSupportsCssVars:function(){return!0},computeBoundingRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},containsEventTarget:function(){return!0},deregisterDocumentInteractionHandler:function(){},deregisterInteractionHandler:function(){},deregisterResizeHandler:function(){},getWindowPageOffset:function(){return{x:0,y:0}},isSurfaceActive:function(){return!0},isSurfaceDisabled:function(){return!0},isUnbounded:function(){return!0},registerDocumentInteractionHandler:function(){},registerInteractionHandler:function(){},registerResizeHandler:function(){},removeClass:function(){},updateCssVariable:function(){}}},enumerable:!1,configurable:!0}),e.prototype.init=function(){var t=this,i=this.supportsPressRipple();if(this.registerRootHandlers(i),i){var l=e.cssClasses,r=l.ROOT,s=l.UNBOUNDED;requestAnimationFrame(function(){t.adapter.addClass(r),t.adapter.isUnbounded()&&(t.adapter.addClass(s),t.layoutInternal())})}},e.prototype.destroy=function(){var t=this;if(this.supportsPressRipple()){this.activationTimer&&(clearTimeout(this.activationTimer),this.activationTimer=0,this.adapter.removeClass(e.cssClasses.FG_ACTIVATION)),this.fgDeactivationRemovalTimer&&(clearTimeout(this.fgDeactivationRemovalTimer),this.fgDeactivationRemovalTimer=0,this.adapter.removeClass(e.cssClasses.FG_DEACTIVATION));var i=e.cssClasses,l=i.ROOT,r=i.UNBOUNDED;requestAnimationFrame(function(){t.adapter.removeClass(l),t.adapter.removeClass(r),t.removeCssVars()})}this.deregisterRootHandlers(),this.deregisterDeactivationHandlers()},e.prototype.activate=function(t){this.activateImpl(t)},e.prototype.deactivate=function(){this.deactivateImpl()},e.prototype.layout=function(){var t=this;this.layoutFrame&&cancelAnimationFrame(this.layoutFrame),this.layoutFrame=requestAnimationFrame(function(){t.layoutInternal(),t.layoutFrame=0})},e.prototype.setUnbounded=function(t){var i=e.cssClasses.UNBOUNDED;t?this.adapter.addClass(i):this.adapter.removeClass(i)},e.prototype.handleFocus=function(){var t=this;requestAnimationFrame(function(){return t.adapter.addClass(e.cssClasses.BG_FOCUSED)})},e.prototype.handleBlur=function(){var t=this;requestAnimationFrame(function(){return t.adapter.removeClass(e.cssClasses.BG_FOCUSED)})},e.prototype.supportsPressRipple=function(){return this.adapter.browserSupportsCssVars()},e.prototype.defaultActivationState=function(){return{activationEvent:void 0,hasDeactivationUXRun:!1,isActivated:!1,isProgrammatic:!1,wasActivatedByPointer:!1,wasElementMadeActive:!1}},e.prototype.registerRootHandlers=function(t){var i,l;if(t){try{for(var r=$e(sn),s=r.next();!s.done;s=r.next()){var a=s.value;this.adapter.registerInteractionHandler(a,this.activateHandler)}}catch(o){i={error:o}}finally{try{s&&!s.done&&(l=r.return)&&l.call(r)}finally{if(i)throw i.error}}this.adapter.isUnbounded()&&this.adapter.registerResizeHandler(this.resizeHandler)}this.adapter.registerInteractionHandler("focus",this.focusHandler),this.adapter.registerInteractionHandler("blur",this.blurHandler)},e.prototype.registerDeactivationHandlers=function(t){var i,l;if(t.type==="keydown")this.adapter.registerInteractionHandler("keyup",this.deactivateHandler);else try{for(var r=$e(on),s=r.next();!s.done;s=r.next()){var a=s.value;this.adapter.registerDocumentInteractionHandler(a,this.deactivateHandler)}}catch(o){i={error:o}}finally{try{s&&!s.done&&(l=r.return)&&l.call(r)}finally{if(i)throw i.error}}},e.prototype.deregisterRootHandlers=function(){var t,i;try{for(var l=$e(sn),r=l.next();!r.done;r=l.next()){var s=r.value;this.adapter.deregisterInteractionHandler(s,this.activateHandler)}}catch(a){t={error:a}}finally{try{r&&!r.done&&(i=l.return)&&i.call(l)}finally{if(t)throw t.error}}this.adapter.deregisterInteractionHandler("focus",this.focusHandler),this.adapter.deregisterInteractionHandler("blur",this.blurHandler),this.adapter.isUnbounded()&&this.adapter.deregisterResizeHandler(this.resizeHandler)},e.prototype.deregisterDeactivationHandlers=function(){var t,i;this.adapter.deregisterInteractionHandler("keyup",this.deactivateHandler);try{for(var l=$e(on),r=l.next();!r.done;r=l.next()){var s=r.value;this.adapter.deregisterDocumentInteractionHandler(s,this.deactivateHandler)}}catch(a){t={error:a}}finally{try{r&&!r.done&&(i=l.return)&&i.call(l)}finally{if(t)throw t.error}}},e.prototype.removeCssVars=function(){var t=this,i=e.strings,l=Object.keys(i);l.forEach(function(r){r.indexOf("VAR_")===0&&t.adapter.updateCssVariable(i[r],null)})},e.prototype.activateImpl=function(t){var i=this;if(!this.adapter.isSurfaceDisabled()){var l=this.activationState;if(!l.isActivated){var r=this.previousActivationEvent,s=r&&t!==void 0&&r.type!==t.type;if(!s){l.isActivated=!0,l.isProgrammatic=t===void 0,l.activationEvent=t,l.wasActivatedByPointer=l.isProgrammatic?!1:t!==void 0&&(t.type==="mousedown"||t.type==="touchstart"||t.type==="pointerdown");var a=t!==void 0&&Tt.length>0&&Tt.some(function(o){return i.adapter.containsEventTarget(o)});if(a){this.resetActivationState();return}t!==void 0&&(Tt.push(t.target),this.registerDeactivationHandlers(t)),l.wasElementMadeActive=this.checkElementMadeActive(t),l.wasElementMadeActive&&this.animateActivation(),requestAnimationFrame(function(){Tt=[],!l.wasElementMadeActive&&t!==void 0&&(t.key===" "||t.keyCode===32)&&(l.wasElementMadeActive=i.checkElementMadeActive(t),l.wasElementMadeActive&&i.animateActivation()),l.wasElementMadeActive||(i.activationState=i.defaultActivationState())})}}}},e.prototype.checkElementMadeActive=function(t){return t!==void 0&&t.type==="keydown"?this.adapter.isSurfaceActive():!0},e.prototype.animateActivation=function(){var t=this,i=e.strings,l=i.VAR_FG_TRANSLATE_START,r=i.VAR_FG_TRANSLATE_END,s=e.cssClasses,a=s.FG_DEACTIVATION,o=s.FG_ACTIVATION,c=e.numbers.DEACTIVATION_TIMEOUT_MS;this.layoutInternal();var u="",f="";if(!this.adapter.isUnbounded()){var d=this.getFgTranslationCoordinates(),m=d.startPoint,v=d.endPoint;u=m.x+"px, "+m.y+"px",f=v.x+"px, "+v.y+"px"}this.adapter.updateCssVariable(l,u),this.adapter.updateCssVariable(r,f),clearTimeout(this.activationTimer),clearTimeout(this.fgDeactivationRemovalTimer),this.rmBoundedActivationClasses(),this.adapter.removeClass(a),this.adapter.computeBoundingRect(),this.adapter.addClass(o),this.activationTimer=setTimeout(function(){t.activationTimerCallback()},c)},e.prototype.getFgTranslationCoordinates=function(){var t=this.activationState,i=t.activationEvent,l=t.wasActivatedByPointer,r;l?r=wl(i,this.adapter.getWindowPageOffset(),this.adapter.computeBoundingRect()):r={x:this.frame.width/2,y:this.frame.height/2},r={x:r.x-this.initialSize/2,y:r.y-this.initialSize/2};var s={x:this.frame.width/2-this.initialSize/2,y:this.frame.height/2-this.initialSize/2};return{startPoint:r,endPoint:s}},e.prototype.runDeactivationUXLogicIfReady=function(){var t=this,i=e.cssClasses.FG_DEACTIVATION,l=this.activationState,r=l.hasDeactivationUXRun,s=l.isActivated,a=r||!s;a&&this.activationAnimationHasEnded&&(this.rmBoundedActivationClasses(),this.adapter.addClass(i),this.fgDeactivationRemovalTimer=setTimeout(function(){t.adapter.removeClass(i)},an.FG_DEACTIVATION_MS))},e.prototype.rmBoundedActivationClasses=function(){var t=e.cssClasses.FG_ACTIVATION;this.adapter.removeClass(t),this.activationAnimationHasEnded=!1,this.adapter.computeBoundingRect()},e.prototype.resetActivationState=function(){var t=this;this.previousActivationEvent=this.activationState.activationEvent,this.activationState=this.defaultActivationState(),setTimeout(function(){return t.previousActivationEvent=void 0},e.numbers.TAP_DELAY_MS)},e.prototype.deactivateImpl=function(){var t=this,i=this.activationState;if(!!i.isActivated){var l=Ae({},i);i.isProgrammatic?(requestAnimationFrame(function(){t.animateDeactivation(l)}),this.resetActivationState()):(this.deregisterDeactivationHandlers(),requestAnimationFrame(function(){t.activationState.hasDeactivationUXRun=!0,t.animateDeactivation(l),t.resetActivationState()}))}},e.prototype.animateDeactivation=function(t){var i=t.wasActivatedByPointer,l=t.wasElementMadeActive;(i||l)&&this.runDeactivationUXLogicIfReady()},e.prototype.layoutInternal=function(){var t=this;this.frame=this.adapter.computeBoundingRect();var i=Math.max(this.frame.height,this.frame.width),l=function(){var s=Math.sqrt(Math.pow(t.frame.width,2)+Math.pow(t.frame.height,2));return s+e.numbers.PADDING};this.maxRadius=this.adapter.isUnbounded()?i:l();var r=Math.floor(i*e.numbers.INITIAL_ORIGIN_SCALE);this.adapter.isUnbounded()&&r%2!==0?this.initialSize=r-1:this.initialSize=r,this.fgScale=""+this.maxRadius/this.initialSize,this.updateLayoutCssVars()},e.prototype.updateLayoutCssVars=function(){var t=e.strings,i=t.VAR_FG_SIZE,l=t.VAR_LEFT,r=t.VAR_TOP,s=t.VAR_FG_SCALE;this.adapter.updateCssVariable(i,this.initialSize+"px"),this.adapter.updateCssVariable(s,this.fgScale),this.adapter.isUnbounded()&&(this.unboundedCoords={left:Math.round(this.frame.width/2-this.initialSize/2),top:Math.round(this.frame.height/2-this.initialSize/2)},this.adapter.updateCssVariable(l,this.unboundedCoords.left+"px"),this.adapter.updateCssVariable(r,this.unboundedCoords.top+"px"))},e}(ze);/**
+ */
+var ACTIVATION_EVENT_TYPES = [
+  "touchstart",
+  "pointerdown",
+  "mousedown",
+  "keydown"
+];
+var POINTER_DEACTIVATION_EVENT_TYPES = [
+  "touchend",
+  "pointerup",
+  "mouseup",
+  "contextmenu"
+];
+var activatedTargets = [];
+var MDCRippleFoundation = function(_super) {
+  __extends(MDCRippleFoundation2, _super);
+  function MDCRippleFoundation2(adapter) {
+    var _this = _super.call(this, __assign(__assign({}, MDCRippleFoundation2.defaultAdapter), adapter)) || this;
+    _this.activationAnimationHasEnded = false;
+    _this.activationTimer = 0;
+    _this.fgDeactivationRemovalTimer = 0;
+    _this.fgScale = "0";
+    _this.frame = { width: 0, height: 0 };
+    _this.initialSize = 0;
+    _this.layoutFrame = 0;
+    _this.maxRadius = 0;
+    _this.unboundedCoords = { left: 0, top: 0 };
+    _this.activationState = _this.defaultActivationState();
+    _this.activationTimerCallback = function() {
+      _this.activationAnimationHasEnded = true;
+      _this.runDeactivationUXLogicIfReady();
+    };
+    _this.activateHandler = function(e) {
+      _this.activateImpl(e);
+    };
+    _this.deactivateHandler = function() {
+      _this.deactivateImpl();
+    };
+    _this.focusHandler = function() {
+      _this.handleFocus();
+    };
+    _this.blurHandler = function() {
+      _this.handleBlur();
+    };
+    _this.resizeHandler = function() {
+      _this.layout();
+    };
+    return _this;
+  }
+  Object.defineProperty(MDCRippleFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$8;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCRippleFoundation2, "strings", {
+    get: function() {
+      return strings$7;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCRippleFoundation2, "numbers", {
+    get: function() {
+      return numbers$3;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCRippleFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        browserSupportsCssVars: function() {
+          return true;
+        },
+        computeBoundingRect: function() {
+          return { top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 };
+        },
+        containsEventTarget: function() {
+          return true;
+        },
+        deregisterDocumentInteractionHandler: function() {
+          return void 0;
+        },
+        deregisterInteractionHandler: function() {
+          return void 0;
+        },
+        deregisterResizeHandler: function() {
+          return void 0;
+        },
+        getWindowPageOffset: function() {
+          return { x: 0, y: 0 };
+        },
+        isSurfaceActive: function() {
+          return true;
+        },
+        isSurfaceDisabled: function() {
+          return true;
+        },
+        isUnbounded: function() {
+          return true;
+        },
+        registerDocumentInteractionHandler: function() {
+          return void 0;
+        },
+        registerInteractionHandler: function() {
+          return void 0;
+        },
+        registerResizeHandler: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        updateCssVariable: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCRippleFoundation2.prototype.init = function() {
+    var _this = this;
+    var supportsPressRipple = this.supportsPressRipple();
+    this.registerRootHandlers(supportsPressRipple);
+    if (supportsPressRipple) {
+      var _a = MDCRippleFoundation2.cssClasses, ROOT_1 = _a.ROOT, UNBOUNDED_1 = _a.UNBOUNDED;
+      requestAnimationFrame(function() {
+        _this.adapter.addClass(ROOT_1);
+        if (_this.adapter.isUnbounded()) {
+          _this.adapter.addClass(UNBOUNDED_1);
+          _this.layoutInternal();
+        }
+      });
+    }
+  };
+  MDCRippleFoundation2.prototype.destroy = function() {
+    var _this = this;
+    if (this.supportsPressRipple()) {
+      if (this.activationTimer) {
+        clearTimeout(this.activationTimer);
+        this.activationTimer = 0;
+        this.adapter.removeClass(MDCRippleFoundation2.cssClasses.FG_ACTIVATION);
+      }
+      if (this.fgDeactivationRemovalTimer) {
+        clearTimeout(this.fgDeactivationRemovalTimer);
+        this.fgDeactivationRemovalTimer = 0;
+        this.adapter.removeClass(MDCRippleFoundation2.cssClasses.FG_DEACTIVATION);
+      }
+      var _a = MDCRippleFoundation2.cssClasses, ROOT_2 = _a.ROOT, UNBOUNDED_2 = _a.UNBOUNDED;
+      requestAnimationFrame(function() {
+        _this.adapter.removeClass(ROOT_2);
+        _this.adapter.removeClass(UNBOUNDED_2);
+        _this.removeCssVars();
+      });
+    }
+    this.deregisterRootHandlers();
+    this.deregisterDeactivationHandlers();
+  };
+  MDCRippleFoundation2.prototype.activate = function(evt) {
+    this.activateImpl(evt);
+  };
+  MDCRippleFoundation2.prototype.deactivate = function() {
+    this.deactivateImpl();
+  };
+  MDCRippleFoundation2.prototype.layout = function() {
+    var _this = this;
+    if (this.layoutFrame) {
+      cancelAnimationFrame(this.layoutFrame);
+    }
+    this.layoutFrame = requestAnimationFrame(function() {
+      _this.layoutInternal();
+      _this.layoutFrame = 0;
+    });
+  };
+  MDCRippleFoundation2.prototype.setUnbounded = function(unbounded) {
+    var UNBOUNDED = MDCRippleFoundation2.cssClasses.UNBOUNDED;
+    if (unbounded) {
+      this.adapter.addClass(UNBOUNDED);
+    } else {
+      this.adapter.removeClass(UNBOUNDED);
+    }
+  };
+  MDCRippleFoundation2.prototype.handleFocus = function() {
+    var _this = this;
+    requestAnimationFrame(function() {
+      return _this.adapter.addClass(MDCRippleFoundation2.cssClasses.BG_FOCUSED);
+    });
+  };
+  MDCRippleFoundation2.prototype.handleBlur = function() {
+    var _this = this;
+    requestAnimationFrame(function() {
+      return _this.adapter.removeClass(MDCRippleFoundation2.cssClasses.BG_FOCUSED);
+    });
+  };
+  MDCRippleFoundation2.prototype.supportsPressRipple = function() {
+    return this.adapter.browserSupportsCssVars();
+  };
+  MDCRippleFoundation2.prototype.defaultActivationState = function() {
+    return {
+      activationEvent: void 0,
+      hasDeactivationUXRun: false,
+      isActivated: false,
+      isProgrammatic: false,
+      wasActivatedByPointer: false,
+      wasElementMadeActive: false
+    };
+  };
+  MDCRippleFoundation2.prototype.registerRootHandlers = function(supportsPressRipple) {
+    var e_1, _a;
+    if (supportsPressRipple) {
+      try {
+        for (var ACTIVATION_EVENT_TYPES_1 = __values(ACTIVATION_EVENT_TYPES), ACTIVATION_EVENT_TYPES_1_1 = ACTIVATION_EVENT_TYPES_1.next(); !ACTIVATION_EVENT_TYPES_1_1.done; ACTIVATION_EVENT_TYPES_1_1 = ACTIVATION_EVENT_TYPES_1.next()) {
+          var evtType = ACTIVATION_EVENT_TYPES_1_1.value;
+          this.adapter.registerInteractionHandler(evtType, this.activateHandler);
+        }
+      } catch (e_1_1) {
+        e_1 = { error: e_1_1 };
+      } finally {
+        try {
+          if (ACTIVATION_EVENT_TYPES_1_1 && !ACTIVATION_EVENT_TYPES_1_1.done && (_a = ACTIVATION_EVENT_TYPES_1.return))
+            _a.call(ACTIVATION_EVENT_TYPES_1);
+        } finally {
+          if (e_1)
+            throw e_1.error;
+        }
+      }
+      if (this.adapter.isUnbounded()) {
+        this.adapter.registerResizeHandler(this.resizeHandler);
+      }
+    }
+    this.adapter.registerInteractionHandler("focus", this.focusHandler);
+    this.adapter.registerInteractionHandler("blur", this.blurHandler);
+  };
+  MDCRippleFoundation2.prototype.registerDeactivationHandlers = function(evt) {
+    var e_2, _a;
+    if (evt.type === "keydown") {
+      this.adapter.registerInteractionHandler("keyup", this.deactivateHandler);
+    } else {
+      try {
+        for (var POINTER_DEACTIVATION_EVENT_TYPES_1 = __values(POINTER_DEACTIVATION_EVENT_TYPES), POINTER_DEACTIVATION_EVENT_TYPES_1_1 = POINTER_DEACTIVATION_EVENT_TYPES_1.next(); !POINTER_DEACTIVATION_EVENT_TYPES_1_1.done; POINTER_DEACTIVATION_EVENT_TYPES_1_1 = POINTER_DEACTIVATION_EVENT_TYPES_1.next()) {
+          var evtType = POINTER_DEACTIVATION_EVENT_TYPES_1_1.value;
+          this.adapter.registerDocumentInteractionHandler(evtType, this.deactivateHandler);
+        }
+      } catch (e_2_1) {
+        e_2 = { error: e_2_1 };
+      } finally {
+        try {
+          if (POINTER_DEACTIVATION_EVENT_TYPES_1_1 && !POINTER_DEACTIVATION_EVENT_TYPES_1_1.done && (_a = POINTER_DEACTIVATION_EVENT_TYPES_1.return))
+            _a.call(POINTER_DEACTIVATION_EVENT_TYPES_1);
+        } finally {
+          if (e_2)
+            throw e_2.error;
+        }
+      }
+    }
+  };
+  MDCRippleFoundation2.prototype.deregisterRootHandlers = function() {
+    var e_3, _a;
+    try {
+      for (var ACTIVATION_EVENT_TYPES_2 = __values(ACTIVATION_EVENT_TYPES), ACTIVATION_EVENT_TYPES_2_1 = ACTIVATION_EVENT_TYPES_2.next(); !ACTIVATION_EVENT_TYPES_2_1.done; ACTIVATION_EVENT_TYPES_2_1 = ACTIVATION_EVENT_TYPES_2.next()) {
+        var evtType = ACTIVATION_EVENT_TYPES_2_1.value;
+        this.adapter.deregisterInteractionHandler(evtType, this.activateHandler);
+      }
+    } catch (e_3_1) {
+      e_3 = { error: e_3_1 };
+    } finally {
+      try {
+        if (ACTIVATION_EVENT_TYPES_2_1 && !ACTIVATION_EVENT_TYPES_2_1.done && (_a = ACTIVATION_EVENT_TYPES_2.return))
+          _a.call(ACTIVATION_EVENT_TYPES_2);
+      } finally {
+        if (e_3)
+          throw e_3.error;
+      }
+    }
+    this.adapter.deregisterInteractionHandler("focus", this.focusHandler);
+    this.adapter.deregisterInteractionHandler("blur", this.blurHandler);
+    if (this.adapter.isUnbounded()) {
+      this.adapter.deregisterResizeHandler(this.resizeHandler);
+    }
+  };
+  MDCRippleFoundation2.prototype.deregisterDeactivationHandlers = function() {
+    var e_4, _a;
+    this.adapter.deregisterInteractionHandler("keyup", this.deactivateHandler);
+    try {
+      for (var POINTER_DEACTIVATION_EVENT_TYPES_2 = __values(POINTER_DEACTIVATION_EVENT_TYPES), POINTER_DEACTIVATION_EVENT_TYPES_2_1 = POINTER_DEACTIVATION_EVENT_TYPES_2.next(); !POINTER_DEACTIVATION_EVENT_TYPES_2_1.done; POINTER_DEACTIVATION_EVENT_TYPES_2_1 = POINTER_DEACTIVATION_EVENT_TYPES_2.next()) {
+        var evtType = POINTER_DEACTIVATION_EVENT_TYPES_2_1.value;
+        this.adapter.deregisterDocumentInteractionHandler(evtType, this.deactivateHandler);
+      }
+    } catch (e_4_1) {
+      e_4 = { error: e_4_1 };
+    } finally {
+      try {
+        if (POINTER_DEACTIVATION_EVENT_TYPES_2_1 && !POINTER_DEACTIVATION_EVENT_TYPES_2_1.done && (_a = POINTER_DEACTIVATION_EVENT_TYPES_2.return))
+          _a.call(POINTER_DEACTIVATION_EVENT_TYPES_2);
+      } finally {
+        if (e_4)
+          throw e_4.error;
+      }
+    }
+  };
+  MDCRippleFoundation2.prototype.removeCssVars = function() {
+    var _this = this;
+    var rippleStrings = MDCRippleFoundation2.strings;
+    var keys = Object.keys(rippleStrings);
+    keys.forEach(function(key) {
+      if (key.indexOf("VAR_") === 0) {
+        _this.adapter.updateCssVariable(rippleStrings[key], null);
+      }
+    });
+  };
+  MDCRippleFoundation2.prototype.activateImpl = function(evt) {
+    var _this = this;
+    if (this.adapter.isSurfaceDisabled()) {
+      return;
+    }
+    var activationState = this.activationState;
+    if (activationState.isActivated) {
+      return;
+    }
+    var previousActivationEvent = this.previousActivationEvent;
+    var isSameInteraction = previousActivationEvent && evt !== void 0 && previousActivationEvent.type !== evt.type;
+    if (isSameInteraction) {
+      return;
+    }
+    activationState.isActivated = true;
+    activationState.isProgrammatic = evt === void 0;
+    activationState.activationEvent = evt;
+    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : evt !== void 0 && (evt.type === "mousedown" || evt.type === "touchstart" || evt.type === "pointerdown");
+    var hasActivatedChild = evt !== void 0 && activatedTargets.length > 0 && activatedTargets.some(function(target) {
+      return _this.adapter.containsEventTarget(target);
+    });
+    if (hasActivatedChild) {
+      this.resetActivationState();
+      return;
+    }
+    if (evt !== void 0) {
+      activatedTargets.push(evt.target);
+      this.registerDeactivationHandlers(evt);
+    }
+    activationState.wasElementMadeActive = this.checkElementMadeActive(evt);
+    if (activationState.wasElementMadeActive) {
+      this.animateActivation();
+    }
+    requestAnimationFrame(function() {
+      activatedTargets = [];
+      if (!activationState.wasElementMadeActive && evt !== void 0 && (evt.key === " " || evt.keyCode === 32)) {
+        activationState.wasElementMadeActive = _this.checkElementMadeActive(evt);
+        if (activationState.wasElementMadeActive) {
+          _this.animateActivation();
+        }
+      }
+      if (!activationState.wasElementMadeActive) {
+        _this.activationState = _this.defaultActivationState();
+      }
+    });
+  };
+  MDCRippleFoundation2.prototype.checkElementMadeActive = function(evt) {
+    return evt !== void 0 && evt.type === "keydown" ? this.adapter.isSurfaceActive() : true;
+  };
+  MDCRippleFoundation2.prototype.animateActivation = function() {
+    var _this = this;
+    var _a = MDCRippleFoundation2.strings, VAR_FG_TRANSLATE_START = _a.VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END = _a.VAR_FG_TRANSLATE_END;
+    var _b = MDCRippleFoundation2.cssClasses, FG_DEACTIVATION = _b.FG_DEACTIVATION, FG_ACTIVATION = _b.FG_ACTIVATION;
+    var DEACTIVATION_TIMEOUT_MS = MDCRippleFoundation2.numbers.DEACTIVATION_TIMEOUT_MS;
+    this.layoutInternal();
+    var translateStart = "";
+    var translateEnd = "";
+    if (!this.adapter.isUnbounded()) {
+      var _c = this.getFgTranslationCoordinates(), startPoint = _c.startPoint, endPoint = _c.endPoint;
+      translateStart = startPoint.x + "px, " + startPoint.y + "px";
+      translateEnd = endPoint.x + "px, " + endPoint.y + "px";
+    }
+    this.adapter.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
+    this.adapter.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
+    clearTimeout(this.activationTimer);
+    clearTimeout(this.fgDeactivationRemovalTimer);
+    this.rmBoundedActivationClasses();
+    this.adapter.removeClass(FG_DEACTIVATION);
+    this.adapter.computeBoundingRect();
+    this.adapter.addClass(FG_ACTIVATION);
+    this.activationTimer = setTimeout(function() {
+      _this.activationTimerCallback();
+    }, DEACTIVATION_TIMEOUT_MS);
+  };
+  MDCRippleFoundation2.prototype.getFgTranslationCoordinates = function() {
+    var _a = this.activationState, activationEvent = _a.activationEvent, wasActivatedByPointer = _a.wasActivatedByPointer;
+    var startPoint;
+    if (wasActivatedByPointer) {
+      startPoint = getNormalizedEventCoords(activationEvent, this.adapter.getWindowPageOffset(), this.adapter.computeBoundingRect());
+    } else {
+      startPoint = {
+        x: this.frame.width / 2,
+        y: this.frame.height / 2
+      };
+    }
+    startPoint = {
+      x: startPoint.x - this.initialSize / 2,
+      y: startPoint.y - this.initialSize / 2
+    };
+    var endPoint = {
+      x: this.frame.width / 2 - this.initialSize / 2,
+      y: this.frame.height / 2 - this.initialSize / 2
+    };
+    return { startPoint, endPoint };
+  };
+  MDCRippleFoundation2.prototype.runDeactivationUXLogicIfReady = function() {
+    var _this = this;
+    var FG_DEACTIVATION = MDCRippleFoundation2.cssClasses.FG_DEACTIVATION;
+    var _a = this.activationState, hasDeactivationUXRun = _a.hasDeactivationUXRun, isActivated = _a.isActivated;
+    var activationHasEnded = hasDeactivationUXRun || !isActivated;
+    if (activationHasEnded && this.activationAnimationHasEnded) {
+      this.rmBoundedActivationClasses();
+      this.adapter.addClass(FG_DEACTIVATION);
+      this.fgDeactivationRemovalTimer = setTimeout(function() {
+        _this.adapter.removeClass(FG_DEACTIVATION);
+      }, numbers$3.FG_DEACTIVATION_MS);
+    }
+  };
+  MDCRippleFoundation2.prototype.rmBoundedActivationClasses = function() {
+    var FG_ACTIVATION = MDCRippleFoundation2.cssClasses.FG_ACTIVATION;
+    this.adapter.removeClass(FG_ACTIVATION);
+    this.activationAnimationHasEnded = false;
+    this.adapter.computeBoundingRect();
+  };
+  MDCRippleFoundation2.prototype.resetActivationState = function() {
+    var _this = this;
+    this.previousActivationEvent = this.activationState.activationEvent;
+    this.activationState = this.defaultActivationState();
+    setTimeout(function() {
+      return _this.previousActivationEvent = void 0;
+    }, MDCRippleFoundation2.numbers.TAP_DELAY_MS);
+  };
+  MDCRippleFoundation2.prototype.deactivateImpl = function() {
+    var _this = this;
+    var activationState = this.activationState;
+    if (!activationState.isActivated) {
+      return;
+    }
+    var state = __assign({}, activationState);
+    if (activationState.isProgrammatic) {
+      requestAnimationFrame(function() {
+        _this.animateDeactivation(state);
+      });
+      this.resetActivationState();
+    } else {
+      this.deregisterDeactivationHandlers();
+      requestAnimationFrame(function() {
+        _this.activationState.hasDeactivationUXRun = true;
+        _this.animateDeactivation(state);
+        _this.resetActivationState();
+      });
+    }
+  };
+  MDCRippleFoundation2.prototype.animateDeactivation = function(_a) {
+    var wasActivatedByPointer = _a.wasActivatedByPointer, wasElementMadeActive = _a.wasElementMadeActive;
+    if (wasActivatedByPointer || wasElementMadeActive) {
+      this.runDeactivationUXLogicIfReady();
+    }
+  };
+  MDCRippleFoundation2.prototype.layoutInternal = function() {
+    var _this = this;
+    this.frame = this.adapter.computeBoundingRect();
+    var maxDim = Math.max(this.frame.height, this.frame.width);
+    var getBoundedRadius = function() {
+      var hypotenuse = Math.sqrt(Math.pow(_this.frame.width, 2) + Math.pow(_this.frame.height, 2));
+      return hypotenuse + MDCRippleFoundation2.numbers.PADDING;
+    };
+    this.maxRadius = this.adapter.isUnbounded() ? maxDim : getBoundedRadius();
+    var initialSize = Math.floor(maxDim * MDCRippleFoundation2.numbers.INITIAL_ORIGIN_SCALE);
+    if (this.adapter.isUnbounded() && initialSize % 2 !== 0) {
+      this.initialSize = initialSize - 1;
+    } else {
+      this.initialSize = initialSize;
+    }
+    this.fgScale = "" + this.maxRadius / this.initialSize;
+    this.updateLayoutCssVars();
+  };
+  MDCRippleFoundation2.prototype.updateLayoutCssVars = function() {
+    var _a = MDCRippleFoundation2.strings, VAR_FG_SIZE = _a.VAR_FG_SIZE, VAR_LEFT = _a.VAR_LEFT, VAR_TOP = _a.VAR_TOP, VAR_FG_SCALE = _a.VAR_FG_SCALE;
+    this.adapter.updateCssVariable(VAR_FG_SIZE, this.initialSize + "px");
+    this.adapter.updateCssVariable(VAR_FG_SCALE, this.fgScale);
+    if (this.adapter.isUnbounded()) {
+      this.unboundedCoords = {
+        left: Math.round(this.frame.width / 2 - this.initialSize / 2),
+        top: Math.round(this.frame.height / 2 - this.initialSize / 2)
+      };
+      this.adapter.updateCssVariable(VAR_LEFT, this.unboundedCoords.left + "px");
+      this.adapter.updateCssVariable(VAR_TOP, this.unboundedCoords.top + "px");
+    }
+  };
+  return MDCRippleFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -284,7 +2228,16 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Ql={ACTIVE:"mdc-tab-indicator--active",FADE:"mdc-tab-indicator--fade",NO_TRANSITION:"mdc-tab-indicator--no-transition"},Zl={CONTENT_SELECTOR:".mdc-tab-indicator__content"};/**
+ */
+var cssClasses$7 = {
+  ACTIVE: "mdc-tab-indicator--active",
+  FADE: "mdc-tab-indicator--fade",
+  NO_TRANSITION: "mdc-tab-indicator--no-transition"
+};
+var strings$6 = {
+  CONTENT_SELECTOR: ".mdc-tab-indicator__content"
+};
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -305,7 +2258,52 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Ze=function(n){ke(e,n);function e(t){return n.call(this,Ae(Ae({},e.defaultAdapter),t))||this}return Object.defineProperty(e,"cssClasses",{get:function(){return Ql},enumerable:!1,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return Zl},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},computeContentClientRect:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},setContentStyleProperty:function(){}}},enumerable:!1,configurable:!0}),e.prototype.computeContentClientRect=function(){return this.adapter.computeContentClientRect()},e}(ze);/**
+ */
+var MDCTabIndicatorFoundation = function(_super) {
+  __extends(MDCTabIndicatorFoundation2, _super);
+  function MDCTabIndicatorFoundation2(adapter) {
+    return _super.call(this, __assign(__assign({}, MDCTabIndicatorFoundation2.defaultAdapter), adapter)) || this;
+  }
+  Object.defineProperty(MDCTabIndicatorFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$7;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabIndicatorFoundation2, "strings", {
+    get: function() {
+      return strings$6;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabIndicatorFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        computeContentClientRect: function() {
+          return { top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 };
+        },
+        setContentStyleProperty: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCTabIndicatorFoundation2.prototype.computeContentClientRect = function() {
+    return this.adapter.computeContentClientRect();
+  };
+  return MDCTabIndicatorFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -326,7 +2324,21 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Jl=function(n){ke(e,n);function e(){return n!==null&&n.apply(this,arguments)||this}return e.prototype.activate=function(){this.adapter.addClass(Ze.cssClasses.ACTIVE)},e.prototype.deactivate=function(){this.adapter.removeClass(Ze.cssClasses.ACTIVE)},e}(Ze);/**
+ */
+var MDCFadingTabIndicatorFoundation = function(_super) {
+  __extends(MDCFadingTabIndicatorFoundation2, _super);
+  function MDCFadingTabIndicatorFoundation2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  MDCFadingTabIndicatorFoundation2.prototype.activate = function() {
+    this.adapter.addClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+  };
+  MDCFadingTabIndicatorFoundation2.prototype.deactivate = function() {
+    this.adapter.removeClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+  };
+  return MDCFadingTabIndicatorFoundation2;
+}(MDCTabIndicatorFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -347,7 +2359,33 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var un=function(n){ke(e,n);function e(){return n!==null&&n.apply(this,arguments)||this}return e.prototype.activate=function(t){if(!t){this.adapter.addClass(Ze.cssClasses.ACTIVE);return}var i=this.computeContentClientRect(),l=t.width/i.width,r=t.left-i.left;this.adapter.addClass(Ze.cssClasses.NO_TRANSITION),this.adapter.setContentStyleProperty("transform","translateX("+r+"px) scaleX("+l+")"),this.computeContentClientRect(),this.adapter.removeClass(Ze.cssClasses.NO_TRANSITION),this.adapter.addClass(Ze.cssClasses.ACTIVE),this.adapter.setContentStyleProperty("transform","")},e.prototype.deactivate=function(){this.adapter.removeClass(Ze.cssClasses.ACTIVE)},e}(Ze);/**
+ */
+var MDCSlidingTabIndicatorFoundation = function(_super) {
+  __extends(MDCSlidingTabIndicatorFoundation2, _super);
+  function MDCSlidingTabIndicatorFoundation2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  MDCSlidingTabIndicatorFoundation2.prototype.activate = function(previousIndicatorClientRect) {
+    if (!previousIndicatorClientRect) {
+      this.adapter.addClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+      return;
+    }
+    var currentClientRect = this.computeContentClientRect();
+    var widthDelta = previousIndicatorClientRect.width / currentClientRect.width;
+    var xPosition = previousIndicatorClientRect.left - currentClientRect.left;
+    this.adapter.addClass(MDCTabIndicatorFoundation.cssClasses.NO_TRANSITION);
+    this.adapter.setContentStyleProperty("transform", "translateX(" + xPosition + "px) scaleX(" + widthDelta + ")");
+    this.computeContentClientRect();
+    this.adapter.removeClass(MDCTabIndicatorFoundation.cssClasses.NO_TRANSITION);
+    this.adapter.addClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+    this.adapter.setContentStyleProperty("transform", "");
+  };
+  MDCSlidingTabIndicatorFoundation2.prototype.deactivate = function() {
+    this.adapter.removeClass(MDCTabIndicatorFoundation.cssClasses.ACTIVE);
+  };
+  return MDCSlidingTabIndicatorFoundation2;
+}(MDCTabIndicatorFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -368,7 +2406,19 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Rt={ACTIVE:"mdc-tab--active"},pt={ARIA_SELECTED:"aria-selected",CONTENT_SELECTOR:".mdc-tab__content",INTERACTED_EVENT:"MDCTab:interacted",RIPPLE_SELECTOR:".mdc-tab__ripple",TABINDEX:"tabIndex",TAB_INDICATOR_SELECTOR:".mdc-tab-indicator"};/**
+ */
+var cssClasses$6 = {
+  ACTIVE: "mdc-tab--active"
+};
+var strings$5 = {
+  ARIA_SELECTED: "aria-selected",
+  CONTENT_SELECTOR: ".mdc-tab__content",
+  INTERACTED_EVENT: "MDCTab:interacted",
+  RIPPLE_SELECTOR: ".mdc-tab__ripple",
+  TABINDEX: "tabIndex",
+  TAB_INDICATOR_SELECTOR: ".mdc-tab-indicator"
+};
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -389,7 +2439,114 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var xl=function(n){ke(e,n);function e(t){var i=n.call(this,Ae(Ae({},e.defaultAdapter),t))||this;return i.focusOnActivate=!0,i}return Object.defineProperty(e,"cssClasses",{get:function(){return Rt},enumerable:!1,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return pt},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},hasClass:function(){return!1},setAttr:function(){},activateIndicator:function(){},deactivateIndicator:function(){},notifyInteracted:function(){},getOffsetLeft:function(){return 0},getOffsetWidth:function(){return 0},getContentOffsetLeft:function(){return 0},getContentOffsetWidth:function(){return 0},focus:function(){}}},enumerable:!1,configurable:!0}),e.prototype.handleClick=function(){this.adapter.notifyInteracted()},e.prototype.isActive=function(){return this.adapter.hasClass(Rt.ACTIVE)},e.prototype.setFocusOnActivate=function(t){this.focusOnActivate=t},e.prototype.activate=function(t){this.adapter.addClass(Rt.ACTIVE),this.adapter.setAttr(pt.ARIA_SELECTED,"true"),this.adapter.setAttr(pt.TABINDEX,"0"),this.adapter.activateIndicator(t),this.focusOnActivate&&this.adapter.focus()},e.prototype.deactivate=function(){!this.isActive()||(this.adapter.removeClass(Rt.ACTIVE),this.adapter.setAttr(pt.ARIA_SELECTED,"false"),this.adapter.setAttr(pt.TABINDEX,"-1"),this.adapter.deactivateIndicator())},e.prototype.computeDimensions=function(){var t=this.adapter.getOffsetWidth(),i=this.adapter.getOffsetLeft(),l=this.adapter.getContentOffsetWidth(),r=this.adapter.getContentOffsetLeft();return{contentLeft:i+r,contentRight:i+r+l,rootLeft:i,rootRight:i+t}},e}(ze);/**
+ */
+var MDCTabFoundation = function(_super) {
+  __extends(MDCTabFoundation2, _super);
+  function MDCTabFoundation2(adapter) {
+    var _this = _super.call(this, __assign(__assign({}, MDCTabFoundation2.defaultAdapter), adapter)) || this;
+    _this.focusOnActivate = true;
+    return _this;
+  }
+  Object.defineProperty(MDCTabFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$6;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabFoundation2, "strings", {
+    get: function() {
+      return strings$5;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        hasClass: function() {
+          return false;
+        },
+        setAttr: function() {
+          return void 0;
+        },
+        activateIndicator: function() {
+          return void 0;
+        },
+        deactivateIndicator: function() {
+          return void 0;
+        },
+        notifyInteracted: function() {
+          return void 0;
+        },
+        getOffsetLeft: function() {
+          return 0;
+        },
+        getOffsetWidth: function() {
+          return 0;
+        },
+        getContentOffsetLeft: function() {
+          return 0;
+        },
+        getContentOffsetWidth: function() {
+          return 0;
+        },
+        focus: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCTabFoundation2.prototype.handleClick = function() {
+    this.adapter.notifyInteracted();
+  };
+  MDCTabFoundation2.prototype.isActive = function() {
+    return this.adapter.hasClass(cssClasses$6.ACTIVE);
+  };
+  MDCTabFoundation2.prototype.setFocusOnActivate = function(focusOnActivate) {
+    this.focusOnActivate = focusOnActivate;
+  };
+  MDCTabFoundation2.prototype.activate = function(previousIndicatorClientRect) {
+    this.adapter.addClass(cssClasses$6.ACTIVE);
+    this.adapter.setAttr(strings$5.ARIA_SELECTED, "true");
+    this.adapter.setAttr(strings$5.TABINDEX, "0");
+    this.adapter.activateIndicator(previousIndicatorClientRect);
+    if (this.focusOnActivate) {
+      this.adapter.focus();
+    }
+  };
+  MDCTabFoundation2.prototype.deactivate = function() {
+    if (!this.isActive()) {
+      return;
+    }
+    this.adapter.removeClass(cssClasses$6.ACTIVE);
+    this.adapter.setAttr(strings$5.ARIA_SELECTED, "false");
+    this.adapter.setAttr(strings$5.TABINDEX, "-1");
+    this.adapter.deactivateIndicator();
+  };
+  MDCTabFoundation2.prototype.computeDimensions = function() {
+    var rootWidth = this.adapter.getOffsetWidth();
+    var rootLeft = this.adapter.getOffsetLeft();
+    var contentWidth = this.adapter.getContentOffsetWidth();
+    var contentLeft = this.adapter.getContentOffsetLeft();
+    return {
+      contentLeft: rootLeft + contentLeft,
+      contentRight: rootLeft + contentLeft + contentWidth,
+      rootLeft,
+      rootRight: rootLeft + rootWidth
+    };
+  };
+  return MDCTabFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -410,7 +2567,28 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Re={ARROW_LEFT_KEY:"ArrowLeft",ARROW_RIGHT_KEY:"ArrowRight",END_KEY:"End",ENTER_KEY:"Enter",HOME_KEY:"Home",SPACE_KEY:"Space",TAB_ACTIVATED_EVENT:"MDCTabBar:activated",TAB_SCROLLER_SELECTOR:".mdc-tab-scroller",TAB_SELECTOR:".mdc-tab"},qe={ARROW_LEFT_KEYCODE:37,ARROW_RIGHT_KEYCODE:39,END_KEYCODE:35,ENTER_KEYCODE:13,EXTRA_SCROLL_AMOUNT:20,HOME_KEYCODE:36,SPACE_KEYCODE:32};/**
+ */
+var strings$4 = {
+  ARROW_LEFT_KEY: "ArrowLeft",
+  ARROW_RIGHT_KEY: "ArrowRight",
+  END_KEY: "End",
+  ENTER_KEY: "Enter",
+  HOME_KEY: "Home",
+  SPACE_KEY: "Space",
+  TAB_ACTIVATED_EVENT: "MDCTabBar:activated",
+  TAB_SCROLLER_SELECTOR: ".mdc-tab-scroller",
+  TAB_SELECTOR: ".mdc-tab"
+};
+var numbers$2 = {
+  ARROW_LEFT_KEYCODE: 37,
+  ARROW_RIGHT_KEYCODE: 39,
+  END_KEYCODE: 35,
+  ENTER_KEYCODE: 13,
+  EXTRA_SCROLL_AMOUNT: 20,
+  HOME_KEYCODE: 36,
+  SPACE_KEYCODE: 32
+};
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -431,7 +2609,3805 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var ot=new Set;ot.add(Re.ARROW_LEFT_KEY);ot.add(Re.ARROW_RIGHT_KEY);ot.add(Re.END_KEY);ot.add(Re.HOME_KEY);ot.add(Re.ENTER_KEY);ot.add(Re.SPACE_KEY);var ut=new Map;ut.set(qe.ARROW_LEFT_KEYCODE,Re.ARROW_LEFT_KEY);ut.set(qe.ARROW_RIGHT_KEYCODE,Re.ARROW_RIGHT_KEY);ut.set(qe.END_KEYCODE,Re.END_KEY);ut.set(qe.HOME_KEYCODE,Re.HOME_KEY);ut.set(qe.ENTER_KEYCODE,Re.ENTER_KEY);ut.set(qe.SPACE_KEYCODE,Re.SPACE_KEY);var $l=function(n){ke(e,n);function e(t){var i=n.call(this,Ae(Ae({},e.defaultAdapter),t))||this;return i.useAutomaticActivation=!1,i}return Object.defineProperty(e,"strings",{get:function(){return Re},enumerable:!1,configurable:!0}),Object.defineProperty(e,"numbers",{get:function(){return qe},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{scrollTo:function(){},incrementScroll:function(){},getScrollPosition:function(){return 0},getScrollContentWidth:function(){return 0},getOffsetWidth:function(){return 0},isRTL:function(){return!1},setActiveTab:function(){},activateTabAtIndex:function(){},deactivateTabAtIndex:function(){},focusTabAtIndex:function(){},getTabIndicatorClientRectAtIndex:function(){return{top:0,right:0,bottom:0,left:0,width:0,height:0}},getTabDimensionsAtIndex:function(){return{rootLeft:0,rootRight:0,contentLeft:0,contentRight:0}},getPreviousActiveTabIndex:function(){return-1},getFocusedTabIndex:function(){return-1},getIndexOfTabById:function(){return-1},getTabListLength:function(){return 0},notifyTabActivated:function(){}}},enumerable:!1,configurable:!0}),e.prototype.setUseAutomaticActivation=function(t){this.useAutomaticActivation=t},e.prototype.activateTab=function(t){var i=this.adapter.getPreviousActiveTabIndex();if(!(!this.indexIsInRange(t)||t===i)){var l;i!==-1&&(this.adapter.deactivateTabAtIndex(i),l=this.adapter.getTabIndicatorClientRectAtIndex(i)),this.adapter.activateTabAtIndex(t,l),this.scrollIntoView(t),this.adapter.notifyTabActivated(t)}},e.prototype.handleKeyDown=function(t){var i=this.getKeyFromEvent(t);if(i!==void 0)if(this.isActivationKey(i)||t.preventDefault(),this.useAutomaticActivation){if(this.isActivationKey(i))return;var l=this.determineTargetFromKey(this.adapter.getPreviousActiveTabIndex(),i);this.adapter.setActiveTab(l),this.scrollIntoView(l)}else{var r=this.adapter.getFocusedTabIndex();if(this.isActivationKey(i))this.adapter.setActiveTab(r);else{var l=this.determineTargetFromKey(r,i);this.adapter.focusTabAtIndex(l),this.scrollIntoView(l)}}},e.prototype.handleTabInteraction=function(t){this.adapter.setActiveTab(this.adapter.getIndexOfTabById(t.detail.tabId))},e.prototype.scrollIntoView=function(t){if(!!this.indexIsInRange(t)){if(t===0){this.adapter.scrollTo(0);return}if(t===this.adapter.getTabListLength()-1){this.adapter.scrollTo(this.adapter.getScrollContentWidth());return}if(this.isRTL()){this.scrollIntoViewImplRTL(t);return}this.scrollIntoViewImpl(t)}},e.prototype.determineTargetFromKey=function(t,i){var l=this.isRTL(),r=this.adapter.getTabListLength()-1,s=i===Re.END_KEY,a=i===Re.ARROW_LEFT_KEY&&!l||i===Re.ARROW_RIGHT_KEY&&l,o=i===Re.ARROW_RIGHT_KEY&&!l||i===Re.ARROW_LEFT_KEY&&l,c=t;return s?c=r:a?c-=1:o?c+=1:c=0,c<0?c=r:c>r&&(c=0),c},e.prototype.calculateScrollIncrement=function(t,i,l,r){var s=this.adapter.getTabDimensionsAtIndex(i),a=s.contentLeft-l-r,o=s.contentRight-l,c=o-qe.EXTRA_SCROLL_AMOUNT,u=a+qe.EXTRA_SCROLL_AMOUNT;return i<t?Math.min(c,0):Math.max(u,0)},e.prototype.calculateScrollIncrementRTL=function(t,i,l,r,s){var a=this.adapter.getTabDimensionsAtIndex(i),o=s-a.contentLeft-l,c=s-a.contentRight-l-r,u=c+qe.EXTRA_SCROLL_AMOUNT,f=o-qe.EXTRA_SCROLL_AMOUNT;return i>t?Math.max(u,0):Math.min(f,0)},e.prototype.findAdjacentTabIndexClosestToEdge=function(t,i,l,r){var s=i.rootLeft-l,a=i.rootRight-l-r,o=s+a,c=s<0||o<0,u=a>0||o>0;return c?t-1:u?t+1:-1},e.prototype.findAdjacentTabIndexClosestToEdgeRTL=function(t,i,l,r,s){var a=s-i.rootLeft-r-l,o=s-i.rootRight-l,c=a+o,u=a>0||c>0,f=o<0||c<0;return u?t+1:f?t-1:-1},e.prototype.getKeyFromEvent=function(t){return ot.has(t.key)?t.key:ut.get(t.keyCode)},e.prototype.isActivationKey=function(t){return t===Re.SPACE_KEY||t===Re.ENTER_KEY},e.prototype.indexIsInRange=function(t){return t>=0&&t<this.adapter.getTabListLength()},e.prototype.isRTL=function(){return this.adapter.isRTL()},e.prototype.scrollIntoViewImpl=function(t){var i=this.adapter.getScrollPosition(),l=this.adapter.getOffsetWidth(),r=this.adapter.getTabDimensionsAtIndex(t),s=this.findAdjacentTabIndexClosestToEdge(t,r,i,l);if(!!this.indexIsInRange(s)){var a=this.calculateScrollIncrement(t,s,i,l);this.adapter.incrementScroll(a)}},e.prototype.scrollIntoViewImplRTL=function(t){var i=this.adapter.getScrollPosition(),l=this.adapter.getOffsetWidth(),r=this.adapter.getTabDimensionsAtIndex(t),s=this.adapter.getScrollContentWidth(),a=this.findAdjacentTabIndexClosestToEdgeRTL(t,r,i,l,s);if(!!this.indexIsInRange(a)){var o=this.calculateScrollIncrementRTL(t,a,i,l,s);this.adapter.incrementScroll(o)}},e}(ze);function z(n){return Object.entries(n).filter(([e,t])=>e!==""&&t).map(([e])=>e).join(" ")}function We(n,e,t,i={bubbles:!0},l=!1){if(typeof Event!="undefined"&&n){const r=new CustomEvent(e,Object.assign(Object.assign({},i),{detail:t}));if(n==null||n.dispatchEvent(r),l&&e.startsWith("SMUI")){const s=new CustomEvent(e.replace(/^SMUI/g,()=>"MDC"),Object.assign(Object.assign({},i),{detail:t}));n==null||n.dispatchEvent(s),s.defaultPrevented&&r.preventDefault()}return r}}function Ne(n,e){let t=Object.getOwnPropertyNames(n);const i={};for(let l=0;l<t.length;l++){const r=t[l],s=r.indexOf("$");s!==-1&&e.indexOf(r.substring(0,s+1))!==-1||e.indexOf(r)===-1&&(i[r]=n[r])}return i}const cn=/^[a-z]+(?::(?:preventDefault|stopPropagation|passive|nonpassive|capture|once|self))+$/,er=/^[^$]+(?:\$(?:preventDefault|stopPropagation|passive|nonpassive|capture|once|self))+$/;function ve(n){let e,t=[];n.$on=(l,r)=>{let s=l,a=()=>{};return e?a=e(s,r):t.push([s,r]),s.match(cn)&&console&&console.warn('Event modifiers in SMUI now use "$" instead of ":", so that all events can be bound with modifiers. Please update your event binding: ',s),()=>{a()}};function i(l){At(n,l)}return l=>{const r=[],s={};e=(a,o)=>{let c=a,u=o,f=!1;const d=c.match(cn),m=c.match(er),v=d||m;if(c.match(/^SMUI:\w+:/)){const _=c.split(":");let b="";for(let y=0;y<_.length;y++)b+=y===_.length-1?":"+_[y]:_[y].split("-").map(I=>I.slice(0,1).toUpperCase()+I.slice(1)).join("");console.warn(`The event ${c.split("$")[0]} has been renamed to ${b.split("$")[0]}.`),c=b}if(v){const _=c.split(d?":":"$");c=_[0];const b=Object.fromEntries(_.slice(1).map(y=>[y,!0]));b.passive&&(f=f||{},f.passive=!0),b.nonpassive&&(f=f||{},f.passive=!1),b.capture&&(f=f||{},f.capture=!0),b.once&&(f=f||{},f.once=!0),b.preventDefault&&(u=Il(u)),b.stopPropagation&&(u=Sl(u))}const p=re(l,c,u,f),g=()=>{p();const _=r.indexOf(g);_>-1&&r.splice(_,1)};return r.push(g),c in s||(s[c]=re(l,c,i)),g};for(let a=0;a<t.length;a++)e(t[a][0],t[a][1]);return{destroy:()=>{for(let a=0;a<r.length;a++)r[a]();for(let a of Object.entries(s))a[1]()}}}}function se(n,e){let t=Object.getOwnPropertyNames(n);const i={};for(let l=0;l<t.length;l++){const r=t[l];r.substring(0,e.length)===e&&(i[r.substring(e.length)]=n[r])}return i}function de(n,e){let t=[];if(e)for(let i=0;i<e.length;i++){const l=e[i],r=Array.isArray(l)?l[0]:l;Array.isArray(l)&&l.length>1?t.push(r(n,l[1])):t.push(r(n))}return{update(i){if((i&&i.length||0)!=t.length)throw new Error("You must not change the length of an actions array.");if(i)for(let l=0;l<i.length;l++){const r=t[l];if(r&&r.update){const s=i[l];Array.isArray(s)&&s.length>1?r.update(s[1]):r.update()}}},destroy(){for(let i=0;i<t.length;i++){const l=t[i];l&&l.destroy&&l.destroy()}}}}function tr(n){let e,t,i,l,r,s,a,o,c,u,f,d,m,v;const p=n[23].default,g=x(p,n,n[22],null);let _=[{class:l=z({[n[6]]:!0,"mdc-tab-scroller__scroll-content":!0})},{style:r=Object.entries(n[14]).map(fn).join(" ")},se(n[16],"scrollContent$")],b={};for(let h=0;h<_.length;h+=1)b=H(b,_[h]);let y=[{class:a=z(fe({[n[4]]:!0,"mdc-tab-scroller__scroll-area":!0},n[12]))},{style:o=Object.entries(n[13]).map(dn).join(" ")},se(n[16],"scrollArea$")],I={};for(let h=0;h<y.length;h+=1)I=H(I,y[h]);let T=[{class:u=z(fe({[n[1]]:!0,"mdc-tab-scroller":!0,"mdc-tab-scroller--align-start":n[2]==="start","mdc-tab-scroller--align-end":n[2]==="end","mdc-tab-scroller--align-center":n[2]==="center"},n[11]))},Ne(n[16],["scrollArea$","scrollContent$"])],S={};for(let h=0;h<T.length;h+=1)S=H(S,T[h]);return{c(){e=Z("div"),t=Z("div"),i=Z("div"),g&&g.c(),this.h()},l(h){e=J(h,"DIV",{class:!0});var C=w(e);t=J(C,"DIV",{class:!0,style:!0});var N=w(t);i=J(N,"DIV",{class:!0,style:!0});var F=w(i);g&&g.l(F),F.forEach(P),N.forEach(P),C.forEach(P),this.h()},h(){W(i,b),W(t,I),W(e,S)},m(h,C){K(h,e,C),ne(e,t),ne(t,i),g&&g.m(i,null),n[24](i),n[26](t),n[32](e),d=!0,m||(v=[G(s=de.call(null,i,n[5])),re(i,"transitionend",n[25]),G(c=de.call(null,t,n[3])),re(t,"wheel",n[27],{passive:!0}),re(t,"touchstart",n[28],{passive:!0}),re(t,"pointerdown",n[29]),re(t,"mousedown",n[30]),re(t,"keydown",n[31]),G(f=de.call(null,e,n[0])),G(n[15].call(null,e))],m=!0)},p(h,C){g&&g.p&&(!d||C[0]&4194304)&&ee(g,p,h,h[22],d?$(p,h[22],C,null):te(h[22]),null),W(i,b=Q(_,[(!d||C[0]&64&&l!==(l=z({[h[6]]:!0,"mdc-tab-scroller__scroll-content":!0})))&&{class:l},(!d||C[0]&16384&&r!==(r=Object.entries(h[14]).map(fn).join(" ")))&&{style:r},C[0]&65536&&se(h[16],"scrollContent$")])),s&&ie(s.update)&&C[0]&32&&s.update.call(null,h[5]),W(t,I=Q(y,[(!d||C[0]&4112&&a!==(a=z(fe({[h[4]]:!0,"mdc-tab-scroller__scroll-area":!0},h[12]))))&&{class:a},(!d||C[0]&8192&&o!==(o=Object.entries(h[13]).map(dn).join(" ")))&&{style:o},C[0]&65536&&se(h[16],"scrollArea$")])),c&&ie(c.update)&&C[0]&8&&c.update.call(null,h[3]),W(e,S=Q(T,[(!d||C[0]&2054&&u!==(u=z(fe({[h[1]]:!0,"mdc-tab-scroller":!0,"mdc-tab-scroller--align-start":h[2]==="start","mdc-tab-scroller--align-end":h[2]==="end","mdc-tab-scroller--align-center":h[2]==="center"},h[11]))))&&{class:u},C[0]&65536&&Ne(h[16],["scrollArea$","scrollContent$"])])),f&&ie(f.update)&&C[0]&1&&f.update.call(null,h[0])},i(h){d||(M(g,h),d=!0)},o(h){k(g,h),d=!1},d(h){h&&P(e),g&&g.d(h),n[24](null),n[26](null),n[32](null),m=!1,oe(v)}}}const fn=([n,e])=>`${n}: ${e};`,dn=([n,e])=>`${n}: ${e};`;function nr(n,e,t){const i=["use","class","align","scrollArea$use","scrollArea$class","scrollContent$use","scrollContent$class","getScrollPosition","getScrollContentWidth","incrementScroll","scrollTo","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const{matches:a}=hi,o=ve(ae());let{use:c=[]}=e,{class:u=""}=e,{align:f=void 0}=e,{scrollArea$use:d=[]}=e,{scrollArea$class:m=""}=e,{scrollContent$use:v=[]}=e,{scrollContent$class:p=""}=e,g,_,b,y,I={},T={},S={},h={};Ge(()=>(t(8,_=new Gl({eventTargetMatchesSelector:(L,le)=>a(L,le),addClass:C,removeClass:N,addScrollAreaClass:F,setScrollAreaStyleProperty:O,setScrollContentStyleProperty:V,getScrollContentStyleValue:R,setScrollAreaScrollLeft:L=>t(9,b.scrollLeft=L,b),getScrollAreaScrollLeft:()=>b.scrollLeft,getScrollContentOffsetWidth:()=>y.offsetWidth,getScrollAreaOffsetWidth:()=>b.offsetWidth,computeScrollAreaClientRect:()=>b.getBoundingClientRect(),computeScrollContentClientRect:()=>y.getBoundingClientRect(),computeHorizontalScrollbarHeight:()=>ql(document)})),_.init(),()=>{_.destroy()}));function C(L){I[L]||t(11,I[L]=!0,I)}function N(L){(!(L in I)||I[L])&&t(11,I[L]=!1,I)}function F(L){T[L]||t(12,T[L]=!0,T)}function O(L,le){S[L]!=le&&(le===""||le==null?(delete S[L],t(13,S)):t(13,S[L]=le,S))}function V(L,le){h[L]!=le&&(le===""||le==null?(delete h[L],t(14,h)):t(14,h[L]=le,h))}function R(L){return L in h?h[L]:getComputedStyle(y).getPropertyValue(L)}function B(){return _.getScrollPosition()}function Se(){return y.offsetWidth}function Le(L){_.incrementScroll(L)}function j(L){_.scrollTo(L)}function E(){return g}function D(L){X[L?"unshift":"push"](()=>{y=L,t(10,y)})}const U=L=>_&&_.handleTransitionEnd(L);function ue(L){X[L?"unshift":"push"](()=>{b=L,t(9,b)})}const ce=()=>_&&_.handleInteraction(),Ve=()=>_&&_.handleInteraction(),Ue=()=>_&&_.handleInteraction(),he=()=>_&&_.handleInteraction(),je=()=>_&&_.handleInteraction();function Ke(L){X[L?"unshift":"push"](()=>{g=L,t(7,g)})}return n.$$set=L=>{e=H(H({},e),Ce(L)),t(16,l=Y(e,i)),"use"in L&&t(0,c=L.use),"class"in L&&t(1,u=L.class),"align"in L&&t(2,f=L.align),"scrollArea$use"in L&&t(3,d=L.scrollArea$use),"scrollArea$class"in L&&t(4,m=L.scrollArea$class),"scrollContent$use"in L&&t(5,v=L.scrollContent$use),"scrollContent$class"in L&&t(6,p=L.scrollContent$class),"$$scope"in L&&t(22,s=L.$$scope)},[c,u,f,d,m,v,p,g,_,b,y,I,T,S,h,o,l,B,Se,Le,j,E,s,r,D,U,ue,ce,Ve,Ue,he,je,Ke]}class ir extends pe{constructor(e){super();ge(this,e,nr,tr,me,{use:0,class:1,align:2,scrollArea$use:3,scrollArea$class:4,scrollContent$use:5,scrollContent$class:6,getScrollPosition:17,getScrollContentWidth:18,incrementScroll:19,scrollTo:20,getElement:21},null,[-1,-1])}get getScrollPosition(){return this.$$.ctx[17]}get getScrollContentWidth(){return this.$$.ctx[18]}get incrementScroll(){return this.$$.ctx[19]}get scrollTo(){return this.$$.ctx[20]}get getElement(){return this.$$.ctx[21]}}function hn(n,e,t){const i=n.slice();return i[30]=e[t],i}const lr=n=>({tab:n[0]&4}),mn=n=>({tab:n[30]});function gn(n,e){let t,i;const l=e[20].default,r=x(l,e,e[25],mn);return{key:n,first:null,c(){t=Pe(),r&&r.c(),this.h()},l(s){t=Pe(),r&&r.l(s),this.h()},h(){this.first=t},m(s,a){K(s,t,a),r&&r.m(s,a),i=!0},p(s,a){e=s,r&&r.p&&(!i||a[0]&33554436)&&ee(r,l,e,e[25],i?$(l,e[25],a,lr):te(e[25]),mn)},i(s){i||(M(r,s),i=!0)},o(s){k(r,s),i=!1},d(s){s&&P(t),r&&r.d(s)}}}function rr(n){let e=[],t=new Map,i,l,r=n[2];const s=a=>a[3](a[30]);for(let a=0;a<r.length;a+=1){let o=hn(n,r,a),c=s(o);t.set(c,e[a]=gn(c,o))}return{c(){for(let a=0;a<e.length;a+=1)e[a].c();i=Pe()},l(a){for(let o=0;o<e.length;o+=1)e[o].l(a);i=Pe()},m(a,o){for(let c=0;c<e.length;c+=1)e[c].m(a,o);K(a,i,o),l=!0},p(a,o){o[0]&33554444&&(r=a[2],De(),e=Dl(e,o,s,1,a,r,t,i.parentNode,Ol,gn,i,hn),Me())},i(a){if(!l){for(let o=0;o<r.length;o+=1)M(e[o]);l=!0}},o(a){for(let o=0;o<e.length;o+=1)k(e[o]);l=!1},d(a){for(let o=0;o<e.length;o+=1)e[o].d(a);a&&P(i)}}}function ar(n){let e,t,i,l,r,s,a;const o=[se(n[10],"tabScroller$")];let c={$$slots:{default:[rr]},$$scope:{ctx:n}};for(let d=0;d<o.length;d+=1)c=H(c,o[d]);t=new ir({props:c}),n[21](t);let u=[{class:i=z({[n[1]]:!0,"mdc-tab-bar":!0})},{role:"tablist"},Ne(n[10],["tabScroller$"])],f={};for(let d=0;d<u.length;d+=1)f=H(f,u[d]);return{c(){e=Z("div"),Ie(t.$$.fragment),this.h()},l(d){e=J(d,"DIV",{class:!0,role:!0});var m=w(e);Oe(t.$$.fragment,m),m.forEach(P),this.h()},h(){W(e,f)},m(d,m){K(d,e,m),ye(t,e,null),n[22](e),r=!0,s||(a=[G(l=de.call(null,e,n[0])),G(n[7].call(null,e)),re(e,"SMUITab:mount",n[8]),re(e,"SMUITab:unmount",n[9]),re(e,"SMUITab:interacted",n[23]),re(e,"keydown",n[24])],s=!0)},p(d,m){const v=m[0]&1024?Q(o,[Fe(se(d[10],"tabScroller$"))]):{};m[0]&33554436&&(v.$$scope={dirty:m,ctx:d}),t.$set(v),W(e,f=Q(u,[(!r||m[0]&2&&i!==(i=z({[d[1]]:!0,"mdc-tab-bar":!0})))&&{class:i},{role:"tablist"},m[0]&1024&&Ne(d[10],["tabScroller$"])])),l&&ie(l.update)&&m[0]&1&&l.update.call(null,d[0])},i(d){r||(M(t.$$.fragment,d),r=!0)},o(d){k(t.$$.fragment,d),r=!1},d(d){d&&P(e),n[21](null),Ee(t),n[22](null),s=!1,oe(a)}}}function sr(n,e,t){const i=["use","class","tabs","key","focusOnActivate","focusOnProgrammatic","useAutomaticActivation","active","scrollIntoView","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{tabs:u=[]}=e,{key:f=E=>E}=e,{focusOnActivate:d=!0}=e,{focusOnProgrammatic:m=!1}=e,{useAutomaticActivation:v=!0}=e,{active:p=void 0}=e,g,_,b,y=u.indexOf(p),I={},T=new WeakMap,S=!1;mt("SMUI:tab:focusOnActivate",d),mt("SMUI:tab:initialActive",p),Ge(()=>(t(4,_=new $l({scrollTo:E=>b.scrollTo(E),incrementScroll:E=>b.incrementScroll(E),getScrollPosition:()=>b.getScrollPosition(),getScrollContentWidth:()=>b.getScrollContentWidth(),getOffsetWidth:()=>R().offsetWidth,isRTL:()=>getComputedStyle(R()).getPropertyValue("direction")==="rtl",setActiveTab:E=>{t(11,p=u[E]),t(17,y=E),_.activateTab(E)},activateTabAtIndex:(E,D)=>{var U;return(U=N(u[E]))===null||U===void 0?void 0:U.activate(D,S)},deactivateTabAtIndex:E=>{var D;return(D=N(u[E]))===null||D===void 0?void 0:D.deactivate()},focusTabAtIndex:E=>{var D;return(D=N(u[E]))===null||D===void 0?void 0:D.focus()},getTabIndicatorClientRectAtIndex:E=>{var D,U;return(U=(D=N(u[E]))===null||D===void 0?void 0:D.computeIndicatorClientRect())!==null&&U!==void 0?U:new DOMRect},getTabDimensionsAtIndex:E=>{var D,U;return(U=(D=N(u[E]))===null||D===void 0?void 0:D.computeDimensions())!==null&&U!==void 0?U:{rootLeft:0,rootRight:0,contentLeft:0,contentRight:0}},getPreviousActiveTabIndex:()=>{var E;for(let D=0;D<u.length;D++)if(!((E=N(u[D]))===null||E===void 0)&&E.active)return D;return-1},getFocusedTabIndex:()=>{const E=u.map(U=>{var ue;return(ue=N(U))===null||ue===void 0?void 0:ue.element}),D=document.activeElement;return E.indexOf(D)},getIndexOfTabById:E=>u.indexOf(E),getTabListLength:()=>u.length,notifyTabActivated:E=>We(R(),"SMUITabBar:activated",{index:E},void 0,!0)})),_.init(),()=>{_.destroy()}));function h(E){const D=E.detail;F(D.tabId,D)}function C(E){const D=E.detail;O(D.tabId)}function N(E){return E instanceof Object?T.get(E):I[E]}function F(E,D){E instanceof Object?(T.set(E,D),t(19,T)):(t(18,I[E]=D,I),t(18,I))}function O(E){E instanceof Object?(T.delete(E),t(19,T)):(delete I[E],t(18,I))}function V(E){_.scrollIntoView(E)}function R(){return g}function B(E){X[E?"unshift":"push"](()=>{b=E,t(6,b)})}function Se(E){X[E?"unshift":"push"](()=>{g=E,t(5,g)})}const Le=E=>_&&_.handleTabInteraction(E),j=E=>_&&_.handleKeyDown(E);return n.$$set=E=>{e=H(H({},e),Ce(E)),t(10,l=Y(e,i)),"use"in E&&t(0,o=E.use),"class"in E&&t(1,c=E.class),"tabs"in E&&t(2,u=E.tabs),"key"in E&&t(3,f=E.key),"focusOnActivate"in E&&t(12,d=E.focusOnActivate),"focusOnProgrammatic"in E&&t(13,m=E.focusOnProgrammatic),"useAutomaticActivation"in E&&t(14,v=E.useAutomaticActivation),"active"in E&&t(11,p=E.active),"$$scope"in E&&t(25,s=E.$$scope)},n.$$.update=()=>{if(n.$$.dirty[0]&141332&&p!==u[y]&&(t(17,y=u.indexOf(p)),_&&(S=!m,_.activateTab(y),S=!1)),n.$$.dirty[0]&917508&&u.length){const E=u[0]instanceof Object?T.get(u[0]):I[u[0]];E&&E.forceAccessible(y===-1)}n.$$.dirty[0]&16400&&_&&_.setUseAutomaticActivation(v)},[o,c,u,f,_,g,b,a,h,C,l,p,d,m,v,V,R,y,I,T,r,B,Se,Le,j,s]}class Ts extends pe{constructor(e){super();ge(this,e,sr,ar,me,{use:0,class:1,tabs:2,key:3,focusOnActivate:12,focusOnProgrammatic:13,useAutomaticActivation:14,active:11,scrollIntoView:15,getElement:16},null,[-1,-1])}get scrollIntoView(){return this.$$.ctx[15]}get getElement(){return this.$$.ctx[16]}}const{applyPassive:Ot}=fi,{matches:or}=hi;function Pt(n,{ripple:e=!0,surface:t=!1,unbounded:i=!1,disabled:l=!1,color:r,active:s,rippleElement:a,eventTarget:o,activeTarget:c,addClass:u=v=>n.classList.add(v),removeClass:f=v=>n.classList.remove(v),addStyle:d=(v,p)=>n.style.setProperty(v,p),initPromise:m=Promise.resolve()}={}){let v,p=et("SMUI:addLayoutListener"),g,_=s,b=o,y=c;function I(){t?(u("mdc-ripple-surface"),r==="primary"?(u("smui-ripple-surface--primary"),f("smui-ripple-surface--secondary")):r==="secondary"?(f("smui-ripple-surface--primary"),u("smui-ripple-surface--secondary")):(f("smui-ripple-surface--primary"),f("smui-ripple-surface--secondary"))):(f("mdc-ripple-surface"),f("smui-ripple-surface--primary"),f("smui-ripple-surface--secondary")),v&&_!==s&&(_=s,s?v.activate():s===!1&&v.deactivate()),e&&!v?(v=new Yl({addClass:u,browserSupportsCssVars:()=>Xl(window),computeBoundingRect:()=>(a||n).getBoundingClientRect(),containsEventTarget:S=>n.contains(S),deregisterDocumentInteractionHandler:(S,h)=>document.documentElement.removeEventListener(S,h,Ot()),deregisterInteractionHandler:(S,h)=>(o||n).removeEventListener(S,h,Ot()),deregisterResizeHandler:S=>window.removeEventListener("resize",S),getWindowPageOffset:()=>({x:window.pageXOffset,y:window.pageYOffset}),isSurfaceActive:()=>s==null?or(c||n,":active"):s,isSurfaceDisabled:()=>!!l,isUnbounded:()=>!!i,registerDocumentInteractionHandler:(S,h)=>document.documentElement.addEventListener(S,h,Ot()),registerInteractionHandler:(S,h)=>(o||n).addEventListener(S,h,Ot()),registerResizeHandler:S=>window.addEventListener("resize",S),removeClass:f,updateCssVariable:d}),m.then(()=>{v&&(v.init(),v.setUnbounded(i))})):v&&!e&&m.then(()=>{v&&(v.destroy(),v=void 0)}),v&&(b!==o||y!==c)&&(b=o,y=c,v.destroy(),requestAnimationFrame(()=>{v&&(v.init(),v.setUnbounded(i))})),!e&&i&&u("mdc-ripple-upgraded--unbounded")}I(),p&&(g=p(T));function T(){v&&v.layout()}return{update(S){({ripple:e,surface:t,unbounded:i,disabled:l,color:r,active:s,rippleElement:a,eventTarget:o,activeTarget:c,addClass:u,removeClass:f,addStyle:d,initPromise:m}=Object.assign({ripple:!0,surface:!1,unbounded:!1,disabled:!1,color:void 0,active:void 0,rippleElement:void 0,eventTarget:void 0,activeTarget:void 0,addClass:h=>n.classList.add(h),removeClass:h=>n.classList.remove(h),addStyle:(h,C)=>n.style.setProperty(h,C),initPromise:Promise.resolve()},S)),I()},destroy(){v&&(v.destroy(),v=void 0,f("mdc-ripple-surface"),f("smui-ripple-surface--primary"),f("smui-ripple-surface--secondary")),g&&g()}}}function ur(n){let e,t,i,l,r;const s=n[7].default,a=x(s,n,n[6],null);let o=[{href:n[1]},n[4]],c={};for(let u=0;u<o.length;u+=1)c=H(c,o[u]);return{c(){e=Z("a"),a&&a.c(),this.h()},l(u){e=J(u,"A",{href:!0});var f=w(e);a&&a.l(f),f.forEach(P),this.h()},h(){W(e,c)},m(u,f){K(u,e,f),a&&a.m(e,null),n[8](e),i=!0,l||(r=[G(t=de.call(null,e,n[0])),G(n[3].call(null,e))],l=!0)},p(u,[f]){a&&a.p&&(!i||f&64)&&ee(a,s,u,u[6],i?$(s,u[6],f,null):te(u[6]),null),W(e,c=Q(o,[(!i||f&2)&&{href:u[1]},f&16&&u[4]])),t&&ie(t.update)&&f&1&&t.update.call(null,u[0])},i(u){i||(M(a,u),i=!0)},o(u){k(a,u),i=!1},d(u){u&&P(e),a&&a.d(u),n[8](null),l=!1,oe(r)}}}function cr(n,e,t){const i=["use","href","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e,{href:o="javascript:void(0);"}=e;const c=ve(ae());let u;function f(){return u}function d(m){X[m?"unshift":"push"](()=>{u=m,t(2,u)})}return n.$$set=m=>{e=H(H({},e),Ce(m)),t(4,l=Y(e,i)),"use"in m&&t(0,a=m.use),"href"in m&&t(1,o=m.href),"$$scope"in m&&t(6,s=m.$$scope)},[a,o,u,c,l,f,s,r,d]}class fr extends pe{constructor(e){super();ge(this,e,cr,ur,me,{use:0,href:1,getElement:5})}get getElement(){return this.$$.ctx[5]}}function dr(n){let e,t,i,l,r;const s=n[6].default,a=x(s,n,n[5],null);let o=[n[3]],c={};for(let u=0;u<o.length;u+=1)c=H(c,o[u]);return{c(){e=Z("button"),a&&a.c(),this.h()},l(u){e=J(u,"BUTTON",{});var f=w(e);a&&a.l(f),f.forEach(P),this.h()},h(){W(e,c)},m(u,f){K(u,e,f),a&&a.m(e,null),e.autofocus&&e.focus(),n[7](e),i=!0,l||(r=[G(t=de.call(null,e,n[0])),G(n[2].call(null,e))],l=!0)},p(u,[f]){a&&a.p&&(!i||f&32)&&ee(a,s,u,u[5],i?$(s,u[5],f,null):te(u[5]),null),W(e,c=Q(o,[f&8&&u[3]])),t&&ie(t.update)&&f&1&&t.update.call(null,u[0])},i(u){i||(M(a,u),i=!0)},o(u){k(a,u),i=!1},d(u){u&&P(e),a&&a.d(u),n[7](null),l=!1,oe(r)}}}function hr(n,e,t){const i=["use","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e;const o=ve(ae());let c;function u(){return c}function f(d){X[d?"unshift":"push"](()=>{c=d,t(1,c)})}return n.$$set=d=>{e=H(H({},e),Ce(d)),t(3,l=Y(e,i)),"use"in d&&t(0,a=d.use),"$$scope"in d&&t(5,s=d.$$scope)},[a,c,o,l,u,s,r,f]}class mr extends pe{constructor(e){super();ge(this,e,hr,dr,me,{use:0,getElement:4})}get getElement(){return this.$$.ctx[4]}}function gr(n){let e,t,i,l,r;const s=n[6].default,a=x(s,n,n[5],null);let o=[n[3]],c={};for(let u=0;u<o.length;u+=1)c=H(c,o[u]);return{c(){e=Z("div"),a&&a.c(),this.h()},l(u){e=J(u,"DIV",{});var f=w(e);a&&a.l(f),f.forEach(P),this.h()},h(){W(e,c)},m(u,f){K(u,e,f),a&&a.m(e,null),n[7](e),i=!0,l||(r=[G(t=de.call(null,e,n[0])),G(n[2].call(null,e))],l=!0)},p(u,[f]){a&&a.p&&(!i||f&32)&&ee(a,s,u,u[5],i?$(s,u[5],f,null):te(u[5]),null),W(e,c=Q(o,[f&8&&u[3]])),t&&ie(t.update)&&f&1&&t.update.call(null,u[0])},i(u){i||(M(a,u),i=!0)},o(u){k(a,u),i=!1},d(u){u&&P(e),a&&a.d(u),n[7](null),l=!1,oe(r)}}}function pr(n,e,t){const i=["use","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e;const o=ve(ae());let c;function u(){return c}function f(d){X[d?"unshift":"push"](()=>{c=d,t(1,c)})}return n.$$set=d=>{e=H(H({},e),Ce(d)),t(3,l=Y(e,i)),"use"in d&&t(0,a=d.use),"$$scope"in d&&t(5,s=d.$$scope)},[a,c,o,l,u,s,r,f]}class gi extends pe{constructor(e){super();ge(this,e,pr,gr,me,{use:0,getElement:4})}get getElement(){return this.$$.ctx[4]}}function _r(n){let e,t,i,l,r;const s=n[6].default,a=x(s,n,n[5],null);let o=[n[3]],c={};for(let u=0;u<o.length;u+=1)c=H(c,o[u]);return{c(){e=Z("h2"),a&&a.c(),this.h()},l(u){e=J(u,"H2",{});var f=w(e);a&&a.l(f),f.forEach(P),this.h()},h(){W(e,c)},m(u,f){K(u,e,f),a&&a.m(e,null),n[7](e),i=!0,l||(r=[G(t=de.call(null,e,n[0])),G(n[2].call(null,e))],l=!0)},p(u,[f]){a&&a.p&&(!i||f&32)&&ee(a,s,u,u[5],i?$(s,u[5],f,null):te(u[5]),null),W(e,c=Q(o,[f&8&&u[3]])),t&&ie(t.update)&&f&1&&t.update.call(null,u[0])},i(u){i||(M(a,u),i=!0)},o(u){k(a,u),i=!1},d(u){u&&P(e),a&&a.d(u),n[7](null),l=!1,oe(r)}}}function br(n,e,t){const i=["use","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e;const o=ve(ae());let c;function u(){return c}function f(d){X[d?"unshift":"push"](()=>{c=d,t(1,c)})}return n.$$set=d=>{e=H(H({},e),Ce(d)),t(3,l=Y(e,i)),"use"in d&&t(0,a=d.use),"$$scope"in d&&t(5,s=d.$$scope)},[a,c,o,l,u,s,r,f]}class vr extends pe{constructor(e){super();ge(this,e,br,_r,me,{use:0,getElement:4})}get getElement(){return this.$$.ctx[4]}}function Ar(n){let e,t,i,l,r;const s=n[6].default,a=x(s,n,n[5],null);let o=[n[3]],c={};for(let u=0;u<o.length;u+=1)c=H(c,o[u]);return{c(){e=Z("h5"),a&&a.c(),this.h()},l(u){e=J(u,"H5",{});var f=w(e);a&&a.l(f),f.forEach(P),this.h()},h(){W(e,c)},m(u,f){K(u,e,f),a&&a.m(e,null),n[7](e),i=!0,l||(r=[G(t=de.call(null,e,n[0])),G(n[2].call(null,e))],l=!0)},p(u,[f]){a&&a.p&&(!i||f&32)&&ee(a,s,u,u[5],i?$(s,u[5],f,null):te(u[5]),null),W(e,c=Q(o,[f&8&&u[3]])),t&&ie(t.update)&&f&1&&t.update.call(null,u[0])},i(u){i||(M(a,u),i=!0)},o(u){k(a,u),i=!1},d(u){u&&P(e),a&&a.d(u),n[7](null),l=!1,oe(r)}}}function Cr(n,e,t){const i=["use","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e;const o=ve(ae());let c;function u(){return c}function f(d){X[d?"unshift":"push"](()=>{c=d,t(1,c)})}return n.$$set=d=>{e=H(H({},e),Ce(d)),t(3,l=Y(e,i)),"use"in d&&t(0,a=d.use),"$$scope"in d&&t(5,s=d.$$scope)},[a,c,o,l,u,s,r,f]}class yr extends pe{constructor(e){super();ge(this,e,Cr,Ar,me,{use:0,getElement:4})}get getElement(){return this.$$.ctx[4]}}function Er(n){let e,t,i,l,r;const s=n[6].default,a=x(s,n,n[5],null);let o=[n[3]],c={};for(let u=0;u<o.length;u+=1)c=H(c,o[u]);return{c(){e=Z("h6"),a&&a.c(),this.h()},l(u){e=J(u,"H6",{});var f=w(e);a&&a.l(f),f.forEach(P),this.h()},h(){W(e,c)},m(u,f){K(u,e,f),a&&a.m(e,null),n[7](e),i=!0,l||(r=[G(t=de.call(null,e,n[0])),G(n[2].call(null,e))],l=!0)},p(u,[f]){a&&a.p&&(!i||f&32)&&ee(a,s,u,u[5],i?$(s,u[5],f,null):te(u[5]),null),W(e,c=Q(o,[f&8&&u[3]])),t&&ie(t.update)&&f&1&&t.update.call(null,u[0])},i(u){i||(M(a,u),i=!0)},o(u){k(a,u),i=!1},d(u){u&&P(e),a&&a.d(u),n[7](null),l=!1,oe(r)}}}function Ir(n,e,t){const i=["use","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e;const o=ve(ae());let c;function u(){return c}function f(d){X[d?"unshift":"push"](()=>{c=d,t(1,c)})}return n.$$set=d=>{e=H(H({},e),Ce(d)),t(3,l=Y(e,i)),"use"in d&&t(0,a=d.use),"$$scope"in d&&t(5,s=d.$$scope)},[a,c,o,l,u,s,r,f]}class Sr extends pe{constructor(e){super();ge(this,e,Ir,Er,me,{use:0,getElement:4})}get getElement(){return this.$$.ctx[4]}}function Lr(n){let e,t,i,l,r;const s=n[6].default,a=x(s,n,n[5],null);let o=[n[3]],c={};for(let u=0;u<o.length;u+=1)c=H(c,o[u]);return{c(){e=Z("span"),a&&a.c(),this.h()},l(u){e=J(u,"SPAN",{});var f=w(e);a&&a.l(f),f.forEach(P),this.h()},h(){W(e,c)},m(u,f){K(u,e,f),a&&a.m(e,null),n[7](e),i=!0,l||(r=[G(t=de.call(null,e,n[0])),G(n[2].call(null,e))],l=!0)},p(u,[f]){a&&a.p&&(!i||f&32)&&ee(a,s,u,u[5],i?$(s,u[5],f,null):te(u[5]),null),W(e,c=Q(o,[f&8&&u[3]])),t&&ie(t.update)&&f&1&&t.update.call(null,u[0])},i(u){i||(M(a,u),i=!0)},o(u){k(a,u),i=!1},d(u){u&&P(e),a&&a.d(u),n[7](null),l=!1,oe(r)}}}function Tr(n,e,t){const i=["use","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e;const o=ve(ae());let c;function u(){return c}function f(d){X[d?"unshift":"push"](()=>{c=d,t(1,c)})}return n.$$set=d=>{e=H(H({},e),Ce(d)),t(3,l=Y(e,i)),"use"in d&&t(0,a=d.use),"$$scope"in d&&t(5,s=d.$$scope)},[a,c,o,l,u,s,r,f]}class pi extends pe{constructor(e){super();ge(this,e,Tr,Lr,me,{use:0,getElement:4})}get getElement(){return this.$$.ctx[4]}}const _i=fr,Rr=mr,nt=gi,Or=vr,Dr=yr,Mr=Sr,bi=pi;function Pr(n){let e,t,i,l,r,s,a,o,c,u,f;const d=n[21].default,m=x(d,n,n[20],null);let v=[{class:i=z({[n[6]]:!0,"mdc-tab-indicator__content":!0,"mdc-tab-indicator__content--underline":n[3]==="underline","mdc-tab-indicator__content--icon":n[3]==="icon"})},{style:l=Object.entries(n[10]).map(pn).join(" ")},{"aria-hidden":r=n[3]==="icon"?"true":void 0},se(n[12],"content$")],p={};for(let b=0;b<v.length;b+=1)p=H(p,v[b]);let g=[{class:a=z(fe({[n[2]]:!0,"mdc-tab-indicator":!0,"mdc-tab-indicator--active":n[0],"mdc-tab-indicator--fade":n[4]==="fade"},n[9]))},Ne(n[12],["content$"])],_={};for(let b=0;b<g.length;b+=1)_=H(_,g[b]);return{c(){e=Z("span"),t=Z("span"),m&&m.c(),this.h()},l(b){e=J(b,"SPAN",{class:!0});var y=w(e);t=J(y,"SPAN",{class:!0,style:!0,"aria-hidden":!0});var I=w(t);m&&m.l(I),I.forEach(P),y.forEach(P),this.h()},h(){W(t,p),W(e,_)},m(b,y){K(b,e,y),ne(e,t),m&&m.m(t,null),n[22](t),n[23](e),c=!0,u||(f=[G(s=de.call(null,t,n[5])),G(o=de.call(null,e,n[1])),G(n[11].call(null,e))],u=!0)},p(b,[y]){m&&m.p&&(!c||y&1048576)&&ee(m,d,b,b[20],c?$(d,b[20],y,null):te(b[20]),null),W(t,p=Q(v,[(!c||y&72&&i!==(i=z({[b[6]]:!0,"mdc-tab-indicator__content":!0,"mdc-tab-indicator__content--underline":b[3]==="underline","mdc-tab-indicator__content--icon":b[3]==="icon"})))&&{class:i},(!c||y&1024&&l!==(l=Object.entries(b[10]).map(pn).join(" ")))&&{style:l},(!c||y&8&&r!==(r=b[3]==="icon"?"true":void 0))&&{"aria-hidden":r},y&4096&&se(b[12],"content$")])),s&&ie(s.update)&&y&32&&s.update.call(null,b[5]),W(e,_=Q(g,[(!c||y&533&&a!==(a=z(fe({[b[2]]:!0,"mdc-tab-indicator":!0,"mdc-tab-indicator--active":b[0],"mdc-tab-indicator--fade":b[4]==="fade"},b[9]))))&&{class:a},y&4096&&Ne(b[12],["content$"])])),o&&ie(o.update)&&y&2&&o.update.call(null,b[1])},i(b){c||(M(m,b),c=!0)},o(b){k(m,b),c=!1},d(b){b&&P(e),m&&m.d(b),n[22](null),n[23](null),u=!1,oe(f)}}}const pn=([n,e])=>`${n}: ${e};`;function Fr(n,e,t){const i=["use","class","active","type","transition","content$use","content$class","activate","deactivate","computeContentClientRect","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{active:u=!1}=e,{type:f="underline"}=e,{transition:d="slide"}=e,{content$use:m=[]}=e,{content$class:v=""}=e,p,g,_,b={},y={},I=[],T=d;Ge(()=>(t(17,g=S()),g.init(),()=>{g.destroy()}));function S(){const j={fade:Jl,slide:un}[d]||un;return new j({addClass:(...E)=>h(()=>C(...E)),removeClass:(...E)=>h(()=>N(...E)),computeContentClientRect:R,setContentStyleProperty:(...E)=>h(()=>F(...E))})}function h(j){I.length?I[I.length-1].push(j):j()}function C(j){b[j]||t(9,b[j]=!0,b)}function N(j){(!(j in b)||b[j])&&t(9,b[j]=!1,b)}function F(j,E){y[j]!=E&&(E===""||E==null?(delete y[j],t(10,y),t(19,T),t(4,d),t(17,g)):t(10,y[j]=E,y))}function O(j){t(0,u=!0),g.activate(j)}function V(){t(0,u=!1),g.deactivate()}function R(){return I.push([]),t(18,I),_.getBoundingClientRect()}function B(){return p}function Se(j){X[j?"unshift":"push"](()=>{_=j,t(8,_)})}function Le(j){X[j?"unshift":"push"](()=>{p=j,t(7,p)})}return n.$$set=j=>{e=H(H({},e),Ce(j)),t(12,l=Y(e,i)),"use"in j&&t(1,o=j.use),"class"in j&&t(2,c=j.class),"active"in j&&t(0,u=j.active),"type"in j&&t(3,f=j.type),"transition"in j&&t(4,d=j.transition),"content$use"in j&&t(5,m=j.content$use),"content$class"in j&&t(6,v=j.content$class),"$$scope"in j&&t(20,s=j.$$scope)},n.$$.update=()=>{n.$$.dirty&655376&&T!==d&&(t(19,T=d),g&&g.destroy(),t(9,b={}),t(10,y={}),t(17,g=S()),g.init()),n.$$.dirty&262144&&I.length&&requestAnimationFrame(()=>{var j;const E=(j=I.shift())!==null&&j!==void 0?j:[];t(18,I);for(const D of E)D()})},[u,o,c,f,d,m,v,p,_,b,y,a,l,O,V,R,B,g,I,T,s,r,Se,Le]}class vi extends pe{constructor(e){super();ge(this,e,Fr,Pr,me,{use:1,class:2,active:0,type:3,transition:4,content$use:5,content$class:6,activate:13,deactivate:14,computeContentClientRect:15,getElement:16})}get activate(){return this.$$.ctx[13]}get deactivate(){return this.$$.ctx[14]}get computeContentClientRect(){return this.$$.ctx[15]}get getElement(){return this.$$.ctx[16]}}const Hr=n=>({}),_n=n=>({}),kr=n=>({}),bn=n=>({});function vn(n){let e,t;const i=[{active:n[18]},se(n[24],"tabIndicator$")];let l={$$slots:{default:[Vr]},$$scope:{ctx:n}};for(let r=0;r<i.length;r+=1)l=H(l,i[r]);return e=new vi({props:l}),n[31](e),{c(){Ie(e.$$.fragment)},l(r){Oe(e.$$.fragment,r)},m(r,s){ye(e,r,s),t=!0},p(r,s){const a=s[0]&17039360?Q(i,[s[0]&262144&&{active:r[18]},s[0]&16777216&&Fe(se(r[24],"tabIndicator$"))]):{};s[1]&32&&(a.$$scope={dirty:s,ctx:r}),e.$set(a)},i(r){t||(M(e.$$.fragment,r),t=!0)},o(r){k(e.$$.fragment,r),t=!1},d(r){n[31](null),Ee(e,r)}}}function Vr(n){let e;const t=n[30]["tab-indicator"],i=x(t,n,n[36],bn);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r[1]&32)&&ee(i,t,l,l[36],e?$(t,l[36],r,kr):te(l[36]),bn)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function An(n){let e,t;const i=[{active:n[18]},se(n[24],"tabIndicator$")];let l={$$slots:{default:[Ur]},$$scope:{ctx:n}};for(let r=0;r<i.length;r+=1)l=H(l,i[r]);return e=new vi({props:l}),n[33](e),{c(){Ie(e.$$.fragment)},l(r){Oe(e.$$.fragment,r)},m(r,s){ye(e,r,s),t=!0},p(r,s){const a=s[0]&17039360?Q(i,[s[0]&262144&&{active:r[18]},s[0]&16777216&&Fe(se(r[24],"tabIndicator$"))]):{};s[1]&32&&(a.$$scope={dirty:s,ctx:r}),e.$set(a)},i(r){t||(M(e.$$.fragment,r),t=!0)},o(r){k(e.$$.fragment,r),t=!1},d(r){n[33](null),Ee(e,r)}}}function Ur(n){let e;const t=n[30]["tab-indicator"],i=x(t,n,n[36],_n);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r[1]&32)&&ee(i,t,l,l[36],e?$(t,l[36],r,Hr):te(l[36]),_n)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function jr(n){let e,t,i,l,r,s,a,o,c,u;const f=n[30].default,d=x(f,n,n[36],null);let m=n[6]&&vn(n),v=[{class:i=z({[n[9]]:!0,"mdc-tab__content":!0})},se(n[24],"content$")],p={};for(let _=0;_<v.length;_+=1)p=H(p,v[_]);let g=!n[6]&&An(n);return{c(){e=Z("span"),d&&d.c(),t=_e(),m&&m.c(),r=_e(),g&&g.c(),s=_e(),a=Z("span"),this.h()},l(_){e=J(_,"SPAN",{class:!0});var b=w(e);d&&d.l(b),t=be(b),m&&m.l(b),b.forEach(P),r=be(_),g&&g.l(_),s=be(_),a=J(_,"SPAN",{class:!0}),w(a).forEach(P),this.h()},h(){W(e,p),q(a,"class","mdc-tab__ripple")},m(_,b){K(_,e,b),d&&d.m(e,null),ne(e,t),m&&m.m(e,null),n[32](e),K(_,r,b),g&&g.m(_,b),K(_,s,b),K(_,a,b),o=!0,c||(u=G(l=de.call(null,e,n[8])),c=!0)},p(_,b){d&&d.p&&(!o||b[1]&32)&&ee(d,f,_,_[36],o?$(f,_[36],b,null):te(_[36]),null),_[6]?m?(m.p(_,b),b[0]&64&&M(m,1)):(m=vn(_),m.c(),M(m,1),m.m(e,null)):m&&(De(),k(m,1,1,()=>{m=null}),Me()),W(e,p=Q(v,[(!o||b[0]&512&&i!==(i=z({[_[9]]:!0,"mdc-tab__content":!0})))&&{class:i},b[0]&16777216&&se(_[24],"content$")])),l&&ie(l.update)&&b[0]&256&&l.update.call(null,_[8]),_[6]?g&&(De(),k(g,1,1,()=>{g=null}),Me()):g?(g.p(_,b),b[0]&64&&M(g,1)):(g=An(_),g.c(),M(g,1),g.m(s.parentNode,s))},i(_){o||(M(d,_),M(m),M(g),o=!0)},o(_){k(d,_),k(m),k(g),o=!1},d(_){_&&P(e),d&&d.d(_),m&&m.d(),n[32](null),_&&P(r),g&&g.d(_),_&&P(s),_&&P(a),c=!1,u()}}}function Nr(n){let e,t,i;const l=[{use:[[Pt,{ripple:n[3],unbounded:!1,addClass:n[21],removeClass:n[22],addStyle:n[23]}],n[20],...n[0]]},{class:z(fe({[n[1]]:!0,"mdc-tab":!0,"mdc-tab--active":n[18],"mdc-tab--stacked":n[4],"mdc-tab--min-width":n[5]},n[15]))},{style:Object.entries(n[16]).map(Cn).concat([n[2]]).join(" ")},{role:"tab"},{"aria-selected":n[18]?"true":"false"},{tabindex:n[18]||n[19]?"0":"-1"},{href:n[7]},n[17],Ne(n[24],["content$","tabIndicator$"])];var r=n[10];function s(a){let o={$$slots:{default:[jr]},$$scope:{ctx:a}};for(let c=0;c<l.length;c+=1)o=H(o,l[c]);return{props:o}}return r&&(e=new r(s(n)),n[34](e),e.$on("click",n[35])),{c(){e&&Ie(e.$$.fragment),t=Pe()},l(a){e&&Oe(e.$$.fragment,a),t=Pe()},m(a,o){e&&ye(e,a,o),K(a,t,o),i=!0},p(a,o){const c=o[0]&33521855?Q(l,[o[0]&15728649&&{use:[[Pt,{ripple:a[3],unbounded:!1,addClass:a[21],removeClass:a[22],addStyle:a[23]}],a[20],...a[0]]},o[0]&294962&&{class:z(fe({[a[1]]:!0,"mdc-tab":!0,"mdc-tab--active":a[18],"mdc-tab--stacked":a[4],"mdc-tab--min-width":a[5]},a[15]))},o[0]&65540&&{style:Object.entries(a[16]).map(Cn).concat([a[2]]).join(" ")},l[3],o[0]&262144&&{"aria-selected":a[18]?"true":"false"},o[0]&786432&&{tabindex:a[18]||a[19]?"0":"-1"},o[0]&128&&{href:a[7]},o[0]&131072&&Fe(a[17]),o[0]&16777216&&Fe(Ne(a[24],["content$","tabIndicator$"]))]):{};if(o[0]&17064768|o[1]&32&&(c.$$scope={dirty:o,ctx:a}),r!==(r=a[10])){if(e){De();const u=e;k(u.$$.fragment,1,0,()=>{Ee(u,1)}),Me()}r?(e=new r(s(a)),a[34](e),e.$on("click",a[35]),Ie(e.$$.fragment),M(e.$$.fragment,1),ye(e,t.parentNode,t)):e=null}else r&&e.$set(c)},i(a){i||(e&&M(e.$$.fragment,a),i=!0)},o(a){e&&k(e.$$.fragment,a),i=!1},d(a){n[34](null),a&&P(t),e&&Ee(e,a)}}}const Cn=([n,e])=>`${n}: ${e};`;function Br(n,e,t){const i=["use","class","style","tab","ripple","stacked","minWidth","indicatorSpanOnlyContent","href","content$use","content$class","component","activate","deactivate","focus","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{style:u=""}=e,{tab:f}=e,{ripple:d=!0}=e,{stacked:m=!1}=e,{minWidth:v=!1}=e,{indicatorSpanOnlyContent:p=!1}=e,{href:g=void 0}=e,{content$use:_=[]}=e,{content$class:b=""}=e,y,I,T,S,h={},C={},N={},F=et("SMUI:tab:focusOnActivate"),O=f===et("SMUI:tab:initialActive"),V=!1,{component:R=g==null?Rr:_i}=e;if(mt("SMUI:label:context","tab"),mt("SMUI:icon:context","tab"),!f)throw new Error("The tab property is required! It should be passed down from the TabBar to the Tab.");Ge(()=>{t(11,I=new xl({setAttr:E,addClass:Se,removeClass:Le,hasClass:B,activateIndicator:le=>S.activate(le),deactivateIndicator:()=>S.deactivate(),notifyInteracted:()=>We(ce(),"SMUITab:interacted",{tabId:f},void 0,!0),getOffsetLeft:()=>ce().offsetLeft,getOffsetWidth:()=>ce().offsetWidth,getContentOffsetLeft:()=>T.offsetLeft,getContentOffsetWidth:()=>T.offsetWidth,focus:ue}));const L={tabId:f,get element(){return ce()},get active(){return O},forceAccessible(le){t(19,V=le)},computeIndicatorClientRect:()=>S.computeContentClientRect(),computeDimensions:()=>I.computeDimensions(),focus:ue,activate:D,deactivate:U};return We(ce(),"SMUITab:mount",L),I.init(),()=>{We(ce(),"SMUITab:unmount",L),I.destroy()}});function B(L){return L in h?h[L]:ce().classList.contains(L)}function Se(L){h[L]||t(15,h[L]=!0,h)}function Le(L){(!(L in h)||h[L])&&t(15,h[L]=!1,h)}function j(L,le){C[L]!=le&&(le===""||le==null?(delete C[L],t(16,C)):t(16,C[L]=le,C))}function E(L,le){N[L]!==le&&t(17,N[L]=le,N)}function D(L,le){t(18,O=!0),le&&I.setFocusOnActivate(!1),I.activate(L),le&&I.setFocusOnActivate(F)}function U(){t(18,O=!1),I.deactivate()}function ue(){ce().focus()}function ce(){return y.getElement()}function Ve(L){X[L?"unshift":"push"](()=>{S=L,t(14,S)})}function Ue(L){X[L?"unshift":"push"](()=>{T=L,t(13,T)})}function he(L){X[L?"unshift":"push"](()=>{S=L,t(14,S)})}function je(L){X[L?"unshift":"push"](()=>{y=L,t(12,y)})}const Ke=()=>I&&I.handleClick();return n.$$set=L=>{e=H(H({},e),Ce(L)),t(24,l=Y(e,i)),"use"in L&&t(0,o=L.use),"class"in L&&t(1,c=L.class),"style"in L&&t(2,u=L.style),"tab"in L&&t(25,f=L.tab),"ripple"in L&&t(3,d=L.ripple),"stacked"in L&&t(4,m=L.stacked),"minWidth"in L&&t(5,v=L.minWidth),"indicatorSpanOnlyContent"in L&&t(6,p=L.indicatorSpanOnlyContent),"href"in L&&t(7,g=L.href),"content$use"in L&&t(8,_=L.content$use),"content$class"in L&&t(9,b=L.content$class),"component"in L&&t(10,R=L.component),"$$scope"in L&&t(36,s=L.$$scope)},n.$$.update=()=>{n.$$.dirty[0]&2048&&I&&I.setFocusOnActivate(F)},[o,c,u,d,m,v,p,g,_,b,R,I,y,T,S,h,C,N,O,V,a,Se,Le,j,l,f,D,U,ue,ce,r,Ve,Ue,he,je,Ke,s]}class Rs extends pe{constructor(e){super();ge(this,e,Br,Nr,me,{use:0,class:1,style:2,tab:25,ripple:3,stacked:4,minWidth:5,indicatorSpanOnlyContent:6,href:7,content$use:8,content$class:9,component:10,activate:26,deactivate:27,focus:28,getElement:29},null,[-1,-1])}get activate(){return this.$$.ctx[26]}get deactivate(){return this.$$.ctx[27]}get focus(){return this.$$.ctx[28]}get getElement(){return this.$$.ctx[29]}}function Wr(n){let e;const t=n[9].default,i=x(t,n,n[11],null);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r&2048)&&ee(i,t,l,l[11],e?$(t,l[11],r,null):te(l[11]),null)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function Gr(n){let e,t,i;const l=[{use:[n[4],...n[0]]},{class:z({[n[1]]:!0,"mdc-button__label":n[5]==="button","mdc-fab__label":n[5]==="fab","mdc-tab__text-label":n[5]==="tab","mdc-image-list__label":n[5]==="image-list","mdc-snackbar__label":n[5]==="snackbar","mdc-banner__text":n[5]==="banner","mdc-segmented-button__label":n[5]==="segmented-button","mdc-data-table__pagination-rows-per-page-label":n[5]==="data-table:pagination","mdc-data-table__header-cell-label":n[5]==="data-table:sortable-header-cell"})},n[5]==="snackbar"?{"aria-atomic":"false"}:{},{tabindex:n[6]},n[7]];var r=n[2];function s(a){let o={$$slots:{default:[Wr]},$$scope:{ctx:a}};for(let c=0;c<l.length;c+=1)o=H(o,l[c]);return{props:o}}return r&&(e=new r(s(n)),n[10](e)),{c(){e&&Ie(e.$$.fragment),t=Pe()},l(a){e&&Oe(e.$$.fragment,a),t=Pe()},m(a,o){e&&ye(e,a,o),K(a,t,o),i=!0},p(a,[o]){const c=o&243?Q(l,[o&17&&{use:[a[4],...a[0]]},o&34&&{class:z({[a[1]]:!0,"mdc-button__label":a[5]==="button","mdc-fab__label":a[5]==="fab","mdc-tab__text-label":a[5]==="tab","mdc-image-list__label":a[5]==="image-list","mdc-snackbar__label":a[5]==="snackbar","mdc-banner__text":a[5]==="banner","mdc-segmented-button__label":a[5]==="segmented-button","mdc-data-table__pagination-rows-per-page-label":a[5]==="data-table:pagination","mdc-data-table__header-cell-label":a[5]==="data-table:sortable-header-cell"})},o&32&&Fe(a[5]==="snackbar"?{"aria-atomic":"false"}:{}),o&64&&{tabindex:a[6]},o&128&&Fe(a[7])]):{};if(o&2048&&(c.$$scope={dirty:o,ctx:a}),r!==(r=a[2])){if(e){De();const u=e;k(u.$$.fragment,1,0,()=>{Ee(u,1)}),Me()}r?(e=new r(s(a)),a[10](e),Ie(e.$$.fragment),M(e.$$.fragment,1),ye(e,t.parentNode,t)):e=null}else r&&e.$set(c)},i(a){i||(e&&M(e.$$.fragment,a),i=!0)},o(a){e&&k(e.$$.fragment,a),i=!1},d(a){n[10](null),a&&P(t),e&&Ee(e,a)}}}function qr(n,e,t){const i=["use","class","component","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,u,{component:f=pi}=e;const d=et("SMUI:label:context"),m=et("SMUI:label:tabindex");function v(){return u.getElement()}function p(g){X[g?"unshift":"push"](()=>{u=g,t(3,u)})}return n.$$set=g=>{e=H(H({},e),Ce(g)),t(7,l=Y(e,i)),"use"in g&&t(0,o=g.use),"class"in g&&t(1,c=g.class),"component"in g&&t(2,f=g.component),"$$scope"in g&&t(11,s=g.$$scope)},[o,c,f,u,a,d,m,l,v,r,p,s]}class zr extends pe{constructor(e){super();ge(this,e,qr,Gr,me,{use:0,class:1,component:2,getElement:8})}get getElement(){return this.$$.ctx[8]}}function Kr(n){let e;const t=n[4].default,i=x(t,n,n[3],null);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,[r]){i&&i.p&&(!e||r&8)&&ee(i,t,l,l[3],e?$(t,l[3],r,null):te(l[3]),null)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function Xr(n,e,t){let i,{$$slots:l={},$$scope:r}=e,{key:s}=e,{value:a}=e;const o=Pl(a);return pl(n,o,c=>t(5,i=c)),mt(s,o),Xt(()=>{o.set(void 0)}),n.$$set=c=>{"key"in c&&t(1,s=c.key),"value"in c&&t(2,a=c.value),"$$scope"in c&&t(3,r=c.$$scope)},n.$$.update=()=>{n.$$.dirty&4&&bl(o,i=a,i)},[o,s,a,r,l]}class Ft extends pe{constructor(e){super();ge(this,e,Xr,Kr,me,{key:1,value:2})}}const Os=zr;/**
+ */
+var ACCEPTABLE_KEYS = /* @__PURE__ */ new Set();
+ACCEPTABLE_KEYS.add(strings$4.ARROW_LEFT_KEY);
+ACCEPTABLE_KEYS.add(strings$4.ARROW_RIGHT_KEY);
+ACCEPTABLE_KEYS.add(strings$4.END_KEY);
+ACCEPTABLE_KEYS.add(strings$4.HOME_KEY);
+ACCEPTABLE_KEYS.add(strings$4.ENTER_KEY);
+ACCEPTABLE_KEYS.add(strings$4.SPACE_KEY);
+var KEYCODE_MAP = /* @__PURE__ */ new Map();
+KEYCODE_MAP.set(numbers$2.ARROW_LEFT_KEYCODE, strings$4.ARROW_LEFT_KEY);
+KEYCODE_MAP.set(numbers$2.ARROW_RIGHT_KEYCODE, strings$4.ARROW_RIGHT_KEY);
+KEYCODE_MAP.set(numbers$2.END_KEYCODE, strings$4.END_KEY);
+KEYCODE_MAP.set(numbers$2.HOME_KEYCODE, strings$4.HOME_KEY);
+KEYCODE_MAP.set(numbers$2.ENTER_KEYCODE, strings$4.ENTER_KEY);
+KEYCODE_MAP.set(numbers$2.SPACE_KEYCODE, strings$4.SPACE_KEY);
+var MDCTabBarFoundation = function(_super) {
+  __extends(MDCTabBarFoundation2, _super);
+  function MDCTabBarFoundation2(adapter) {
+    var _this = _super.call(this, __assign(__assign({}, MDCTabBarFoundation2.defaultAdapter), adapter)) || this;
+    _this.useAutomaticActivation = false;
+    return _this;
+  }
+  Object.defineProperty(MDCTabBarFoundation2, "strings", {
+    get: function() {
+      return strings$4;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabBarFoundation2, "numbers", {
+    get: function() {
+      return numbers$2;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTabBarFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        scrollTo: function() {
+          return void 0;
+        },
+        incrementScroll: function() {
+          return void 0;
+        },
+        getScrollPosition: function() {
+          return 0;
+        },
+        getScrollContentWidth: function() {
+          return 0;
+        },
+        getOffsetWidth: function() {
+          return 0;
+        },
+        isRTL: function() {
+          return false;
+        },
+        setActiveTab: function() {
+          return void 0;
+        },
+        activateTabAtIndex: function() {
+          return void 0;
+        },
+        deactivateTabAtIndex: function() {
+          return void 0;
+        },
+        focusTabAtIndex: function() {
+          return void 0;
+        },
+        getTabIndicatorClientRectAtIndex: function() {
+          return { top: 0, right: 0, bottom: 0, left: 0, width: 0, height: 0 };
+        },
+        getTabDimensionsAtIndex: function() {
+          return { rootLeft: 0, rootRight: 0, contentLeft: 0, contentRight: 0 };
+        },
+        getPreviousActiveTabIndex: function() {
+          return -1;
+        },
+        getFocusedTabIndex: function() {
+          return -1;
+        },
+        getIndexOfTabById: function() {
+          return -1;
+        },
+        getTabListLength: function() {
+          return 0;
+        },
+        notifyTabActivated: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCTabBarFoundation2.prototype.setUseAutomaticActivation = function(useAutomaticActivation) {
+    this.useAutomaticActivation = useAutomaticActivation;
+  };
+  MDCTabBarFoundation2.prototype.activateTab = function(index) {
+    var previousActiveIndex = this.adapter.getPreviousActiveTabIndex();
+    if (!this.indexIsInRange(index) || index === previousActiveIndex) {
+      return;
+    }
+    var previousClientRect;
+    if (previousActiveIndex !== -1) {
+      this.adapter.deactivateTabAtIndex(previousActiveIndex);
+      previousClientRect = this.adapter.getTabIndicatorClientRectAtIndex(previousActiveIndex);
+    }
+    this.adapter.activateTabAtIndex(index, previousClientRect);
+    this.scrollIntoView(index);
+    this.adapter.notifyTabActivated(index);
+  };
+  MDCTabBarFoundation2.prototype.handleKeyDown = function(evt) {
+    var key = this.getKeyFromEvent(evt);
+    if (key === void 0) {
+      return;
+    }
+    if (!this.isActivationKey(key)) {
+      evt.preventDefault();
+    }
+    if (this.useAutomaticActivation) {
+      if (this.isActivationKey(key)) {
+        return;
+      }
+      var index = this.determineTargetFromKey(this.adapter.getPreviousActiveTabIndex(), key);
+      this.adapter.setActiveTab(index);
+      this.scrollIntoView(index);
+    } else {
+      var focusedTabIndex = this.adapter.getFocusedTabIndex();
+      if (this.isActivationKey(key)) {
+        this.adapter.setActiveTab(focusedTabIndex);
+      } else {
+        var index = this.determineTargetFromKey(focusedTabIndex, key);
+        this.adapter.focusTabAtIndex(index);
+        this.scrollIntoView(index);
+      }
+    }
+  };
+  MDCTabBarFoundation2.prototype.handleTabInteraction = function(evt) {
+    this.adapter.setActiveTab(this.adapter.getIndexOfTabById(evt.detail.tabId));
+  };
+  MDCTabBarFoundation2.prototype.scrollIntoView = function(index) {
+    if (!this.indexIsInRange(index)) {
+      return;
+    }
+    if (index === 0) {
+      this.adapter.scrollTo(0);
+      return;
+    }
+    if (index === this.adapter.getTabListLength() - 1) {
+      this.adapter.scrollTo(this.adapter.getScrollContentWidth());
+      return;
+    }
+    if (this.isRTL()) {
+      this.scrollIntoViewImplRTL(index);
+      return;
+    }
+    this.scrollIntoViewImpl(index);
+  };
+  MDCTabBarFoundation2.prototype.determineTargetFromKey = function(origin, key) {
+    var isRTL = this.isRTL();
+    var maxIndex = this.adapter.getTabListLength() - 1;
+    var shouldGoToEnd = key === strings$4.END_KEY;
+    var shouldDecrement = key === strings$4.ARROW_LEFT_KEY && !isRTL || key === strings$4.ARROW_RIGHT_KEY && isRTL;
+    var shouldIncrement = key === strings$4.ARROW_RIGHT_KEY && !isRTL || key === strings$4.ARROW_LEFT_KEY && isRTL;
+    var index = origin;
+    if (shouldGoToEnd) {
+      index = maxIndex;
+    } else if (shouldDecrement) {
+      index -= 1;
+    } else if (shouldIncrement) {
+      index += 1;
+    } else {
+      index = 0;
+    }
+    if (index < 0) {
+      index = maxIndex;
+    } else if (index > maxIndex) {
+      index = 0;
+    }
+    return index;
+  };
+  MDCTabBarFoundation2.prototype.calculateScrollIncrement = function(index, nextIndex, scrollPosition, barWidth) {
+    var nextTabDimensions = this.adapter.getTabDimensionsAtIndex(nextIndex);
+    var relativeContentLeft = nextTabDimensions.contentLeft - scrollPosition - barWidth;
+    var relativeContentRight = nextTabDimensions.contentRight - scrollPosition;
+    var leftIncrement = relativeContentRight - numbers$2.EXTRA_SCROLL_AMOUNT;
+    var rightIncrement = relativeContentLeft + numbers$2.EXTRA_SCROLL_AMOUNT;
+    if (nextIndex < index) {
+      return Math.min(leftIncrement, 0);
+    }
+    return Math.max(rightIncrement, 0);
+  };
+  MDCTabBarFoundation2.prototype.calculateScrollIncrementRTL = function(index, nextIndex, scrollPosition, barWidth, scrollContentWidth) {
+    var nextTabDimensions = this.adapter.getTabDimensionsAtIndex(nextIndex);
+    var relativeContentLeft = scrollContentWidth - nextTabDimensions.contentLeft - scrollPosition;
+    var relativeContentRight = scrollContentWidth - nextTabDimensions.contentRight - scrollPosition - barWidth;
+    var leftIncrement = relativeContentRight + numbers$2.EXTRA_SCROLL_AMOUNT;
+    var rightIncrement = relativeContentLeft - numbers$2.EXTRA_SCROLL_AMOUNT;
+    if (nextIndex > index) {
+      return Math.max(leftIncrement, 0);
+    }
+    return Math.min(rightIncrement, 0);
+  };
+  MDCTabBarFoundation2.prototype.findAdjacentTabIndexClosestToEdge = function(index, tabDimensions, scrollPosition, barWidth) {
+    var relativeRootLeft = tabDimensions.rootLeft - scrollPosition;
+    var relativeRootRight = tabDimensions.rootRight - scrollPosition - barWidth;
+    var relativeRootDelta = relativeRootLeft + relativeRootRight;
+    var leftEdgeIsCloser = relativeRootLeft < 0 || relativeRootDelta < 0;
+    var rightEdgeIsCloser = relativeRootRight > 0 || relativeRootDelta > 0;
+    if (leftEdgeIsCloser) {
+      return index - 1;
+    }
+    if (rightEdgeIsCloser) {
+      return index + 1;
+    }
+    return -1;
+  };
+  MDCTabBarFoundation2.prototype.findAdjacentTabIndexClosestToEdgeRTL = function(index, tabDimensions, scrollPosition, barWidth, scrollContentWidth) {
+    var rootLeft = scrollContentWidth - tabDimensions.rootLeft - barWidth - scrollPosition;
+    var rootRight = scrollContentWidth - tabDimensions.rootRight - scrollPosition;
+    var rootDelta = rootLeft + rootRight;
+    var leftEdgeIsCloser = rootLeft > 0 || rootDelta > 0;
+    var rightEdgeIsCloser = rootRight < 0 || rootDelta < 0;
+    if (leftEdgeIsCloser) {
+      return index + 1;
+    }
+    if (rightEdgeIsCloser) {
+      return index - 1;
+    }
+    return -1;
+  };
+  MDCTabBarFoundation2.prototype.getKeyFromEvent = function(evt) {
+    if (ACCEPTABLE_KEYS.has(evt.key)) {
+      return evt.key;
+    }
+    return KEYCODE_MAP.get(evt.keyCode);
+  };
+  MDCTabBarFoundation2.prototype.isActivationKey = function(key) {
+    return key === strings$4.SPACE_KEY || key === strings$4.ENTER_KEY;
+  };
+  MDCTabBarFoundation2.prototype.indexIsInRange = function(index) {
+    return index >= 0 && index < this.adapter.getTabListLength();
+  };
+  MDCTabBarFoundation2.prototype.isRTL = function() {
+    return this.adapter.isRTL();
+  };
+  MDCTabBarFoundation2.prototype.scrollIntoViewImpl = function(index) {
+    var scrollPosition = this.adapter.getScrollPosition();
+    var barWidth = this.adapter.getOffsetWidth();
+    var tabDimensions = this.adapter.getTabDimensionsAtIndex(index);
+    var nextIndex = this.findAdjacentTabIndexClosestToEdge(index, tabDimensions, scrollPosition, barWidth);
+    if (!this.indexIsInRange(nextIndex)) {
+      return;
+    }
+    var scrollIncrement = this.calculateScrollIncrement(index, nextIndex, scrollPosition, barWidth);
+    this.adapter.incrementScroll(scrollIncrement);
+  };
+  MDCTabBarFoundation2.prototype.scrollIntoViewImplRTL = function(index) {
+    var scrollPosition = this.adapter.getScrollPosition();
+    var barWidth = this.adapter.getOffsetWidth();
+    var tabDimensions = this.adapter.getTabDimensionsAtIndex(index);
+    var scrollWidth = this.adapter.getScrollContentWidth();
+    var nextIndex = this.findAdjacentTabIndexClosestToEdgeRTL(index, tabDimensions, scrollPosition, barWidth, scrollWidth);
+    if (!this.indexIsInRange(nextIndex)) {
+      return;
+    }
+    var scrollIncrement = this.calculateScrollIncrementRTL(index, nextIndex, scrollPosition, barWidth, scrollWidth);
+    this.adapter.incrementScroll(scrollIncrement);
+  };
+  return MDCTabBarFoundation2;
+}(MDCFoundation);
+function classMap(classObj) {
+  return Object.entries(classObj).filter(([name, value]) => name !== "" && value).map(([name]) => name).join(" ");
+}
+function dispatch(element2, eventType, detail, eventInit = { bubbles: true }, duplicateEventForMDC = false) {
+  if (typeof Event !== "undefined" && element2) {
+    const event = new CustomEvent(eventType, Object.assign(Object.assign({}, eventInit), { detail }));
+    element2 === null || element2 === void 0 ? void 0 : element2.dispatchEvent(event);
+    if (duplicateEventForMDC && eventType.startsWith("SMUI")) {
+      const duplicateEvent = new CustomEvent(eventType.replace(/^SMUI/g, () => "MDC"), Object.assign(Object.assign({}, eventInit), { detail }));
+      element2 === null || element2 === void 0 ? void 0 : element2.dispatchEvent(duplicateEvent);
+      if (duplicateEvent.defaultPrevented) {
+        event.preventDefault();
+      }
+    }
+    return event;
+  }
+}
+function exclude(obj, keys) {
+  let names = Object.getOwnPropertyNames(obj);
+  const newObj = {};
+  for (let i = 0; i < names.length; i++) {
+    const name = names[i];
+    const cashIndex = name.indexOf("$");
+    if (cashIndex !== -1 && keys.indexOf(name.substring(0, cashIndex + 1)) !== -1) {
+      continue;
+    }
+    if (keys.indexOf(name) !== -1) {
+      continue;
+    }
+    newObj[name] = obj[name];
+  }
+  return newObj;
+}
+const oldModifierRegex = /^[a-z]+(?::(?:preventDefault|stopPropagation|passive|nonpassive|capture|once|self))+$/;
+const newModifierRegex = /^[^$]+(?:\$(?:preventDefault|stopPropagation|passive|nonpassive|capture|once|self))+$/;
+function forwardEventsBuilder(component) {
+  let $on;
+  let events2 = [];
+  component.$on = (fullEventType, callback) => {
+    let eventType = fullEventType;
+    let destructor = () => {
+    };
+    if ($on) {
+      destructor = $on(eventType, callback);
+    } else {
+      events2.push([eventType, callback]);
+    }
+    const oldModifierMatch = eventType.match(oldModifierRegex);
+    if (oldModifierMatch && console) {
+      console.warn('Event modifiers in SMUI now use "$" instead of ":", so that all events can be bound with modifiers. Please update your event binding: ', eventType);
+    }
+    return () => {
+      destructor();
+    };
+  };
+  function forward(e) {
+    bubble(component, e);
+  }
+  return (node) => {
+    const destructors = [];
+    const forwardDestructors = {};
+    $on = (fullEventType, callback) => {
+      let eventType = fullEventType;
+      let handler = callback;
+      let options = false;
+      const oldModifierMatch = eventType.match(oldModifierRegex);
+      const newModifierMatch = eventType.match(newModifierRegex);
+      const modifierMatch = oldModifierMatch || newModifierMatch;
+      if (eventType.match(/^SMUI:\w+:/)) {
+        const newEventTypeParts = eventType.split(":");
+        let newEventType = "";
+        for (let i = 0; i < newEventTypeParts.length; i++) {
+          newEventType += i === newEventTypeParts.length - 1 ? ":" + newEventTypeParts[i] : newEventTypeParts[i].split("-").map((value) => value.slice(0, 1).toUpperCase() + value.slice(1)).join("");
+        }
+        console.warn(`The event ${eventType.split("$")[0]} has been renamed to ${newEventType.split("$")[0]}.`);
+        eventType = newEventType;
+      }
+      if (modifierMatch) {
+        const parts = eventType.split(oldModifierMatch ? ":" : "$");
+        eventType = parts[0];
+        const eventOptions = Object.fromEntries(parts.slice(1).map((mod) => [mod, true]));
+        if (eventOptions.passive) {
+          options = options || {};
+          options.passive = true;
+        }
+        if (eventOptions.nonpassive) {
+          options = options || {};
+          options.passive = false;
+        }
+        if (eventOptions.capture) {
+          options = options || {};
+          options.capture = true;
+        }
+        if (eventOptions.once) {
+          options = options || {};
+          options.once = true;
+        }
+        if (eventOptions.preventDefault) {
+          handler = prevent_default(handler);
+        }
+        if (eventOptions.stopPropagation) {
+          handler = stop_propagation(handler);
+        }
+      }
+      const off = listen(node, eventType, handler, options);
+      const destructor = () => {
+        off();
+        const idx = destructors.indexOf(destructor);
+        if (idx > -1) {
+          destructors.splice(idx, 1);
+        }
+      };
+      destructors.push(destructor);
+      if (!(eventType in forwardDestructors)) {
+        forwardDestructors[eventType] = listen(node, eventType, forward);
+      }
+      return destructor;
+    };
+    for (let i = 0; i < events2.length; i++) {
+      $on(events2[i][0], events2[i][1]);
+    }
+    return {
+      destroy: () => {
+        for (let i = 0; i < destructors.length; i++) {
+          destructors[i]();
+        }
+        for (let entry of Object.entries(forwardDestructors)) {
+          entry[1]();
+        }
+      }
+    };
+  };
+}
+function prefixFilter(obj, prefix) {
+  let names = Object.getOwnPropertyNames(obj);
+  const newObj = {};
+  for (let i = 0; i < names.length; i++) {
+    const name = names[i];
+    if (name.substring(0, prefix.length) === prefix) {
+      newObj[name.substring(prefix.length)] = obj[name];
+    }
+  }
+  return newObj;
+}
+function useActions(node, actions) {
+  let actionReturns = [];
+  if (actions) {
+    for (let i = 0; i < actions.length; i++) {
+      const actionEntry = actions[i];
+      const action = Array.isArray(actionEntry) ? actionEntry[0] : actionEntry;
+      if (Array.isArray(actionEntry) && actionEntry.length > 1) {
+        actionReturns.push(action(node, actionEntry[1]));
+      } else {
+        actionReturns.push(action(node));
+      }
+    }
+  }
+  return {
+    update(actions2) {
+      if ((actions2 && actions2.length || 0) != actionReturns.length) {
+        throw new Error("You must not change the length of an actions array.");
+      }
+      if (actions2) {
+        for (let i = 0; i < actions2.length; i++) {
+          const returnEntry = actionReturns[i];
+          if (returnEntry && returnEntry.update) {
+            const actionEntry = actions2[i];
+            if (Array.isArray(actionEntry) && actionEntry.length > 1) {
+              returnEntry.update(actionEntry[1]);
+            } else {
+              returnEntry.update();
+            }
+          }
+        }
+      }
+    },
+    destroy() {
+      for (let i = 0; i < actionReturns.length; i++) {
+        const returnEntry = actionReturns[i];
+        if (returnEntry && returnEntry.destroy) {
+          returnEntry.destroy();
+        }
+      }
+    }
+  };
+}
+function create_fragment$q(ctx) {
+  let div2;
+  let div1;
+  let div0;
+  let div0_class_value;
+  let div0_style_value;
+  let useActions_action;
+  let div1_class_value;
+  let div1_style_value;
+  let useActions_action_1;
+  let div2_class_value;
+  let useActions_action_2;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[23].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[22], null);
+  let div0_levels = [
+    {
+      class: div0_class_value = classMap({
+        [ctx[6]]: true,
+        "mdc-tab-scroller__scroll-content": true
+      })
+    },
+    {
+      style: div0_style_value = Object.entries(ctx[14]).map(func$7).join(" ")
+    },
+    prefixFilter(ctx[16], "scrollContent$")
+  ];
+  let div0_data = {};
+  for (let i = 0; i < div0_levels.length; i += 1) {
+    div0_data = assign(div0_data, div0_levels[i]);
+  }
+  let div1_levels = [
+    {
+      class: div1_class_value = classMap(__spreadValues({
+        [ctx[4]]: true,
+        "mdc-tab-scroller__scroll-area": true
+      }, ctx[12]))
+    },
+    {
+      style: div1_style_value = Object.entries(ctx[13]).map(func_1$2).join(" ")
+    },
+    prefixFilter(ctx[16], "scrollArea$")
+  ];
+  let div1_data = {};
+  for (let i = 0; i < div1_levels.length; i += 1) {
+    div1_data = assign(div1_data, div1_levels[i]);
+  }
+  let div2_levels = [
+    {
+      class: div2_class_value = classMap(__spreadValues({
+        [ctx[1]]: true,
+        "mdc-tab-scroller": true,
+        "mdc-tab-scroller--align-start": ctx[2] === "start",
+        "mdc-tab-scroller--align-end": ctx[2] === "end",
+        "mdc-tab-scroller--align-center": ctx[2] === "center"
+      }, ctx[11]))
+    },
+    exclude(ctx[16], ["scrollArea$", "scrollContent$"])
+  ];
+  let div2_data = {};
+  for (let i = 0; i < div2_levels.length; i += 1) {
+    div2_data = assign(div2_data, div2_levels[i]);
+  }
+  return {
+    c() {
+      div2 = element("div");
+      div1 = element("div");
+      div0 = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div2 = claim_element(nodes, "DIV", { class: true });
+      var div2_nodes = children(div2);
+      div1 = claim_element(div2_nodes, "DIV", { class: true, style: true });
+      var div1_nodes = children(div1);
+      div0 = claim_element(div1_nodes, "DIV", { class: true, style: true });
+      var div0_nodes = children(div0);
+      if (default_slot)
+        default_slot.l(div0_nodes);
+      div0_nodes.forEach(detach);
+      div1_nodes.forEach(detach);
+      div2_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div0, div0_data);
+      set_attributes(div1, div1_data);
+      set_attributes(div2, div2_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div2, anchor);
+      append_hydration(div2, div1);
+      append_hydration(div1, div0);
+      if (default_slot) {
+        default_slot.m(div0, null);
+      }
+      ctx[24](div0);
+      ctx[26](div1);
+      ctx[32](div2);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div0, ctx[5])),
+          listen(div0, "transitionend", ctx[25]),
+          action_destroyer(useActions_action_1 = useActions.call(null, div1, ctx[3])),
+          listen(div1, "wheel", ctx[27], { passive: true }),
+          listen(div1, "touchstart", ctx[28], { passive: true }),
+          listen(div1, "pointerdown", ctx[29]),
+          listen(div1, "mousedown", ctx[30]),
+          listen(div1, "keydown", ctx[31]),
+          action_destroyer(useActions_action_2 = useActions.call(null, div2, ctx[0])),
+          action_destroyer(ctx[15].call(null, div2))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty[0] & 4194304)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[22], !current ? get_all_dirty_from_scope(ctx2[22]) : get_slot_changes(default_slot_template, ctx2[22], dirty, null), null);
+        }
+      }
+      set_attributes(div0, div0_data = get_spread_update(div0_levels, [
+        (!current || dirty[0] & 64 && div0_class_value !== (div0_class_value = classMap({
+          [ctx2[6]]: true,
+          "mdc-tab-scroller__scroll-content": true
+        }))) && { class: div0_class_value },
+        (!current || dirty[0] & 16384 && div0_style_value !== (div0_style_value = Object.entries(ctx2[14]).map(func$7).join(" "))) && { style: div0_style_value },
+        dirty[0] & 65536 && prefixFilter(ctx2[16], "scrollContent$")
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty[0] & 32)
+        useActions_action.update.call(null, ctx2[5]);
+      set_attributes(div1, div1_data = get_spread_update(div1_levels, [
+        (!current || dirty[0] & 4112 && div1_class_value !== (div1_class_value = classMap(__spreadValues({
+          [ctx2[4]]: true,
+          "mdc-tab-scroller__scroll-area": true
+        }, ctx2[12])))) && { class: div1_class_value },
+        (!current || dirty[0] & 8192 && div1_style_value !== (div1_style_value = Object.entries(ctx2[13]).map(func_1$2).join(" "))) && { style: div1_style_value },
+        dirty[0] & 65536 && prefixFilter(ctx2[16], "scrollArea$")
+      ]));
+      if (useActions_action_1 && is_function(useActions_action_1.update) && dirty[0] & 8)
+        useActions_action_1.update.call(null, ctx2[3]);
+      set_attributes(div2, div2_data = get_spread_update(div2_levels, [
+        (!current || dirty[0] & 2054 && div2_class_value !== (div2_class_value = classMap(__spreadValues({
+          [ctx2[1]]: true,
+          "mdc-tab-scroller": true,
+          "mdc-tab-scroller--align-start": ctx2[2] === "start",
+          "mdc-tab-scroller--align-end": ctx2[2] === "end",
+          "mdc-tab-scroller--align-center": ctx2[2] === "center"
+        }, ctx2[11])))) && { class: div2_class_value },
+        dirty[0] & 65536 && exclude(ctx2[16], ["scrollArea$", "scrollContent$"])
+      ]));
+      if (useActions_action_2 && is_function(useActions_action_2.update) && dirty[0] & 1)
+        useActions_action_2.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div2);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[24](null);
+      ctx[26](null);
+      ctx[32](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+const func$7 = ([name, value]) => `${name}: ${value};`;
+const func_1$2 = ([name, value]) => `${name}: ${value};`;
+function instance_1$9($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "align",
+    "scrollArea$use",
+    "scrollArea$class",
+    "scrollContent$use",
+    "scrollContent$class",
+    "getScrollPosition",
+    "getScrollContentWidth",
+    "incrementScroll",
+    "scrollTo",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const { matches: matches2 } = ponyfill;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { align = void 0 } = $$props;
+  let { scrollArea$use = [] } = $$props;
+  let { scrollArea$class = "" } = $$props;
+  let { scrollContent$use = [] } = $$props;
+  let { scrollContent$class = "" } = $$props;
+  let element2;
+  let instance2;
+  let scrollArea;
+  let scrollContent;
+  let internalClasses = {};
+  let scrollAreaClasses = {};
+  let scrollAreaStyles = {};
+  let scrollContentStyles = {};
+  onMount(() => {
+    $$invalidate(8, instance2 = new MDCTabScrollerFoundation({
+      eventTargetMatchesSelector: (evtTarget, selector) => matches2(evtTarget, selector),
+      addClass,
+      removeClass,
+      addScrollAreaClass,
+      setScrollAreaStyleProperty: addScrollAreaStyle,
+      setScrollContentStyleProperty: addScrollContentStyle,
+      getScrollContentStyleValue: getScrollContentStyle,
+      setScrollAreaScrollLeft: (scrollX) => $$invalidate(9, scrollArea.scrollLeft = scrollX, scrollArea),
+      getScrollAreaScrollLeft: () => scrollArea.scrollLeft,
+      getScrollContentOffsetWidth: () => scrollContent.offsetWidth,
+      getScrollAreaOffsetWidth: () => scrollArea.offsetWidth,
+      computeScrollAreaClientRect: () => scrollArea.getBoundingClientRect(),
+      computeScrollContentClientRect: () => scrollContent.getBoundingClientRect(),
+      computeHorizontalScrollbarHeight: () => computeHorizontalScrollbarHeight(document)
+    }));
+    instance2.init();
+    return () => {
+      instance2.destroy();
+    };
+  });
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(11, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(11, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addScrollAreaClass(className2) {
+    if (!scrollAreaClasses[className2]) {
+      $$invalidate(12, scrollAreaClasses[className2] = true, scrollAreaClasses);
+    }
+  }
+  function addScrollAreaStyle(name, value) {
+    if (scrollAreaStyles[name] != value) {
+      if (value === "" || value == null) {
+        delete scrollAreaStyles[name];
+        $$invalidate(13, scrollAreaStyles);
+      } else {
+        $$invalidate(13, scrollAreaStyles[name] = value, scrollAreaStyles);
+      }
+    }
+  }
+  function addScrollContentStyle(name, value) {
+    if (scrollContentStyles[name] != value) {
+      if (value === "" || value == null) {
+        delete scrollContentStyles[name];
+        $$invalidate(14, scrollContentStyles);
+      } else {
+        $$invalidate(14, scrollContentStyles[name] = value, scrollContentStyles);
+      }
+    }
+  }
+  function getScrollContentStyle(name) {
+    return name in scrollContentStyles ? scrollContentStyles[name] : getComputedStyle(scrollContent).getPropertyValue(name);
+  }
+  function getScrollPosition() {
+    return instance2.getScrollPosition();
+  }
+  function getScrollContentWidth() {
+    return scrollContent.offsetWidth;
+  }
+  function incrementScroll(scrollXIncrement) {
+    instance2.incrementScroll(scrollXIncrement);
+  }
+  function scrollTo(scrollX) {
+    instance2.scrollTo(scrollX);
+  }
+  function getElement() {
+    return element2;
+  }
+  function div0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      scrollContent = $$value;
+      $$invalidate(10, scrollContent);
+    });
+  }
+  const transitionend_handler = (event) => instance2 && instance2.handleTransitionEnd(event);
+  function div1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      scrollArea = $$value;
+      $$invalidate(9, scrollArea);
+    });
+  }
+  const wheel_handler = () => instance2 && instance2.handleInteraction();
+  const touchstart_handler = () => instance2 && instance2.handleInteraction();
+  const pointerdown_handler = () => instance2 && instance2.handleInteraction();
+  const mousedown_handler = () => instance2 && instance2.handleInteraction();
+  const keydown_handler = () => instance2 && instance2.handleInteraction();
+  function div2_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(7, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(16, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("align" in $$new_props)
+      $$invalidate(2, align = $$new_props.align);
+    if ("scrollArea$use" in $$new_props)
+      $$invalidate(3, scrollArea$use = $$new_props.scrollArea$use);
+    if ("scrollArea$class" in $$new_props)
+      $$invalidate(4, scrollArea$class = $$new_props.scrollArea$class);
+    if ("scrollContent$use" in $$new_props)
+      $$invalidate(5, scrollContent$use = $$new_props.scrollContent$use);
+    if ("scrollContent$class" in $$new_props)
+      $$invalidate(6, scrollContent$class = $$new_props.scrollContent$class);
+    if ("$$scope" in $$new_props)
+      $$invalidate(22, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    align,
+    scrollArea$use,
+    scrollArea$class,
+    scrollContent$use,
+    scrollContent$class,
+    element2,
+    instance2,
+    scrollArea,
+    scrollContent,
+    internalClasses,
+    scrollAreaClasses,
+    scrollAreaStyles,
+    scrollContentStyles,
+    forwardEvents,
+    $$restProps,
+    getScrollPosition,
+    getScrollContentWidth,
+    incrementScroll,
+    scrollTo,
+    getElement,
+    $$scope,
+    slots,
+    div0_binding,
+    transitionend_handler,
+    div1_binding,
+    wheel_handler,
+    touchstart_handler,
+    pointerdown_handler,
+    mousedown_handler,
+    keydown_handler,
+    div2_binding
+  ];
+}
+class TabScroller extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$9, create_fragment$q, safe_not_equal, {
+      use: 0,
+      class: 1,
+      align: 2,
+      scrollArea$use: 3,
+      scrollArea$class: 4,
+      scrollContent$use: 5,
+      scrollContent$class: 6,
+      getScrollPosition: 17,
+      getScrollContentWidth: 18,
+      incrementScroll: 19,
+      scrollTo: 20,
+      getElement: 21
+    }, null, [-1, -1]);
+  }
+  get getScrollPosition() {
+    return this.$$.ctx[17];
+  }
+  get getScrollContentWidth() {
+    return this.$$.ctx[18];
+  }
+  get incrementScroll() {
+    return this.$$.ctx[19];
+  }
+  get scrollTo() {
+    return this.$$.ctx[20];
+  }
+  get getElement() {
+    return this.$$.ctx[21];
+  }
+}
+function get_each_context$1(ctx, list, i) {
+  const child_ctx = ctx.slice();
+  child_ctx[30] = list[i];
+  return child_ctx;
+}
+const get_default_slot_changes = (dirty) => ({ tab: dirty[0] & 4 });
+const get_default_slot_context = (ctx) => ({ tab: ctx[30] });
+function create_each_block$1(key_2, ctx) {
+  let first;
+  let current;
+  const default_slot_template = ctx[20].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[25], get_default_slot_context);
+  return {
+    key: key_2,
+    first: null,
+    c() {
+      first = empty();
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      first = empty();
+      if (default_slot)
+        default_slot.l(nodes);
+      this.h();
+    },
+    h() {
+      this.first = first;
+    },
+    m(target, anchor) {
+      insert_hydration(target, first, anchor);
+      if (default_slot) {
+        default_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(new_ctx, dirty) {
+      ctx = new_ctx;
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty[0] & 33554436)) {
+          update_slot_base(default_slot, default_slot_template, ctx, ctx[25], !current ? get_all_dirty_from_scope(ctx[25]) : get_slot_changes(default_slot_template, ctx[25], dirty, get_default_slot_changes), get_default_slot_context);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(first);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_default_slot$5(ctx) {
+  let each_blocks = [];
+  let each_1_lookup = /* @__PURE__ */ new Map();
+  let each_1_anchor;
+  let current;
+  let each_value = ctx[2];
+  const get_key = (ctx2) => ctx2[3](ctx2[30]);
+  for (let i = 0; i < each_value.length; i += 1) {
+    let child_ctx = get_each_context$1(ctx, each_value, i);
+    let key = get_key(child_ctx);
+    each_1_lookup.set(key, each_blocks[i] = create_each_block$1(key, child_ctx));
+  }
+  return {
+    c() {
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].c();
+      }
+      each_1_anchor = empty();
+    },
+    l(nodes) {
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].l(nodes);
+      }
+      each_1_anchor = empty();
+    },
+    m(target, anchor) {
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].m(target, anchor);
+      }
+      insert_hydration(target, each_1_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (dirty[0] & 33554444) {
+        each_value = ctx2[2];
+        group_outros();
+        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value, each_1_lookup, each_1_anchor.parentNode, outro_and_destroy_block, create_each_block$1, each_1_anchor, get_each_context$1);
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      for (let i = 0; i < each_value.length; i += 1) {
+        transition_in(each_blocks[i]);
+      }
+      current = true;
+    },
+    o(local) {
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        transition_out(each_blocks[i]);
+      }
+      current = false;
+    },
+    d(detaching) {
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].d(detaching);
+      }
+      if (detaching)
+        detach(each_1_anchor);
+    }
+  };
+}
+function create_fragment$p(ctx) {
+  let div;
+  let tabscroller;
+  let div_class_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const tabscroller_spread_levels = [prefixFilter(ctx[10], "tabScroller$")];
+  let tabscroller_props = {
+    $$slots: { default: [create_default_slot$5] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < tabscroller_spread_levels.length; i += 1) {
+    tabscroller_props = assign(tabscroller_props, tabscroller_spread_levels[i]);
+  }
+  tabscroller = new TabScroller({ props: tabscroller_props });
+  ctx[21](tabscroller);
+  let div_levels = [
+    {
+      class: div_class_value = classMap({
+        [ctx[1]]: true,
+        "mdc-tab-bar": true
+      })
+    },
+    { role: "tablist" },
+    exclude(ctx[10], ["tabScroller$"])
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      create_component(tabscroller.$$.fragment);
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true, role: true });
+      var div_nodes = children(div);
+      claim_component(tabscroller.$$.fragment, div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      mount_component(tabscroller, div, null);
+      ctx[22](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[7].call(null, div)),
+          listen(div, "SMUITab:mount", ctx[8]),
+          listen(div, "SMUITab:unmount", ctx[9]),
+          listen(div, "SMUITab:interacted", ctx[23]),
+          listen(div, "keydown", ctx[24])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      const tabscroller_changes = dirty[0] & 1024 ? get_spread_update(tabscroller_spread_levels, [get_spread_object(prefixFilter(ctx2[10], "tabScroller$"))]) : {};
+      if (dirty[0] & 33554436) {
+        tabscroller_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      tabscroller.$set(tabscroller_changes);
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        (!current || dirty[0] & 2 && div_class_value !== (div_class_value = classMap({
+          [ctx2[1]]: true,
+          "mdc-tab-bar": true
+        }))) && { class: div_class_value },
+        { role: "tablist" },
+        dirty[0] & 1024 && exclude(ctx2[10], ["tabScroller$"])
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty[0] & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(tabscroller.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(tabscroller.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      ctx[21](null);
+      destroy_component(tabscroller);
+      ctx[22](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance_1$8($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "tabs",
+    "key",
+    "focusOnActivate",
+    "focusOnProgrammatic",
+    "useAutomaticActivation",
+    "active",
+    "scrollIntoView",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { tabs = [] } = $$props;
+  let { key = (tab) => tab } = $$props;
+  let { focusOnActivate = true } = $$props;
+  let { focusOnProgrammatic = false } = $$props;
+  let { useAutomaticActivation = true } = $$props;
+  let { active = void 0 } = $$props;
+  let element2;
+  let instance2;
+  let tabScroller;
+  let activeIndex = tabs.indexOf(active);
+  let tabAccessorMap = {};
+  let tabAccessorWeakMap = /* @__PURE__ */ new WeakMap();
+  let skipFocus = false;
+  setContext("SMUI:tab:focusOnActivate", focusOnActivate);
+  setContext("SMUI:tab:initialActive", active);
+  onMount(() => {
+    $$invalidate(4, instance2 = new MDCTabBarFoundation({
+      scrollTo: (scrollX) => tabScroller.scrollTo(scrollX),
+      incrementScroll: (scrollXIncrement) => tabScroller.incrementScroll(scrollXIncrement),
+      getScrollPosition: () => tabScroller.getScrollPosition(),
+      getScrollContentWidth: () => tabScroller.getScrollContentWidth(),
+      getOffsetWidth: () => getElement().offsetWidth,
+      isRTL: () => getComputedStyle(getElement()).getPropertyValue("direction") === "rtl",
+      setActiveTab: (index) => {
+        $$invalidate(11, active = tabs[index]);
+        $$invalidate(17, activeIndex = index);
+        instance2.activateTab(index);
+      },
+      activateTabAtIndex: (index, clientRect) => {
+        var _a;
+        return (_a = getAccessor(tabs[index])) === null || _a === void 0 ? void 0 : _a.activate(clientRect, skipFocus);
+      },
+      deactivateTabAtIndex: (index) => {
+        var _a;
+        return (_a = getAccessor(tabs[index])) === null || _a === void 0 ? void 0 : _a.deactivate();
+      },
+      focusTabAtIndex: (index) => {
+        var _a;
+        return (_a = getAccessor(tabs[index])) === null || _a === void 0 ? void 0 : _a.focus();
+      },
+      getTabIndicatorClientRectAtIndex: (index) => {
+        var _a, _b;
+        return (_b = (_a = getAccessor(tabs[index])) === null || _a === void 0 ? void 0 : _a.computeIndicatorClientRect()) !== null && _b !== void 0 ? _b : new DOMRect();
+      },
+      getTabDimensionsAtIndex: (index) => {
+        var _a, _b;
+        return (_b = (_a = getAccessor(tabs[index])) === null || _a === void 0 ? void 0 : _a.computeDimensions()) !== null && _b !== void 0 ? _b : {
+          rootLeft: 0,
+          rootRight: 0,
+          contentLeft: 0,
+          contentRight: 0
+        };
+      },
+      getPreviousActiveTabIndex: () => {
+        var _a;
+        for (let i = 0; i < tabs.length; i++) {
+          if ((_a = getAccessor(tabs[i])) === null || _a === void 0 ? void 0 : _a.active) {
+            return i;
+          }
+        }
+        return -1;
+      },
+      getFocusedTabIndex: () => {
+        const tabElements = tabs.map((tab) => {
+          var _a;
+          return (_a = getAccessor(tab)) === null || _a === void 0 ? void 0 : _a.element;
+        });
+        const activeElement = document.activeElement;
+        return tabElements.indexOf(activeElement);
+      },
+      getIndexOfTabById: (id) => tabs.indexOf(id),
+      getTabListLength: () => tabs.length,
+      notifyTabActivated: (index) => dispatch(getElement(), "SMUITabBar:activated", { index }, void 0, true)
+    }));
+    instance2.init();
+    return () => {
+      instance2.destroy();
+    };
+  });
+  function handleTabMount(event) {
+    const accessor = event.detail;
+    addAccessor(accessor.tabId, accessor);
+  }
+  function handleTabUnmount(event) {
+    const accessor = event.detail;
+    removeAccessor(accessor.tabId);
+  }
+  function getAccessor(tabId) {
+    return tabId instanceof Object ? tabAccessorWeakMap.get(tabId) : tabAccessorMap[tabId];
+  }
+  function addAccessor(tabId, accessor) {
+    if (tabId instanceof Object) {
+      tabAccessorWeakMap.set(tabId, accessor);
+      $$invalidate(19, tabAccessorWeakMap);
+    } else {
+      $$invalidate(18, tabAccessorMap[tabId] = accessor, tabAccessorMap);
+      $$invalidate(18, tabAccessorMap);
+    }
+  }
+  function removeAccessor(tabId) {
+    if (tabId instanceof Object) {
+      tabAccessorWeakMap.delete(tabId);
+      $$invalidate(19, tabAccessorWeakMap);
+    } else {
+      delete tabAccessorMap[tabId];
+      $$invalidate(18, tabAccessorMap);
+    }
+  }
+  function scrollIntoView(index) {
+    instance2.scrollIntoView(index);
+  }
+  function getElement() {
+    return element2;
+  }
+  function tabscroller_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      tabScroller = $$value;
+      $$invalidate(6, tabScroller);
+    });
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(5, element2);
+    });
+  }
+  const SMUITab_interacted_handler = (event) => instance2 && instance2.handleTabInteraction(event);
+  const keydown_handler = (event) => instance2 && instance2.handleKeyDown(event);
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(10, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("tabs" in $$new_props)
+      $$invalidate(2, tabs = $$new_props.tabs);
+    if ("key" in $$new_props)
+      $$invalidate(3, key = $$new_props.key);
+    if ("focusOnActivate" in $$new_props)
+      $$invalidate(12, focusOnActivate = $$new_props.focusOnActivate);
+    if ("focusOnProgrammatic" in $$new_props)
+      $$invalidate(13, focusOnProgrammatic = $$new_props.focusOnProgrammatic);
+    if ("useAutomaticActivation" in $$new_props)
+      $$invalidate(14, useAutomaticActivation = $$new_props.useAutomaticActivation);
+    if ("active" in $$new_props)
+      $$invalidate(11, active = $$new_props.active);
+    if ("$$scope" in $$new_props)
+      $$invalidate(25, $$scope = $$new_props.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty[0] & 141332) {
+      if (active !== tabs[activeIndex]) {
+        $$invalidate(17, activeIndex = tabs.indexOf(active));
+        if (instance2) {
+          skipFocus = !focusOnProgrammatic;
+          instance2.activateTab(activeIndex);
+          skipFocus = false;
+        }
+      }
+    }
+    if ($$self.$$.dirty[0] & 917508) {
+      if (tabs.length) {
+        const accessor = tabs[0] instanceof Object ? tabAccessorWeakMap.get(tabs[0]) : tabAccessorMap[tabs[0]];
+        if (accessor) {
+          accessor.forceAccessible(activeIndex === -1);
+        }
+      }
+    }
+    if ($$self.$$.dirty[0] & 16400) {
+      if (instance2) {
+        instance2.setUseAutomaticActivation(useAutomaticActivation);
+      }
+    }
+  };
+  return [
+    use,
+    className,
+    tabs,
+    key,
+    instance2,
+    element2,
+    tabScroller,
+    forwardEvents,
+    handleTabMount,
+    handleTabUnmount,
+    $$restProps,
+    active,
+    focusOnActivate,
+    focusOnProgrammatic,
+    useAutomaticActivation,
+    scrollIntoView,
+    getElement,
+    activeIndex,
+    tabAccessorMap,
+    tabAccessorWeakMap,
+    slots,
+    tabscroller_binding,
+    div_binding,
+    SMUITab_interacted_handler,
+    keydown_handler,
+    $$scope
+  ];
+}
+class TabBar extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$8, create_fragment$p, safe_not_equal, {
+      use: 0,
+      class: 1,
+      tabs: 2,
+      key: 3,
+      focusOnActivate: 12,
+      focusOnProgrammatic: 13,
+      useAutomaticActivation: 14,
+      active: 11,
+      scrollIntoView: 15,
+      getElement: 16
+    }, null, [-1, -1]);
+  }
+  get scrollIntoView() {
+    return this.$$.ctx[15];
+  }
+  get getElement() {
+    return this.$$.ctx[16];
+  }
+}
+const { applyPassive } = events;
+const { matches } = ponyfill;
+function Ripple(node, { ripple = true, surface = false, unbounded = false, disabled = false, color, active, rippleElement, eventTarget, activeTarget, addClass = (className) => node.classList.add(className), removeClass = (className) => node.classList.remove(className), addStyle = (name, value) => node.style.setProperty(name, value), initPromise = Promise.resolve() } = {}) {
+  let instance2;
+  let addLayoutListener = getContext("SMUI:addLayoutListener");
+  let removeLayoutListener;
+  let oldActive = active;
+  let oldEventTarget = eventTarget;
+  let oldActiveTarget = activeTarget;
+  function handleProps() {
+    if (surface) {
+      addClass("mdc-ripple-surface");
+      if (color === "primary") {
+        addClass("smui-ripple-surface--primary");
+        removeClass("smui-ripple-surface--secondary");
+      } else if (color === "secondary") {
+        removeClass("smui-ripple-surface--primary");
+        addClass("smui-ripple-surface--secondary");
+      } else {
+        removeClass("smui-ripple-surface--primary");
+        removeClass("smui-ripple-surface--secondary");
+      }
+    } else {
+      removeClass("mdc-ripple-surface");
+      removeClass("smui-ripple-surface--primary");
+      removeClass("smui-ripple-surface--secondary");
+    }
+    if (instance2 && oldActive !== active) {
+      oldActive = active;
+      if (active) {
+        instance2.activate();
+      } else if (active === false) {
+        instance2.deactivate();
+      }
+    }
+    if (ripple && !instance2) {
+      instance2 = new MDCRippleFoundation({
+        addClass,
+        browserSupportsCssVars: () => supportsCssVariables(window),
+        computeBoundingRect: () => (rippleElement || node).getBoundingClientRect(),
+        containsEventTarget: (target) => node.contains(target),
+        deregisterDocumentInteractionHandler: (evtType, handler) => document.documentElement.removeEventListener(evtType, handler, applyPassive()),
+        deregisterInteractionHandler: (evtType, handler) => (eventTarget || node).removeEventListener(evtType, handler, applyPassive()),
+        deregisterResizeHandler: (handler) => window.removeEventListener("resize", handler),
+        getWindowPageOffset: () => ({
+          x: window.pageXOffset,
+          y: window.pageYOffset
+        }),
+        isSurfaceActive: () => active == null ? matches(activeTarget || node, ":active") : active,
+        isSurfaceDisabled: () => !!disabled,
+        isUnbounded: () => !!unbounded,
+        registerDocumentInteractionHandler: (evtType, handler) => document.documentElement.addEventListener(evtType, handler, applyPassive()),
+        registerInteractionHandler: (evtType, handler) => (eventTarget || node).addEventListener(evtType, handler, applyPassive()),
+        registerResizeHandler: (handler) => window.addEventListener("resize", handler),
+        removeClass,
+        updateCssVariable: addStyle
+      });
+      initPromise.then(() => {
+        if (instance2) {
+          instance2.init();
+          instance2.setUnbounded(unbounded);
+        }
+      });
+    } else if (instance2 && !ripple) {
+      initPromise.then(() => {
+        if (instance2) {
+          instance2.destroy();
+          instance2 = void 0;
+        }
+      });
+    }
+    if (instance2 && (oldEventTarget !== eventTarget || oldActiveTarget !== activeTarget)) {
+      oldEventTarget = eventTarget;
+      oldActiveTarget = activeTarget;
+      instance2.destroy();
+      requestAnimationFrame(() => {
+        if (instance2) {
+          instance2.init();
+          instance2.setUnbounded(unbounded);
+        }
+      });
+    }
+    if (!ripple && unbounded) {
+      addClass("mdc-ripple-upgraded--unbounded");
+    }
+  }
+  handleProps();
+  if (addLayoutListener) {
+    removeLayoutListener = addLayoutListener(layout);
+  }
+  function layout() {
+    if (instance2) {
+      instance2.layout();
+    }
+  }
+  return {
+    update(props) {
+      ({
+        ripple,
+        surface,
+        unbounded,
+        disabled,
+        color,
+        active,
+        rippleElement,
+        eventTarget,
+        activeTarget,
+        addClass,
+        removeClass,
+        addStyle,
+        initPromise
+      } = Object.assign({ ripple: true, surface: false, unbounded: false, disabled: false, color: void 0, active: void 0, rippleElement: void 0, eventTarget: void 0, activeTarget: void 0, addClass: (className) => node.classList.add(className), removeClass: (className) => node.classList.remove(className), addStyle: (name, value) => node.style.setProperty(name, value), initPromise: Promise.resolve() }, props));
+      handleProps();
+    },
+    destroy() {
+      if (instance2) {
+        instance2.destroy();
+        instance2 = void 0;
+        removeClass("mdc-ripple-surface");
+        removeClass("smui-ripple-surface--primary");
+        removeClass("smui-ripple-surface--secondary");
+      }
+      if (removeLayoutListener) {
+        removeLayoutListener();
+      }
+    }
+  };
+}
+function create_fragment$o(ctx) {
+  let a;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[7].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[6], null);
+  let a_levels = [{ href: ctx[1] }, ctx[4]];
+  let a_data = {};
+  for (let i = 0; i < a_levels.length; i += 1) {
+    a_data = assign(a_data, a_levels[i]);
+  }
+  return {
+    c() {
+      a = element("a");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      a = claim_element(nodes, "A", { href: true });
+      var a_nodes = children(a);
+      if (default_slot)
+        default_slot.l(a_nodes);
+      a_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(a, a_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, a, anchor);
+      if (default_slot) {
+        default_slot.m(a, null);
+      }
+      ctx[8](a);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, a, ctx[0])),
+          action_destroyer(ctx[3].call(null, a))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 64)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[6], !current ? get_all_dirty_from_scope(ctx2[6]) : get_slot_changes(default_slot_template, ctx2[6], dirty, null), null);
+        }
+      }
+      set_attributes(a, a_data = get_spread_update(a_levels, [
+        (!current || dirty & 2) && { href: ctx2[1] },
+        dirty & 16 && ctx2[4]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(a);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[8](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$g($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "href", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  let { href = "javascript:void(0);" } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function a_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(2, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(4, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("href" in $$new_props)
+      $$invalidate(1, href = $$new_props.href);
+    if ("$$scope" in $$new_props)
+      $$invalidate(6, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    href,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    a_binding
+  ];
+}
+class A$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$g, create_fragment$o, safe_not_equal, { use: 0, href: 1, getElement: 5 });
+  }
+  get getElement() {
+    return this.$$.ctx[5];
+  }
+}
+function create_fragment$n(ctx) {
+  let button;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], null);
+  let button_levels = [ctx[3]];
+  let button_data = {};
+  for (let i = 0; i < button_levels.length; i += 1) {
+    button_data = assign(button_data, button_levels[i]);
+  }
+  return {
+    c() {
+      button = element("button");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      button = claim_element(nodes, "BUTTON", {});
+      var button_nodes = children(button);
+      if (default_slot)
+        default_slot.l(button_nodes);
+      button_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(button, button_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, button, anchor);
+      if (default_slot) {
+        default_slot.m(button, null);
+      }
+      if (button.autofocus)
+        button.focus();
+      ctx[7](button);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, button, ctx[0])),
+          action_destroyer(ctx[2].call(null, button))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[5], !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, null), null);
+        }
+      }
+      set_attributes(button, button_data = get_spread_update(button_levels, [dirty & 8 && ctx2[3]]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(button);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[7](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$f($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function button_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(1, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("$$scope" in $$new_props)
+      $$invalidate(5, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    button_binding
+  ];
+}
+class Button$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$f, create_fragment$n, safe_not_equal, { use: 0, getElement: 4 });
+  }
+  get getElement() {
+    return this.$$.ctx[4];
+  }
+}
+function create_fragment$m(ctx) {
+  let div;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], null);
+  let div_levels = [ctx[3]];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", {});
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      ctx[7](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[2].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[5], !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, null), null);
+        }
+      }
+      set_attributes(div, div_data = get_spread_update(div_levels, [dirty & 8 && ctx2[3]]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[7](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$e($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(1, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("$$scope" in $$new_props)
+      $$invalidate(5, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    div_binding
+  ];
+}
+class Div$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$e, create_fragment$m, safe_not_equal, { use: 0, getElement: 4 });
+  }
+  get getElement() {
+    return this.$$.ctx[4];
+  }
+}
+function create_fragment$l(ctx) {
+  let h2;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], null);
+  let h2_levels = [ctx[3]];
+  let h2_data = {};
+  for (let i = 0; i < h2_levels.length; i += 1) {
+    h2_data = assign(h2_data, h2_levels[i]);
+  }
+  return {
+    c() {
+      h2 = element("h2");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      h2 = claim_element(nodes, "H2", {});
+      var h2_nodes = children(h2);
+      if (default_slot)
+        default_slot.l(h2_nodes);
+      h2_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(h2, h2_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, h2, anchor);
+      if (default_slot) {
+        default_slot.m(h2, null);
+      }
+      ctx[7](h2);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, h2, ctx[0])),
+          action_destroyer(ctx[2].call(null, h2))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[5], !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, null), null);
+        }
+      }
+      set_attributes(h2, h2_data = get_spread_update(h2_levels, [dirty & 8 && ctx2[3]]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(h2);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[7](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$d($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function h2_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(1, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("$$scope" in $$new_props)
+      $$invalidate(5, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    h2_binding
+  ];
+}
+class H2$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$d, create_fragment$l, safe_not_equal, { use: 0, getElement: 4 });
+  }
+  get getElement() {
+    return this.$$.ctx[4];
+  }
+}
+function create_fragment$k(ctx) {
+  let h5;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], null);
+  let h5_levels = [ctx[3]];
+  let h5_data = {};
+  for (let i = 0; i < h5_levels.length; i += 1) {
+    h5_data = assign(h5_data, h5_levels[i]);
+  }
+  return {
+    c() {
+      h5 = element("h5");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      h5 = claim_element(nodes, "H5", {});
+      var h5_nodes = children(h5);
+      if (default_slot)
+        default_slot.l(h5_nodes);
+      h5_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(h5, h5_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, h5, anchor);
+      if (default_slot) {
+        default_slot.m(h5, null);
+      }
+      ctx[7](h5);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, h5, ctx[0])),
+          action_destroyer(ctx[2].call(null, h5))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[5], !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, null), null);
+        }
+      }
+      set_attributes(h5, h5_data = get_spread_update(h5_levels, [dirty & 8 && ctx2[3]]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(h5);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[7](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$c($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function h5_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(1, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("$$scope" in $$new_props)
+      $$invalidate(5, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    h5_binding
+  ];
+}
+class H5$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$c, create_fragment$k, safe_not_equal, { use: 0, getElement: 4 });
+  }
+  get getElement() {
+    return this.$$.ctx[4];
+  }
+}
+function create_fragment$j(ctx) {
+  let h6;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], null);
+  let h6_levels = [ctx[3]];
+  let h6_data = {};
+  for (let i = 0; i < h6_levels.length; i += 1) {
+    h6_data = assign(h6_data, h6_levels[i]);
+  }
+  return {
+    c() {
+      h6 = element("h6");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      h6 = claim_element(nodes, "H6", {});
+      var h6_nodes = children(h6);
+      if (default_slot)
+        default_slot.l(h6_nodes);
+      h6_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(h6, h6_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, h6, anchor);
+      if (default_slot) {
+        default_slot.m(h6, null);
+      }
+      ctx[7](h6);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, h6, ctx[0])),
+          action_destroyer(ctx[2].call(null, h6))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[5], !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, null), null);
+        }
+      }
+      set_attributes(h6, h6_data = get_spread_update(h6_levels, [dirty & 8 && ctx2[3]]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(h6);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[7](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$b($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function h6_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(1, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("$$scope" in $$new_props)
+      $$invalidate(5, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    h6_binding
+  ];
+}
+class H6$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$b, create_fragment$j, safe_not_equal, { use: 0, getElement: 4 });
+  }
+  get getElement() {
+    return this.$$.ctx[4];
+  }
+}
+function create_fragment$i(ctx) {
+  let span;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], null);
+  let span_levels = [ctx[3]];
+  let span_data = {};
+  for (let i = 0; i < span_levels.length; i += 1) {
+    span_data = assign(span_data, span_levels[i]);
+  }
+  return {
+    c() {
+      span = element("span");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      span = claim_element(nodes, "SPAN", {});
+      var span_nodes = children(span);
+      if (default_slot)
+        default_slot.l(span_nodes);
+      span_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(span, span_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, span, anchor);
+      if (default_slot) {
+        default_slot.m(span, null);
+      }
+      ctx[7](span);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, span, ctx[0])),
+          action_destroyer(ctx[2].call(null, span))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[5], !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, null), null);
+        }
+      }
+      set_attributes(span, span_data = get_spread_update(span_levels, [dirty & 8 && ctx2[3]]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(span);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[7](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$a($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function span_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(1, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(3, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("$$scope" in $$new_props)
+      $$invalidate(5, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    span_binding
+  ];
+}
+class Span$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$a, create_fragment$i, safe_not_equal, { use: 0, getElement: 4 });
+  }
+  get getElement() {
+    return this.$$.ctx[4];
+  }
+}
+const A = A$1;
+const Button = Button$1;
+const Div = Div$1;
+const H2 = H2$1;
+const H5 = H5$1;
+const H6 = H6$1;
+const Span = Span$1;
+function create_fragment$h(ctx) {
+  let span1;
+  let span0;
+  let span0_class_value;
+  let span0_style_value;
+  let span0_aria_hidden_value;
+  let useActions_action;
+  let span1_class_value;
+  let useActions_action_1;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[21].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[20], null);
+  let span0_levels = [
+    {
+      class: span0_class_value = classMap({
+        [ctx[6]]: true,
+        "mdc-tab-indicator__content": true,
+        "mdc-tab-indicator__content--underline": ctx[3] === "underline",
+        "mdc-tab-indicator__content--icon": ctx[3] === "icon"
+      })
+    },
+    {
+      style: span0_style_value = Object.entries(ctx[10]).map(func$6).join(" ")
+    },
+    {
+      "aria-hidden": span0_aria_hidden_value = ctx[3] === "icon" ? "true" : void 0
+    },
+    prefixFilter(ctx[12], "content$")
+  ];
+  let span0_data = {};
+  for (let i = 0; i < span0_levels.length; i += 1) {
+    span0_data = assign(span0_data, span0_levels[i]);
+  }
+  let span1_levels = [
+    {
+      class: span1_class_value = classMap(__spreadValues({
+        [ctx[2]]: true,
+        "mdc-tab-indicator": true,
+        "mdc-tab-indicator--active": ctx[0],
+        "mdc-tab-indicator--fade": ctx[4] === "fade"
+      }, ctx[9]))
+    },
+    exclude(ctx[12], ["content$"])
+  ];
+  let span1_data = {};
+  for (let i = 0; i < span1_levels.length; i += 1) {
+    span1_data = assign(span1_data, span1_levels[i]);
+  }
+  return {
+    c() {
+      span1 = element("span");
+      span0 = element("span");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      span1 = claim_element(nodes, "SPAN", { class: true });
+      var span1_nodes = children(span1);
+      span0 = claim_element(span1_nodes, "SPAN", {
+        class: true,
+        style: true,
+        "aria-hidden": true
+      });
+      var span0_nodes = children(span0);
+      if (default_slot)
+        default_slot.l(span0_nodes);
+      span0_nodes.forEach(detach);
+      span1_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(span0, span0_data);
+      set_attributes(span1, span1_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, span1, anchor);
+      append_hydration(span1, span0);
+      if (default_slot) {
+        default_slot.m(span0, null);
+      }
+      ctx[22](span0);
+      ctx[23](span1);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, span0, ctx[5])),
+          action_destroyer(useActions_action_1 = useActions.call(null, span1, ctx[1])),
+          action_destroyer(ctx[11].call(null, span1))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 1048576)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[20], !current ? get_all_dirty_from_scope(ctx2[20]) : get_slot_changes(default_slot_template, ctx2[20], dirty, null), null);
+        }
+      }
+      set_attributes(span0, span0_data = get_spread_update(span0_levels, [
+        (!current || dirty & 72 && span0_class_value !== (span0_class_value = classMap({
+          [ctx2[6]]: true,
+          "mdc-tab-indicator__content": true,
+          "mdc-tab-indicator__content--underline": ctx2[3] === "underline",
+          "mdc-tab-indicator__content--icon": ctx2[3] === "icon"
+        }))) && { class: span0_class_value },
+        (!current || dirty & 1024 && span0_style_value !== (span0_style_value = Object.entries(ctx2[10]).map(func$6).join(" "))) && { style: span0_style_value },
+        (!current || dirty & 8 && span0_aria_hidden_value !== (span0_aria_hidden_value = ctx2[3] === "icon" ? "true" : void 0)) && { "aria-hidden": span0_aria_hidden_value },
+        dirty & 4096 && prefixFilter(ctx2[12], "content$")
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 32)
+        useActions_action.update.call(null, ctx2[5]);
+      set_attributes(span1, span1_data = get_spread_update(span1_levels, [
+        (!current || dirty & 533 && span1_class_value !== (span1_class_value = classMap(__spreadValues({
+          [ctx2[2]]: true,
+          "mdc-tab-indicator": true,
+          "mdc-tab-indicator--active": ctx2[0],
+          "mdc-tab-indicator--fade": ctx2[4] === "fade"
+        }, ctx2[9])))) && { class: span1_class_value },
+        dirty & 4096 && exclude(ctx2[12], ["content$"])
+      ]));
+      if (useActions_action_1 && is_function(useActions_action_1.update) && dirty & 2)
+        useActions_action_1.update.call(null, ctx2[1]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(span1);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[22](null);
+      ctx[23](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+const func$6 = ([name, value]) => `${name}: ${value};`;
+function instance_1$7($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "active",
+    "type",
+    "transition",
+    "content$use",
+    "content$class",
+    "activate",
+    "deactivate",
+    "computeContentClientRect",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { active = false } = $$props;
+  let { type = "underline" } = $$props;
+  let { transition = "slide" } = $$props;
+  let { content$use = [] } = $$props;
+  let { content$class = "" } = $$props;
+  let element2;
+  let instance2;
+  let content;
+  let internalClasses = {};
+  let contentStyles = {};
+  let changeSets = [];
+  let oldTransition = transition;
+  onMount(() => {
+    $$invalidate(17, instance2 = getInstance());
+    instance2.init();
+    return () => {
+      instance2.destroy();
+    };
+  });
+  function getInstance() {
+    const Foundation = {
+      fade: MDCFadingTabIndicatorFoundation,
+      slide: MDCSlidingTabIndicatorFoundation
+    }[transition] || MDCSlidingTabIndicatorFoundation;
+    return new Foundation({
+      addClass: (...props) => doChange(() => addClass(...props)),
+      removeClass: (...props) => doChange(() => removeClass(...props)),
+      computeContentClientRect,
+      setContentStyleProperty: (...props) => doChange(() => addContentStyle(...props))
+    });
+  }
+  function doChange(fn) {
+    if (changeSets.length) {
+      changeSets[changeSets.length - 1].push(fn);
+    } else {
+      fn();
+    }
+  }
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(9, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(9, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addContentStyle(name, value) {
+    if (contentStyles[name] != value) {
+      if (value === "" || value == null) {
+        delete contentStyles[name];
+        $$invalidate(10, contentStyles), $$invalidate(19, oldTransition), $$invalidate(4, transition), $$invalidate(17, instance2);
+      } else {
+        $$invalidate(10, contentStyles[name] = value, contentStyles);
+      }
+    }
+  }
+  function activate(previousIndicatorClientRect) {
+    $$invalidate(0, active = true);
+    instance2.activate(previousIndicatorClientRect);
+  }
+  function deactivate() {
+    $$invalidate(0, active = false);
+    instance2.deactivate();
+  }
+  function computeContentClientRect() {
+    changeSets.push([]);
+    $$invalidate(18, changeSets);
+    return content.getBoundingClientRect();
+  }
+  function getElement() {
+    return element2;
+  }
+  function span0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      content = $$value;
+      $$invalidate(8, content);
+    });
+  }
+  function span1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(7, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(12, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(1, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(2, className = $$new_props.class);
+    if ("active" in $$new_props)
+      $$invalidate(0, active = $$new_props.active);
+    if ("type" in $$new_props)
+      $$invalidate(3, type = $$new_props.type);
+    if ("transition" in $$new_props)
+      $$invalidate(4, transition = $$new_props.transition);
+    if ("content$use" in $$new_props)
+      $$invalidate(5, content$use = $$new_props.content$use);
+    if ("content$class" in $$new_props)
+      $$invalidate(6, content$class = $$new_props.content$class);
+    if ("$$scope" in $$new_props)
+      $$invalidate(20, $$scope = $$new_props.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 655376) {
+      if (oldTransition !== transition) {
+        $$invalidate(19, oldTransition = transition);
+        instance2 && instance2.destroy();
+        $$invalidate(9, internalClasses = {});
+        $$invalidate(10, contentStyles = {});
+        $$invalidate(17, instance2 = getInstance());
+        instance2.init();
+      }
+    }
+    if ($$self.$$.dirty & 262144) {
+      if (changeSets.length) {
+        requestAnimationFrame(() => {
+          var _a;
+          const changeSet = (_a = changeSets.shift()) !== null && _a !== void 0 ? _a : [];
+          $$invalidate(18, changeSets);
+          for (const fn of changeSet) {
+            fn();
+          }
+        });
+      }
+    }
+  };
+  return [
+    active,
+    use,
+    className,
+    type,
+    transition,
+    content$use,
+    content$class,
+    element2,
+    content,
+    internalClasses,
+    contentStyles,
+    forwardEvents,
+    $$restProps,
+    activate,
+    deactivate,
+    computeContentClientRect,
+    getElement,
+    instance2,
+    changeSets,
+    oldTransition,
+    $$scope,
+    slots,
+    span0_binding,
+    span1_binding
+  ];
+}
+class TabIndicator extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$7, create_fragment$h, safe_not_equal, {
+      use: 1,
+      class: 2,
+      active: 0,
+      type: 3,
+      transition: 4,
+      content$use: 5,
+      content$class: 6,
+      activate: 13,
+      deactivate: 14,
+      computeContentClientRect: 15,
+      getElement: 16
+    });
+  }
+  get activate() {
+    return this.$$.ctx[13];
+  }
+  get deactivate() {
+    return this.$$.ctx[14];
+  }
+  get computeContentClientRect() {
+    return this.$$.ctx[15];
+  }
+  get getElement() {
+    return this.$$.ctx[16];
+  }
+}
+const get_tab_indicator_slot_changes_1 = (dirty) => ({});
+const get_tab_indicator_slot_context_1 = (ctx) => ({});
+const get_tab_indicator_slot_changes = (dirty) => ({});
+const get_tab_indicator_slot_context = (ctx) => ({});
+function create_if_block_1$1(ctx) {
+  let tabindicator;
+  let current;
+  const tabindicator_spread_levels = [
+    { active: ctx[18] },
+    prefixFilter(ctx[24], "tabIndicator$")
+  ];
+  let tabindicator_props = {
+    $$slots: { default: [create_default_slot_2$1] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < tabindicator_spread_levels.length; i += 1) {
+    tabindicator_props = assign(tabindicator_props, tabindicator_spread_levels[i]);
+  }
+  tabindicator = new TabIndicator({ props: tabindicator_props });
+  ctx[31](tabindicator);
+  return {
+    c() {
+      create_component(tabindicator.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(tabindicator.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(tabindicator, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const tabindicator_changes = dirty[0] & 17039360 ? get_spread_update(tabindicator_spread_levels, [
+        dirty[0] & 262144 && { active: ctx2[18] },
+        dirty[0] & 16777216 && get_spread_object(prefixFilter(ctx2[24], "tabIndicator$"))
+      ]) : {};
+      if (dirty[1] & 32) {
+        tabindicator_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      tabindicator.$set(tabindicator_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(tabindicator.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(tabindicator.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[31](null);
+      destroy_component(tabindicator, detaching);
+    }
+  };
+}
+function create_default_slot_2$1(ctx) {
+  let current;
+  const tab_indicator_slot_template = ctx[30]["tab-indicator"];
+  const tab_indicator_slot = create_slot(tab_indicator_slot_template, ctx, ctx[36], get_tab_indicator_slot_context);
+  return {
+    c() {
+      if (tab_indicator_slot)
+        tab_indicator_slot.c();
+    },
+    l(nodes) {
+      if (tab_indicator_slot)
+        tab_indicator_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (tab_indicator_slot) {
+        tab_indicator_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (tab_indicator_slot) {
+        if (tab_indicator_slot.p && (!current || dirty[1] & 32)) {
+          update_slot_base(tab_indicator_slot, tab_indicator_slot_template, ctx2, ctx2[36], !current ? get_all_dirty_from_scope(ctx2[36]) : get_slot_changes(tab_indicator_slot_template, ctx2[36], dirty, get_tab_indicator_slot_changes), get_tab_indicator_slot_context);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(tab_indicator_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(tab_indicator_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (tab_indicator_slot)
+        tab_indicator_slot.d(detaching);
+    }
+  };
+}
+function create_if_block$4(ctx) {
+  let tabindicator;
+  let current;
+  const tabindicator_spread_levels = [
+    { active: ctx[18] },
+    prefixFilter(ctx[24], "tabIndicator$")
+  ];
+  let tabindicator_props = {
+    $$slots: { default: [create_default_slot_1$1] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < tabindicator_spread_levels.length; i += 1) {
+    tabindicator_props = assign(tabindicator_props, tabindicator_spread_levels[i]);
+  }
+  tabindicator = new TabIndicator({ props: tabindicator_props });
+  ctx[33](tabindicator);
+  return {
+    c() {
+      create_component(tabindicator.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(tabindicator.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(tabindicator, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const tabindicator_changes = dirty[0] & 17039360 ? get_spread_update(tabindicator_spread_levels, [
+        dirty[0] & 262144 && { active: ctx2[18] },
+        dirty[0] & 16777216 && get_spread_object(prefixFilter(ctx2[24], "tabIndicator$"))
+      ]) : {};
+      if (dirty[1] & 32) {
+        tabindicator_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      tabindicator.$set(tabindicator_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(tabindicator.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(tabindicator.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[33](null);
+      destroy_component(tabindicator, detaching);
+    }
+  };
+}
+function create_default_slot_1$1(ctx) {
+  let current;
+  const tab_indicator_slot_template = ctx[30]["tab-indicator"];
+  const tab_indicator_slot = create_slot(tab_indicator_slot_template, ctx, ctx[36], get_tab_indicator_slot_context_1);
+  return {
+    c() {
+      if (tab_indicator_slot)
+        tab_indicator_slot.c();
+    },
+    l(nodes) {
+      if (tab_indicator_slot)
+        tab_indicator_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (tab_indicator_slot) {
+        tab_indicator_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (tab_indicator_slot) {
+        if (tab_indicator_slot.p && (!current || dirty[1] & 32)) {
+          update_slot_base(tab_indicator_slot, tab_indicator_slot_template, ctx2, ctx2[36], !current ? get_all_dirty_from_scope(ctx2[36]) : get_slot_changes(tab_indicator_slot_template, ctx2[36], dirty, get_tab_indicator_slot_changes_1), get_tab_indicator_slot_context_1);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(tab_indicator_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(tab_indicator_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (tab_indicator_slot)
+        tab_indicator_slot.d(detaching);
+    }
+  };
+}
+function create_default_slot$4(ctx) {
+  let span0;
+  let t0;
+  let span0_class_value;
+  let useActions_action;
+  let t1;
+  let t2;
+  let span1;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[30].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[36], null);
+  let if_block0 = ctx[6] && create_if_block_1$1(ctx);
+  let span0_levels = [
+    {
+      class: span0_class_value = classMap({
+        [ctx[9]]: true,
+        "mdc-tab__content": true
+      })
+    },
+    prefixFilter(ctx[24], "content$")
+  ];
+  let span0_data = {};
+  for (let i = 0; i < span0_levels.length; i += 1) {
+    span0_data = assign(span0_data, span0_levels[i]);
+  }
+  let if_block1 = !ctx[6] && create_if_block$4(ctx);
+  return {
+    c() {
+      span0 = element("span");
+      if (default_slot)
+        default_slot.c();
+      t0 = space();
+      if (if_block0)
+        if_block0.c();
+      t1 = space();
+      if (if_block1)
+        if_block1.c();
+      t2 = space();
+      span1 = element("span");
+      this.h();
+    },
+    l(nodes) {
+      span0 = claim_element(nodes, "SPAN", { class: true });
+      var span0_nodes = children(span0);
+      if (default_slot)
+        default_slot.l(span0_nodes);
+      t0 = claim_space(span0_nodes);
+      if (if_block0)
+        if_block0.l(span0_nodes);
+      span0_nodes.forEach(detach);
+      t1 = claim_space(nodes);
+      if (if_block1)
+        if_block1.l(nodes);
+      t2 = claim_space(nodes);
+      span1 = claim_element(nodes, "SPAN", { class: true });
+      children(span1).forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(span0, span0_data);
+      attr(span1, "class", "mdc-tab__ripple");
+    },
+    m(target, anchor) {
+      insert_hydration(target, span0, anchor);
+      if (default_slot) {
+        default_slot.m(span0, null);
+      }
+      append_hydration(span0, t0);
+      if (if_block0)
+        if_block0.m(span0, null);
+      ctx[32](span0);
+      insert_hydration(target, t1, anchor);
+      if (if_block1)
+        if_block1.m(target, anchor);
+      insert_hydration(target, t2, anchor);
+      insert_hydration(target, span1, anchor);
+      current = true;
+      if (!mounted) {
+        dispose = action_destroyer(useActions_action = useActions.call(null, span0, ctx[8]));
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty[1] & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[36], !current ? get_all_dirty_from_scope(ctx2[36]) : get_slot_changes(default_slot_template, ctx2[36], dirty, null), null);
+        }
+      }
+      if (ctx2[6]) {
+        if (if_block0) {
+          if_block0.p(ctx2, dirty);
+          if (dirty[0] & 64) {
+            transition_in(if_block0, 1);
+          }
+        } else {
+          if_block0 = create_if_block_1$1(ctx2);
+          if_block0.c();
+          transition_in(if_block0, 1);
+          if_block0.m(span0, null);
+        }
+      } else if (if_block0) {
+        group_outros();
+        transition_out(if_block0, 1, 1, () => {
+          if_block0 = null;
+        });
+        check_outros();
+      }
+      set_attributes(span0, span0_data = get_spread_update(span0_levels, [
+        (!current || dirty[0] & 512 && span0_class_value !== (span0_class_value = classMap({
+          [ctx2[9]]: true,
+          "mdc-tab__content": true
+        }))) && { class: span0_class_value },
+        dirty[0] & 16777216 && prefixFilter(ctx2[24], "content$")
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty[0] & 256)
+        useActions_action.update.call(null, ctx2[8]);
+      if (!ctx2[6]) {
+        if (if_block1) {
+          if_block1.p(ctx2, dirty);
+          if (dirty[0] & 64) {
+            transition_in(if_block1, 1);
+          }
+        } else {
+          if_block1 = create_if_block$4(ctx2);
+          if_block1.c();
+          transition_in(if_block1, 1);
+          if_block1.m(t2.parentNode, t2);
+        }
+      } else if (if_block1) {
+        group_outros();
+        transition_out(if_block1, 1, 1, () => {
+          if_block1 = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      transition_in(if_block0);
+      transition_in(if_block1);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      transition_out(if_block0);
+      transition_out(if_block1);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(span0);
+      if (default_slot)
+        default_slot.d(detaching);
+      if (if_block0)
+        if_block0.d();
+      ctx[32](null);
+      if (detaching)
+        detach(t1);
+      if (if_block1)
+        if_block1.d(detaching);
+      if (detaching)
+        detach(t2);
+      if (detaching)
+        detach(span1);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function create_fragment$g(ctx) {
+  let switch_instance;
+  let switch_instance_anchor;
+  let current;
+  const switch_instance_spread_levels = [
+    {
+      use: [
+        [
+          Ripple,
+          {
+            ripple: ctx[3],
+            unbounded: false,
+            addClass: ctx[21],
+            removeClass: ctx[22],
+            addStyle: ctx[23]
+          }
+        ],
+        ctx[20],
+        ...ctx[0]
+      ]
+    },
+    {
+      class: classMap(__spreadValues({
+        [ctx[1]]: true,
+        "mdc-tab": true,
+        "mdc-tab--active": ctx[18],
+        "mdc-tab--stacked": ctx[4],
+        "mdc-tab--min-width": ctx[5]
+      }, ctx[15]))
+    },
+    {
+      style: Object.entries(ctx[16]).map(func$5).concat([ctx[2]]).join(" ")
+    },
+    { role: "tab" },
+    {
+      "aria-selected": ctx[18] ? "true" : "false"
+    },
+    {
+      tabindex: ctx[18] || ctx[19] ? "0" : "-1"
+    },
+    { href: ctx[7] },
+    ctx[17],
+    exclude(ctx[24], ["content$", "tabIndicator$"])
+  ];
+  var switch_value = ctx[10];
+  function switch_props(ctx2) {
+    let switch_instance_props = {
+      $$slots: { default: [create_default_slot$4] },
+      $$scope: { ctx: ctx2 }
+    };
+    for (let i = 0; i < switch_instance_spread_levels.length; i += 1) {
+      switch_instance_props = assign(switch_instance_props, switch_instance_spread_levels[i]);
+    }
+    return { props: switch_instance_props };
+  }
+  if (switch_value) {
+    switch_instance = new switch_value(switch_props(ctx));
+    ctx[34](switch_instance);
+    switch_instance.$on("click", ctx[35]);
+  }
+  return {
+    c() {
+      if (switch_instance)
+        create_component(switch_instance.$$.fragment);
+      switch_instance_anchor = empty();
+    },
+    l(nodes) {
+      if (switch_instance)
+        claim_component(switch_instance.$$.fragment, nodes);
+      switch_instance_anchor = empty();
+    },
+    m(target, anchor) {
+      if (switch_instance) {
+        mount_component(switch_instance, target, anchor);
+      }
+      insert_hydration(target, switch_instance_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const switch_instance_changes = dirty[0] & 33521855 ? get_spread_update(switch_instance_spread_levels, [
+        dirty[0] & 15728649 && {
+          use: [
+            [
+              Ripple,
+              {
+                ripple: ctx2[3],
+                unbounded: false,
+                addClass: ctx2[21],
+                removeClass: ctx2[22],
+                addStyle: ctx2[23]
+              }
+            ],
+            ctx2[20],
+            ...ctx2[0]
+          ]
+        },
+        dirty[0] & 294962 && {
+          class: classMap(__spreadValues({
+            [ctx2[1]]: true,
+            "mdc-tab": true,
+            "mdc-tab--active": ctx2[18],
+            "mdc-tab--stacked": ctx2[4],
+            "mdc-tab--min-width": ctx2[5]
+          }, ctx2[15]))
+        },
+        dirty[0] & 65540 && {
+          style: Object.entries(ctx2[16]).map(func$5).concat([ctx2[2]]).join(" ")
+        },
+        switch_instance_spread_levels[3],
+        dirty[0] & 262144 && {
+          "aria-selected": ctx2[18] ? "true" : "false"
+        },
+        dirty[0] & 786432 && {
+          tabindex: ctx2[18] || ctx2[19] ? "0" : "-1"
+        },
+        dirty[0] & 128 && { href: ctx2[7] },
+        dirty[0] & 131072 && get_spread_object(ctx2[17]),
+        dirty[0] & 16777216 && get_spread_object(exclude(ctx2[24], ["content$", "tabIndicator$"]))
+      ]) : {};
+      if (dirty[0] & 17064768 | dirty[1] & 32) {
+        switch_instance_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      if (switch_value !== (switch_value = ctx2[10])) {
+        if (switch_instance) {
+          group_outros();
+          const old_component = switch_instance;
+          transition_out(old_component.$$.fragment, 1, 0, () => {
+            destroy_component(old_component, 1);
+          });
+          check_outros();
+        }
+        if (switch_value) {
+          switch_instance = new switch_value(switch_props(ctx2));
+          ctx2[34](switch_instance);
+          switch_instance.$on("click", ctx2[35]);
+          create_component(switch_instance.$$.fragment);
+          transition_in(switch_instance.$$.fragment, 1);
+          mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+        } else {
+          switch_instance = null;
+        }
+      } else if (switch_value) {
+        switch_instance.$set(switch_instance_changes);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      if (switch_instance)
+        transition_in(switch_instance.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      if (switch_instance)
+        transition_out(switch_instance.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[34](null);
+      if (detaching)
+        detach(switch_instance_anchor);
+      if (switch_instance)
+        destroy_component(switch_instance, detaching);
+    }
+  };
+}
+const func$5 = ([name, value]) => `${name}: ${value};`;
+function instance_1$6($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "style",
+    "tab",
+    "ripple",
+    "stacked",
+    "minWidth",
+    "indicatorSpanOnlyContent",
+    "href",
+    "content$use",
+    "content$class",
+    "component",
+    "activate",
+    "deactivate",
+    "focus",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { style = "" } = $$props;
+  let { tab: tabId } = $$props;
+  let { ripple = true } = $$props;
+  let { stacked = false } = $$props;
+  let { minWidth = false } = $$props;
+  let { indicatorSpanOnlyContent = false } = $$props;
+  let { href = void 0 } = $$props;
+  let { content$use = [] } = $$props;
+  let { content$class = "" } = $$props;
+  let element2;
+  let instance2;
+  let content;
+  let tabIndicator;
+  let internalClasses = {};
+  let internalStyles = {};
+  let internalAttrs = {};
+  let focusOnActivate = getContext("SMUI:tab:focusOnActivate");
+  let active = tabId === getContext("SMUI:tab:initialActive");
+  let forceAccessible = false;
+  let { component = href == null ? Button : A } = $$props;
+  setContext("SMUI:label:context", "tab");
+  setContext("SMUI:icon:context", "tab");
+  if (!tabId) {
+    throw new Error("The tab property is required! It should be passed down from the TabBar to the Tab.");
+  }
+  onMount(() => {
+    $$invalidate(11, instance2 = new MDCTabFoundation({
+      setAttr: addAttr,
+      addClass,
+      removeClass,
+      hasClass,
+      activateIndicator: (previousIndicatorClientRect) => tabIndicator.activate(previousIndicatorClientRect),
+      deactivateIndicator: () => tabIndicator.deactivate(),
+      notifyInteracted: () => dispatch(getElement(), "SMUITab:interacted", { tabId }, void 0, true),
+      getOffsetLeft: () => getElement().offsetLeft,
+      getOffsetWidth: () => getElement().offsetWidth,
+      getContentOffsetLeft: () => content.offsetLeft,
+      getContentOffsetWidth: () => content.offsetWidth,
+      focus
+    }));
+    const accessor = {
+      tabId,
+      get element() {
+        return getElement();
+      },
+      get active() {
+        return active;
+      },
+      forceAccessible(accessible) {
+        $$invalidate(19, forceAccessible = accessible);
+      },
+      computeIndicatorClientRect: () => tabIndicator.computeContentClientRect(),
+      computeDimensions: () => instance2.computeDimensions(),
+      focus,
+      activate,
+      deactivate
+    };
+    dispatch(getElement(), "SMUITab:mount", accessor);
+    instance2.init();
+    return () => {
+      dispatch(getElement(), "SMUITab:unmount", accessor);
+      instance2.destroy();
+    };
+  });
+  function hasClass(className2) {
+    return className2 in internalClasses ? internalClasses[className2] : getElement().classList.contains(className2);
+  }
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(15, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(15, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addStyle(name, value) {
+    if (internalStyles[name] != value) {
+      if (value === "" || value == null) {
+        delete internalStyles[name];
+        $$invalidate(16, internalStyles);
+      } else {
+        $$invalidate(16, internalStyles[name] = value, internalStyles);
+      }
+    }
+  }
+  function addAttr(name, value) {
+    if (internalAttrs[name] !== value) {
+      $$invalidate(17, internalAttrs[name] = value, internalAttrs);
+    }
+  }
+  function activate(previousIndicatorClientRect, skipFocus) {
+    $$invalidate(18, active = true);
+    if (skipFocus) {
+      instance2.setFocusOnActivate(false);
+    }
+    instance2.activate(previousIndicatorClientRect);
+    if (skipFocus) {
+      instance2.setFocusOnActivate(focusOnActivate);
+    }
+  }
+  function deactivate() {
+    $$invalidate(18, active = false);
+    instance2.deactivate();
+  }
+  function focus() {
+    getElement().focus();
+  }
+  function getElement() {
+    return element2.getElement();
+  }
+  function tabindicator_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      tabIndicator = $$value;
+      $$invalidate(14, tabIndicator);
+    });
+  }
+  function span0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      content = $$value;
+      $$invalidate(13, content);
+    });
+  }
+  function tabindicator_binding_1($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      tabIndicator = $$value;
+      $$invalidate(14, tabIndicator);
+    });
+  }
+  function switch_instance_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(12, element2);
+    });
+  }
+  const click_handler = () => instance2 && instance2.handleClick();
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(24, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("style" in $$new_props)
+      $$invalidate(2, style = $$new_props.style);
+    if ("tab" in $$new_props)
+      $$invalidate(25, tabId = $$new_props.tab);
+    if ("ripple" in $$new_props)
+      $$invalidate(3, ripple = $$new_props.ripple);
+    if ("stacked" in $$new_props)
+      $$invalidate(4, stacked = $$new_props.stacked);
+    if ("minWidth" in $$new_props)
+      $$invalidate(5, minWidth = $$new_props.minWidth);
+    if ("indicatorSpanOnlyContent" in $$new_props)
+      $$invalidate(6, indicatorSpanOnlyContent = $$new_props.indicatorSpanOnlyContent);
+    if ("href" in $$new_props)
+      $$invalidate(7, href = $$new_props.href);
+    if ("content$use" in $$new_props)
+      $$invalidate(8, content$use = $$new_props.content$use);
+    if ("content$class" in $$new_props)
+      $$invalidate(9, content$class = $$new_props.content$class);
+    if ("component" in $$new_props)
+      $$invalidate(10, component = $$new_props.component);
+    if ("$$scope" in $$new_props)
+      $$invalidate(36, $$scope = $$new_props.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty[0] & 2048) {
+      if (instance2) {
+        instance2.setFocusOnActivate(focusOnActivate);
+      }
+    }
+  };
+  return [
+    use,
+    className,
+    style,
+    ripple,
+    stacked,
+    minWidth,
+    indicatorSpanOnlyContent,
+    href,
+    content$use,
+    content$class,
+    component,
+    instance2,
+    element2,
+    content,
+    tabIndicator,
+    internalClasses,
+    internalStyles,
+    internalAttrs,
+    active,
+    forceAccessible,
+    forwardEvents,
+    addClass,
+    removeClass,
+    addStyle,
+    $$restProps,
+    tabId,
+    activate,
+    deactivate,
+    focus,
+    getElement,
+    slots,
+    tabindicator_binding,
+    span0_binding,
+    tabindicator_binding_1,
+    switch_instance_binding,
+    click_handler,
+    $$scope
+  ];
+}
+class Tab extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$6, create_fragment$g, safe_not_equal, {
+      use: 0,
+      class: 1,
+      style: 2,
+      tab: 25,
+      ripple: 3,
+      stacked: 4,
+      minWidth: 5,
+      indicatorSpanOnlyContent: 6,
+      href: 7,
+      content$use: 8,
+      content$class: 9,
+      component: 10,
+      activate: 26,
+      deactivate: 27,
+      focus: 28,
+      getElement: 29
+    }, null, [-1, -1]);
+  }
+  get activate() {
+    return this.$$.ctx[26];
+  }
+  get deactivate() {
+    return this.$$.ctx[27];
+  }
+  get focus() {
+    return this.$$.ctx[28];
+  }
+  get getElement() {
+    return this.$$.ctx[29];
+  }
+}
+function create_default_slot$3(ctx) {
+  let current;
+  const default_slot_template = ctx[9].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[11], null);
+  return {
+    c() {
+      if (default_slot)
+        default_slot.c();
+    },
+    l(nodes) {
+      if (default_slot)
+        default_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (default_slot) {
+        default_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 2048)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[11], !current ? get_all_dirty_from_scope(ctx2[11]) : get_slot_changes(default_slot_template, ctx2[11], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_fragment$f(ctx) {
+  let switch_instance;
+  let switch_instance_anchor;
+  let current;
+  const switch_instance_spread_levels = [
+    {
+      use: [ctx[4], ...ctx[0]]
+    },
+    {
+      class: classMap({
+        [ctx[1]]: true,
+        "mdc-button__label": ctx[5] === "button",
+        "mdc-fab__label": ctx[5] === "fab",
+        "mdc-tab__text-label": ctx[5] === "tab",
+        "mdc-image-list__label": ctx[5] === "image-list",
+        "mdc-snackbar__label": ctx[5] === "snackbar",
+        "mdc-banner__text": ctx[5] === "banner",
+        "mdc-segmented-button__label": ctx[5] === "segmented-button",
+        "mdc-data-table__pagination-rows-per-page-label": ctx[5] === "data-table:pagination",
+        "mdc-data-table__header-cell-label": ctx[5] === "data-table:sortable-header-cell"
+      })
+    },
+    ctx[5] === "snackbar" ? { "aria-atomic": "false" } : {},
+    { tabindex: ctx[6] },
+    ctx[7]
+  ];
+  var switch_value = ctx[2];
+  function switch_props(ctx2) {
+    let switch_instance_props = {
+      $$slots: { default: [create_default_slot$3] },
+      $$scope: { ctx: ctx2 }
+    };
+    for (let i = 0; i < switch_instance_spread_levels.length; i += 1) {
+      switch_instance_props = assign(switch_instance_props, switch_instance_spread_levels[i]);
+    }
+    return { props: switch_instance_props };
+  }
+  if (switch_value) {
+    switch_instance = new switch_value(switch_props(ctx));
+    ctx[10](switch_instance);
+  }
+  return {
+    c() {
+      if (switch_instance)
+        create_component(switch_instance.$$.fragment);
+      switch_instance_anchor = empty();
+    },
+    l(nodes) {
+      if (switch_instance)
+        claim_component(switch_instance.$$.fragment, nodes);
+      switch_instance_anchor = empty();
+    },
+    m(target, anchor) {
+      if (switch_instance) {
+        mount_component(switch_instance, target, anchor);
+      }
+      insert_hydration(target, switch_instance_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const switch_instance_changes = dirty & 243 ? get_spread_update(switch_instance_spread_levels, [
+        dirty & 17 && {
+          use: [ctx2[4], ...ctx2[0]]
+        },
+        dirty & 34 && {
+          class: classMap({
+            [ctx2[1]]: true,
+            "mdc-button__label": ctx2[5] === "button",
+            "mdc-fab__label": ctx2[5] === "fab",
+            "mdc-tab__text-label": ctx2[5] === "tab",
+            "mdc-image-list__label": ctx2[5] === "image-list",
+            "mdc-snackbar__label": ctx2[5] === "snackbar",
+            "mdc-banner__text": ctx2[5] === "banner",
+            "mdc-segmented-button__label": ctx2[5] === "segmented-button",
+            "mdc-data-table__pagination-rows-per-page-label": ctx2[5] === "data-table:pagination",
+            "mdc-data-table__header-cell-label": ctx2[5] === "data-table:sortable-header-cell"
+          })
+        },
+        dirty & 32 && get_spread_object(ctx2[5] === "snackbar" ? { "aria-atomic": "false" } : {}),
+        dirty & 64 && { tabindex: ctx2[6] },
+        dirty & 128 && get_spread_object(ctx2[7])
+      ]) : {};
+      if (dirty & 2048) {
+        switch_instance_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      if (switch_value !== (switch_value = ctx2[2])) {
+        if (switch_instance) {
+          group_outros();
+          const old_component = switch_instance;
+          transition_out(old_component.$$.fragment, 1, 0, () => {
+            destroy_component(old_component, 1);
+          });
+          check_outros();
+        }
+        if (switch_value) {
+          switch_instance = new switch_value(switch_props(ctx2));
+          ctx2[10](switch_instance);
+          create_component(switch_instance.$$.fragment);
+          transition_in(switch_instance.$$.fragment, 1);
+          mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+        } else {
+          switch_instance = null;
+        }
+      } else if (switch_value) {
+        switch_instance.$set(switch_instance_changes);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      if (switch_instance)
+        transition_in(switch_instance.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      if (switch_instance)
+        transition_out(switch_instance.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[10](null);
+      if (detaching)
+        detach(switch_instance_anchor);
+      if (switch_instance)
+        destroy_component(switch_instance, detaching);
+    }
+  };
+}
+function instance$9($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "component", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let element2;
+  let { component = Span$1 } = $$props;
+  const context = getContext("SMUI:label:context");
+  const tabindex = getContext("SMUI:label:tabindex");
+  function getElement() {
+    return element2.getElement();
+  }
+  function switch_instance_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(3, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(7, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("component" in $$new_props)
+      $$invalidate(2, component = $$new_props.component);
+    if ("$$scope" in $$new_props)
+      $$invalidate(11, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    component,
+    element2,
+    forwardEvents,
+    context,
+    tabindex,
+    $$restProps,
+    getElement,
+    slots,
+    switch_instance_binding,
+    $$scope
+  ];
+}
+class CommonLabel extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$9, create_fragment$f, safe_not_equal, {
+      use: 0,
+      class: 1,
+      component: 2,
+      getElement: 8
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[8];
+  }
+}
+function create_fragment$e(ctx) {
+  let current;
+  const default_slot_template = ctx[4].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[3], null);
+  return {
+    c() {
+      if (default_slot)
+        default_slot.c();
+    },
+    l(nodes) {
+      if (default_slot)
+        default_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (default_slot) {
+        default_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 8)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[3], !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(default_slot_template, ctx2[3], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance$8($$self, $$props, $$invalidate) {
+  let $storeValue;
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { key } = $$props;
+  let { value } = $$props;
+  const storeValue = writable(value);
+  component_subscribe($$self, storeValue, (value2) => $$invalidate(5, $storeValue = value2));
+  setContext(key, storeValue);
+  onDestroy(() => {
+    storeValue.set(void 0);
+  });
+  $$self.$$set = ($$props2) => {
+    if ("key" in $$props2)
+      $$invalidate(1, key = $$props2.key);
+    if ("value" in $$props2)
+      $$invalidate(2, value = $$props2.value);
+    if ("$$scope" in $$props2)
+      $$invalidate(3, $$scope = $$props2.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 4) {
+      set_store_value(storeValue, $storeValue = value, $storeValue);
+    }
+  };
+  return [storeValue, key, value, $$scope, slots];
+}
+class ContextFragment extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$8, create_fragment$e, safe_not_equal, { key: 1, value: 2 });
+  }
+}
+const Label = CommonLabel;
+/**
  * @license
  * Copyright 2020 Google Inc.
  *
@@ -452,7 +6428,19 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var it={INDETERMINATE_CLASS:"mdc-circular-progress--indeterminate",CLOSED_CLASS:"mdc-circular-progress--closed"},Je={ARIA_HIDDEN:"aria-hidden",ARIA_VALUENOW:"aria-valuenow",DETERMINATE_CIRCLE_SELECTOR:".mdc-circular-progress__determinate-circle",RADIUS:"r",STROKE_DASHOFFSET:"stroke-dashoffset"};/**
+ */
+var cssClasses$5 = {
+  INDETERMINATE_CLASS: "mdc-circular-progress--indeterminate",
+  CLOSED_CLASS: "mdc-circular-progress--closed"
+};
+var strings$3 = {
+  ARIA_HIDDEN: "aria-hidden",
+  ARIA_VALUENOW: "aria-valuenow",
+  DETERMINATE_CIRCLE_SELECTOR: ".mdc-circular-progress__determinate-circle",
+  RADIUS: "r",
+  STROKE_DASHOFFSET: "stroke-dashoffset"
+};
+/**
  * @license
  * Copyright 2020 Google Inc.
  *
@@ -473,7 +6461,1777 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var wr=function(n){ke(e,n);function e(t){return n.call(this,Ae(Ae({},e.defaultAdapter),t))||this}return Object.defineProperty(e,"cssClasses",{get:function(){return it},enumerable:!1,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return Je},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},getDeterminateCircleAttribute:function(){return null},hasClass:function(){return!1},removeClass:function(){},removeAttribute:function(){},setAttribute:function(){},setDeterminateCircleAttribute:function(){}}},enumerable:!1,configurable:!0}),e.prototype.init=function(){this.closed=this.adapter.hasClass(it.CLOSED_CLASS),this.determinate=!this.adapter.hasClass(it.INDETERMINATE_CLASS),this.progress=0,this.determinate&&this.adapter.setAttribute(Je.ARIA_VALUENOW,this.progress.toString()),this.radius=Number(this.adapter.getDeterminateCircleAttribute(Je.RADIUS))},e.prototype.setDeterminate=function(t){this.determinate=t,this.determinate?(this.adapter.removeClass(it.INDETERMINATE_CLASS),this.setProgress(this.progress)):(this.adapter.addClass(it.INDETERMINATE_CLASS),this.adapter.removeAttribute(Je.ARIA_VALUENOW))},e.prototype.isDeterminate=function(){return this.determinate},e.prototype.setProgress=function(t){if(this.progress=t,this.determinate){var i=(1-this.progress)*(2*Math.PI*this.radius);this.adapter.setDeterminateCircleAttribute(Je.STROKE_DASHOFFSET,""+i),this.adapter.setAttribute(Je.ARIA_VALUENOW,this.progress.toString())}},e.prototype.getProgress=function(){return this.progress},e.prototype.open=function(){this.closed=!1,this.adapter.removeClass(it.CLOSED_CLASS),this.adapter.removeAttribute(Je.ARIA_HIDDEN)},e.prototype.close=function(){this.closed=!0,this.adapter.addClass(it.CLOSED_CLASS),this.adapter.setAttribute(Je.ARIA_HIDDEN,"true")},e.prototype.isClosed=function(){return this.closed},e}(ze);function yn(n,e,t){const i=n.slice();return i[24]=e[t],i}function En(n){let e,t,i,l,r,s,a,o,c,u,f,d,m,v;return{c(){e=Z("div"),t=Z("div"),i=we("svg"),l=we("circle"),r=_e(),s=Z("div"),a=we("svg"),o=we("circle"),c=_e(),u=Z("div"),f=we("svg"),d=we("circle"),m=_e(),this.h()},l(p){e=J(p,"DIV",{class:!0});var g=w(e);t=J(g,"DIV",{class:!0});var _=w(t);i=Qe(_,"svg",{class:!0,viewBox:!0,xmlns:!0});var b=w(i);l=Qe(b,"circle",{cx:!0,cy:!0,r:!0,"stroke-dasharray":!0,"stroke-dashoffset":!0,"stroke-width":!0}),w(l).forEach(P),b.forEach(P),_.forEach(P),r=be(g),s=J(g,"DIV",{class:!0});var y=w(s);a=Qe(y,"svg",{class:!0,viewBox:!0,xmlns:!0});var I=w(a);o=Qe(I,"circle",{cx:!0,cy:!0,r:!0,"stroke-dasharray":!0,"stroke-dashoffset":!0,"stroke-width":!0}),w(o).forEach(P),I.forEach(P),y.forEach(P),c=be(g),u=J(g,"DIV",{class:!0});var T=w(u);f=Qe(T,"svg",{class:!0,viewBox:!0,xmlns:!0});var S=w(f);d=Qe(S,"circle",{cx:!0,cy:!0,r:!0,"stroke-dasharray":!0,"stroke-dashoffset":!0,"stroke-width":!0}),w(d).forEach(P),S.forEach(P),T.forEach(P),m=be(g),g.forEach(P),this.h()},h(){q(l,"cx","24"),q(l,"cy","24"),q(l,"r","18"),q(l,"stroke-dasharray","113.097"),q(l,"stroke-dashoffset","56.549"),q(l,"stroke-width","4"),q(i,"class","mdc-circular-progress__indeterminate-circle-graphic"),q(i,"viewBox","0 0 48 48"),q(i,"xmlns","http://www.w3.org/2000/svg"),q(t,"class","mdc-circular-progress__circle-clipper mdc-circular-progress__circle-left"),q(o,"cx","24"),q(o,"cy","24"),q(o,"r","18"),q(o,"stroke-dasharray","113.097"),q(o,"stroke-dashoffset","56.549"),q(o,"stroke-width","3.2"),q(a,"class","mdc-circular-progress__indeterminate-circle-graphic"),q(a,"viewBox","0 0 48 48"),q(a,"xmlns","http://www.w3.org/2000/svg"),q(s,"class","mdc-circular-progress__gap-patch"),q(d,"cx","24"),q(d,"cy","24"),q(d,"r","18"),q(d,"stroke-dasharray","113.097"),q(d,"stroke-dashoffset","56.549"),q(d,"stroke-width","4"),q(f,"class","mdc-circular-progress__indeterminate-circle-graphic"),q(f,"viewBox","0 0 48 48"),q(f,"xmlns","http://www.w3.org/2000/svg"),q(u,"class","mdc-circular-progress__circle-clipper mdc-circular-progress__circle-right"),q(e,"class",v=z({[n[1]]:!0,"mdc-circular-progress__spinner-layer":!0,["mdc-circular-progress__color-"+n[24]]:n[5]}))},m(p,g){K(p,e,g),ne(e,t),ne(t,i),ne(i,l),ne(e,r),ne(e,s),ne(s,a),ne(a,o),ne(e,c),ne(e,u),ne(u,f),ne(f,d),ne(e,m)},p(p,g){g&34&&v!==(v=z({[p[1]]:!0,"mdc-circular-progress__spinner-layer":!0,["mdc-circular-progress__color-"+p[24]]:p[5]}))&&q(e,"class",v)},d(p){p&&P(e)}}}function Yr(n){let e,t,i,l,r,s,a,o,c,u,f,d,m,v,p=[{class:"mdc-circular-progress__determinate-circle"},{cx:"24"},{cy:"24"},{r:"18"},{"stroke-dasharray":"113.097"},{"stroke-dashoffset":"113.097"},{"stroke-width":"4"},n[9]],g={};for(let T=0;T<p.length;T+=1)g=H(g,p[T]);let _=n[5]?[1,2,3,4]:[1],b=[];for(let T=0;T<_.length;T+=1)b[T]=En(yn(n,_,T));let y=[{class:o=z(fe({[n[1]]:!0,"mdc-circular-progress":!0,"mdc-circular-progress--indeterminate":n[2],"mdc-circular-progress--closed":n[3]},n[7]))},{role:"progressbar"},{"aria-valuemin":c=0},{"aria-valuemax":u=1},{"aria-valuenow":f=n[2]?void 0:n[4]},n[8],n[12]],I={};for(let T=0;T<y.length;T+=1)I=H(I,y[T]);return{c(){e=Z("div"),t=Z("div"),i=we("svg"),l=we("circle"),r=we("circle"),s=_e(),a=Z("div");for(let T=0;T<b.length;T+=1)b[T].c();this.h()},l(T){e=J(T,"DIV",{class:!0,role:!0,"aria-valuemin":!0,"aria-valuemax":!0,"aria-valuenow":!0});var S=w(e);t=J(S,"DIV",{class:!0});var h=w(t);i=Qe(h,"svg",{class:!0,viewBox:!0,xmlns:!0});var C=w(i);l=Qe(C,"circle",{class:!0,cx:!0,cy:!0,r:!0,"stroke-width":!0}),w(l).forEach(P),r=Qe(C,"circle",{class:!0,cx:!0,cy:!0,r:!0,"stroke-dasharray":!0,"stroke-dashoffset":!0,"stroke-width":!0}),w(r).forEach(P),C.forEach(P),h.forEach(P),s=be(S),a=J(S,"DIV",{class:!0});var N=w(a);for(let F=0;F<b.length;F+=1)b[F].l(N);N.forEach(P),S.forEach(P),this.h()},h(){q(l,"class","mdc-circular-progress__determinate-track"),q(l,"cx","24"),q(l,"cy","24"),q(l,"r","18"),q(l,"stroke-width","4"),ln(r,g),q(i,"class","mdc-circular-progress__determinate-circle-graphic"),q(i,"viewBox","0 0 48 48"),q(i,"xmlns","http://www.w3.org/2000/svg"),q(t,"class","mdc-circular-progress__determinate-container"),q(a,"class","mdc-circular-progress__indeterminate-container"),W(e,I)},m(T,S){K(T,e,S),ne(e,t),ne(t,i),ne(i,l),ne(i,r),n[15](r),ne(e,s),ne(e,a);for(let h=0;h<b.length;h+=1)b[h].m(a,null);n[16](e),m||(v=[G(d=de.call(null,e,n[0])),G(n[11].call(null,e))],m=!0)},p(T,[S]){if(ln(r,g=Q(p,[{class:"mdc-circular-progress__determinate-circle"},{cx:"24"},{cy:"24"},{r:"18"},{"stroke-dasharray":"113.097"},{"stroke-dashoffset":"113.097"},{"stroke-width":"4"},S&512&&T[9]])),S&34){_=T[5]?[1,2,3,4]:[1];let h;for(h=0;h<_.length;h+=1){const C=yn(T,_,h);b[h]?b[h].p(C,S):(b[h]=En(C),b[h].c(),b[h].m(a,null))}for(;h<b.length;h+=1)b[h].d(1);b.length=_.length}W(e,I=Q(y,[S&142&&o!==(o=z(fe({[T[1]]:!0,"mdc-circular-progress":!0,"mdc-circular-progress--indeterminate":T[2],"mdc-circular-progress--closed":T[3]},T[7])))&&{class:o},{role:"progressbar"},{"aria-valuemin":c},{"aria-valuemax":u},S&20&&f!==(f=T[2]?void 0:T[4])&&{"aria-valuenow":f},S&256&&T[8],S&4096&&T[12]])),d&&ie(d.update)&&S&1&&d.update.call(null,T[0])},i:He,o:He,d(T){T&&P(e),n[15](null),El(b,T),n[16](null),m=!1,oe(v)}}}function Qr(n,e,t){const i=["use","class","indeterminate","closed","progress","fourColor","getElement"];let l=Y(e,i);const r=ve(ae());let{use:s=[]}=e,{class:a=""}=e,{indeterminate:o=!1}=e,{closed:c=!1}=e,{progress:u=0}=e,{fourColor:f=!1}=e,d,m,v={},p={},g={},_;Ge(()=>(t(14,m=new wr({addClass:y,getDeterminateCircleAttribute:h,hasClass:b,removeClass:I,removeAttribute:S,setAttribute:T,setDeterminateCircleAttribute:C})),m.init(),()=>{m.destroy()}));function b(V){return V in v?v[V]:N().classList.contains(V)}function y(V){v[V]||t(7,v[V]=!0,v)}function I(V){(!(V in v)||v[V])&&t(7,v[V]=!1,v)}function T(V,R){p[V]!==R&&t(8,p[V]=R,p)}function S(V){(!(V in p)||p[V]!=null)&&t(8,p[V]=void 0,p)}function h(V){var R;return V in g?(R=g[V])!==null&&R!==void 0?R:null:_.getAttribute(V)}function C(V,R){g[V]!==R&&t(9,g[V]=R,g)}function N(){return d}function F(V){X[V?"unshift":"push"](()=>{_=V,t(10,_)})}function O(V){X[V?"unshift":"push"](()=>{d=V,t(6,d)})}return n.$$set=V=>{e=H(H({},e),Ce(V)),t(12,l=Y(e,i)),"use"in V&&t(0,s=V.use),"class"in V&&t(1,a=V.class),"indeterminate"in V&&t(2,o=V.indeterminate),"closed"in V&&t(3,c=V.closed),"progress"in V&&t(4,u=V.progress),"fourColor"in V&&t(5,f=V.fourColor)},n.$$.update=()=>{n.$$.dirty&16388&&m&&m.isDeterminate()!==!o&&m.setDeterminate(!o),n.$$.dirty&16400&&m&&m.getProgress()!==u&&m.setProgress(u),n.$$.dirty&16392&&m&&(c?m.close():m.open())},[s,a,o,c,u,f,d,v,p,g,_,r,l,N,m,F,O]}class Ds extends pe{constructor(e){super();ge(this,e,Qr,Yr,me,{use:0,class:1,indeterminate:2,closed:3,progress:4,fourColor:5,getElement:13})}get getElement(){return this.$$.ctx[13]}}function Zr(n){let e,t,i,l,r,s;const a=n[12].default,o=x(a,n,n[11],null);let c=[{class:t=z({[n[1]]:!0,"smui-paper":!0,"smui-paper--raised":n[2]==="raised","smui-paper--unelevated":n[2]==="unelevated","smui-paper--outlined":n[2]==="outlined",["smui-paper--elevation-z"+n[5]]:n[5]!==0&&n[2]==="raised","smui-paper--rounded":!n[3],["smui-paper--color-"+n[4]]:n[4]!=="default","smui-paper-transition":n[6]})},n[9]],u={};for(let f=0;f<c.length;f+=1)u=H(u,c[f]);return{c(){e=Z("div"),o&&o.c(),this.h()},l(f){e=J(f,"DIV",{class:!0});var d=w(e);o&&o.l(d),d.forEach(P),this.h()},h(){W(e,u)},m(f,d){K(f,e,d),o&&o.m(e,null),n[13](e),l=!0,r||(s=[G(i=de.call(null,e,n[0])),G(n[8].call(null,e))],r=!0)},p(f,[d]){o&&o.p&&(!l||d&2048)&&ee(o,a,f,f[11],l?$(a,f[11],d,null):te(f[11]),null),W(e,u=Q(c,[(!l||d&126&&t!==(t=z({[f[1]]:!0,"smui-paper":!0,"smui-paper--raised":f[2]==="raised","smui-paper--unelevated":f[2]==="unelevated","smui-paper--outlined":f[2]==="outlined",["smui-paper--elevation-z"+f[5]]:f[5]!==0&&f[2]==="raised","smui-paper--rounded":!f[3],["smui-paper--color-"+f[4]]:f[4]!=="default","smui-paper-transition":f[6]})))&&{class:t},d&512&&f[9]])),i&&ie(i.update)&&d&1&&i.update.call(null,f[0])},i(f){l||(M(o,f),l=!0)},o(f){k(o,f),l=!1},d(f){f&&P(e),o&&o.d(f),n[13](null),r=!1,oe(s)}}}function Jr(n,e,t){const i=["use","class","variant","square","color","elevation","transition","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{variant:u="raised"}=e,{square:f=!1}=e,{color:d="default"}=e,{elevation:m=1}=e,{transition:v=!1}=e,p;function g(){return p}function _(b){X[b?"unshift":"push"](()=>{p=b,t(7,p)})}return n.$$set=b=>{e=H(H({},e),Ce(b)),t(9,l=Y(e,i)),"use"in b&&t(0,o=b.use),"class"in b&&t(1,c=b.class),"variant"in b&&t(2,u=b.variant),"square"in b&&t(3,f=b.square),"color"in b&&t(4,d=b.color),"elevation"in b&&t(5,m=b.elevation),"transition"in b&&t(6,v=b.transition),"$$scope"in b&&t(11,s=b.$$scope)},[o,c,u,f,d,m,v,p,a,l,g,s,r,_]}class Ms extends pe{constructor(e){super();ge(this,e,Jr,Zr,me,{use:0,class:1,variant:2,square:3,color:4,elevation:5,transition:6,getElement:10})}get getElement(){return this.$$.ctx[10]}}function xr(n){let e;const t=n[10].default,i=x(t,n,n[12],null);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r&4096)&&ee(i,t,l,l[12],e?$(t,l[12],r,null):te(l[12]),null)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function $r(n){let e,t,i;const l=[{use:[n[7],...n[0]]},{class:z(fe({[n[1]]:!0,[n[5]]:!0},n[4]))},n[6],n[8]];var r=n[2];function s(a){let o={$$slots:{default:[xr]},$$scope:{ctx:a}};for(let c=0;c<l.length;c+=1)o=H(o,l[c]);return{props:o}}return r&&(e=new r(s(n)),n[11](e)),{c(){e&&Ie(e.$$.fragment),t=Pe()},l(a){e&&Oe(e.$$.fragment,a),t=Pe()},m(a,o){e&&ye(e,a,o),K(a,t,o),i=!0},p(a,[o]){const c=o&499?Q(l,[o&129&&{use:[a[7],...a[0]]},o&50&&{class:z(fe({[a[1]]:!0,[a[5]]:!0},a[4]))},o&64&&Fe(a[6]),o&256&&Fe(a[8])]):{};if(o&4096&&(c.$$scope={dirty:o,ctx:a}),r!==(r=a[2])){if(e){De();const u=e;k(u.$$.fragment,1,0,()=>{Ee(u,1)}),Me()}r?(e=new r(s(a)),a[11](e),Ie(e.$$.fragment),M(e.$$.fragment,1),ye(e,t.parentNode,t)):e=null}else r&&e.$set(c)},i(a){i||(e&&M(e.$$.fragment,a),i=!0)},o(a){e&&k(e.$$.fragment,a),i=!1},d(a){n[11](null),a&&P(t),e&&Ee(e,a)}}}const xe={component:gi,class:"",classMap:{},contexts:{},props:{}};function ea(n,e,t){const i=["use","class","component","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e,{use:a=[]}=e,{class:o=""}=e,c;const u=xe.class,f={},d=[],m=xe.contexts,v=xe.props;let{component:p=xe.component}=e;Object.entries(xe.classMap).forEach(([y,I])=>{const T=et(I);T&&"subscribe"in T&&d.push(T.subscribe(S=>{t(4,f[y]=S,f)}))});const g=ve(ae());for(let y in m)m.hasOwnProperty(y)&&mt(y,m[y]);Xt(()=>{for(const y of d)y()});function _(){return c.getElement()}function b(y){X[y?"unshift":"push"](()=>{c=y,t(3,c)})}return n.$$set=y=>{e=H(H({},e),Ce(y)),t(8,l=Y(e,i)),"use"in y&&t(0,a=y.use),"class"in y&&t(1,o=y.class),"component"in y&&t(2,p=y.component),"$$scope"in y&&t(12,s=y.$$scope)},[a,o,p,c,f,u,v,g,l,_,r,b,s]}class ta extends pe{constructor(e){super();ge(this,e,ea,$r,me,{use:0,class:1,component:2,getElement:9})}get getElement(){return this.$$.ctx[9]}}const In=Object.assign({},xe);function Be(n){return new Proxy(ta,{construct:function(e,t){return Object.assign(xe,In,n),new e(...t)},get:function(e,t){return Object.assign(xe,In,n),e[t]}})}var Ps=Be({class:"smui-paper__content",component:nt}),Fs=Be({class:"smui-paper__title",component:Dr});Be({class:"smui-paper__subtitle",component:Mr});function na(n){let e,t,i,l,r,s;const a=n[9].default,o=x(a,n,n[8],null);let c=[{class:t=z({[n[1]]:!0,"mdc-card":!0,"mdc-card--outlined":n[2]==="outlined","smui-card--padded":n[3]})},n[6]],u={};for(let f=0;f<c.length;f+=1)u=H(u,c[f]);return{c(){e=Z("div"),o&&o.c(),this.h()},l(f){e=J(f,"DIV",{class:!0});var d=w(e);o&&o.l(d),d.forEach(P),this.h()},h(){W(e,u)},m(f,d){K(f,e,d),o&&o.m(e,null),n[10](e),l=!0,r||(s=[G(i=de.call(null,e,n[0])),G(n[5].call(null,e))],r=!0)},p(f,[d]){o&&o.p&&(!l||d&256)&&ee(o,a,f,f[8],l?$(a,f[8],d,null):te(f[8]),null),W(e,u=Q(c,[(!l||d&14&&t!==(t=z({[f[1]]:!0,"mdc-card":!0,"mdc-card--outlined":f[2]==="outlined","smui-card--padded":f[3]})))&&{class:t},d&64&&f[6]])),i&&ie(i.update)&&d&1&&i.update.call(null,f[0])},i(f){l||(M(o,f),l=!0)},o(f){k(o,f),l=!1},d(f){f&&P(e),o&&o.d(f),n[10](null),r=!1,oe(s)}}}function ia(n,e,t){const i=["use","class","variant","padded","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{variant:u="raised"}=e,{padded:f=!1}=e,d;function m(){return d}function v(p){X[p?"unshift":"push"](()=>{d=p,t(4,d)})}return n.$$set=p=>{e=H(H({},e),Ce(p)),t(6,l=Y(e,i)),"use"in p&&t(0,o=p.use),"class"in p&&t(1,c=p.class),"variant"in p&&t(2,u=p.variant),"padded"in p&&t(3,f=p.padded),"$$scope"in p&&t(8,s=p.$$scope)},[o,c,u,f,d,a,l,m,s,r,v]}class Hs extends pe{constructor(e){super();ge(this,e,ia,na,me,{use:0,class:1,variant:2,padded:3,getElement:7})}get getElement(){return this.$$.ctx[7]}}Be({class:"smui-card__content",component:nt});Be({class:"mdc-card__media-content",component:nt});Be({class:"mdc-card__action-buttons",component:nt});Be({class:"mdc-card__action-icons",component:nt});var ks=Be({class:"mdc-tooltip__title",component:Or}),Vs=Be({class:"mdc-tooltip__content",component:nt});Be({class:"mdc-tooltip__content-link",component:_i});Be({class:"mdc-tooltip--rich-actions",component:nt,contexts:{"SMUI:button:context":"tooltip:rich-actions"}});function la(n){let e,t,i,l,r,s;const a=n[6].default,o=x(a,n,n[5],null);return{c(){e=Z("div"),o&&o.c(),this.h()},l(c){e=J(c,"DIV",{class:!0});var u=w(e);o&&o.l(u),u.forEach(P),this.h()},h(){q(e,"class",t=z({[n[1]]:!0,"mdc-layout-grid__inner":!0}))},m(c,u){K(c,e,u),o&&o.m(e,null),n[7](e),l=!0,r||(s=[G(i=de.call(null,e,n[0])),G(n[3].call(null,e))],r=!0)},p(c,[u]){o&&o.p&&(!l||u&32)&&ee(o,a,c,c[5],l?$(a,c[5],u,null):te(c[5]),null),(!l||u&2&&t!==(t=z({[c[1]]:!0,"mdc-layout-grid__inner":!0})))&&q(e,"class",t),i&&ie(i.update)&&u&1&&i.update.call(null,c[0])},i(c){l||(M(o,c),l=!0)},o(c){k(o,c),l=!1},d(c){c&&P(e),o&&o.d(c),n[7](null),r=!1,oe(s)}}}function ra(n,e,t){let{$$slots:i={},$$scope:l}=e;const r=ve(ae());let{use:s=[]}=e,{class:a=""}=e,o;function c(){return o}function u(f){X[f?"unshift":"push"](()=>{o=f,t(2,o)})}return n.$$set=f=>{"use"in f&&t(0,s=f.use),"class"in f&&t(1,a=f.class),"$$scope"in f&&t(5,l=f.$$scope)},[s,a,o,r,c,l,i,u]}class aa extends pe{constructor(e){super();ge(this,e,ra,la,me,{use:0,class:1,getElement:4})}get getElement(){return this.$$.ctx[4]}}function sa(n){let e;const t=n[8].default,i=x(t,n,n[10],null);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r&1024)&&ee(i,t,l,l[10],e?$(t,l[10],r,null):te(l[10]),null)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function oa(n){let e,t,i,l,r,s,a;const o=[se(n[6],"innerGrid$")];let c={$$slots:{default:[sa]},$$scope:{ctx:n}};for(let d=0;d<o.length;d+=1)c=H(c,o[d]);t=new aa({props:c});let u=[{class:i=z({[n[1]]:!0,"mdc-layout-grid":!0,"mdc-layout-grid--fixed-column-width":n[2],["mdc-layout-grid--align-"+n[3]]:n[3]!=null})},Ne(n[6],["innerGrid$"])],f={};for(let d=0;d<u.length;d+=1)f=H(f,u[d]);return{c(){e=Z("div"),Ie(t.$$.fragment),this.h()},l(d){e=J(d,"DIV",{class:!0});var m=w(e);Oe(t.$$.fragment,m),m.forEach(P),this.h()},h(){W(e,f)},m(d,m){K(d,e,m),ye(t,e,null),n[9](e),r=!0,s||(a=[G(l=de.call(null,e,n[0])),G(n[5].call(null,e))],s=!0)},p(d,[m]){const v=m&64?Q(o,[Fe(se(d[6],"innerGrid$"))]):{};m&1024&&(v.$$scope={dirty:m,ctx:d}),t.$set(v),W(e,f=Q(u,[(!r||m&14&&i!==(i=z({[d[1]]:!0,"mdc-layout-grid":!0,"mdc-layout-grid--fixed-column-width":d[2],["mdc-layout-grid--align-"+d[3]]:d[3]!=null})))&&{class:i},m&64&&Ne(d[6],["innerGrid$"])])),l&&ie(l.update)&&m&1&&l.update.call(null,d[0])},i(d){r||(M(t.$$.fragment,d),r=!0)},o(d){k(t.$$.fragment,d),r=!1},d(d){d&&P(e),Ee(t),n[9](null),s=!1,oe(a)}}}function ua(n,e,t){const i=["use","class","fixedColumnWidth","align","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{fixedColumnWidth:u=!1}=e,{align:f=void 0}=e,d;function m(){return d}function v(p){X[p?"unshift":"push"](()=>{d=p,t(4,d)})}return n.$$set=p=>{e=H(H({},e),Ce(p)),t(6,l=Y(e,i)),"use"in p&&t(0,o=p.use),"class"in p&&t(1,c=p.class),"fixedColumnWidth"in p&&t(2,u=p.fixedColumnWidth),"align"in p&&t(3,f=p.align),"$$scope"in p&&t(10,s=p.$$scope)},[o,c,u,f,d,a,l,m,r,v,s]}class Us extends pe{constructor(e){super();ge(this,e,ua,oa,me,{use:0,class:1,fixedColumnWidth:2,align:3,getElement:7})}get getElement(){return this.$$.ctx[7]}}function ca(n){let e,t,i,l,r,s;const a=n[11].default,o=x(a,n,n[10],null);let c=[{class:t=z(fe({[n[1]]:!0,"mdc-layout-grid__cell":!0,["mdc-layout-grid__cell--align-"+n[2]]:n[2]!=null,["mdc-layout-grid__cell--order-"+n[3]]:n[3]!=null,["mdc-layout-grid__cell--span-"+n[4]]:n[4]!=null},Object.fromEntries(Object.entries(n[5]).map(Sn))))},n[8]],u={};for(let f=0;f<c.length;f+=1)u=H(u,c[f]);return{c(){e=Z("div"),o&&o.c(),this.h()},l(f){e=J(f,"DIV",{class:!0});var d=w(e);o&&o.l(d),d.forEach(P),this.h()},h(){W(e,u)},m(f,d){K(f,e,d),o&&o.m(e,null),n[12](e),l=!0,r||(s=[G(i=de.call(null,e,n[0])),G(n[7].call(null,e))],r=!0)},p(f,[d]){o&&o.p&&(!l||d&1024)&&ee(o,a,f,f[10],l?$(a,f[10],d,null):te(f[10]),null),W(e,u=Q(c,[(!l||d&62&&t!==(t=z(fe({[f[1]]:!0,"mdc-layout-grid__cell":!0,["mdc-layout-grid__cell--align-"+f[2]]:f[2]!=null,["mdc-layout-grid__cell--order-"+f[3]]:f[3]!=null,["mdc-layout-grid__cell--span-"+f[4]]:f[4]!=null},Object.fromEntries(Object.entries(f[5]).map(Sn))))))&&{class:t},d&256&&f[8]])),i&&ie(i.update)&&d&1&&i.update.call(null,f[0])},i(f){l||(M(o,f),l=!0)},o(f){k(o,f),l=!1},d(f){f&&P(e),o&&o.d(f),n[12](null),r=!1,oe(s)}}}const Sn=([n,e])=>[`mdc-layout-grid__cell--span-${e}-${n}`,!0];function fa(n,e,t){const i=["use","class","align","order","span","spanDevices","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{align:u=void 0}=e,{order:f=void 0}=e,{span:d=void 0}=e,{spanDevices:m={}}=e,v;function p(){return v}function g(_){X[_?"unshift":"push"](()=>{v=_,t(6,v)})}return n.$$set=_=>{e=H(H({},e),Ce(_)),t(8,l=Y(e,i)),"use"in _&&t(0,o=_.use),"class"in _&&t(1,c=_.class),"align"in _&&t(2,u=_.align),"order"in _&&t(3,f=_.order),"span"in _&&t(4,d=_.span),"spanDevices"in _&&t(5,m=_.spanDevices),"$$scope"in _&&t(10,s=_.$$scope)},[o,c,u,f,d,m,v,a,l,p,s,r,g]}class da extends pe{constructor(e){super();ge(this,e,fa,ca,me,{use:0,class:1,align:2,order:3,span:4,spanDevices:5,getElement:9})}get getElement(){return this.$$.ctx[9]}}const js=da;/**
+ */
+var MDCCircularProgressFoundation = function(_super) {
+  __extends(MDCCircularProgressFoundation2, _super);
+  function MDCCircularProgressFoundation2(adapter) {
+    return _super.call(this, __assign(__assign({}, MDCCircularProgressFoundation2.defaultAdapter), adapter)) || this;
+  }
+  Object.defineProperty(MDCCircularProgressFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$5;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCCircularProgressFoundation2, "strings", {
+    get: function() {
+      return strings$3;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCCircularProgressFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        getDeterminateCircleAttribute: function() {
+          return null;
+        },
+        hasClass: function() {
+          return false;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        removeAttribute: function() {
+          return void 0;
+        },
+        setAttribute: function() {
+          return void 0;
+        },
+        setDeterminateCircleAttribute: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCCircularProgressFoundation2.prototype.init = function() {
+    this.closed = this.adapter.hasClass(cssClasses$5.CLOSED_CLASS);
+    this.determinate = !this.adapter.hasClass(cssClasses$5.INDETERMINATE_CLASS);
+    this.progress = 0;
+    if (this.determinate) {
+      this.adapter.setAttribute(strings$3.ARIA_VALUENOW, this.progress.toString());
+    }
+    this.radius = Number(this.adapter.getDeterminateCircleAttribute(strings$3.RADIUS));
+  };
+  MDCCircularProgressFoundation2.prototype.setDeterminate = function(determinate) {
+    this.determinate = determinate;
+    if (this.determinate) {
+      this.adapter.removeClass(cssClasses$5.INDETERMINATE_CLASS);
+      this.setProgress(this.progress);
+    } else {
+      this.adapter.addClass(cssClasses$5.INDETERMINATE_CLASS);
+      this.adapter.removeAttribute(strings$3.ARIA_VALUENOW);
+    }
+  };
+  MDCCircularProgressFoundation2.prototype.isDeterminate = function() {
+    return this.determinate;
+  };
+  MDCCircularProgressFoundation2.prototype.setProgress = function(value) {
+    this.progress = value;
+    if (this.determinate) {
+      var unfilledArcLength = (1 - this.progress) * (2 * Math.PI * this.radius);
+      this.adapter.setDeterminateCircleAttribute(strings$3.STROKE_DASHOFFSET, "" + unfilledArcLength);
+      this.adapter.setAttribute(strings$3.ARIA_VALUENOW, this.progress.toString());
+    }
+  };
+  MDCCircularProgressFoundation2.prototype.getProgress = function() {
+    return this.progress;
+  };
+  MDCCircularProgressFoundation2.prototype.open = function() {
+    this.closed = false;
+    this.adapter.removeClass(cssClasses$5.CLOSED_CLASS);
+    this.adapter.removeAttribute(strings$3.ARIA_HIDDEN);
+  };
+  MDCCircularProgressFoundation2.prototype.close = function() {
+    this.closed = true;
+    this.adapter.addClass(cssClasses$5.CLOSED_CLASS);
+    this.adapter.setAttribute(strings$3.ARIA_HIDDEN, "true");
+  };
+  MDCCircularProgressFoundation2.prototype.isClosed = function() {
+    return this.closed;
+  };
+  return MDCCircularProgressFoundation2;
+}(MDCFoundation);
+function get_each_context(ctx, list, i) {
+  const child_ctx = ctx.slice();
+  child_ctx[24] = list[i];
+  return child_ctx;
+}
+function create_each_block(ctx) {
+  let div3;
+  let div0;
+  let svg0;
+  let circle0;
+  let t0;
+  let div1;
+  let svg1;
+  let circle1;
+  let t1;
+  let div2;
+  let svg2;
+  let circle2;
+  let t2;
+  let div3_class_value;
+  return {
+    c() {
+      div3 = element("div");
+      div0 = element("div");
+      svg0 = svg_element("svg");
+      circle0 = svg_element("circle");
+      t0 = space();
+      div1 = element("div");
+      svg1 = svg_element("svg");
+      circle1 = svg_element("circle");
+      t1 = space();
+      div2 = element("div");
+      svg2 = svg_element("svg");
+      circle2 = svg_element("circle");
+      t2 = space();
+      this.h();
+    },
+    l(nodes) {
+      div3 = claim_element(nodes, "DIV", { class: true });
+      var div3_nodes = children(div3);
+      div0 = claim_element(div3_nodes, "DIV", { class: true });
+      var div0_nodes = children(div0);
+      svg0 = claim_svg_element(div0_nodes, "svg", { class: true, viewBox: true, xmlns: true });
+      var svg0_nodes = children(svg0);
+      circle0 = claim_svg_element(svg0_nodes, "circle", {
+        cx: true,
+        cy: true,
+        r: true,
+        "stroke-dasharray": true,
+        "stroke-dashoffset": true,
+        "stroke-width": true
+      });
+      children(circle0).forEach(detach);
+      svg0_nodes.forEach(detach);
+      div0_nodes.forEach(detach);
+      t0 = claim_space(div3_nodes);
+      div1 = claim_element(div3_nodes, "DIV", { class: true });
+      var div1_nodes = children(div1);
+      svg1 = claim_svg_element(div1_nodes, "svg", { class: true, viewBox: true, xmlns: true });
+      var svg1_nodes = children(svg1);
+      circle1 = claim_svg_element(svg1_nodes, "circle", {
+        cx: true,
+        cy: true,
+        r: true,
+        "stroke-dasharray": true,
+        "stroke-dashoffset": true,
+        "stroke-width": true
+      });
+      children(circle1).forEach(detach);
+      svg1_nodes.forEach(detach);
+      div1_nodes.forEach(detach);
+      t1 = claim_space(div3_nodes);
+      div2 = claim_element(div3_nodes, "DIV", { class: true });
+      var div2_nodes = children(div2);
+      svg2 = claim_svg_element(div2_nodes, "svg", { class: true, viewBox: true, xmlns: true });
+      var svg2_nodes = children(svg2);
+      circle2 = claim_svg_element(svg2_nodes, "circle", {
+        cx: true,
+        cy: true,
+        r: true,
+        "stroke-dasharray": true,
+        "stroke-dashoffset": true,
+        "stroke-width": true
+      });
+      children(circle2).forEach(detach);
+      svg2_nodes.forEach(detach);
+      div2_nodes.forEach(detach);
+      t2 = claim_space(div3_nodes);
+      div3_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(circle0, "cx", "24");
+      attr(circle0, "cy", "24");
+      attr(circle0, "r", "18");
+      attr(circle0, "stroke-dasharray", "113.097");
+      attr(circle0, "stroke-dashoffset", "56.549");
+      attr(circle0, "stroke-width", "4");
+      attr(svg0, "class", "mdc-circular-progress__indeterminate-circle-graphic");
+      attr(svg0, "viewBox", "0 0 48 48");
+      attr(svg0, "xmlns", "http://www.w3.org/2000/svg");
+      attr(div0, "class", "mdc-circular-progress__circle-clipper mdc-circular-progress__circle-left");
+      attr(circle1, "cx", "24");
+      attr(circle1, "cy", "24");
+      attr(circle1, "r", "18");
+      attr(circle1, "stroke-dasharray", "113.097");
+      attr(circle1, "stroke-dashoffset", "56.549");
+      attr(circle1, "stroke-width", "3.2");
+      attr(svg1, "class", "mdc-circular-progress__indeterminate-circle-graphic");
+      attr(svg1, "viewBox", "0 0 48 48");
+      attr(svg1, "xmlns", "http://www.w3.org/2000/svg");
+      attr(div1, "class", "mdc-circular-progress__gap-patch");
+      attr(circle2, "cx", "24");
+      attr(circle2, "cy", "24");
+      attr(circle2, "r", "18");
+      attr(circle2, "stroke-dasharray", "113.097");
+      attr(circle2, "stroke-dashoffset", "56.549");
+      attr(circle2, "stroke-width", "4");
+      attr(svg2, "class", "mdc-circular-progress__indeterminate-circle-graphic");
+      attr(svg2, "viewBox", "0 0 48 48");
+      attr(svg2, "xmlns", "http://www.w3.org/2000/svg");
+      attr(div2, "class", "mdc-circular-progress__circle-clipper mdc-circular-progress__circle-right");
+      attr(div3, "class", div3_class_value = classMap({
+        [ctx[1]]: true,
+        "mdc-circular-progress__spinner-layer": true,
+        ["mdc-circular-progress__color-" + ctx[24]]: ctx[5]
+      }));
+    },
+    m(target, anchor) {
+      insert_hydration(target, div3, anchor);
+      append_hydration(div3, div0);
+      append_hydration(div0, svg0);
+      append_hydration(svg0, circle0);
+      append_hydration(div3, t0);
+      append_hydration(div3, div1);
+      append_hydration(div1, svg1);
+      append_hydration(svg1, circle1);
+      append_hydration(div3, t1);
+      append_hydration(div3, div2);
+      append_hydration(div2, svg2);
+      append_hydration(svg2, circle2);
+      append_hydration(div3, t2);
+    },
+    p(ctx2, dirty) {
+      if (dirty & 34 && div3_class_value !== (div3_class_value = classMap({
+        [ctx2[1]]: true,
+        "mdc-circular-progress__spinner-layer": true,
+        ["mdc-circular-progress__color-" + ctx2[24]]: ctx2[5]
+      }))) {
+        attr(div3, "class", div3_class_value);
+      }
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div3);
+    }
+  };
+}
+function create_fragment$d(ctx) {
+  let div2;
+  let div0;
+  let svg;
+  let circle0;
+  let circle1;
+  let t;
+  let div1;
+  let div2_class_value;
+  let div2_aria_valuemin_value;
+  let div2_aria_valuemax_value;
+  let div2_aria_valuenow_value;
+  let useActions_action;
+  let mounted;
+  let dispose;
+  let circle1_levels = [
+    {
+      class: "mdc-circular-progress__determinate-circle"
+    },
+    { cx: "24" },
+    { cy: "24" },
+    { r: "18" },
+    { "stroke-dasharray": "113.097" },
+    { "stroke-dashoffset": "113.097" },
+    { "stroke-width": "4" },
+    ctx[9]
+  ];
+  let circle1_data = {};
+  for (let i = 0; i < circle1_levels.length; i += 1) {
+    circle1_data = assign(circle1_data, circle1_levels[i]);
+  }
+  let each_value = ctx[5] ? [1, 2, 3, 4] : [1];
+  let each_blocks = [];
+  for (let i = 0; i < each_value.length; i += 1) {
+    each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+  }
+  let div2_levels = [
+    {
+      class: div2_class_value = classMap(__spreadValues({
+        [ctx[1]]: true,
+        "mdc-circular-progress": true,
+        "mdc-circular-progress--indeterminate": ctx[2],
+        "mdc-circular-progress--closed": ctx[3]
+      }, ctx[7]))
+    },
+    { role: "progressbar" },
+    {
+      "aria-valuemin": div2_aria_valuemin_value = 0
+    },
+    {
+      "aria-valuemax": div2_aria_valuemax_value = 1
+    },
+    {
+      "aria-valuenow": div2_aria_valuenow_value = ctx[2] ? void 0 : ctx[4]
+    },
+    ctx[8],
+    ctx[12]
+  ];
+  let div2_data = {};
+  for (let i = 0; i < div2_levels.length; i += 1) {
+    div2_data = assign(div2_data, div2_levels[i]);
+  }
+  return {
+    c() {
+      div2 = element("div");
+      div0 = element("div");
+      svg = svg_element("svg");
+      circle0 = svg_element("circle");
+      circle1 = svg_element("circle");
+      t = space();
+      div1 = element("div");
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].c();
+      }
+      this.h();
+    },
+    l(nodes) {
+      div2 = claim_element(nodes, "DIV", {
+        class: true,
+        role: true,
+        "aria-valuemin": true,
+        "aria-valuemax": true,
+        "aria-valuenow": true
+      });
+      var div2_nodes = children(div2);
+      div0 = claim_element(div2_nodes, "DIV", { class: true });
+      var div0_nodes = children(div0);
+      svg = claim_svg_element(div0_nodes, "svg", { class: true, viewBox: true, xmlns: true });
+      var svg_nodes = children(svg);
+      circle0 = claim_svg_element(svg_nodes, "circle", {
+        class: true,
+        cx: true,
+        cy: true,
+        r: true,
+        "stroke-width": true
+      });
+      children(circle0).forEach(detach);
+      circle1 = claim_svg_element(svg_nodes, "circle", {
+        class: true,
+        cx: true,
+        cy: true,
+        r: true,
+        "stroke-dasharray": true,
+        "stroke-dashoffset": true,
+        "stroke-width": true
+      });
+      children(circle1).forEach(detach);
+      svg_nodes.forEach(detach);
+      div0_nodes.forEach(detach);
+      t = claim_space(div2_nodes);
+      div1 = claim_element(div2_nodes, "DIV", { class: true });
+      var div1_nodes = children(div1);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].l(div1_nodes);
+      }
+      div1_nodes.forEach(detach);
+      div2_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(circle0, "class", "mdc-circular-progress__determinate-track");
+      attr(circle0, "cx", "24");
+      attr(circle0, "cy", "24");
+      attr(circle0, "r", "18");
+      attr(circle0, "stroke-width", "4");
+      set_svg_attributes(circle1, circle1_data);
+      attr(svg, "class", "mdc-circular-progress__determinate-circle-graphic");
+      attr(svg, "viewBox", "0 0 48 48");
+      attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+      attr(div0, "class", "mdc-circular-progress__determinate-container");
+      attr(div1, "class", "mdc-circular-progress__indeterminate-container");
+      set_attributes(div2, div2_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div2, anchor);
+      append_hydration(div2, div0);
+      append_hydration(div0, svg);
+      append_hydration(svg, circle0);
+      append_hydration(svg, circle1);
+      ctx[15](circle1);
+      append_hydration(div2, t);
+      append_hydration(div2, div1);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].m(div1, null);
+      }
+      ctx[16](div2);
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div2, ctx[0])),
+          action_destroyer(ctx[11].call(null, div2))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      set_svg_attributes(circle1, circle1_data = get_spread_update(circle1_levels, [
+        {
+          class: "mdc-circular-progress__determinate-circle"
+        },
+        { cx: "24" },
+        { cy: "24" },
+        { r: "18" },
+        { "stroke-dasharray": "113.097" },
+        { "stroke-dashoffset": "113.097" },
+        { "stroke-width": "4" },
+        dirty & 512 && ctx2[9]
+      ]));
+      if (dirty & 34) {
+        each_value = ctx2[5] ? [1, 2, 3, 4] : [1];
+        let i;
+        for (i = 0; i < each_value.length; i += 1) {
+          const child_ctx = get_each_context(ctx2, each_value, i);
+          if (each_blocks[i]) {
+            each_blocks[i].p(child_ctx, dirty);
+          } else {
+            each_blocks[i] = create_each_block(child_ctx);
+            each_blocks[i].c();
+            each_blocks[i].m(div1, null);
+          }
+        }
+        for (; i < each_blocks.length; i += 1) {
+          each_blocks[i].d(1);
+        }
+        each_blocks.length = each_value.length;
+      }
+      set_attributes(div2, div2_data = get_spread_update(div2_levels, [
+        dirty & 142 && div2_class_value !== (div2_class_value = classMap(__spreadValues({
+          [ctx2[1]]: true,
+          "mdc-circular-progress": true,
+          "mdc-circular-progress--indeterminate": ctx2[2],
+          "mdc-circular-progress--closed": ctx2[3]
+        }, ctx2[7]))) && { class: div2_class_value },
+        { role: "progressbar" },
+        {
+          "aria-valuemin": div2_aria_valuemin_value
+        },
+        {
+          "aria-valuemax": div2_aria_valuemax_value
+        },
+        dirty & 20 && div2_aria_valuenow_value !== (div2_aria_valuenow_value = ctx2[2] ? void 0 : ctx2[4]) && {
+          "aria-valuenow": div2_aria_valuenow_value
+        },
+        dirty & 256 && ctx2[8],
+        dirty & 4096 && ctx2[12]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div2);
+      ctx[15](null);
+      destroy_each(each_blocks, detaching);
+      ctx[16](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance_1$5($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "indeterminate", "closed", "progress", "fourColor", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { indeterminate = false } = $$props;
+  let { closed = false } = $$props;
+  let { progress = 0 } = $$props;
+  let { fourColor = false } = $$props;
+  let element2;
+  let instance2;
+  let internalClasses = {};
+  let internalAttrs = {};
+  let determinateCircleAttrs = {};
+  let determinateCircle;
+  onMount(() => {
+    $$invalidate(14, instance2 = new MDCCircularProgressFoundation({
+      addClass,
+      getDeterminateCircleAttribute: getDeterminateCircleAttr,
+      hasClass,
+      removeClass,
+      removeAttribute: removeAttr,
+      setAttribute: addAttr,
+      setDeterminateCircleAttribute: addDeterminateCircleAttr
+    }));
+    instance2.init();
+    return () => {
+      instance2.destroy();
+    };
+  });
+  function hasClass(className2) {
+    return className2 in internalClasses ? internalClasses[className2] : getElement().classList.contains(className2);
+  }
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(7, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(7, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addAttr(name, value) {
+    if (internalAttrs[name] !== value) {
+      $$invalidate(8, internalAttrs[name] = value, internalAttrs);
+    }
+  }
+  function removeAttr(name) {
+    if (!(name in internalAttrs) || internalAttrs[name] != null) {
+      $$invalidate(8, internalAttrs[name] = void 0, internalAttrs);
+    }
+  }
+  function getDeterminateCircleAttr(name) {
+    var _a;
+    return name in determinateCircleAttrs ? (_a = determinateCircleAttrs[name]) !== null && _a !== void 0 ? _a : null : determinateCircle.getAttribute(name);
+  }
+  function addDeterminateCircleAttr(name, value) {
+    if (determinateCircleAttrs[name] !== value) {
+      $$invalidate(9, determinateCircleAttrs[name] = value, determinateCircleAttrs);
+    }
+  }
+  function getElement() {
+    return element2;
+  }
+  function circle1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      determinateCircle = $$value;
+      $$invalidate(10, determinateCircle);
+    });
+  }
+  function div2_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(6, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(12, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("indeterminate" in $$new_props)
+      $$invalidate(2, indeterminate = $$new_props.indeterminate);
+    if ("closed" in $$new_props)
+      $$invalidate(3, closed = $$new_props.closed);
+    if ("progress" in $$new_props)
+      $$invalidate(4, progress = $$new_props.progress);
+    if ("fourColor" in $$new_props)
+      $$invalidate(5, fourColor = $$new_props.fourColor);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 16388) {
+      if (instance2 && instance2.isDeterminate() !== !indeterminate) {
+        instance2.setDeterminate(!indeterminate);
+      }
+    }
+    if ($$self.$$.dirty & 16400) {
+      if (instance2 && instance2.getProgress() !== progress) {
+        instance2.setProgress(progress);
+      }
+    }
+    if ($$self.$$.dirty & 16392) {
+      if (instance2) {
+        if (closed) {
+          instance2.close();
+        } else {
+          instance2.open();
+        }
+      }
+    }
+  };
+  return [
+    use,
+    className,
+    indeterminate,
+    closed,
+    progress,
+    fourColor,
+    element2,
+    internalClasses,
+    internalAttrs,
+    determinateCircleAttrs,
+    determinateCircle,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    instance2,
+    circle1_binding,
+    div2_binding
+  ];
+}
+class CircularProgress extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$5, create_fragment$d, safe_not_equal, {
+      use: 0,
+      class: 1,
+      indeterminate: 2,
+      closed: 3,
+      progress: 4,
+      fourColor: 5,
+      getElement: 13
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[13];
+  }
+}
+function create_fragment$c(ctx) {
+  let div;
+  let div_class_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[12].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[11], null);
+  let div_levels = [
+    {
+      class: div_class_value = classMap({
+        [ctx[1]]: true,
+        "smui-paper": true,
+        "smui-paper--raised": ctx[2] === "raised",
+        "smui-paper--unelevated": ctx[2] === "unelevated",
+        "smui-paper--outlined": ctx[2] === "outlined",
+        ["smui-paper--elevation-z" + ctx[5]]: ctx[5] !== 0 && ctx[2] === "raised",
+        "smui-paper--rounded": !ctx[3],
+        ["smui-paper--color-" + ctx[4]]: ctx[4] !== "default",
+        "smui-paper-transition": ctx[6]
+      })
+    },
+    ctx[9]
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      ctx[13](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[8].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 2048)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[11], !current ? get_all_dirty_from_scope(ctx2[11]) : get_slot_changes(default_slot_template, ctx2[11], dirty, null), null);
+        }
+      }
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        (!current || dirty & 126 && div_class_value !== (div_class_value = classMap({
+          [ctx2[1]]: true,
+          "smui-paper": true,
+          "smui-paper--raised": ctx2[2] === "raised",
+          "smui-paper--unelevated": ctx2[2] === "unelevated",
+          "smui-paper--outlined": ctx2[2] === "outlined",
+          ["smui-paper--elevation-z" + ctx2[5]]: ctx2[5] !== 0 && ctx2[2] === "raised",
+          "smui-paper--rounded": !ctx2[3],
+          ["smui-paper--color-" + ctx2[4]]: ctx2[4] !== "default",
+          "smui-paper-transition": ctx2[6]
+        }))) && { class: div_class_value },
+        dirty & 512 && ctx2[9]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[13](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$7($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "variant", "square", "color", "elevation", "transition", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { variant = "raised" } = $$props;
+  let { square = false } = $$props;
+  let { color = "default" } = $$props;
+  let { elevation = 1 } = $$props;
+  let { transition = false } = $$props;
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(7, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(9, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("variant" in $$new_props)
+      $$invalidate(2, variant = $$new_props.variant);
+    if ("square" in $$new_props)
+      $$invalidate(3, square = $$new_props.square);
+    if ("color" in $$new_props)
+      $$invalidate(4, color = $$new_props.color);
+    if ("elevation" in $$new_props)
+      $$invalidate(5, elevation = $$new_props.elevation);
+    if ("transition" in $$new_props)
+      $$invalidate(6, transition = $$new_props.transition);
+    if ("$$scope" in $$new_props)
+      $$invalidate(11, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    variant,
+    square,
+    color,
+    elevation,
+    transition,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    div_binding
+  ];
+}
+class Paper extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$7, create_fragment$c, safe_not_equal, {
+      use: 0,
+      class: 1,
+      variant: 2,
+      square: 3,
+      color: 4,
+      elevation: 5,
+      transition: 6,
+      getElement: 10
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[10];
+  }
+}
+function create_default_slot$2(ctx) {
+  let current;
+  const default_slot_template = ctx[10].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[12], null);
+  return {
+    c() {
+      if (default_slot)
+        default_slot.c();
+    },
+    l(nodes) {
+      if (default_slot)
+        default_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (default_slot) {
+        default_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 4096)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[12], !current ? get_all_dirty_from_scope(ctx2[12]) : get_slot_changes(default_slot_template, ctx2[12], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_fragment$b(ctx) {
+  let switch_instance;
+  let switch_instance_anchor;
+  let current;
+  const switch_instance_spread_levels = [
+    {
+      use: [ctx[7], ...ctx[0]]
+    },
+    {
+      class: classMap(__spreadValues({
+        [ctx[1]]: true,
+        [ctx[5]]: true
+      }, ctx[4]))
+    },
+    ctx[6],
+    ctx[8]
+  ];
+  var switch_value = ctx[2];
+  function switch_props(ctx2) {
+    let switch_instance_props = {
+      $$slots: { default: [create_default_slot$2] },
+      $$scope: { ctx: ctx2 }
+    };
+    for (let i = 0; i < switch_instance_spread_levels.length; i += 1) {
+      switch_instance_props = assign(switch_instance_props, switch_instance_spread_levels[i]);
+    }
+    return { props: switch_instance_props };
+  }
+  if (switch_value) {
+    switch_instance = new switch_value(switch_props(ctx));
+    ctx[11](switch_instance);
+  }
+  return {
+    c() {
+      if (switch_instance)
+        create_component(switch_instance.$$.fragment);
+      switch_instance_anchor = empty();
+    },
+    l(nodes) {
+      if (switch_instance)
+        claim_component(switch_instance.$$.fragment, nodes);
+      switch_instance_anchor = empty();
+    },
+    m(target, anchor) {
+      if (switch_instance) {
+        mount_component(switch_instance, target, anchor);
+      }
+      insert_hydration(target, switch_instance_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const switch_instance_changes = dirty & 499 ? get_spread_update(switch_instance_spread_levels, [
+        dirty & 129 && {
+          use: [ctx2[7], ...ctx2[0]]
+        },
+        dirty & 50 && {
+          class: classMap(__spreadValues({
+            [ctx2[1]]: true,
+            [ctx2[5]]: true
+          }, ctx2[4]))
+        },
+        dirty & 64 && get_spread_object(ctx2[6]),
+        dirty & 256 && get_spread_object(ctx2[8])
+      ]) : {};
+      if (dirty & 4096) {
+        switch_instance_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      if (switch_value !== (switch_value = ctx2[2])) {
+        if (switch_instance) {
+          group_outros();
+          const old_component = switch_instance;
+          transition_out(old_component.$$.fragment, 1, 0, () => {
+            destroy_component(old_component, 1);
+          });
+          check_outros();
+        }
+        if (switch_value) {
+          switch_instance = new switch_value(switch_props(ctx2));
+          ctx2[11](switch_instance);
+          create_component(switch_instance.$$.fragment);
+          transition_in(switch_instance.$$.fragment, 1);
+          mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+        } else {
+          switch_instance = null;
+        }
+      } else if (switch_value) {
+        switch_instance.$set(switch_instance_changes);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      if (switch_instance)
+        transition_in(switch_instance.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      if (switch_instance)
+        transition_out(switch_instance.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[11](null);
+      if (detaching)
+        detach(switch_instance_anchor);
+      if (switch_instance)
+        destroy_component(switch_instance, detaching);
+    }
+  };
+}
+const internals = {
+  component: Div$1,
+  class: "",
+  classMap: {},
+  contexts: {},
+  props: {}
+};
+function instance$6($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "component", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let element2;
+  const smuiClass = internals.class;
+  const smuiClassMap = {};
+  const smuiClassUnsubscribes = [];
+  const contexts = internals.contexts;
+  const props = internals.props;
+  let { component = internals.component } = $$props;
+  Object.entries(internals.classMap).forEach(([name, context]) => {
+    const store = getContext(context);
+    if (store && "subscribe" in store) {
+      smuiClassUnsubscribes.push(store.subscribe((value) => {
+        $$invalidate(4, smuiClassMap[name] = value, smuiClassMap);
+      }));
+    }
+  });
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  for (let context in contexts) {
+    if (contexts.hasOwnProperty(context)) {
+      setContext(context, contexts[context]);
+    }
+  }
+  onDestroy(() => {
+    for (const unsubscribe of smuiClassUnsubscribes) {
+      unsubscribe();
+    }
+  });
+  function getElement() {
+    return element2.getElement();
+  }
+  function switch_instance_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(3, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(8, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("component" in $$new_props)
+      $$invalidate(2, component = $$new_props.component);
+    if ("$$scope" in $$new_props)
+      $$invalidate(12, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    component,
+    element2,
+    smuiClassMap,
+    smuiClass,
+    props,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    slots,
+    switch_instance_binding,
+    $$scope
+  ];
+}
+class ClassAdder extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$6, create_fragment$b, safe_not_equal, {
+      use: 0,
+      class: 1,
+      component: 2,
+      getElement: 9
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[9];
+  }
+}
+const defaults = Object.assign({}, internals);
+function classAdderBuilder(props) {
+  return new Proxy(ClassAdder, {
+    construct: function(target, args) {
+      Object.assign(internals, defaults, props);
+      return new target(...args);
+    },
+    get: function(target, prop) {
+      Object.assign(internals, defaults, props);
+      return target[prop];
+    }
+  });
+}
+var Content$1 = classAdderBuilder({
+  class: "smui-paper__content",
+  component: Div
+});
+var Title$1 = classAdderBuilder({
+  class: "smui-paper__title",
+  component: H5
+});
+classAdderBuilder({
+  class: "smui-paper__subtitle",
+  component: H6
+});
+function create_fragment$a(ctx) {
+  let div;
+  let div_class_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[9].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[8], null);
+  let div_levels = [
+    {
+      class: div_class_value = classMap({
+        [ctx[1]]: true,
+        "mdc-card": true,
+        "mdc-card--outlined": ctx[2] === "outlined",
+        "smui-card--padded": ctx[3]
+      })
+    },
+    ctx[6]
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      ctx[10](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[5].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 256)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[8], !current ? get_all_dirty_from_scope(ctx2[8]) : get_slot_changes(default_slot_template, ctx2[8], dirty, null), null);
+        }
+      }
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        (!current || dirty & 14 && div_class_value !== (div_class_value = classMap({
+          [ctx2[1]]: true,
+          "mdc-card": true,
+          "mdc-card--outlined": ctx2[2] === "outlined",
+          "smui-card--padded": ctx2[3]
+        }))) && { class: div_class_value },
+        dirty & 64 && ctx2[6]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[10](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$5($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "variant", "padded", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { variant = "raised" } = $$props;
+  let { padded = false } = $$props;
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(4, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(6, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("variant" in $$new_props)
+      $$invalidate(2, variant = $$new_props.variant);
+    if ("padded" in $$new_props)
+      $$invalidate(3, padded = $$new_props.padded);
+    if ("$$scope" in $$new_props)
+      $$invalidate(8, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    variant,
+    padded,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    div_binding
+  ];
+}
+class Card extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$5, create_fragment$a, safe_not_equal, {
+      use: 0,
+      class: 1,
+      variant: 2,
+      padded: 3,
+      getElement: 7
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[7];
+  }
+}
+classAdderBuilder({
+  class: "smui-card__content",
+  component: Div
+});
+classAdderBuilder({
+  class: "mdc-card__media-content",
+  component: Div
+});
+classAdderBuilder({
+  class: "mdc-card__action-buttons",
+  component: Div
+});
+classAdderBuilder({
+  class: "mdc-card__action-icons",
+  component: Div
+});
+var Title = classAdderBuilder({
+  class: "mdc-tooltip__title",
+  component: H2
+});
+var Content = classAdderBuilder({
+  class: "mdc-tooltip__content",
+  component: Div
+});
+classAdderBuilder({
+  class: "mdc-tooltip__content-link",
+  component: A
+});
+classAdderBuilder({
+  class: "mdc-tooltip--rich-actions",
+  component: Div,
+  contexts: {
+    "SMUI:button:context": "tooltip:rich-actions"
+  }
+});
+function create_fragment$9(ctx) {
+  let div;
+  let div_class_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], null);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", div_class_value = classMap({
+        [ctx[1]]: true,
+        "mdc-layout-grid__inner": true
+      }));
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      ctx[7](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[3].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[5], !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, null), null);
+        }
+      }
+      if (!current || dirty & 2 && div_class_value !== (div_class_value = classMap({
+        [ctx2[1]]: true,
+        "mdc-layout-grid__inner": true
+      }))) {
+        attr(div, "class", div_class_value);
+      }
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[7](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$4($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(2, element2);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("use" in $$props2)
+      $$invalidate(0, use = $$props2.use);
+    if ("class" in $$props2)
+      $$invalidate(1, className = $$props2.class);
+    if ("$$scope" in $$props2)
+      $$invalidate(5, $$scope = $$props2.$$scope);
+  };
+  return [
+    use,
+    className,
+    element2,
+    forwardEvents,
+    getElement,
+    $$scope,
+    slots,
+    div_binding
+  ];
+}
+class InnerGrid extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$4, create_fragment$9, safe_not_equal, { use: 0, class: 1, getElement: 4 });
+  }
+  get getElement() {
+    return this.$$.ctx[4];
+  }
+}
+function create_default_slot$1(ctx) {
+  let current;
+  const default_slot_template = ctx[8].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[10], null);
+  return {
+    c() {
+      if (default_slot)
+        default_slot.c();
+    },
+    l(nodes) {
+      if (default_slot)
+        default_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (default_slot) {
+        default_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 1024)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[10], !current ? get_all_dirty_from_scope(ctx2[10]) : get_slot_changes(default_slot_template, ctx2[10], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_fragment$8(ctx) {
+  let div;
+  let innergrid;
+  let div_class_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const innergrid_spread_levels = [prefixFilter(ctx[6], "innerGrid$")];
+  let innergrid_props = {
+    $$slots: { default: [create_default_slot$1] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < innergrid_spread_levels.length; i += 1) {
+    innergrid_props = assign(innergrid_props, innergrid_spread_levels[i]);
+  }
+  innergrid = new InnerGrid({ props: innergrid_props });
+  let div_levels = [
+    {
+      class: div_class_value = classMap({
+        [ctx[1]]: true,
+        "mdc-layout-grid": true,
+        "mdc-layout-grid--fixed-column-width": ctx[2],
+        ["mdc-layout-grid--align-" + ctx[3]]: ctx[3] != null
+      })
+    },
+    exclude(ctx[6], ["innerGrid$"])
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      create_component(innergrid.$$.fragment);
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      claim_component(innergrid.$$.fragment, div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      mount_component(innergrid, div, null);
+      ctx[9](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[5].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      const innergrid_changes = dirty & 64 ? get_spread_update(innergrid_spread_levels, [get_spread_object(prefixFilter(ctx2[6], "innerGrid$"))]) : {};
+      if (dirty & 1024) {
+        innergrid_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      innergrid.$set(innergrid_changes);
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        (!current || dirty & 14 && div_class_value !== (div_class_value = classMap({
+          [ctx2[1]]: true,
+          "mdc-layout-grid": true,
+          "mdc-layout-grid--fixed-column-width": ctx2[2],
+          ["mdc-layout-grid--align-" + ctx2[3]]: ctx2[3] != null
+        }))) && { class: div_class_value },
+        dirty & 64 && exclude(ctx2[6], ["innerGrid$"])
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(innergrid.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(innergrid.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      destroy_component(innergrid);
+      ctx[9](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$3($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "fixedColumnWidth", "align", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { fixedColumnWidth = false } = $$props;
+  let { align = void 0 } = $$props;
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(4, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(6, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("fixedColumnWidth" in $$new_props)
+      $$invalidate(2, fixedColumnWidth = $$new_props.fixedColumnWidth);
+    if ("align" in $$new_props)
+      $$invalidate(3, align = $$new_props.align);
+    if ("$$scope" in $$new_props)
+      $$invalidate(10, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    fixedColumnWidth,
+    align,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    slots,
+    div_binding,
+    $$scope
+  ];
+}
+class LayoutGrid extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$3, create_fragment$8, safe_not_equal, {
+      use: 0,
+      class: 1,
+      fixedColumnWidth: 2,
+      align: 3,
+      getElement: 7
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[7];
+  }
+}
+function create_fragment$7(ctx) {
+  let div;
+  let div_class_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[11].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[10], null);
+  let div_levels = [
+    {
+      class: div_class_value = classMap(__spreadValues({
+        [ctx[1]]: true,
+        "mdc-layout-grid__cell": true,
+        ["mdc-layout-grid__cell--align-" + ctx[2]]: ctx[2] != null,
+        ["mdc-layout-grid__cell--order-" + ctx[3]]: ctx[3] != null,
+        ["mdc-layout-grid__cell--span-" + ctx[4]]: ctx[4] != null
+      }, Object.fromEntries(Object.entries(ctx[5]).map(func$4))))
+    },
+    ctx[8]
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      ctx[12](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[7].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 1024)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[10], !current ? get_all_dirty_from_scope(ctx2[10]) : get_slot_changes(default_slot_template, ctx2[10], dirty, null), null);
+        }
+      }
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        (!current || dirty & 62 && div_class_value !== (div_class_value = classMap(__spreadValues({
+          [ctx2[1]]: true,
+          "mdc-layout-grid__cell": true,
+          ["mdc-layout-grid__cell--align-" + ctx2[2]]: ctx2[2] != null,
+          ["mdc-layout-grid__cell--order-" + ctx2[3]]: ctx2[3] != null,
+          ["mdc-layout-grid__cell--span-" + ctx2[4]]: ctx2[4] != null
+        }, Object.fromEntries(Object.entries(ctx2[5]).map(func$4)))))) && { class: div_class_value },
+        dirty & 256 && ctx2[8]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[12](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+const func$4 = ([device, span]) => [`mdc-layout-grid__cell--span-${span}-${device}`, true];
+function instance$2($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "align", "order", "span", "spanDevices", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { align = void 0 } = $$props;
+  let { order = void 0 } = $$props;
+  let { span = void 0 } = $$props;
+  let { spanDevices = {} } = $$props;
+  let element2;
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(6, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(8, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("align" in $$new_props)
+      $$invalidate(2, align = $$new_props.align);
+    if ("order" in $$new_props)
+      $$invalidate(3, order = $$new_props.order);
+    if ("span" in $$new_props)
+      $$invalidate(4, span = $$new_props.span);
+    if ("spanDevices" in $$new_props)
+      $$invalidate(5, spanDevices = $$new_props.spanDevices);
+    if ("$$scope" in $$new_props)
+      $$invalidate(10, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    align,
+    order,
+    span,
+    spanDevices,
+    element2,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    div_binding
+  ];
+}
+class Cell$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$2, create_fragment$7, safe_not_equal, {
+      use: 0,
+      class: 1,
+      align: 2,
+      order: 3,
+      span: 4,
+      spanDevices: 5,
+      getElement: 9
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[9];
+  }
+}
+const Cell = Cell$1;
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -494,7 +8252,14 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var ha={LABEL_FLOAT_ABOVE:"mdc-floating-label--float-above",LABEL_REQUIRED:"mdc-floating-label--required",LABEL_SHAKE:"mdc-floating-label--shake",ROOT:"mdc-floating-label"};/**
+ */
+var cssClasses$4 = {
+  LABEL_FLOAT_ABOVE: "mdc-floating-label--float-above",
+  LABEL_REQUIRED: "mdc-floating-label--required",
+  LABEL_SHAKE: "mdc-floating-label--shake",
+  ROOT: "mdc-floating-label"
+};
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -515,7 +8280,87 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var ma=function(n){ke(e,n);function e(t){var i=n.call(this,Ae(Ae({},e.defaultAdapter),t))||this;return i.shakeAnimationEndHandler=function(){i.handleShakeAnimationEnd()},i}return Object.defineProperty(e,"cssClasses",{get:function(){return ha},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},getWidth:function(){return 0},registerInteractionHandler:function(){},deregisterInteractionHandler:function(){}}},enumerable:!1,configurable:!0}),e.prototype.init=function(){this.adapter.registerInteractionHandler("animationend",this.shakeAnimationEndHandler)},e.prototype.destroy=function(){this.adapter.deregisterInteractionHandler("animationend",this.shakeAnimationEndHandler)},e.prototype.getWidth=function(){return this.adapter.getWidth()},e.prototype.shake=function(t){var i=e.cssClasses.LABEL_SHAKE;t?this.adapter.addClass(i):this.adapter.removeClass(i)},e.prototype.float=function(t){var i=e.cssClasses,l=i.LABEL_FLOAT_ABOVE,r=i.LABEL_SHAKE;t?this.adapter.addClass(l):(this.adapter.removeClass(l),this.adapter.removeClass(r))},e.prototype.setRequired=function(t){var i=e.cssClasses.LABEL_REQUIRED;t?this.adapter.addClass(i):this.adapter.removeClass(i)},e.prototype.handleShakeAnimationEnd=function(){var t=e.cssClasses.LABEL_SHAKE;this.adapter.removeClass(t)},e}(ze);/**
+ */
+var MDCFloatingLabelFoundation = function(_super) {
+  __extends(MDCFloatingLabelFoundation2, _super);
+  function MDCFloatingLabelFoundation2(adapter) {
+    var _this = _super.call(this, __assign(__assign({}, MDCFloatingLabelFoundation2.defaultAdapter), adapter)) || this;
+    _this.shakeAnimationEndHandler = function() {
+      _this.handleShakeAnimationEnd();
+    };
+    return _this;
+  }
+  Object.defineProperty(MDCFloatingLabelFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$4;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCFloatingLabelFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        getWidth: function() {
+          return 0;
+        },
+        registerInteractionHandler: function() {
+          return void 0;
+        },
+        deregisterInteractionHandler: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCFloatingLabelFoundation2.prototype.init = function() {
+    this.adapter.registerInteractionHandler("animationend", this.shakeAnimationEndHandler);
+  };
+  MDCFloatingLabelFoundation2.prototype.destroy = function() {
+    this.adapter.deregisterInteractionHandler("animationend", this.shakeAnimationEndHandler);
+  };
+  MDCFloatingLabelFoundation2.prototype.getWidth = function() {
+    return this.adapter.getWidth();
+  };
+  MDCFloatingLabelFoundation2.prototype.shake = function(shouldShake) {
+    var LABEL_SHAKE = MDCFloatingLabelFoundation2.cssClasses.LABEL_SHAKE;
+    if (shouldShake) {
+      this.adapter.addClass(LABEL_SHAKE);
+    } else {
+      this.adapter.removeClass(LABEL_SHAKE);
+    }
+  };
+  MDCFloatingLabelFoundation2.prototype.float = function(shouldFloat) {
+    var _a = MDCFloatingLabelFoundation2.cssClasses, LABEL_FLOAT_ABOVE = _a.LABEL_FLOAT_ABOVE, LABEL_SHAKE = _a.LABEL_SHAKE;
+    if (shouldFloat) {
+      this.adapter.addClass(LABEL_FLOAT_ABOVE);
+    } else {
+      this.adapter.removeClass(LABEL_FLOAT_ABOVE);
+      this.adapter.removeClass(LABEL_SHAKE);
+    }
+  };
+  MDCFloatingLabelFoundation2.prototype.setRequired = function(isRequired) {
+    var LABEL_REQUIRED = MDCFloatingLabelFoundation2.cssClasses.LABEL_REQUIRED;
+    if (isRequired) {
+      this.adapter.addClass(LABEL_REQUIRED);
+    } else {
+      this.adapter.removeClass(LABEL_REQUIRED);
+    }
+  };
+  MDCFloatingLabelFoundation2.prototype.handleShakeAnimationEnd = function() {
+    var LABEL_SHAKE = MDCFloatingLabelFoundation2.cssClasses.LABEL_SHAKE;
+    this.adapter.removeClass(LABEL_SHAKE);
+  };
+  return MDCFloatingLabelFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -536,7 +8381,12 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var lt={LINE_RIPPLE_ACTIVE:"mdc-line-ripple--active",LINE_RIPPLE_DEACTIVATING:"mdc-line-ripple--deactivating"};/**
+ */
+var cssClasses$3 = {
+  LINE_RIPPLE_ACTIVE: "mdc-line-ripple--active",
+  LINE_RIPPLE_DEACTIVATING: "mdc-line-ripple--deactivating"
+};
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -557,7 +8407,77 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var ga=function(n){ke(e,n);function e(t){var i=n.call(this,Ae(Ae({},e.defaultAdapter),t))||this;return i.transitionEndHandler=function(l){i.handleTransitionEnd(l)},i}return Object.defineProperty(e,"cssClasses",{get:function(){return lt},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},hasClass:function(){return!1},setStyle:function(){},registerEventHandler:function(){},deregisterEventHandler:function(){}}},enumerable:!1,configurable:!0}),e.prototype.init=function(){this.adapter.registerEventHandler("transitionend",this.transitionEndHandler)},e.prototype.destroy=function(){this.adapter.deregisterEventHandler("transitionend",this.transitionEndHandler)},e.prototype.activate=function(){this.adapter.removeClass(lt.LINE_RIPPLE_DEACTIVATING),this.adapter.addClass(lt.LINE_RIPPLE_ACTIVE)},e.prototype.setRippleCenter=function(t){this.adapter.setStyle("transform-origin",t+"px center")},e.prototype.deactivate=function(){this.adapter.addClass(lt.LINE_RIPPLE_DEACTIVATING)},e.prototype.handleTransitionEnd=function(t){var i=this.adapter.hasClass(lt.LINE_RIPPLE_DEACTIVATING);t.propertyName==="opacity"&&i&&(this.adapter.removeClass(lt.LINE_RIPPLE_ACTIVE),this.adapter.removeClass(lt.LINE_RIPPLE_DEACTIVATING))},e}(ze);/**
+ */
+var MDCLineRippleFoundation = function(_super) {
+  __extends(MDCLineRippleFoundation2, _super);
+  function MDCLineRippleFoundation2(adapter) {
+    var _this = _super.call(this, __assign(__assign({}, MDCLineRippleFoundation2.defaultAdapter), adapter)) || this;
+    _this.transitionEndHandler = function(evt) {
+      _this.handleTransitionEnd(evt);
+    };
+    return _this;
+  }
+  Object.defineProperty(MDCLineRippleFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$3;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCLineRippleFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        hasClass: function() {
+          return false;
+        },
+        setStyle: function() {
+          return void 0;
+        },
+        registerEventHandler: function() {
+          return void 0;
+        },
+        deregisterEventHandler: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCLineRippleFoundation2.prototype.init = function() {
+    this.adapter.registerEventHandler("transitionend", this.transitionEndHandler);
+  };
+  MDCLineRippleFoundation2.prototype.destroy = function() {
+    this.adapter.deregisterEventHandler("transitionend", this.transitionEndHandler);
+  };
+  MDCLineRippleFoundation2.prototype.activate = function() {
+    this.adapter.removeClass(cssClasses$3.LINE_RIPPLE_DEACTIVATING);
+    this.adapter.addClass(cssClasses$3.LINE_RIPPLE_ACTIVE);
+  };
+  MDCLineRippleFoundation2.prototype.setRippleCenter = function(xCoordinate) {
+    this.adapter.setStyle("transform-origin", xCoordinate + "px center");
+  };
+  MDCLineRippleFoundation2.prototype.deactivate = function() {
+    this.adapter.addClass(cssClasses$3.LINE_RIPPLE_DEACTIVATING);
+  };
+  MDCLineRippleFoundation2.prototype.handleTransitionEnd = function(evt) {
+    var isDeactivating = this.adapter.hasClass(cssClasses$3.LINE_RIPPLE_DEACTIVATING);
+    if (evt.propertyName === "opacity") {
+      if (isDeactivating) {
+        this.adapter.removeClass(cssClasses$3.LINE_RIPPLE_ACTIVE);
+        this.adapter.removeClass(cssClasses$3.LINE_RIPPLE_DEACTIVATING);
+      }
+    }
+  };
+  return MDCLineRippleFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2018 Google Inc.
  *
@@ -578,7 +8498,19 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var pa={NOTCH_ELEMENT_SELECTOR:".mdc-notched-outline__notch"},Ln={NOTCH_ELEMENT_PADDING:8},_a={NO_LABEL:"mdc-notched-outline--no-label",OUTLINE_NOTCHED:"mdc-notched-outline--notched",OUTLINE_UPGRADED:"mdc-notched-outline--upgraded"};/**
+ */
+var strings$2 = {
+  NOTCH_ELEMENT_SELECTOR: ".mdc-notched-outline__notch"
+};
+var numbers$1 = {
+  NOTCH_ELEMENT_PADDING: 8
+};
+var cssClasses$2 = {
+  NO_LABEL: "mdc-notched-outline--no-label",
+  OUTLINE_NOTCHED: "mdc-notched-outline--notched",
+  OUTLINE_UPGRADED: "mdc-notched-outline--upgraded"
+};
+/**
  * @license
  * Copyright 2017 Google Inc.
  *
@@ -599,7 +8531,69 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var ba=function(n){ke(e,n);function e(t){return n.call(this,Ae(Ae({},e.defaultAdapter),t))||this}return Object.defineProperty(e,"strings",{get:function(){return pa},enumerable:!1,configurable:!0}),Object.defineProperty(e,"cssClasses",{get:function(){return _a},enumerable:!1,configurable:!0}),Object.defineProperty(e,"numbers",{get:function(){return Ln},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},setNotchWidthProperty:function(){},removeNotchWidthProperty:function(){}}},enumerable:!1,configurable:!0}),e.prototype.notch=function(t){var i=e.cssClasses.OUTLINE_NOTCHED;t>0&&(t+=Ln.NOTCH_ELEMENT_PADDING),this.adapter.setNotchWidthProperty(t),this.adapter.addClass(i)},e.prototype.closeNotch=function(){var t=e.cssClasses.OUTLINE_NOTCHED;this.adapter.removeClass(t),this.adapter.removeNotchWidthProperty()},e}(ze);/**
+ */
+var MDCNotchedOutlineFoundation = function(_super) {
+  __extends(MDCNotchedOutlineFoundation2, _super);
+  function MDCNotchedOutlineFoundation2(adapter) {
+    return _super.call(this, __assign(__assign({}, MDCNotchedOutlineFoundation2.defaultAdapter), adapter)) || this;
+  }
+  Object.defineProperty(MDCNotchedOutlineFoundation2, "strings", {
+    get: function() {
+      return strings$2;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCNotchedOutlineFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$2;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCNotchedOutlineFoundation2, "numbers", {
+    get: function() {
+      return numbers$1;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCNotchedOutlineFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        setNotchWidthProperty: function() {
+          return void 0;
+        },
+        removeNotchWidthProperty: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCNotchedOutlineFoundation2.prototype.notch = function(notchWidth) {
+    var OUTLINE_NOTCHED = MDCNotchedOutlineFoundation2.cssClasses.OUTLINE_NOTCHED;
+    if (notchWidth > 0) {
+      notchWidth += numbers$1.NOTCH_ELEMENT_PADDING;
+    }
+    this.adapter.setNotchWidthProperty(notchWidth);
+    this.adapter.addClass(OUTLINE_NOTCHED);
+  };
+  MDCNotchedOutlineFoundation2.prototype.closeNotch = function() {
+    var OUTLINE_NOTCHED = MDCNotchedOutlineFoundation2.cssClasses.OUTLINE_NOTCHED;
+    this.adapter.removeClass(OUTLINE_NOTCHED);
+    this.adapter.removeNotchWidthProperty();
+  };
+  return MDCNotchedOutlineFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -620,7 +8614,55 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Wt={ARIA_CONTROLS:"aria-controls",ARIA_DESCRIBEDBY:"aria-describedby",INPUT_SELECTOR:".mdc-text-field__input",LABEL_SELECTOR:".mdc-floating-label",LEADING_ICON_SELECTOR:".mdc-text-field__icon--leading",LINE_RIPPLE_SELECTOR:".mdc-line-ripple",OUTLINE_SELECTOR:".mdc-notched-outline",PREFIX_SELECTOR:".mdc-text-field__affix--prefix",SUFFIX_SELECTOR:".mdc-text-field__affix--suffix",TRAILING_ICON_SELECTOR:".mdc-text-field__icon--trailing"},va={DISABLED:"mdc-text-field--disabled",FOCUSED:"mdc-text-field--focused",HELPER_LINE:"mdc-text-field-helper-line",INVALID:"mdc-text-field--invalid",LABEL_FLOATING:"mdc-text-field--label-floating",NO_LABEL:"mdc-text-field--no-label",OUTLINED:"mdc-text-field--outlined",ROOT:"mdc-text-field",TEXTAREA:"mdc-text-field--textarea",WITH_LEADING_ICON:"mdc-text-field--with-leading-icon",WITH_TRAILING_ICON:"mdc-text-field--with-trailing-icon",WITH_INTERNAL_COUNTER:"mdc-text-field--with-internal-counter"},Tn={LABEL_SCALE:.75},Aa=["pattern","min","max","required","step","minlength","maxlength"],Ca=["color","date","datetime-local","month","range","time","week"];/**
+ */
+var strings$1 = {
+  ARIA_CONTROLS: "aria-controls",
+  ARIA_DESCRIBEDBY: "aria-describedby",
+  INPUT_SELECTOR: ".mdc-text-field__input",
+  LABEL_SELECTOR: ".mdc-floating-label",
+  LEADING_ICON_SELECTOR: ".mdc-text-field__icon--leading",
+  LINE_RIPPLE_SELECTOR: ".mdc-line-ripple",
+  OUTLINE_SELECTOR: ".mdc-notched-outline",
+  PREFIX_SELECTOR: ".mdc-text-field__affix--prefix",
+  SUFFIX_SELECTOR: ".mdc-text-field__affix--suffix",
+  TRAILING_ICON_SELECTOR: ".mdc-text-field__icon--trailing"
+};
+var cssClasses$1 = {
+  DISABLED: "mdc-text-field--disabled",
+  FOCUSED: "mdc-text-field--focused",
+  HELPER_LINE: "mdc-text-field-helper-line",
+  INVALID: "mdc-text-field--invalid",
+  LABEL_FLOATING: "mdc-text-field--label-floating",
+  NO_LABEL: "mdc-text-field--no-label",
+  OUTLINED: "mdc-text-field--outlined",
+  ROOT: "mdc-text-field",
+  TEXTAREA: "mdc-text-field--textarea",
+  WITH_LEADING_ICON: "mdc-text-field--with-leading-icon",
+  WITH_TRAILING_ICON: "mdc-text-field--with-trailing-icon",
+  WITH_INTERNAL_COUNTER: "mdc-text-field--with-internal-counter"
+};
+var numbers = {
+  LABEL_SCALE: 0.75
+};
+var VALIDATION_ATTR_WHITELIST = [
+  "pattern",
+  "min",
+  "max",
+  "required",
+  "step",
+  "minlength",
+  "maxlength"
+];
+var ALWAYS_FLOAT_TYPES = [
+  "color",
+  "date",
+  "datetime-local",
+  "month",
+  "range",
+  "time",
+  "week"
+];
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -641,7 +8683,499 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Rn=["mousedown","touchstart"],On=["click","keydown"],ya=function(n){ke(e,n);function e(t,i){i===void 0&&(i={});var l=n.call(this,Ae(Ae({},e.defaultAdapter),t))||this;return l.isFocused=!1,l.receivedUserInput=!1,l.valid=!0,l.useNativeValidation=!0,l.validateOnValueChange=!0,l.helperText=i.helperText,l.characterCounter=i.characterCounter,l.leadingIcon=i.leadingIcon,l.trailingIcon=i.trailingIcon,l.inputFocusHandler=function(){l.activateFocus()},l.inputBlurHandler=function(){l.deactivateFocus()},l.inputInputHandler=function(){l.handleInput()},l.setPointerXOffset=function(r){l.setTransformOrigin(r)},l.textFieldInteractionHandler=function(){l.handleTextFieldInteraction()},l.validationAttributeChangeHandler=function(r){l.handleValidationAttributeChange(r)},l}return Object.defineProperty(e,"cssClasses",{get:function(){return va},enumerable:!1,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return Wt},enumerable:!1,configurable:!0}),Object.defineProperty(e,"numbers",{get:function(){return Tn},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"shouldAlwaysFloat",{get:function(){var t=this.getNativeInput().type;return Ca.indexOf(t)>=0},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"shouldFloat",{get:function(){return this.shouldAlwaysFloat||this.isFocused||!!this.getValue()||this.isBadInput()},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"shouldShake",{get:function(){return!this.isFocused&&!this.isValid()&&!!this.getValue()},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},hasClass:function(){return!0},setInputAttr:function(){},removeInputAttr:function(){},registerTextFieldInteractionHandler:function(){},deregisterTextFieldInteractionHandler:function(){},registerInputInteractionHandler:function(){},deregisterInputInteractionHandler:function(){},registerValidationAttributeChangeHandler:function(){return new MutationObserver(function(){})},deregisterValidationAttributeChangeHandler:function(){},getNativeInput:function(){return null},isFocused:function(){return!1},activateLineRipple:function(){},deactivateLineRipple:function(){},setLineRippleTransformOrigin:function(){},shakeLabel:function(){},floatLabel:function(){},setLabelRequired:function(){},hasLabel:function(){return!1},getLabelWidth:function(){return 0},hasOutline:function(){return!1},notchOutline:function(){},closeOutline:function(){}}},enumerable:!1,configurable:!0}),e.prototype.init=function(){var t,i,l,r;this.adapter.hasLabel()&&this.getNativeInput().required&&this.adapter.setLabelRequired(!0),this.adapter.isFocused()?this.inputFocusHandler():this.adapter.hasLabel()&&this.shouldFloat&&(this.notchOutline(!0),this.adapter.floatLabel(!0),this.styleFloating(!0)),this.adapter.registerInputInteractionHandler("focus",this.inputFocusHandler),this.adapter.registerInputInteractionHandler("blur",this.inputBlurHandler),this.adapter.registerInputInteractionHandler("input",this.inputInputHandler);try{for(var s=$e(Rn),a=s.next();!a.done;a=s.next()){var o=a.value;this.adapter.registerInputInteractionHandler(o,this.setPointerXOffset)}}catch(f){t={error:f}}finally{try{a&&!a.done&&(i=s.return)&&i.call(s)}finally{if(t)throw t.error}}try{for(var c=$e(On),u=c.next();!u.done;u=c.next()){var o=u.value;this.adapter.registerTextFieldInteractionHandler(o,this.textFieldInteractionHandler)}}catch(f){l={error:f}}finally{try{u&&!u.done&&(r=c.return)&&r.call(c)}finally{if(l)throw l.error}}this.validationObserver=this.adapter.registerValidationAttributeChangeHandler(this.validationAttributeChangeHandler),this.setcharacterCounter(this.getValue().length)},e.prototype.destroy=function(){var t,i,l,r;this.adapter.deregisterInputInteractionHandler("focus",this.inputFocusHandler),this.adapter.deregisterInputInteractionHandler("blur",this.inputBlurHandler),this.adapter.deregisterInputInteractionHandler("input",this.inputInputHandler);try{for(var s=$e(Rn),a=s.next();!a.done;a=s.next()){var o=a.value;this.adapter.deregisterInputInteractionHandler(o,this.setPointerXOffset)}}catch(f){t={error:f}}finally{try{a&&!a.done&&(i=s.return)&&i.call(s)}finally{if(t)throw t.error}}try{for(var c=$e(On),u=c.next();!u.done;u=c.next()){var o=u.value;this.adapter.deregisterTextFieldInteractionHandler(o,this.textFieldInteractionHandler)}}catch(f){l={error:f}}finally{try{u&&!u.done&&(r=c.return)&&r.call(c)}finally{if(l)throw l.error}}this.adapter.deregisterValidationAttributeChangeHandler(this.validationObserver)},e.prototype.handleTextFieldInteraction=function(){var t=this.adapter.getNativeInput();t&&t.disabled||(this.receivedUserInput=!0)},e.prototype.handleValidationAttributeChange=function(t){var i=this;t.some(function(l){return Aa.indexOf(l)>-1?(i.styleValidity(!0),i.adapter.setLabelRequired(i.getNativeInput().required),!0):!1}),t.indexOf("maxlength")>-1&&this.setcharacterCounter(this.getValue().length)},e.prototype.notchOutline=function(t){if(!(!this.adapter.hasOutline()||!this.adapter.hasLabel()))if(t){var i=this.adapter.getLabelWidth()*Tn.LABEL_SCALE;this.adapter.notchOutline(i)}else this.adapter.closeOutline()},e.prototype.activateFocus=function(){this.isFocused=!0,this.styleFocused(this.isFocused),this.adapter.activateLineRipple(),this.adapter.hasLabel()&&(this.notchOutline(this.shouldFloat),this.adapter.floatLabel(this.shouldFloat),this.styleFloating(this.shouldFloat),this.adapter.shakeLabel(this.shouldShake)),this.helperText&&(this.helperText.isPersistent()||!this.helperText.isValidation()||!this.valid)&&this.helperText.showToScreenReader()},e.prototype.setTransformOrigin=function(t){if(!(this.isDisabled()||this.adapter.hasOutline())){var i=t.touches,l=i?i[0]:t,r=l.target.getBoundingClientRect(),s=l.clientX-r.left;this.adapter.setLineRippleTransformOrigin(s)}},e.prototype.handleInput=function(){this.autoCompleteFocus(),this.setcharacterCounter(this.getValue().length)},e.prototype.autoCompleteFocus=function(){this.receivedUserInput||this.activateFocus()},e.prototype.deactivateFocus=function(){this.isFocused=!1,this.adapter.deactivateLineRipple();var t=this.isValid();this.styleValidity(t),this.styleFocused(this.isFocused),this.adapter.hasLabel()&&(this.notchOutline(this.shouldFloat),this.adapter.floatLabel(this.shouldFloat),this.styleFloating(this.shouldFloat),this.adapter.shakeLabel(this.shouldShake)),this.shouldFloat||(this.receivedUserInput=!1)},e.prototype.getValue=function(){return this.getNativeInput().value},e.prototype.setValue=function(t){if(this.getValue()!==t&&(this.getNativeInput().value=t),this.setcharacterCounter(t.length),this.validateOnValueChange){var i=this.isValid();this.styleValidity(i)}this.adapter.hasLabel()&&(this.notchOutline(this.shouldFloat),this.adapter.floatLabel(this.shouldFloat),this.styleFloating(this.shouldFloat),this.validateOnValueChange&&this.adapter.shakeLabel(this.shouldShake))},e.prototype.isValid=function(){return this.useNativeValidation?this.isNativeInputValid():this.valid},e.prototype.setValid=function(t){this.valid=t,this.styleValidity(t);var i=!t&&!this.isFocused&&!!this.getValue();this.adapter.hasLabel()&&this.adapter.shakeLabel(i)},e.prototype.setValidateOnValueChange=function(t){this.validateOnValueChange=t},e.prototype.getValidateOnValueChange=function(){return this.validateOnValueChange},e.prototype.setUseNativeValidation=function(t){this.useNativeValidation=t},e.prototype.isDisabled=function(){return this.getNativeInput().disabled},e.prototype.setDisabled=function(t){this.getNativeInput().disabled=t,this.styleDisabled(t)},e.prototype.setHelperTextContent=function(t){this.helperText&&this.helperText.setContent(t)},e.prototype.setLeadingIconAriaLabel=function(t){this.leadingIcon&&this.leadingIcon.setAriaLabel(t)},e.prototype.setLeadingIconContent=function(t){this.leadingIcon&&this.leadingIcon.setContent(t)},e.prototype.setTrailingIconAriaLabel=function(t){this.trailingIcon&&this.trailingIcon.setAriaLabel(t)},e.prototype.setTrailingIconContent=function(t){this.trailingIcon&&this.trailingIcon.setContent(t)},e.prototype.setcharacterCounter=function(t){if(!!this.characterCounter){var i=this.getNativeInput().maxLength;if(i===-1)throw new Error("MDCTextFieldFoundation: Expected maxlength html property on text input or textarea.");this.characterCounter.setCounterValue(t,i)}},e.prototype.isBadInput=function(){return this.getNativeInput().validity.badInput||!1},e.prototype.isNativeInputValid=function(){return this.getNativeInput().validity.valid},e.prototype.styleValidity=function(t){var i=e.cssClasses.INVALID;if(t?this.adapter.removeClass(i):this.adapter.addClass(i),this.helperText){this.helperText.setValidity(t);var l=this.helperText.isValidation();if(!l)return;var r=this.helperText.isVisible(),s=this.helperText.getId();r&&s?this.adapter.setInputAttr(Wt.ARIA_DESCRIBEDBY,s):this.adapter.removeInputAttr(Wt.ARIA_DESCRIBEDBY)}},e.prototype.styleFocused=function(t){var i=e.cssClasses.FOCUSED;t?this.adapter.addClass(i):this.adapter.removeClass(i)},e.prototype.styleDisabled=function(t){var i=e.cssClasses,l=i.DISABLED,r=i.INVALID;t?(this.adapter.addClass(l),this.adapter.removeClass(r)):this.adapter.removeClass(l),this.leadingIcon&&this.leadingIcon.setDisabled(t),this.trailingIcon&&this.trailingIcon.setDisabled(t)},e.prototype.styleFloating=function(t){var i=e.cssClasses.LABEL_FLOATING;t?this.adapter.addClass(i):this.adapter.removeClass(i)},e.prototype.getNativeInput=function(){var t=this.adapter?this.adapter.getNativeInput():null;return t||{disabled:!1,maxLength:-1,required:!1,type:"input",validity:{badInput:!1,valid:!0},value:""}},e}(ze);/**
+ */
+var POINTERDOWN_EVENTS = ["mousedown", "touchstart"];
+var INTERACTION_EVENTS = ["click", "keydown"];
+var MDCTextFieldFoundation = function(_super) {
+  __extends(MDCTextFieldFoundation2, _super);
+  function MDCTextFieldFoundation2(adapter, foundationMap) {
+    if (foundationMap === void 0) {
+      foundationMap = {};
+    }
+    var _this = _super.call(this, __assign(__assign({}, MDCTextFieldFoundation2.defaultAdapter), adapter)) || this;
+    _this.isFocused = false;
+    _this.receivedUserInput = false;
+    _this.valid = true;
+    _this.useNativeValidation = true;
+    _this.validateOnValueChange = true;
+    _this.helperText = foundationMap.helperText;
+    _this.characterCounter = foundationMap.characterCounter;
+    _this.leadingIcon = foundationMap.leadingIcon;
+    _this.trailingIcon = foundationMap.trailingIcon;
+    _this.inputFocusHandler = function() {
+      _this.activateFocus();
+    };
+    _this.inputBlurHandler = function() {
+      _this.deactivateFocus();
+    };
+    _this.inputInputHandler = function() {
+      _this.handleInput();
+    };
+    _this.setPointerXOffset = function(evt) {
+      _this.setTransformOrigin(evt);
+    };
+    _this.textFieldInteractionHandler = function() {
+      _this.handleTextFieldInteraction();
+    };
+    _this.validationAttributeChangeHandler = function(attributesList) {
+      _this.handleValidationAttributeChange(attributesList);
+    };
+    return _this;
+  }
+  Object.defineProperty(MDCTextFieldFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses$1;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldFoundation2, "strings", {
+    get: function() {
+      return strings$1;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldFoundation2, "numbers", {
+    get: function() {
+      return numbers;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldFoundation2.prototype, "shouldAlwaysFloat", {
+    get: function() {
+      var type = this.getNativeInput().type;
+      return ALWAYS_FLOAT_TYPES.indexOf(type) >= 0;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldFoundation2.prototype, "shouldFloat", {
+    get: function() {
+      return this.shouldAlwaysFloat || this.isFocused || !!this.getValue() || this.isBadInput();
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldFoundation2.prototype, "shouldShake", {
+    get: function() {
+      return !this.isFocused && !this.isValid() && !!this.getValue();
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        hasClass: function() {
+          return true;
+        },
+        setInputAttr: function() {
+          return void 0;
+        },
+        removeInputAttr: function() {
+          return void 0;
+        },
+        registerTextFieldInteractionHandler: function() {
+          return void 0;
+        },
+        deregisterTextFieldInteractionHandler: function() {
+          return void 0;
+        },
+        registerInputInteractionHandler: function() {
+          return void 0;
+        },
+        deregisterInputInteractionHandler: function() {
+          return void 0;
+        },
+        registerValidationAttributeChangeHandler: function() {
+          return new MutationObserver(function() {
+            return void 0;
+          });
+        },
+        deregisterValidationAttributeChangeHandler: function() {
+          return void 0;
+        },
+        getNativeInput: function() {
+          return null;
+        },
+        isFocused: function() {
+          return false;
+        },
+        activateLineRipple: function() {
+          return void 0;
+        },
+        deactivateLineRipple: function() {
+          return void 0;
+        },
+        setLineRippleTransformOrigin: function() {
+          return void 0;
+        },
+        shakeLabel: function() {
+          return void 0;
+        },
+        floatLabel: function() {
+          return void 0;
+        },
+        setLabelRequired: function() {
+          return void 0;
+        },
+        hasLabel: function() {
+          return false;
+        },
+        getLabelWidth: function() {
+          return 0;
+        },
+        hasOutline: function() {
+          return false;
+        },
+        notchOutline: function() {
+          return void 0;
+        },
+        closeOutline: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCTextFieldFoundation2.prototype.init = function() {
+    var e_1, _a, e_2, _b;
+    if (this.adapter.hasLabel() && this.getNativeInput().required) {
+      this.adapter.setLabelRequired(true);
+    }
+    if (this.adapter.isFocused()) {
+      this.inputFocusHandler();
+    } else if (this.adapter.hasLabel() && this.shouldFloat) {
+      this.notchOutline(true);
+      this.adapter.floatLabel(true);
+      this.styleFloating(true);
+    }
+    this.adapter.registerInputInteractionHandler("focus", this.inputFocusHandler);
+    this.adapter.registerInputInteractionHandler("blur", this.inputBlurHandler);
+    this.adapter.registerInputInteractionHandler("input", this.inputInputHandler);
+    try {
+      for (var POINTERDOWN_EVENTS_1 = __values(POINTERDOWN_EVENTS), POINTERDOWN_EVENTS_1_1 = POINTERDOWN_EVENTS_1.next(); !POINTERDOWN_EVENTS_1_1.done; POINTERDOWN_EVENTS_1_1 = POINTERDOWN_EVENTS_1.next()) {
+        var evtType = POINTERDOWN_EVENTS_1_1.value;
+        this.adapter.registerInputInteractionHandler(evtType, this.setPointerXOffset);
+      }
+    } catch (e_1_1) {
+      e_1 = { error: e_1_1 };
+    } finally {
+      try {
+        if (POINTERDOWN_EVENTS_1_1 && !POINTERDOWN_EVENTS_1_1.done && (_a = POINTERDOWN_EVENTS_1.return))
+          _a.call(POINTERDOWN_EVENTS_1);
+      } finally {
+        if (e_1)
+          throw e_1.error;
+      }
+    }
+    try {
+      for (var INTERACTION_EVENTS_1 = __values(INTERACTION_EVENTS), INTERACTION_EVENTS_1_1 = INTERACTION_EVENTS_1.next(); !INTERACTION_EVENTS_1_1.done; INTERACTION_EVENTS_1_1 = INTERACTION_EVENTS_1.next()) {
+        var evtType = INTERACTION_EVENTS_1_1.value;
+        this.adapter.registerTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler);
+      }
+    } catch (e_2_1) {
+      e_2 = { error: e_2_1 };
+    } finally {
+      try {
+        if (INTERACTION_EVENTS_1_1 && !INTERACTION_EVENTS_1_1.done && (_b = INTERACTION_EVENTS_1.return))
+          _b.call(INTERACTION_EVENTS_1);
+      } finally {
+        if (e_2)
+          throw e_2.error;
+      }
+    }
+    this.validationObserver = this.adapter.registerValidationAttributeChangeHandler(this.validationAttributeChangeHandler);
+    this.setcharacterCounter(this.getValue().length);
+  };
+  MDCTextFieldFoundation2.prototype.destroy = function() {
+    var e_3, _a, e_4, _b;
+    this.adapter.deregisterInputInteractionHandler("focus", this.inputFocusHandler);
+    this.adapter.deregisterInputInteractionHandler("blur", this.inputBlurHandler);
+    this.adapter.deregisterInputInteractionHandler("input", this.inputInputHandler);
+    try {
+      for (var POINTERDOWN_EVENTS_2 = __values(POINTERDOWN_EVENTS), POINTERDOWN_EVENTS_2_1 = POINTERDOWN_EVENTS_2.next(); !POINTERDOWN_EVENTS_2_1.done; POINTERDOWN_EVENTS_2_1 = POINTERDOWN_EVENTS_2.next()) {
+        var evtType = POINTERDOWN_EVENTS_2_1.value;
+        this.adapter.deregisterInputInteractionHandler(evtType, this.setPointerXOffset);
+      }
+    } catch (e_3_1) {
+      e_3 = { error: e_3_1 };
+    } finally {
+      try {
+        if (POINTERDOWN_EVENTS_2_1 && !POINTERDOWN_EVENTS_2_1.done && (_a = POINTERDOWN_EVENTS_2.return))
+          _a.call(POINTERDOWN_EVENTS_2);
+      } finally {
+        if (e_3)
+          throw e_3.error;
+      }
+    }
+    try {
+      for (var INTERACTION_EVENTS_2 = __values(INTERACTION_EVENTS), INTERACTION_EVENTS_2_1 = INTERACTION_EVENTS_2.next(); !INTERACTION_EVENTS_2_1.done; INTERACTION_EVENTS_2_1 = INTERACTION_EVENTS_2.next()) {
+        var evtType = INTERACTION_EVENTS_2_1.value;
+        this.adapter.deregisterTextFieldInteractionHandler(evtType, this.textFieldInteractionHandler);
+      }
+    } catch (e_4_1) {
+      e_4 = { error: e_4_1 };
+    } finally {
+      try {
+        if (INTERACTION_EVENTS_2_1 && !INTERACTION_EVENTS_2_1.done && (_b = INTERACTION_EVENTS_2.return))
+          _b.call(INTERACTION_EVENTS_2);
+      } finally {
+        if (e_4)
+          throw e_4.error;
+      }
+    }
+    this.adapter.deregisterValidationAttributeChangeHandler(this.validationObserver);
+  };
+  MDCTextFieldFoundation2.prototype.handleTextFieldInteraction = function() {
+    var nativeInput = this.adapter.getNativeInput();
+    if (nativeInput && nativeInput.disabled) {
+      return;
+    }
+    this.receivedUserInput = true;
+  };
+  MDCTextFieldFoundation2.prototype.handleValidationAttributeChange = function(attributesList) {
+    var _this = this;
+    attributesList.some(function(attributeName) {
+      if (VALIDATION_ATTR_WHITELIST.indexOf(attributeName) > -1) {
+        _this.styleValidity(true);
+        _this.adapter.setLabelRequired(_this.getNativeInput().required);
+        return true;
+      }
+      return false;
+    });
+    if (attributesList.indexOf("maxlength") > -1) {
+      this.setcharacterCounter(this.getValue().length);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.notchOutline = function(openNotch) {
+    if (!this.adapter.hasOutline() || !this.adapter.hasLabel()) {
+      return;
+    }
+    if (openNotch) {
+      var labelWidth = this.adapter.getLabelWidth() * numbers.LABEL_SCALE;
+      this.adapter.notchOutline(labelWidth);
+    } else {
+      this.adapter.closeOutline();
+    }
+  };
+  MDCTextFieldFoundation2.prototype.activateFocus = function() {
+    this.isFocused = true;
+    this.styleFocused(this.isFocused);
+    this.adapter.activateLineRipple();
+    if (this.adapter.hasLabel()) {
+      this.notchOutline(this.shouldFloat);
+      this.adapter.floatLabel(this.shouldFloat);
+      this.styleFloating(this.shouldFloat);
+      this.adapter.shakeLabel(this.shouldShake);
+    }
+    if (this.helperText && (this.helperText.isPersistent() || !this.helperText.isValidation() || !this.valid)) {
+      this.helperText.showToScreenReader();
+    }
+  };
+  MDCTextFieldFoundation2.prototype.setTransformOrigin = function(evt) {
+    if (this.isDisabled() || this.adapter.hasOutline()) {
+      return;
+    }
+    var touches = evt.touches;
+    var targetEvent = touches ? touches[0] : evt;
+    var targetClientRect = targetEvent.target.getBoundingClientRect();
+    var normalizedX = targetEvent.clientX - targetClientRect.left;
+    this.adapter.setLineRippleTransformOrigin(normalizedX);
+  };
+  MDCTextFieldFoundation2.prototype.handleInput = function() {
+    this.autoCompleteFocus();
+    this.setcharacterCounter(this.getValue().length);
+  };
+  MDCTextFieldFoundation2.prototype.autoCompleteFocus = function() {
+    if (!this.receivedUserInput) {
+      this.activateFocus();
+    }
+  };
+  MDCTextFieldFoundation2.prototype.deactivateFocus = function() {
+    this.isFocused = false;
+    this.adapter.deactivateLineRipple();
+    var isValid = this.isValid();
+    this.styleValidity(isValid);
+    this.styleFocused(this.isFocused);
+    if (this.adapter.hasLabel()) {
+      this.notchOutline(this.shouldFloat);
+      this.adapter.floatLabel(this.shouldFloat);
+      this.styleFloating(this.shouldFloat);
+      this.adapter.shakeLabel(this.shouldShake);
+    }
+    if (!this.shouldFloat) {
+      this.receivedUserInput = false;
+    }
+  };
+  MDCTextFieldFoundation2.prototype.getValue = function() {
+    return this.getNativeInput().value;
+  };
+  MDCTextFieldFoundation2.prototype.setValue = function(value) {
+    if (this.getValue() !== value) {
+      this.getNativeInput().value = value;
+    }
+    this.setcharacterCounter(value.length);
+    if (this.validateOnValueChange) {
+      var isValid = this.isValid();
+      this.styleValidity(isValid);
+    }
+    if (this.adapter.hasLabel()) {
+      this.notchOutline(this.shouldFloat);
+      this.adapter.floatLabel(this.shouldFloat);
+      this.styleFloating(this.shouldFloat);
+      if (this.validateOnValueChange) {
+        this.adapter.shakeLabel(this.shouldShake);
+      }
+    }
+  };
+  MDCTextFieldFoundation2.prototype.isValid = function() {
+    return this.useNativeValidation ? this.isNativeInputValid() : this.valid;
+  };
+  MDCTextFieldFoundation2.prototype.setValid = function(isValid) {
+    this.valid = isValid;
+    this.styleValidity(isValid);
+    var shouldShake = !isValid && !this.isFocused && !!this.getValue();
+    if (this.adapter.hasLabel()) {
+      this.adapter.shakeLabel(shouldShake);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.setValidateOnValueChange = function(shouldValidate) {
+    this.validateOnValueChange = shouldValidate;
+  };
+  MDCTextFieldFoundation2.prototype.getValidateOnValueChange = function() {
+    return this.validateOnValueChange;
+  };
+  MDCTextFieldFoundation2.prototype.setUseNativeValidation = function(useNativeValidation) {
+    this.useNativeValidation = useNativeValidation;
+  };
+  MDCTextFieldFoundation2.prototype.isDisabled = function() {
+    return this.getNativeInput().disabled;
+  };
+  MDCTextFieldFoundation2.prototype.setDisabled = function(disabled) {
+    this.getNativeInput().disabled = disabled;
+    this.styleDisabled(disabled);
+  };
+  MDCTextFieldFoundation2.prototype.setHelperTextContent = function(content) {
+    if (this.helperText) {
+      this.helperText.setContent(content);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.setLeadingIconAriaLabel = function(label) {
+    if (this.leadingIcon) {
+      this.leadingIcon.setAriaLabel(label);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.setLeadingIconContent = function(content) {
+    if (this.leadingIcon) {
+      this.leadingIcon.setContent(content);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.setTrailingIconAriaLabel = function(label) {
+    if (this.trailingIcon) {
+      this.trailingIcon.setAriaLabel(label);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.setTrailingIconContent = function(content) {
+    if (this.trailingIcon) {
+      this.trailingIcon.setContent(content);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.setcharacterCounter = function(currentLength) {
+    if (!this.characterCounter) {
+      return;
+    }
+    var maxLength = this.getNativeInput().maxLength;
+    if (maxLength === -1) {
+      throw new Error("MDCTextFieldFoundation: Expected maxlength html property on text input or textarea.");
+    }
+    this.characterCounter.setCounterValue(currentLength, maxLength);
+  };
+  MDCTextFieldFoundation2.prototype.isBadInput = function() {
+    return this.getNativeInput().validity.badInput || false;
+  };
+  MDCTextFieldFoundation2.prototype.isNativeInputValid = function() {
+    return this.getNativeInput().validity.valid;
+  };
+  MDCTextFieldFoundation2.prototype.styleValidity = function(isValid) {
+    var INVALID = MDCTextFieldFoundation2.cssClasses.INVALID;
+    if (isValid) {
+      this.adapter.removeClass(INVALID);
+    } else {
+      this.adapter.addClass(INVALID);
+    }
+    if (this.helperText) {
+      this.helperText.setValidity(isValid);
+      var helperTextValidation = this.helperText.isValidation();
+      if (!helperTextValidation) {
+        return;
+      }
+      var helperTextVisible = this.helperText.isVisible();
+      var helperTextId = this.helperText.getId();
+      if (helperTextVisible && helperTextId) {
+        this.adapter.setInputAttr(strings$1.ARIA_DESCRIBEDBY, helperTextId);
+      } else {
+        this.adapter.removeInputAttr(strings$1.ARIA_DESCRIBEDBY);
+      }
+    }
+  };
+  MDCTextFieldFoundation2.prototype.styleFocused = function(isFocused) {
+    var FOCUSED = MDCTextFieldFoundation2.cssClasses.FOCUSED;
+    if (isFocused) {
+      this.adapter.addClass(FOCUSED);
+    } else {
+      this.adapter.removeClass(FOCUSED);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.styleDisabled = function(isDisabled) {
+    var _a = MDCTextFieldFoundation2.cssClasses, DISABLED = _a.DISABLED, INVALID = _a.INVALID;
+    if (isDisabled) {
+      this.adapter.addClass(DISABLED);
+      this.adapter.removeClass(INVALID);
+    } else {
+      this.adapter.removeClass(DISABLED);
+    }
+    if (this.leadingIcon) {
+      this.leadingIcon.setDisabled(isDisabled);
+    }
+    if (this.trailingIcon) {
+      this.trailingIcon.setDisabled(isDisabled);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.styleFloating = function(isFloating) {
+    var LABEL_FLOATING = MDCTextFieldFoundation2.cssClasses.LABEL_FLOATING;
+    if (isFloating) {
+      this.adapter.addClass(LABEL_FLOATING);
+    } else {
+      this.adapter.removeClass(LABEL_FLOATING);
+    }
+  };
+  MDCTextFieldFoundation2.prototype.getNativeInput = function() {
+    var nativeInput = this.adapter ? this.adapter.getNativeInput() : null;
+    return nativeInput || {
+      disabled: false,
+      maxLength: -1,
+      required: false,
+      type: "input",
+      validity: {
+        badInput: false,
+        valid: true
+      },
+      value: ""
+    };
+  };
+  return MDCTextFieldFoundation2;
+}(MDCFoundation);
+/**
  * @license
  * Copyright 2016 Google Inc.
  *
@@ -662,7 +9196,18 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Xe={HELPER_TEXT_PERSISTENT:"mdc-text-field-helper-text--persistent",HELPER_TEXT_VALIDATION_MSG:"mdc-text-field-helper-text--validation-msg",ROOT:"mdc-text-field-helper-text"},Ye={ARIA_HIDDEN:"aria-hidden",ROLE:"role",ROOT_SELECTOR:"."+Xe.ROOT};/**
+ */
+var cssClasses = {
+  HELPER_TEXT_PERSISTENT: "mdc-text-field-helper-text--persistent",
+  HELPER_TEXT_VALIDATION_MSG: "mdc-text-field-helper-text--validation-msg",
+  ROOT: "mdc-text-field-helper-text"
+};
+var strings = {
+  ARIA_HIDDEN: "aria-hidden",
+  ROLE: "role",
+  ROOT_SELECTOR: "." + cssClasses.ROOT
+};
+/**
  * @license
  * Copyright 2017 Google Inc.
  *
@@ -683,4 +9228,4549 @@ PERFORMANCE OF THIS SOFTWARE.
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */var Ea=function(n){ke(e,n);function e(t){return n.call(this,Ae(Ae({},e.defaultAdapter),t))||this}return Object.defineProperty(e,"cssClasses",{get:function(){return Xe},enumerable:!1,configurable:!0}),Object.defineProperty(e,"strings",{get:function(){return Ye},enumerable:!1,configurable:!0}),Object.defineProperty(e,"defaultAdapter",{get:function(){return{addClass:function(){},removeClass:function(){},hasClass:function(){return!1},getAttr:function(){return null},setAttr:function(){},removeAttr:function(){},setContent:function(){}}},enumerable:!1,configurable:!0}),e.prototype.getId=function(){return this.adapter.getAttr("id")},e.prototype.isVisible=function(){return this.adapter.getAttr(Ye.ARIA_HIDDEN)!=="true"},e.prototype.setContent=function(t){this.adapter.setContent(t)},e.prototype.isPersistent=function(){return this.adapter.hasClass(Xe.HELPER_TEXT_PERSISTENT)},e.prototype.setPersistent=function(t){t?this.adapter.addClass(Xe.HELPER_TEXT_PERSISTENT):this.adapter.removeClass(Xe.HELPER_TEXT_PERSISTENT)},e.prototype.isValidation=function(){return this.adapter.hasClass(Xe.HELPER_TEXT_VALIDATION_MSG)},e.prototype.setValidation=function(t){t?this.adapter.addClass(Xe.HELPER_TEXT_VALIDATION_MSG):this.adapter.removeClass(Xe.HELPER_TEXT_VALIDATION_MSG)},e.prototype.showToScreenReader=function(){this.adapter.removeAttr(Ye.ARIA_HIDDEN)},e.prototype.setValidity=function(t){var i=this.adapter.hasClass(Xe.HELPER_TEXT_PERSISTENT),l=this.adapter.hasClass(Xe.HELPER_TEXT_VALIDATION_MSG),r=l&&!t;r?(this.showToScreenReader(),this.adapter.getAttr(Ye.ROLE)==="alert"?this.refreshAlertRole():this.adapter.setAttr(Ye.ROLE,"alert")):this.adapter.removeAttr(Ye.ROLE),!i&&!r&&this.hide()},e.prototype.hide=function(){this.adapter.setAttr(Ye.ARIA_HIDDEN,"true")},e.prototype.refreshAlertRole=function(){var t=this;this.adapter.removeAttr(Ye.ROLE),requestAnimationFrame(function(){t.adapter.setAttr(Ye.ROLE,"alert")})},e}(ze);function Ia(n){let e,t,i,l,r,s,a,o;const c=n[22].default,u=x(c,n,n[21],null);let f=[{class:t=z(fe({[n[3]]:!0,"mdc-floating-label":!0,"mdc-floating-label--float-above":n[0],"mdc-floating-label--required":n[1]},n[8]))},{style:i=Object.entries(n[9]).map(Mn).concat([n[4]]).join(" ")},{for:l=n[5]||(n[11]?n[11].id:void 0)},n[12]],d={};for(let m=0;m<f.length;m+=1)d=H(d,f[m]);return{c(){e=Z("label"),u&&u.c(),this.h()},l(m){e=J(m,"LABEL",{class:!0,style:!0,for:!0});var v=w(e);u&&u.l(v),v.forEach(P),this.h()},h(){W(e,d)},m(m,v){K(m,e,v),u&&u.m(e,null),n[24](e),s=!0,a||(o=[G(r=de.call(null,e,n[2])),G(n[10].call(null,e))],a=!0)},p(m,v){u&&u.p&&(!s||v&2097152)&&ee(u,c,m,m[21],s?$(c,m[21],v,null):te(m[21]),null),W(e,d=Q(f,[(!s||v&267&&t!==(t=z(fe({[m[3]]:!0,"mdc-floating-label":!0,"mdc-floating-label--float-above":m[0],"mdc-floating-label--required":m[1]},m[8]))))&&{class:t},(!s||v&528&&i!==(i=Object.entries(m[9]).map(Mn).concat([m[4]]).join(" ")))&&{style:i},(!s||v&32&&l!==(l=m[5]||(m[11]?m[11].id:void 0)))&&{for:l},v&4096&&m[12]])),r&&ie(r.update)&&v&4&&r.update.call(null,m[2])},i(m){s||(M(u,m),s=!0)},o(m){k(u,m),s=!1},d(m){m&&P(e),u&&u.d(m),n[24](null),a=!1,oe(o)}}}function Sa(n){let e,t,i,l,r,s,a;const o=n[22].default,c=x(o,n,n[21],null);let u=[{class:t=z(fe({[n[3]]:!0,"mdc-floating-label":!0,"mdc-floating-label--float-above":n[0],"mdc-floating-label--required":n[1]},n[8]))},{style:i=Object.entries(n[9]).map(Dn).concat([n[4]]).join(" ")},n[12]],f={};for(let d=0;d<u.length;d+=1)f=H(f,u[d]);return{c(){e=Z("span"),c&&c.c(),this.h()},l(d){e=J(d,"SPAN",{class:!0,style:!0});var m=w(e);c&&c.l(m),m.forEach(P),this.h()},h(){W(e,f)},m(d,m){K(d,e,m),c&&c.m(e,null),n[23](e),r=!0,s||(a=[G(l=de.call(null,e,n[2])),G(n[10].call(null,e))],s=!0)},p(d,m){c&&c.p&&(!r||m&2097152)&&ee(c,o,d,d[21],r?$(o,d[21],m,null):te(d[21]),null),W(e,f=Q(u,[(!r||m&267&&t!==(t=z(fe({[d[3]]:!0,"mdc-floating-label":!0,"mdc-floating-label--float-above":d[0],"mdc-floating-label--required":d[1]},d[8]))))&&{class:t},(!r||m&528&&i!==(i=Object.entries(d[9]).map(Dn).concat([d[4]]).join(" ")))&&{style:i},m&4096&&d[12]])),l&&ie(l.update)&&m&4&&l.update.call(null,d[2])},i(d){r||(M(c,d),r=!0)},o(d){k(c,d),r=!1},d(d){d&&P(e),c&&c.d(d),n[23](null),s=!1,oe(a)}}}function La(n){let e,t,i,l;const r=[Sa,Ia],s=[];function a(o,c){return o[6]?0:1}return e=a(n),t=s[e]=r[e](n),{c(){t.c(),i=Pe()},l(o){t.l(o),i=Pe()},m(o,c){s[e].m(o,c),K(o,i,c),l=!0},p(o,[c]){let u=e;e=a(o),e===u?s[e].p(o,c):(De(),k(s[u],1,1,()=>{s[u]=null}),Me(),t=s[e],t?t.p(o,c):(t=s[e]=r[e](o),t.c()),M(t,1),t.m(i.parentNode,i))},i(o){l||(M(t),l=!0)},o(o){k(t),l=!1},d(o){s[e].d(o),o&&P(i)}}}const Dn=([n,e])=>`${n}: ${e};`,Mn=([n,e])=>`${n}: ${e};`;function Ta(n,e,t){const i=["use","class","style","for","floatAbove","required","wrapped","shake","float","setRequired","getWidth","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;var a;const o=ve(ae());let{use:c=[]}=e,{class:u=""}=e,{style:f=""}=e,{for:d=void 0}=e,{floatAbove:m=!1}=e,{required:v=!1}=e,{wrapped:p=!1}=e,g,_,b={},y={},I=(a=et("SMUI:generic:input:props"))!==null&&a!==void 0?a:{},T=m,S=v;Ge(()=>{t(18,_=new ma({addClass:h,removeClass:C,getWidth:()=>{var D,U;const ue=Se(),ce=ue.cloneNode(!0);(D=ue.parentNode)===null||D===void 0||D.appendChild(ce),ce.classList.add("smui-floating-label--remove-transition"),ce.classList.add("smui-floating-label--force-size"),ce.classList.remove("mdc-floating-label--float-above");const Ve=ce.scrollWidth;return(U=ue.parentNode)===null||U===void 0||U.removeChild(ce),Ve},registerInteractionHandler:(D,U)=>Se().addEventListener(D,U),deregisterInteractionHandler:(D,U)=>Se().removeEventListener(D,U)}));const E={get element(){return Se()},addStyle:N,removeStyle:F};return We(g,"SMUIFloatingLabel:mount",E),_.init(),()=>{We(g,"SMUIFloatingLabel:unmount",E),_.destroy()}});function h(E){b[E]||t(8,b[E]=!0,b)}function C(E){(!(E in b)||b[E])&&t(8,b[E]=!1,b)}function N(E,D){y[E]!=D&&(D===""||D==null?(delete y[E],t(9,y)):t(9,y[E]=D,y))}function F(E){E in y&&(delete y[E],t(9,y))}function O(E){_.shake(E)}function V(E){t(0,m=E)}function R(E){t(1,v=E)}function B(){return _.getWidth()}function Se(){return g}function Le(E){X[E?"unshift":"push"](()=>{g=E,t(7,g)})}function j(E){X[E?"unshift":"push"](()=>{g=E,t(7,g)})}return n.$$set=E=>{e=H(H({},e),Ce(E)),t(12,l=Y(e,i)),"use"in E&&t(2,c=E.use),"class"in E&&t(3,u=E.class),"style"in E&&t(4,f=E.style),"for"in E&&t(5,d=E.for),"floatAbove"in E&&t(0,m=E.floatAbove),"required"in E&&t(1,v=E.required),"wrapped"in E&&t(6,p=E.wrapped),"$$scope"in E&&t(21,s=E.$$scope)},n.$$.update=()=>{n.$$.dirty&786433&&_&&T!==m&&(t(19,T=m),_.float(m)),n.$$.dirty&1310722&&_&&S!==v&&(t(20,S=v),_.setRequired(v))},[m,v,c,u,f,d,p,g,b,y,o,I,l,O,V,R,B,Se,_,T,S,s,r,Le,j]}class Ai extends pe{constructor(e){super();ge(this,e,Ta,La,me,{use:2,class:3,style:4,for:5,floatAbove:0,required:1,wrapped:6,shake:13,float:14,setRequired:15,getWidth:16,getElement:17})}get shake(){return this.$$.ctx[13]}get float(){return this.$$.ctx[14]}get setRequired(){return this.$$.ctx[15]}get getWidth(){return this.$$.ctx[16]}get getElement(){return this.$$.ctx[17]}}function Ra(n){let e,t,i,l,r,s,a=[{class:t=z(fe({[n[1]]:!0,"mdc-line-ripple":!0,"mdc-line-ripple--active":n[3]},n[5]))},{style:i=Object.entries(n[6]).map(Pn).concat([n[2]]).join(" ")},n[8]],o={};for(let c=0;c<a.length;c+=1)o=H(o,a[c]);return{c(){e=Z("div"),this.h()},l(c){e=J(c,"DIV",{class:!0,style:!0}),w(e).forEach(P),this.h()},h(){W(e,o)},m(c,u){K(c,e,u),n[13](e),r||(s=[G(l=de.call(null,e,n[0])),G(n[7].call(null,e))],r=!0)},p(c,[u]){W(e,o=Q(a,[u&42&&t!==(t=z(fe({[c[1]]:!0,"mdc-line-ripple":!0,"mdc-line-ripple--active":c[3]},c[5])))&&{class:t},u&68&&i!==(i=Object.entries(c[6]).map(Pn).concat([c[2]]).join(" "))&&{style:i},u&256&&c[8]])),l&&ie(l.update)&&u&1&&l.update.call(null,c[0])},i:He,o:He,d(c){c&&P(e),n[13](null),r=!1,oe(s)}}}const Pn=([n,e])=>`${n}: ${e};`;function Oa(n,e,t){const i=["use","class","style","active","activate","deactivate","setRippleCenter","getElement"];let l=Y(e,i);const r=ve(ae());let{use:s=[]}=e,{class:a=""}=e,{style:o=""}=e,{active:c=!1}=e,u,f,d={},m={};Ge(()=>(f=new ga({addClass:p,removeClass:g,hasClass:v,setStyle:_,registerEventHandler:(h,C)=>T().addEventListener(h,C),deregisterEventHandler:(h,C)=>T().removeEventListener(h,C)}),f.init(),()=>{f.destroy()}));function v(h){return h in d?d[h]:T().classList.contains(h)}function p(h){d[h]||t(5,d[h]=!0,d)}function g(h){(!(h in d)||d[h])&&t(5,d[h]=!1,d)}function _(h,C){m[h]!=C&&(C===""||C==null?(delete m[h],t(6,m)):t(6,m[h]=C,m))}function b(){f.activate()}function y(){f.deactivate()}function I(h){f.setRippleCenter(h)}function T(){return u}function S(h){X[h?"unshift":"push"](()=>{u=h,t(4,u)})}return n.$$set=h=>{e=H(H({},e),Ce(h)),t(8,l=Y(e,i)),"use"in h&&t(0,s=h.use),"class"in h&&t(1,a=h.class),"style"in h&&t(2,o=h.style),"active"in h&&t(3,c=h.active)},[s,a,o,c,u,d,m,r,l,b,y,I,T,S]}class Da extends pe{constructor(e){super();ge(this,e,Oa,Ra,me,{use:0,class:1,style:2,active:3,activate:9,deactivate:10,setRippleCenter:11,getElement:12})}get activate(){return this.$$.ctx[9]}get deactivate(){return this.$$.ctx[10]}get setRippleCenter(){return this.$$.ctx[11]}get getElement(){return this.$$.ctx[12]}}function Fn(n){let e,t,i;const l=n[14].default,r=x(l,n,n[13],null);return{c(){e=Z("div"),r&&r.c(),this.h()},l(s){e=J(s,"DIV",{class:!0,style:!0});var a=w(e);r&&r.l(a),a.forEach(P),this.h()},h(){q(e,"class","mdc-notched-outline__notch"),q(e,"style",t=Object.entries(n[7]).map(Hn).join(" "))},m(s,a){K(s,e,a),r&&r.m(e,null),i=!0},p(s,a){r&&r.p&&(!i||a&8192)&&ee(r,l,s,s[13],i?$(l,s[13],a,null):te(s[13]),null),(!i||a&128&&t!==(t=Object.entries(s[7]).map(Hn).join(" ")))&&q(e,"style",t)},i(s){i||(M(r,s),i=!0)},o(s){k(r,s),i=!1},d(s){s&&P(e),r&&r.d(s)}}}function Ma(n){let e,t,i,l,r,s,a,o,c,u,f=!n[3]&&Fn(n),d=[{class:s=z(fe({[n[1]]:!0,"mdc-notched-outline":!0,"mdc-notched-outline--notched":n[2],"mdc-notched-outline--no-label":n[3]},n[6]))},n[9]],m={};for(let v=0;v<d.length;v+=1)m=H(m,d[v]);return{c(){e=Z("div"),t=Z("div"),i=_e(),f&&f.c(),l=_e(),r=Z("div"),this.h()},l(v){e=J(v,"DIV",{class:!0});var p=w(e);t=J(p,"DIV",{class:!0}),w(t).forEach(P),i=be(p),f&&f.l(p),l=be(p),r=J(p,"DIV",{class:!0}),w(r).forEach(P),p.forEach(P),this.h()},h(){q(t,"class","mdc-notched-outline__leading"),q(r,"class","mdc-notched-outline__trailing"),W(e,m)},m(v,p){K(v,e,p),ne(e,t),ne(e,i),f&&f.m(e,null),ne(e,l),ne(e,r),n[15](e),o=!0,c||(u=[G(a=de.call(null,e,n[0])),G(n[8].call(null,e)),re(e,"SMUIFloatingLabel:mount",n[16]),re(e,"SMUIFloatingLabel:unmount",n[17])],c=!0)},p(v,[p]){v[3]?f&&(De(),k(f,1,1,()=>{f=null}),Me()):f?(f.p(v,p),p&8&&M(f,1)):(f=Fn(v),f.c(),M(f,1),f.m(e,l)),W(e,m=Q(d,[(!o||p&78&&s!==(s=z(fe({[v[1]]:!0,"mdc-notched-outline":!0,"mdc-notched-outline--notched":v[2],"mdc-notched-outline--no-label":v[3]},v[6]))))&&{class:s},p&512&&v[9]])),a&&ie(a.update)&&p&1&&a.update.call(null,v[0])},i(v){o||(M(f),o=!0)},o(v){k(f),o=!1},d(v){v&&P(e),f&&f.d(),n[15](null),c=!1,oe(u)}}}const Hn=([n,e])=>`${n}: ${e};`;function Pa(n,e,t){const i=["use","class","notched","noLabel","notch","closeNotch","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{notched:u=!1}=e,{noLabel:f=!1}=e,d,m,v,p={},g={};Ge(()=>(m=new ba({addClass:_,removeClass:b,setNotchWidthProperty:O=>y("width",O+"px"),removeNotchWidthProperty:()=>I("width")}),m.init(),()=>{m.destroy()}));function _(O){p[O]||t(6,p[O]=!0,p)}function b(O){(!(O in p)||p[O])&&t(6,p[O]=!1,p)}function y(O,V){g[O]!=V&&(V===""||V==null?(delete g[O],t(7,g)):t(7,g[O]=V,g))}function I(O){O in g&&(delete g[O],t(7,g))}function T(O){m.notch(O)}function S(){m.closeNotch()}function h(){return d}function C(O){X[O?"unshift":"push"](()=>{d=O,t(5,d)})}const N=O=>t(4,v=O.detail),F=()=>t(4,v=void 0);return n.$$set=O=>{e=H(H({},e),Ce(O)),t(9,l=Y(e,i)),"use"in O&&t(0,o=O.use),"class"in O&&t(1,c=O.class),"notched"in O&&t(2,u=O.notched),"noLabel"in O&&t(3,f=O.noLabel),"$$scope"in O&&t(13,s=O.$$scope)},n.$$.update=()=>{n.$$.dirty&16&&(v?(v.addStyle("transition-duration","0s"),_("mdc-notched-outline--upgraded"),requestAnimationFrame(()=>{v&&v.removeStyle("transition-duration")})):b("mdc-notched-outline--upgraded"))},[o,c,u,f,v,d,p,g,a,l,T,S,h,s,r,C,N,F]}class Fa extends pe{constructor(e){super();ge(this,e,Pa,Ma,me,{use:0,class:1,notched:2,noLabel:3,notch:10,closeNotch:11,getElement:12})}get notch(){return this.$$.ctx[10]}get closeNotch(){return this.$$.ctx[11]}get getElement(){return this.$$.ctx[12]}}var Ha=Be({class:"mdc-text-field-helper-line",component:nt}),ka=Be({class:"mdc-text-field__affix mdc-text-field__affix--prefix",component:bi}),Va=Be({class:"mdc-text-field__affix mdc-text-field__affix--suffix",component:bi});function Ua(n){let e,t,i,l,r,s=[{class:t=z({[n[1]]:!0,"mdc-text-field__input":!0})},{type:n[2]},{placeholder:n[3]},n[4],n[6],n[10]],a={};for(let o=0;o<s.length;o+=1)a=H(a,s[o]);return{c(){e=Z("input"),this.h()},l(o){e=J(o,"INPUT",{class:!0,type:!0,placeholder:!0}),this.h()},h(){W(e,a)},m(o,c){K(o,e,c),e.autofocus&&e.focus(),n[26](e),l||(r=[G(i=de.call(null,e,n[0])),G(n[7].call(null,e)),re(e,"input",n[27]),re(e,"change",n[9]),re(e,"blur",n[24]),re(e,"focus",n[25])],l=!0)},p(o,[c]){W(e,a=Q(s,[c&2&&t!==(t=z({[o[1]]:!0,"mdc-text-field__input":!0}))&&{class:t},c&4&&{type:o[2]},c&8&&{placeholder:o[3]},c&16&&o[4],c&64&&o[6],c&1024&&o[10]])),i&&ie(i.update)&&c&1&&i.update.call(null,o[0])},i:He,o:He,d(o){o&&P(e),n[26](null),l=!1,oe(r)}}}function ja(n){if(n===""){const e=new Number(Number.NaN);return e.length=0,e}return+n}function Na(n,e,t){const i=["use","class","type","placeholder","value","files","dirty","invalid","updateInvalid","emptyValueNull","emptyValueUndefined","getAttr","addAttr","removeAttr","focus","blur","getElement"];let l=Y(e,i);const r=ve(ae());let s=()=>{};function a(D){return D===s}let{use:o=[]}=e,{class:c=""}=e,{type:u="text"}=e,{placeholder:f=" "}=e,{value:d=s}=e;const m=a(d);m&&(d="");let{files:v=null}=e,{dirty:p=!1}=e,{invalid:g=!1}=e,{updateInvalid:_=!0}=e,{emptyValueNull:b=d===null}=e;m&&b&&(d=null);let{emptyValueUndefined:y=d===void 0}=e;m&&y&&(d=void 0);let I,T={},S={};Ge(()=>{_&&t(14,g=I.matches(":invalid"))});function h(D){if(u==="file"){t(12,v=D.currentTarget.files);return}if(D.currentTarget.value===""&&b){t(11,d=null);return}if(D.currentTarget.value===""&&y){t(11,d=void 0);return}switch(u){case"number":case"range":t(11,d=ja(D.currentTarget.value));break;default:t(11,d=D.currentTarget.value);break}}function C(D){(u==="file"||u==="range")&&h(D),t(13,p=!0),_&&t(14,g=I.matches(":invalid"))}function N(D){var U;return D in T?(U=T[D])!==null&&U!==void 0?U:null:B().getAttribute(D)}function F(D,U){T[D]!==U&&t(6,T[D]=U,T)}function O(D){(!(D in T)||T[D]!=null)&&t(6,T[D]=void 0,T)}function V(){B().focus()}function R(){B().blur()}function B(){return I}function Se(D){At.call(this,n,D)}function Le(D){At.call(this,n,D)}function j(D){X[D?"unshift":"push"](()=>{I=D,t(5,I)})}const E=D=>u!=="file"&&h(D);return n.$$set=D=>{e=H(H({},e),Ce(D)),t(10,l=Y(e,i)),"use"in D&&t(0,o=D.use),"class"in D&&t(1,c=D.class),"type"in D&&t(2,u=D.type),"placeholder"in D&&t(3,f=D.placeholder),"value"in D&&t(11,d=D.value),"files"in D&&t(12,v=D.files),"dirty"in D&&t(13,p=D.dirty),"invalid"in D&&t(14,g=D.invalid),"updateInvalid"in D&&t(15,_=D.updateInvalid),"emptyValueNull"in D&&t(16,b=D.emptyValueNull),"emptyValueUndefined"in D&&t(17,y=D.emptyValueUndefined)},n.$$.update=()=>{n.$$.dirty&2068&&(u==="file"?(delete S.value,t(4,S),t(2,u),t(11,d)):t(4,S.value=d==null?"":d,S))},[o,c,u,f,S,I,T,r,h,C,l,d,v,p,g,_,b,y,N,F,O,V,R,B,Se,Le,j,E]}class Ba extends pe{constructor(e){super();ge(this,e,Na,Ua,me,{use:0,class:1,type:2,placeholder:3,value:11,files:12,dirty:13,invalid:14,updateInvalid:15,emptyValueNull:16,emptyValueUndefined:17,getAttr:18,addAttr:19,removeAttr:20,focus:21,blur:22,getElement:23})}get getAttr(){return this.$$.ctx[18]}get addAttr(){return this.$$.ctx[19]}get removeAttr(){return this.$$.ctx[20]}get focus(){return this.$$.ctx[21]}get blur(){return this.$$.ctx[22]}get getElement(){return this.$$.ctx[23]}}function Wa(n){let e,t,i,l,r,s,a=[{class:t=z({[n[2]]:!0,"mdc-text-field__input":!0})},{style:i=`${n[4]?"":"resize: none; "}${n[3]}`},n[6],n[9]],o={};for(let c=0;c<a.length;c+=1)o=H(o,a[c]);return{c(){e=Z("textarea"),this.h()},l(c){e=J(c,"TEXTAREA",{class:!0,style:!0}),w(e).forEach(P),this.h()},h(){W(e,o)},m(c,u){K(c,e,u),e.autofocus&&e.focus(),n[21](e),rn(e,n[0]),r||(s=[G(l=de.call(null,e,n[1])),G(n[7].call(null,e)),re(e,"change",n[8]),re(e,"blur",n[19]),re(e,"focus",n[20]),re(e,"input",n[22])],r=!0)},p(c,[u]){W(e,o=Q(a,[u&4&&t!==(t=z({[c[2]]:!0,"mdc-text-field__input":!0}))&&{class:t},u&24&&i!==(i=`${c[4]?"":"resize: none; "}${c[3]}`)&&{style:i},u&64&&c[6],u&512&&c[9]])),l&&ie(l.update)&&u&2&&l.update.call(null,c[1]),u&1&&rn(e,c[0])},i:He,o:He,d(c){c&&P(e),n[21](null),r=!1,oe(s)}}}function Ga(n,e,t){const i=["use","class","style","value","dirty","invalid","updateInvalid","resizable","getAttr","addAttr","removeAttr","focus","blur","getElement"];let l=Y(e,i);const r=ve(ae());let{use:s=[]}=e,{class:a=""}=e,{style:o=""}=e,{value:c=""}=e,{dirty:u=!1}=e,{invalid:f=!1}=e,{updateInvalid:d=!0}=e,{resizable:m=!0}=e,v,p={};Ge(()=>{d&&t(11,f=v.matches(":invalid"))});function g(){t(10,u=!0),d&&t(11,f=v.matches(":invalid"))}function _(O){var V;return O in p?(V=p[O])!==null&&V!==void 0?V:null:S().getAttribute(O)}function b(O,V){p[O]!==V&&t(6,p[O]=V,p)}function y(O){(!(O in p)||p[O]!=null)&&t(6,p[O]=void 0,p)}function I(){S().focus()}function T(){S().blur()}function S(){return v}function h(O){At.call(this,n,O)}function C(O){At.call(this,n,O)}function N(O){X[O?"unshift":"push"](()=>{v=O,t(5,v)})}function F(){c=this.value,t(0,c)}return n.$$set=O=>{e=H(H({},e),Ce(O)),t(9,l=Y(e,i)),"use"in O&&t(1,s=O.use),"class"in O&&t(2,a=O.class),"style"in O&&t(3,o=O.style),"value"in O&&t(0,c=O.value),"dirty"in O&&t(10,u=O.dirty),"invalid"in O&&t(11,f=O.invalid),"updateInvalid"in O&&t(12,d=O.updateInvalid),"resizable"in O&&t(4,m=O.resizable)},[c,s,a,o,m,v,p,r,g,l,u,f,d,_,b,y,I,T,S,h,C,N,F]}class qa extends pe{constructor(e){super();ge(this,e,Ga,Wa,me,{use:1,class:2,style:3,value:0,dirty:10,invalid:11,updateInvalid:12,resizable:4,getAttr:13,addAttr:14,removeAttr:15,focus:16,blur:17,getElement:18})}get getAttr(){return this.$$.ctx[13]}get addAttr(){return this.$$.ctx[14]}get removeAttr(){return this.$$.ctx[15]}get focus(){return this.$$.ctx[16]}get blur(){return this.$$.ctx[17]}get getElement(){return this.$$.ctx[18]}}const za=n=>({}),kn=n=>({}),Ka=n=>({}),Vn=n=>({}),Xa=n=>({}),Un=n=>({}),wa=n=>({}),jn=n=>({}),Ya=n=>({}),Nn=n=>({}),Qa=n=>({}),Bn=n=>({}),Za=n=>({}),Wn=n=>({}),Ja=n=>({}),Gn=n=>({}),xa=n=>({}),qn=n=>({}),$a=n=>({}),zn=n=>({}),es=n=>({}),Kn=n=>({}),ts=n=>({}),Xn=n=>({});function ns(n){let e,t,i,l,r,s,a,o,c,u,f,d,m,v;const p=n[51].label,g=x(p,n,n[90],Nn);i=new Ft({props:{key:"SMUI:textfield:icon:leading",value:!0,$$slots:{default:[ls]},$$scope:{ctx:n}}});const _=n[51].default,b=x(_,n,n[90],null);s=new Ft({props:{key:"SMUI:textfield:icon:leading",value:!1,$$slots:{default:[rs]},$$scope:{ctx:n}}});const y=n[51].ripple,I=x(y,n,n[90],Vn);let T=[{class:o=z(fe({[n[9]]:!0,"mdc-text-field":!0,"mdc-text-field--disabled":n[12],"mdc-text-field--textarea":n[14],"mdc-text-field--filled":n[15]==="filled","mdc-text-field--outlined":n[15]==="outlined","smui-text-field--standard":n[15]==="standard"&&!n[14],"mdc-text-field--no-label":n[16]||!n[42].label,"mdc-text-field--with-leading-icon":n[42].leadingIcon,"mdc-text-field--with-trailing-icon":n[42].trailingIcon,"mdc-text-field--invalid":n[1]},n[25]))},{style:c=Object.entries(n[26]).map(ii).concat([n[10]]).join(" ")},Ne(n[41],["input$","label$","ripple$","outline$","helperLine$"])],S={};for(let h=0;h<T.length;h+=1)S=H(S,T[h]);return{c(){e=Z("div"),g&&g.c(),t=_e(),Ie(i.$$.fragment),l=_e(),b&&b.c(),r=_e(),Ie(s.$$.fragment),a=_e(),I&&I.c(),this.h()},l(h){e=J(h,"DIV",{class:!0,style:!0});var C=w(e);g&&g.l(C),t=be(C),Oe(i.$$.fragment,C),l=be(C),b&&b.l(C),r=be(C),Oe(s.$$.fragment,C),a=be(C),I&&I.l(C),C.forEach(P),this.h()},h(){W(e,S)},m(h,C){K(h,e,C),g&&g.m(e,null),ne(e,t),ye(i,e,null),ne(e,l),b&&b.m(e,null),ne(e,r),ye(s,e,null),ne(e,a),I&&I.m(e,null),n[80](e),d=!0,m||(v=[G(u=Pt.call(null,e,{ripple:n[11],unbounded:!1,addClass:n[38],removeClass:n[39],addStyle:n[40]})),G(f=de.call(null,e,n[8])),G(n[34].call(null,e)),re(e,"SMUITextfieldLeadingIcon:mount",n[81]),re(e,"SMUITextfieldLeadingIcon:unmount",n[82]),re(e,"SMUITextfieldTrailingIcon:mount",n[83]),re(e,"SMUITextfieldTrailingIcon:unmount",n[84])],m=!0)},p(h,C){g&&g.p&&(!d||C[2]&268435456)&&ee(g,p,h,h[90],d?$(p,h[90],C,Ya):te(h[90]),Nn);const N={};C[2]&268435456&&(N.$$scope={dirty:C,ctx:h}),i.$set(N),b&&b.p&&(!d||C[2]&268435456)&&ee(b,_,h,h[90],d?$(_,h[90],C,null):te(h[90]),null);const F={};C[2]&268435456&&(F.$$scope={dirty:C,ctx:h}),s.$set(F),I&&I.p&&(!d||C[2]&268435456)&&ee(I,y,h,h[90],d?$(y,h[90],C,Ka):te(h[90]),Vn),W(e,S=Q(T,[(!d||C[0]&33673730|C[1]&2048&&o!==(o=z(fe({[h[9]]:!0,"mdc-text-field":!0,"mdc-text-field--disabled":h[12],"mdc-text-field--textarea":h[14],"mdc-text-field--filled":h[15]==="filled","mdc-text-field--outlined":h[15]==="outlined","smui-text-field--standard":h[15]==="standard"&&!h[14],"mdc-text-field--no-label":h[16]||!h[42].label,"mdc-text-field--with-leading-icon":h[42].leadingIcon,"mdc-text-field--with-trailing-icon":h[42].trailingIcon,"mdc-text-field--invalid":h[1]},h[25]))))&&{class:o},(!d||C[0]&67109888&&c!==(c=Object.entries(h[26]).map(ii).concat([h[10]]).join(" ")))&&{style:c},C[1]&1024&&Ne(h[41],["input$","label$","ripple$","outline$","helperLine$"])])),u&&ie(u.update)&&C[0]&2048&&u.update.call(null,{ripple:h[11],unbounded:!1,addClass:h[38],removeClass:h[39],addStyle:h[40]}),f&&ie(f.update)&&C[0]&256&&f.update.call(null,h[8])},i(h){d||(M(g,h),M(i.$$.fragment,h),M(b,h),M(s.$$.fragment,h),M(I,h),d=!0)},o(h){k(g,h),k(i.$$.fragment,h),k(b,h),k(s.$$.fragment,h),k(I,h),d=!1},d(h){h&&P(e),g&&g.d(h),Ee(i),b&&b.d(h),Ee(s),I&&I.d(h),n[80](null),m=!1,oe(v)}}}function is(n){let e,t,i,l,r,s,a,o,c,u,f,d,m,v,p,g,_,b,y=!n[14]&&n[15]!=="outlined"&&wn(n),I=(n[14]||n[15]==="outlined")&&Zn(n);l=new Ft({props:{key:"SMUI:textfield:icon:leading",value:!0,$$slots:{default:[us]},$$scope:{ctx:n}}});const T=n[51].default,S=x(T,n,n[90],null),h=[fs,cs],C=[];function N(R,B){return R[14]&&typeof R[0]=="string"?0:1}a=N(n),o=C[a]=h[a](n),u=new Ft({props:{key:"SMUI:textfield:icon:leading",value:!1,$$slots:{default:[ms]},$$scope:{ctx:n}}});let F=!n[14]&&n[15]!=="outlined"&&n[11]&&ei(n),O=[{class:d=z(fe({[n[9]]:!0,"mdc-text-field":!0,"mdc-text-field--disabled":n[12],"mdc-text-field--textarea":n[14],"mdc-text-field--filled":n[15]==="filled","mdc-text-field--outlined":n[15]==="outlined","smui-text-field--standard":n[15]==="standard"&&!n[14],"mdc-text-field--no-label":n[16]||n[17]==null&&!n[42].label,"mdc-text-field--label-floating":n[28]||n[0]!=null&&n[0]!=="","mdc-text-field--with-leading-icon":n[35](n[22])?n[42].leadingIcon:n[22],"mdc-text-field--with-trailing-icon":n[35](n[23])?n[42].trailingIcon:n[23],"mdc-text-field--with-internal-counter":n[14]&&n[42].internalCounter,"mdc-text-field--invalid":n[1]},n[25]))},{style:m=Object.entries(n[26]).map(ni).concat([n[10]]).join(" ")},{for:void 0},Ne(n[41],["input$","label$","ripple$","outline$","helperLine$"])],V={};for(let R=0;R<O.length;R+=1)V=H(V,O[R]);return{c(){e=Z("label"),y&&y.c(),t=_e(),I&&I.c(),i=_e(),Ie(l.$$.fragment),r=_e(),S&&S.c(),s=_e(),o.c(),c=_e(),Ie(u.$$.fragment),f=_e(),F&&F.c(),this.h()},l(R){e=J(R,"LABEL",{class:!0,style:!0,for:!0});var B=w(e);y&&y.l(B),t=be(B),I&&I.l(B),i=be(B),Oe(l.$$.fragment,B),r=be(B),S&&S.l(B),s=be(B),o.l(B),c=be(B),Oe(u.$$.fragment,B),f=be(B),F&&F.l(B),B.forEach(P),this.h()},h(){W(e,V)},m(R,B){K(R,e,B),y&&y.m(e,null),ne(e,t),I&&I.m(e,null),ne(e,i),ye(l,e,null),ne(e,r),S&&S.m(e,null),ne(e,s),C[a].m(e,null),ne(e,c),ye(u,e,null),ne(e,f),F&&F.m(e,null),n[73](e),g=!0,_||(b=[G(v=Pt.call(null,e,{ripple:!n[14]&&n[15]==="filled",unbounded:!1,addClass:n[38],removeClass:n[39],addStyle:n[40],eventTarget:n[33],activeTarget:n[33],initPromise:n[37]})),G(p=de.call(null,e,n[8])),G(n[34].call(null,e)),re(e,"SMUITextfieldLeadingIcon:mount",n[74]),re(e,"SMUITextfieldLeadingIcon:unmount",n[75]),re(e,"SMUITextfieldTrailingIcon:mount",n[76]),re(e,"SMUITextfieldTrailingIcon:unmount",n[77]),re(e,"SMUITextfieldCharacterCounter:mount",n[78]),re(e,"SMUITextfieldCharacterCounter:unmount",n[79])],_=!0)},p(R,B){!R[14]&&R[15]!=="outlined"?y?(y.p(R,B),B[0]&49152&&M(y,1)):(y=wn(R),y.c(),M(y,1),y.m(e,t)):y&&(De(),k(y,1,1,()=>{y=null}),Me()),R[14]||R[15]==="outlined"?I?(I.p(R,B),B[0]&49152&&M(I,1)):(I=Zn(R),I.c(),M(I,1),I.m(e,i)):I&&(De(),k(I,1,1,()=>{I=null}),Me());const Se={};B[2]&268435456&&(Se.$$scope={dirty:B,ctx:R}),l.$set(Se),S&&S.p&&(!g||B[2]&268435456)&&ee(S,T,R,R[90],g?$(T,R[90],B,null):te(R[90]),null);let Le=a;a=N(R),a===Le?C[a].p(R,B):(De(),k(C[Le],1,1,()=>{C[Le]=null}),Me(),o=C[a],o?o.p(R,B):(o=C[a]=h[a](R),o.c()),M(o,1),o.m(e,c));const j={};B[2]&268435456&&(j.$$scope={dirty:B,ctx:R}),u.$set(j),!R[14]&&R[15]!=="outlined"&&R[11]?F?(F.p(R,B),B[0]&51200&&M(F,1)):(F=ei(R),F.c(),M(F,1),F.m(e,null)):F&&(De(),k(F,1,1,()=>{F=null}),Me()),W(e,V=Q(O,[(!g||B[0]&314823171|B[1]&2048&&d!==(d=z(fe({[R[9]]:!0,"mdc-text-field":!0,"mdc-text-field--disabled":R[12],"mdc-text-field--textarea":R[14],"mdc-text-field--filled":R[15]==="filled","mdc-text-field--outlined":R[15]==="outlined","smui-text-field--standard":R[15]==="standard"&&!R[14],"mdc-text-field--no-label":R[16]||R[17]==null&&!R[42].label,"mdc-text-field--label-floating":R[28]||R[0]!=null&&R[0]!=="","mdc-text-field--with-leading-icon":R[35](R[22])?R[42].leadingIcon:R[22],"mdc-text-field--with-trailing-icon":R[35](R[23])?R[42].trailingIcon:R[23],"mdc-text-field--with-internal-counter":R[14]&&R[42].internalCounter,"mdc-text-field--invalid":R[1]},R[25]))))&&{class:d},(!g||B[0]&67109888&&m!==(m=Object.entries(R[26]).map(ni).concat([R[10]]).join(" ")))&&{style:m},{for:void 0},B[1]&1024&&Ne(R[41],["input$","label$","ripple$","outline$","helperLine$"])])),v&&ie(v.update)&&B[0]&49152|B[1]&4&&v.update.call(null,{ripple:!R[14]&&R[15]==="filled",unbounded:!1,addClass:R[38],removeClass:R[39],addStyle:R[40],eventTarget:R[33],activeTarget:R[33],initPromise:R[37]}),p&&ie(p.update)&&B[0]&256&&p.update.call(null,R[8])},i(R){g||(M(y),M(I),M(l.$$.fragment,R),M(S,R),M(o),M(u.$$.fragment,R),M(F),g=!0)},o(R){k(y),k(I),k(l.$$.fragment,R),k(S,R),k(o),k(u.$$.fragment,R),k(F),g=!1},d(R){R&&P(e),y&&y.d(),I&&I.d(),Ee(l),S&&S.d(R),C[a].d(),Ee(u),F&&F.d(),n[73](null),_=!1,oe(b)}}}function ls(n){let e;const t=n[51].leadingIcon,i=x(t,n,n[90],jn);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r[2]&268435456)&&ee(i,t,l,l[90],e?$(t,l[90],r,wa):te(l[90]),jn)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function rs(n){let e;const t=n[51].trailingIcon,i=x(t,n,n[90],Un);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r[2]&268435456)&&ee(i,t,l,l[90],e?$(t,l[90],r,Xa):te(l[90]),Un)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function wn(n){let e,t,i,l=n[15]==="filled"&&Yn(),r=!n[16]&&(n[17]!=null||n[42].label)&&Qn(n);return{c(){l&&l.c(),e=_e(),r&&r.c(),t=Pe()},l(s){l&&l.l(s),e=be(s),r&&r.l(s),t=Pe()},m(s,a){l&&l.m(s,a),K(s,e,a),r&&r.m(s,a),K(s,t,a),i=!0},p(s,a){s[15]==="filled"?l||(l=Yn(),l.c(),l.m(e.parentNode,e)):l&&(l.d(1),l=null),!s[16]&&(s[17]!=null||s[42].label)?r?(r.p(s,a),a[0]&196608|a[1]&2048&&M(r,1)):(r=Qn(s),r.c(),M(r,1),r.m(t.parentNode,t)):r&&(De(),k(r,1,1,()=>{r=null}),Me())},i(s){i||(M(r),i=!0)},o(s){k(r),i=!1},d(s){l&&l.d(s),s&&P(e),r&&r.d(s),s&&P(t)}}}function Yn(n){let e;return{c(){e=Z("span"),this.h()},l(t){e=J(t,"SPAN",{class:!0}),w(e).forEach(P),this.h()},h(){q(e,"class","mdc-text-field__ripple")},m(t,i){K(t,e,i)},d(t){t&&P(e)}}}function Qn(n){let e,t;const i=[{floatAbove:n[28]||n[0]!=null&&n[0]!==""},{required:n[13]},{wrapped:!0},se(n[41],"label$")];let l={$$slots:{default:[as]},$$scope:{ctx:n}};for(let r=0;r<i.length;r+=1)l=H(l,i[r]);return e=new Ai({props:l}),n[52](e),{c(){Ie(e.$$.fragment)},l(r){Oe(e.$$.fragment,r)},m(r,s){ye(e,r,s),t=!0},p(r,s){const a=s[0]&268443649|s[1]&1024?Q(i,[s[0]&268435457&&{floatAbove:r[28]||r[0]!=null&&r[0]!==""},s[0]&8192&&{required:r[13]},i[2],s[1]&1024&&Fe(se(r[41],"label$"))]):{};s[0]&131072|s[2]&268435456&&(a.$$scope={dirty:s,ctx:r}),e.$set(a)},i(r){t||(M(e.$$.fragment,r),t=!0)},o(r){k(e.$$.fragment,r),t=!1},d(r){n[52](null),Ee(e,r)}}}function as(n){let e=(n[17]==null?"":n[17])+"",t,i;const l=n[51].label,r=x(l,n,n[90],Xn);return{c(){t=tt(e),r&&r.c()},l(s){t=gt(s,e),r&&r.l(s)},m(s,a){K(s,t,a),r&&r.m(s,a),i=!0},p(s,a){(!i||a[0]&131072)&&e!==(e=(s[17]==null?"":s[17])+"")&&Ct(t,e),r&&r.p&&(!i||a[2]&268435456)&&ee(r,l,s,s[90],i?$(l,s[90],a,ts):te(s[90]),Xn)},i(s){i||(M(r,s),i=!0)},o(s){k(r,s),i=!1},d(s){s&&P(t),r&&r.d(s)}}}function Zn(n){let e,t;const i=[{noLabel:n[16]||n[17]==null&&!n[42].label},se(n[41],"outline$")];let l={$$slots:{default:[os]},$$scope:{ctx:n}};for(let r=0;r<i.length;r+=1)l=H(l,i[r]);return e=new Fa({props:l}),n[54](e),{c(){Ie(e.$$.fragment)},l(r){Oe(e.$$.fragment,r)},m(r,s){ye(e,r,s),t=!0},p(r,s){const a=s[0]&196608|s[1]&3072?Q(i,[s[0]&196608|s[1]&2048&&{noLabel:r[16]||r[17]==null&&!r[42].label},s[1]&1024&&Fe(se(r[41],"outline$"))]):{};s[0]&268640289|s[1]&3072|s[2]&268435456&&(a.$$scope={dirty:s,ctx:r}),e.$set(a)},i(r){t||(M(e.$$.fragment,r),t=!0)},o(r){k(e.$$.fragment,r),t=!1},d(r){n[54](null),Ee(e,r)}}}function Jn(n){let e,t;const i=[{floatAbove:n[28]||n[0]!=null&&n[0]!==""},{required:n[13]},{wrapped:!0},se(n[41],"label$")];let l={$$slots:{default:[ss]},$$scope:{ctx:n}};for(let r=0;r<i.length;r+=1)l=H(l,i[r]);return e=new Ai({props:l}),n[53](e),{c(){Ie(e.$$.fragment)},l(r){Oe(e.$$.fragment,r)},m(r,s){ye(e,r,s),t=!0},p(r,s){const a=s[0]&268443649|s[1]&1024?Q(i,[s[0]&268435457&&{floatAbove:r[28]||r[0]!=null&&r[0]!==""},s[0]&8192&&{required:r[13]},i[2],s[1]&1024&&Fe(se(r[41],"label$"))]):{};s[0]&131072|s[2]&268435456&&(a.$$scope={dirty:s,ctx:r}),e.$set(a)},i(r){t||(M(e.$$.fragment,r),t=!0)},o(r){k(e.$$.fragment,r),t=!1},d(r){n[53](null),Ee(e,r)}}}function ss(n){let e=(n[17]==null?"":n[17])+"",t,i;const l=n[51].label,r=x(l,n,n[90],Kn);return{c(){t=tt(e),r&&r.c()},l(s){t=gt(s,e),r&&r.l(s)},m(s,a){K(s,t,a),r&&r.m(s,a),i=!0},p(s,a){(!i||a[0]&131072)&&e!==(e=(s[17]==null?"":s[17])+"")&&Ct(t,e),r&&r.p&&(!i||a[2]&268435456)&&ee(r,l,s,s[90],i?$(l,s[90],a,es):te(s[90]),Kn)},i(s){i||(M(r,s),i=!0)},o(s){k(r,s),i=!1},d(s){s&&P(t),r&&r.d(s)}}}function os(n){let e,t,i=!n[16]&&(n[17]!=null||n[42].label)&&Jn(n);return{c(){i&&i.c(),e=Pe()},l(l){i&&i.l(l),e=Pe()},m(l,r){i&&i.m(l,r),K(l,e,r),t=!0},p(l,r){!l[16]&&(l[17]!=null||l[42].label)?i?(i.p(l,r),r[0]&196608|r[1]&2048&&M(i,1)):(i=Jn(l),i.c(),M(i,1),i.m(e.parentNode,e)):i&&(De(),k(i,1,1,()=>{i=null}),Me())},i(l){t||(M(i),t=!0)},o(l){k(i),t=!1},d(l){i&&i.d(l),l&&P(e)}}}function us(n){let e;const t=n[51].leadingIcon,i=x(t,n,n[90],zn);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r[2]&268435456)&&ee(i,t,l,l[90],e?$(t,l[90],r,$a):te(l[90]),zn)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function cs(n){let e,t,i,l,r,s,a,o,c,u;const f=n[51].prefix,d=x(f,n,n[90],Gn);let m=n[20]!=null&&xn(n);const v=[{type:n[18]},{disabled:n[12]},{required:n[13]},{updateInvalid:n[19]},{"aria-controls":n[27]},{"aria-describedby":n[27]},n[16]&&n[17]!=null?{placeholder:n[17]}:{},se(n[41],"input$")];function p(h){n[64](h)}function g(h){n[65](h)}function _(h){n[66](h)}function b(h){n[67](h)}let y={};for(let h=0;h<v.length;h+=1)y=H(y,v[h]);n[0]!==void 0&&(y.value=n[0]),n[3]!==void 0&&(y.files=n[3]),n[4]!==void 0&&(y.dirty=n[4]),n[1]!==void 0&&(y.invalid=n[1]),i=new Ba({props:y}),n[63](i),X.push(()=>st(i,"value",p)),X.push(()=>st(i,"files",g)),X.push(()=>st(i,"dirty",_)),X.push(()=>st(i,"invalid",b)),i.$on("blur",n[68]),i.$on("focus",n[69]),i.$on("blur",n[70]),i.$on("focus",n[71]);let I=n[21]!=null&&$n(n);const T=n[51].suffix,S=x(T,n,n[90],Wn);return{c(){d&&d.c(),e=_e(),m&&m.c(),t=_e(),Ie(i.$$.fragment),o=_e(),I&&I.c(),c=_e(),S&&S.c()},l(h){d&&d.l(h),e=be(h),m&&m.l(h),t=be(h),Oe(i.$$.fragment,h),o=be(h),I&&I.l(h),c=be(h),S&&S.l(h)},m(h,C){d&&d.m(h,C),K(h,e,C),m&&m.m(h,C),K(h,t,C),ye(i,h,C),K(h,o,C),I&&I.m(h,C),K(h,c,C),S&&S.m(h,C),u=!0},p(h,C){d&&d.p&&(!u||C[2]&268435456)&&ee(d,f,h,h[90],u?$(f,h[90],C,Ja):te(h[90]),Gn),h[20]!=null?m?(m.p(h,C),C[0]&1048576&&M(m,1)):(m=xn(h),m.c(),M(m,1),m.m(t.parentNode,t)):m&&(De(),k(m,1,1,()=>{m=null}),Me());const N=C[0]&135213056|C[1]&1024?Q(v,[C[0]&262144&&{type:h[18]},C[0]&4096&&{disabled:h[12]},C[0]&8192&&{required:h[13]},C[0]&524288&&{updateInvalid:h[19]},C[0]&134217728&&{"aria-controls":h[27]},C[0]&134217728&&{"aria-describedby":h[27]},C[0]&196608&&Fe(h[16]&&h[17]!=null?{placeholder:h[17]}:{}),C[1]&1024&&Fe(se(h[41],"input$"))]):{};!l&&C[0]&1&&(l=!0,N.value=h[0],rt(()=>l=!1)),!r&&C[0]&8&&(r=!0,N.files=h[3],rt(()=>r=!1)),!s&&C[0]&16&&(s=!0,N.dirty=h[4],rt(()=>s=!1)),!a&&C[0]&2&&(a=!0,N.invalid=h[1],rt(()=>a=!1)),i.$set(N),h[21]!=null?I?(I.p(h,C),C[0]&2097152&&M(I,1)):(I=$n(h),I.c(),M(I,1),I.m(c.parentNode,c)):I&&(De(),k(I,1,1,()=>{I=null}),Me()),S&&S.p&&(!u||C[2]&268435456)&&ee(S,T,h,h[90],u?$(T,h[90],C,Za):te(h[90]),Wn)},i(h){u||(M(d,h),M(m),M(i.$$.fragment,h),M(I),M(S,h),u=!0)},o(h){k(d,h),k(m),k(i.$$.fragment,h),k(I),k(S,h),u=!1},d(h){d&&d.d(h),h&&P(e),m&&m.d(h),h&&P(t),n[63](null),Ee(i,h),h&&P(o),I&&I.d(h),h&&P(c),S&&S.d(h)}}}function fs(n){let e,t,i,l,r,s,a,o;const c=[{disabled:n[12]},{required:n[13]},{updateInvalid:n[19]},{"aria-controls":n[27]},{"aria-describedby":n[27]},se(n[41],"input$")];function u(g){n[56](g)}function f(g){n[57](g)}function d(g){n[58](g)}let m={};for(let g=0;g<c.length;g+=1)m=H(m,c[g]);n[0]!==void 0&&(m.value=n[0]),n[4]!==void 0&&(m.dirty=n[4]),n[1]!==void 0&&(m.invalid=n[1]),t=new qa({props:m}),n[55](t),X.push(()=>st(t,"value",u)),X.push(()=>st(t,"dirty",f)),X.push(()=>st(t,"invalid",d)),t.$on("blur",n[59]),t.$on("focus",n[60]),t.$on("blur",n[61]),t.$on("focus",n[62]);const v=n[51].internalCounter,p=x(v,n,n[90],qn);return{c(){e=Z("span"),Ie(t.$$.fragment),s=_e(),p&&p.c(),this.h()},l(g){e=J(g,"SPAN",{class:!0});var _=w(e);Oe(t.$$.fragment,_),s=be(_),p&&p.l(_),_.forEach(P),this.h()},h(){q(e,"class",a=z({"mdc-text-field__resizer":!("input$resizable"in n[41])||n[41].input$resizable}))},m(g,_){K(g,e,_),ye(t,e,null),ne(e,s),p&&p.m(e,null),o=!0},p(g,_){const b=_[0]&134754304|_[1]&1024?Q(c,[_[0]&4096&&{disabled:g[12]},_[0]&8192&&{required:g[13]},_[0]&524288&&{updateInvalid:g[19]},_[0]&134217728&&{"aria-controls":g[27]},_[0]&134217728&&{"aria-describedby":g[27]},_[1]&1024&&Fe(se(g[41],"input$"))]):{};!i&&_[0]&1&&(i=!0,b.value=g[0],rt(()=>i=!1)),!l&&_[0]&16&&(l=!0,b.dirty=g[4],rt(()=>l=!1)),!r&&_[0]&2&&(r=!0,b.invalid=g[1],rt(()=>r=!1)),t.$set(b),p&&p.p&&(!o||_[2]&268435456)&&ee(p,v,g,g[90],o?$(v,g[90],_,xa):te(g[90]),qn),(!o||_[1]&1024&&a!==(a=z({"mdc-text-field__resizer":!("input$resizable"in g[41])||g[41].input$resizable})))&&q(e,"class",a)},i(g){o||(M(t.$$.fragment,g),M(p,g),o=!0)},o(g){k(t.$$.fragment,g),k(p,g),o=!1},d(g){g&&P(e),n[55](null),Ee(t),p&&p.d(g)}}}function xn(n){let e,t;return e=new ka({props:{$$slots:{default:[ds]},$$scope:{ctx:n}}}),{c(){Ie(e.$$.fragment)},l(i){Oe(e.$$.fragment,i)},m(i,l){ye(e,i,l),t=!0},p(i,l){const r={};l[0]&1048576|l[2]&268435456&&(r.$$scope={dirty:l,ctx:i}),e.$set(r)},i(i){t||(M(e.$$.fragment,i),t=!0)},o(i){k(e.$$.fragment,i),t=!1},d(i){Ee(e,i)}}}function ds(n){let e;return{c(){e=tt(n[20])},l(t){e=gt(t,n[20])},m(t,i){K(t,e,i)},p(t,i){i[0]&1048576&&Ct(e,t[20])},d(t){t&&P(e)}}}function $n(n){let e,t;return e=new Va({props:{$$slots:{default:[hs]},$$scope:{ctx:n}}}),{c(){Ie(e.$$.fragment)},l(i){Oe(e.$$.fragment,i)},m(i,l){ye(e,i,l),t=!0},p(i,l){const r={};l[0]&2097152|l[2]&268435456&&(r.$$scope={dirty:l,ctx:i}),e.$set(r)},i(i){t||(M(e.$$.fragment,i),t=!0)},o(i){k(e.$$.fragment,i),t=!1},d(i){Ee(e,i)}}}function hs(n){let e;return{c(){e=tt(n[21])},l(t){e=gt(t,n[21])},m(t,i){K(t,e,i)},p(t,i){i[0]&2097152&&Ct(e,t[21])},d(t){t&&P(e)}}}function ms(n){let e;const t=n[51].trailingIcon,i=x(t,n,n[90],Bn);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r[2]&268435456)&&ee(i,t,l,l[90],e?$(t,l[90],r,Qa):te(l[90]),Bn)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function ei(n){let e,t;const i=[se(n[41],"ripple$")];let l={};for(let r=0;r<i.length;r+=1)l=H(l,i[r]);return e=new Da({props:l}),n[72](e),{c(){Ie(e.$$.fragment)},l(r){Oe(e.$$.fragment,r)},m(r,s){ye(e,r,s),t=!0},p(r,s){const a=s[1]&1024?Q(i,[Fe(se(r[41],"ripple$"))]):{};e.$set(a)},i(r){t||(M(e.$$.fragment,r),t=!0)},o(r){k(e.$$.fragment,r),t=!1},d(r){n[72](null),Ee(e,r)}}}function ti(n){let e,t;const i=[se(n[41],"helperLine$")];let l={$$slots:{default:[gs]},$$scope:{ctx:n}};for(let r=0;r<i.length;r+=1)l=H(l,i[r]);return e=new Ha({props:l}),e.$on("SMUITextfieldHelperText:id",n[85]),e.$on("SMUITextfieldHelperText:mount",n[86]),e.$on("SMUITextfieldHelperText:unmount",n[87]),e.$on("SMUITextfieldCharacterCounter:mount",n[88]),e.$on("SMUITextfieldCharacterCounter:unmount",n[89]),{c(){Ie(e.$$.fragment)},l(r){Oe(e.$$.fragment,r)},m(r,s){ye(e,r,s),t=!0},p(r,s){const a=s[1]&1024?Q(i,[Fe(se(r[41],"helperLine$"))]):{};s[2]&268435456&&(a.$$scope={dirty:s,ctx:r}),e.$set(a)},i(r){t||(M(e.$$.fragment,r),t=!0)},o(r){k(e.$$.fragment,r),t=!1},d(r){Ee(e,r)}}}function gs(n){let e;const t=n[51].helper,i=x(t,n,n[90],kn);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r[2]&268435456)&&ee(i,t,l,l[90],e?$(t,l[90],r,za):te(l[90]),kn)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function ps(n){let e,t,i,l,r;const s=[is,ns],a=[];function o(u,f){return u[36]?0:1}e=o(n),t=a[e]=s[e](n);let c=n[42].helper&&ti(n);return{c(){t.c(),i=_e(),c&&c.c(),l=Pe()},l(u){t.l(u),i=be(u),c&&c.l(u),l=Pe()},m(u,f){a[e].m(u,f),K(u,i,f),c&&c.m(u,f),K(u,l,f),r=!0},p(u,f){t.p(u,f),u[42].helper?c?(c.p(u,f),f[1]&2048&&M(c,1)):(c=ti(u),c.c(),M(c,1),c.m(l.parentNode,l)):c&&(De(),k(c,1,1,()=>{c=null}),Me())},i(u){r||(M(t),M(c),r=!0)},o(u){k(t),k(c),r=!1},d(u){a[e].d(u),u&&P(i),c&&c.d(u),u&&P(l)}}}const ni=([n,e])=>`${n}: ${e};`,ii=([n,e])=>`${n}: ${e};`;function _s(n,e,t){let i;const l=["use","class","style","ripple","disabled","required","textarea","variant","noLabel","label","type","value","files","invalid","updateInvalid","dirty","prefix","suffix","validateOnValueChange","useNativeValidation","withLeadingIcon","withTrailingIcon","input","floatingLabel","lineRipple","notchedOutline","focus","blur","layout","getElement"];let r=Y(e,l),{$$slots:s={},$$scope:a}=e;const o=_l(s),{applyPassive:c}=fi,u=ve(ae());let f=()=>{};function d(A){return A===f}let{use:m=[]}=e,{class:v=""}=e,{style:p=""}=e,{ripple:g=!0}=e,{disabled:_=!1}=e,{required:b=!1}=e,{textarea:y=!1}=e,{variant:I=y?"outlined":"standard"}=e,{noLabel:T=!1}=e,{label:S=void 0}=e,{type:h="text"}=e,{value:C=r.input$emptyValueUndefined?void 0:f}=e,{files:N=f}=e;const F=!d(C)||!d(N);d(C)&&(C=void 0),d(N)&&(N=null);let{invalid:O=f}=e,{updateInvalid:V=d(O)}=e;d(O)&&(O=!1);let{dirty:R=!1}=e,{prefix:B=void 0}=e,{suffix:Se=void 0}=e,{validateOnValueChange:Le=V}=e,{useNativeValidation:j=V}=e,{withLeadingIcon:E=f}=e,{withTrailingIcon:D=f}=e,{input:U=void 0}=e,{floatingLabel:ue=void 0}=e,{lineRipple:ce=void 0}=e,{notchedOutline:Ve=void 0}=e,Ue,he,je={},Ke={},L,le=!1,Yt=et("SMUI:addLayoutListener"),kt,Qt,Ci=new Promise(A=>Qt=A),ct,ft,yt,dt,Vt=C;Yt&&(kt=Yt(xt)),Ge(()=>{if(t(49,he=new ya({addClass:Zt,removeClass:Jt,hasClass:yi,registerTextFieldInteractionHandler:(A,Te)=>Et().addEventListener(A,Te),deregisterTextFieldInteractionHandler:(A,Te)=>Et().removeEventListener(A,Te),registerValidationAttributeChangeHandler:A=>{const Te=Ut=>Ut.map(jt=>jt.attributeName).filter(jt=>jt),$t=new MutationObserver(Ut=>{j&&A(Te(Ut))}),cl={attributes:!0};return U&&$t.observe(U.getElement(),cl),$t},deregisterValidationAttributeChangeHandler:A=>{A.disconnect()},getNativeInput:()=>{var A;return(A=U==null?void 0:U.getElement())!==null&&A!==void 0?A:null},setInputAttr:(A,Te)=>{U==null||U.addAttr(A,Te)},removeInputAttr:A=>{U==null||U.removeAttr(A)},isFocused:()=>document.activeElement===(U==null?void 0:U.getElement()),registerInputInteractionHandler:(A,Te)=>{U==null||U.getElement().addEventListener(A,Te,c())},deregisterInputInteractionHandler:(A,Te)=>{U==null||U.getElement().removeEventListener(A,Te,c())},floatLabel:A=>ue&&ue.float(A),getLabelWidth:()=>ue?ue.getWidth():0,hasLabel:()=>!!ue,shakeLabel:A=>ue&&ue.shake(A),setLabelRequired:A=>ue&&ue.setRequired(A),activateLineRipple:()=>ce&&ce.activate(),deactivateLineRipple:()=>ce&&ce.deactivate(),setLineRippleTransformOrigin:A=>ce&&ce.setRippleCenter(A),closeOutline:()=>Ve&&Ve.closeNotch(),hasOutline:()=>!!Ve,notchOutline:A=>Ve&&Ve.notch(A)},{get helperText(){return yt},get characterCounter(){return dt},get leadingIcon(){return ct},get trailingIcon(){return ft}})),F){if(U==null)throw new Error("SMUI Textfield initialized without Input component.");he.init()}else Tl().then(()=>{if(U==null)throw new Error("SMUI Textfield initialized without Input component.");he.init()});return Qt(),()=>{he.destroy()}}),Xt(()=>{kt&&kt()});function yi(A){var Te;return A in je?(Te=je[A])!==null&&Te!==void 0?Te:null:Et().classList.contains(A)}function Zt(A){je[A]||t(25,je[A]=!0,je)}function Jt(A){(!(A in je)||je[A])&&t(25,je[A]=!1,je)}function Ei(A,Te){Ke[A]!=Te&&(Te===""||Te==null?(delete Ke[A],t(26,Ke)):t(26,Ke[A]=Te,Ke))}function Ii(){U==null||U.focus()}function Si(){U==null||U.blur()}function xt(){if(he){const A=he.shouldFloat;he.notchOutline(A)}}function Et(){return Ue}function Li(A){X[A?"unshift":"push"](()=>{ue=A,t(5,ue)})}function Ti(A){X[A?"unshift":"push"](()=>{ue=A,t(5,ue)})}function Ri(A){X[A?"unshift":"push"](()=>{Ve=A,t(7,Ve)})}function Oi(A){X[A?"unshift":"push"](()=>{U=A,t(2,U)})}function Di(A){C=A,t(0,C)}function Mi(A){R=A,t(4,R)}function Pi(A){O=A,t(1,O),t(49,he),t(19,V)}const Fi=()=>t(28,le=!1),Hi=()=>t(28,le=!0),ki=A=>We(Ue,"blur",A),Vi=A=>We(Ue,"focus",A);function Ui(A){X[A?"unshift":"push"](()=>{U=A,t(2,U)})}function ji(A){C=A,t(0,C)}function Ni(A){N=A,t(3,N)}function Bi(A){R=A,t(4,R)}function Wi(A){O=A,t(1,O),t(49,he),t(19,V)}const Gi=()=>t(28,le=!1),qi=()=>t(28,le=!0),zi=A=>We(Ue,"blur",A),Ki=A=>We(Ue,"focus",A);function Xi(A){X[A?"unshift":"push"](()=>{ce=A,t(6,ce)})}function wi(A){X[A?"unshift":"push"](()=>{Ue=A,t(24,Ue)})}const Yi=A=>t(29,ct=A.detail),Qi=()=>t(29,ct=void 0),Zi=A=>t(30,ft=A.detail),Ji=()=>t(30,ft=void 0),xi=A=>t(32,dt=A.detail),$i=()=>t(32,dt=void 0);function el(A){X[A?"unshift":"push"](()=>{Ue=A,t(24,Ue)})}const tl=A=>t(29,ct=A.detail),nl=()=>t(29,ct=void 0),il=A=>t(30,ft=A.detail),ll=()=>t(30,ft=void 0),rl=A=>t(27,L=A.detail),al=A=>t(31,yt=A.detail),sl=()=>{t(27,L=void 0),t(31,yt=void 0)},ol=A=>t(32,dt=A.detail),ul=()=>t(32,dt=void 0);return n.$$set=A=>{e=H(H({},e),Ce(A)),t(41,r=Y(e,l)),"use"in A&&t(8,m=A.use),"class"in A&&t(9,v=A.class),"style"in A&&t(10,p=A.style),"ripple"in A&&t(11,g=A.ripple),"disabled"in A&&t(12,_=A.disabled),"required"in A&&t(13,b=A.required),"textarea"in A&&t(14,y=A.textarea),"variant"in A&&t(15,I=A.variant),"noLabel"in A&&t(16,T=A.noLabel),"label"in A&&t(17,S=A.label),"type"in A&&t(18,h=A.type),"value"in A&&t(0,C=A.value),"files"in A&&t(3,N=A.files),"invalid"in A&&t(1,O=A.invalid),"updateInvalid"in A&&t(19,V=A.updateInvalid),"dirty"in A&&t(4,R=A.dirty),"prefix"in A&&t(20,B=A.prefix),"suffix"in A&&t(21,Se=A.suffix),"validateOnValueChange"in A&&t(43,Le=A.validateOnValueChange),"useNativeValidation"in A&&t(44,j=A.useNativeValidation),"withLeadingIcon"in A&&t(22,E=A.withLeadingIcon),"withTrailingIcon"in A&&t(23,D=A.withTrailingIcon),"input"in A&&t(2,U=A.input),"floatingLabel"in A&&t(5,ue=A.floatingLabel),"lineRipple"in A&&t(6,ce=A.lineRipple),"notchedOutline"in A&&t(7,Ve=A.notchedOutline),"$$scope"in A&&t(90,a=A.$$scope)},n.$$.update=()=>{if(n.$$.dirty[0]&4&&t(33,i=U&&U.getElement()),n.$$.dirty[0]&524290|n.$$.dirty[1]&262144&&he&&he.isValid()!==!O&&(V?t(1,O=!he.isValid()):he.setValid(!O)),n.$$.dirty[1]&266240&&he&&he.getValidateOnValueChange()!==Le&&he.setValidateOnValueChange(d(Le)?!1:Le),n.$$.dirty[1]&270336&&he&&he.setUseNativeValidation(d(j)?!0:j),n.$$.dirty[0]&4096|n.$$.dirty[1]&262144&&he&&he.setDisabled(_),n.$$.dirty[0]&1|n.$$.dirty[1]&786432&&he&&F&&Vt!==C){t(50,Vt=C);const A=`${C}`;he.getValue()!==A&&he.setValue(A)}},[C,O,U,N,R,ue,ce,Ve,m,v,p,g,_,b,y,I,T,S,h,V,B,Se,E,D,Ue,je,Ke,L,le,ct,ft,yt,dt,i,u,d,F,Ci,Zt,Jt,Ei,r,o,Le,j,Ii,Si,xt,Et,he,Vt,s,Li,Ti,Ri,Oi,Di,Mi,Pi,Fi,Hi,ki,Vi,Ui,ji,Ni,Bi,Wi,Gi,qi,zi,Ki,Xi,wi,Yi,Qi,Zi,Ji,xi,$i,el,tl,nl,il,ll,rl,al,sl,ol,ul,a]}class Ns extends pe{constructor(e){super();ge(this,e,_s,ps,me,{use:8,class:9,style:10,ripple:11,disabled:12,required:13,textarea:14,variant:15,noLabel:16,label:17,type:18,value:0,files:3,invalid:1,updateInvalid:19,dirty:4,prefix:20,suffix:21,validateOnValueChange:43,useNativeValidation:44,withLeadingIcon:22,withTrailingIcon:23,input:2,floatingLabel:5,lineRipple:6,notchedOutline:7,focus:45,blur:46,layout:47,getElement:48},null,[-1,-1,-1,-1])}get focus(){return this.$$.ctx[45]}get blur(){return this.$$.ctx[46]}get layout(){return this.$$.ctx[47]}get getElement(){return this.$$.ctx[48]}}function bs(n){let e;return{c(){e=tt(n[8])},l(t){e=gt(t,n[8])},m(t,i){K(t,e,i)},p(t,i){i&256&&Ct(e,t[8])},i:He,o:He,d(t){t&&P(e)}}}function vs(n){let e;const t=n[13].default,i=x(t,n,n[12],null);return{c(){i&&i.c()},l(l){i&&i.l(l)},m(l,r){i&&i.m(l,r),e=!0},p(l,r){i&&i.p&&(!e||r&4096)&&ee(i,t,l,l[12],e?$(t,l[12],r,null):te(l[12]),null)},i(l){e||(M(i,l),e=!0)},o(l){k(i,l),e=!1},d(l){i&&i.d(l)}}}function As(n){let e,t,i,l,r,s,a,o,c;const u=[vs,bs],f=[];function d(p,g){return p[8]==null?0:1}t=d(n),i=f[t]=u[t](n);let m=[{class:l=z(fe({[n[1]]:!0,"mdc-text-field-helper-text":!0,"mdc-text-field-helper-text--persistent":n[3],"mdc-text-field-helper-text--validation-msg":n[4]},n[6]))},{"aria-hidden":r=n[3]?void 0:"true"},{id:n[2]},n[7],n[10]],v={};for(let p=0;p<m.length;p+=1)v=H(v,m[p]);return{c(){e=Z("div"),i.c(),this.h()},l(p){e=J(p,"DIV",{class:!0,"aria-hidden":!0,id:!0});var g=w(e);i.l(g),g.forEach(P),this.h()},h(){W(e,v)},m(p,g){K(p,e,g),f[t].m(e,null),n[14](e),a=!0,o||(c=[G(s=de.call(null,e,n[0])),G(n[9].call(null,e))],o=!0)},p(p,[g]){let _=t;t=d(p),t===_?f[t].p(p,g):(De(),k(f[_],1,1,()=>{f[_]=null}),Me(),i=f[t],i?i.p(p,g):(i=f[t]=u[t](p),i.c()),M(i,1),i.m(e,null)),W(e,v=Q(m,[(!a||g&90&&l!==(l=z(fe({[p[1]]:!0,"mdc-text-field-helper-text":!0,"mdc-text-field-helper-text--persistent":p[3],"mdc-text-field-helper-text--validation-msg":p[4]},p[6]))))&&{class:l},(!a||g&8&&r!==(r=p[3]?void 0:"true"))&&{"aria-hidden":r},(!a||g&4)&&{id:p[2]},g&128&&p[7],g&1024&&p[10]])),s&&ie(s.update)&&g&1&&s.update.call(null,p[0])},i(p){a||(M(i),a=!0)},o(p){k(i),a=!1},d(p){p&&P(e),f[t].d(),n[14](null),o=!1,oe(c)}}}let Cs=0;function ys(n,e,t){const i=["use","class","id","persistent","validationMsg","getElement"];let l=Y(e,i),{$$slots:r={},$$scope:s}=e;const a=ve(ae());let{use:o=[]}=e,{class:c=""}=e,{id:u="SMUI-textfield-helper-text-"+Cs++}=e,{persistent:f=!1}=e,{validationMsg:d=!1}=e,m,v,p={},g={},_;Ge(()=>(v=new Ea({addClass:y,removeClass:I,hasClass:b,getAttr:T,setAttr:S,removeAttr:h,setContent:F=>{t(8,_=F)}}),u.startsWith("SMUI-textfield-helper-text-")&&We(C(),"SMUITextfieldHelperText:id",u),We(C(),"SMUITextfieldHelperText:mount",v),v.init(),()=>{We(C(),"SMUITextfieldHelperText:unmount",v),v.destroy()}));function b(F){return F in p?p[F]:C().classList.contains(F)}function y(F){p[F]||t(6,p[F]=!0,p)}function I(F){(!(F in p)||p[F])&&t(6,p[F]=!1,p)}function T(F){var O;return F in g?(O=g[F])!==null&&O!==void 0?O:null:C().getAttribute(F)}function S(F,O){g[F]!==O&&t(7,g[F]=O,g)}function h(F){(!(F in g)||g[F]!=null)&&t(7,g[F]=void 0,g)}function C(){return m}function N(F){X[F?"unshift":"push"](()=>{m=F,t(5,m)})}return n.$$set=F=>{e=H(H({},e),Ce(F)),t(10,l=Y(e,i)),"use"in F&&t(0,o=F.use),"class"in F&&t(1,c=F.class),"id"in F&&t(2,u=F.id),"persistent"in F&&t(3,f=F.persistent),"validationMsg"in F&&t(4,d=F.validationMsg),"$$scope"in F&&t(12,s=F.$$scope)},[o,c,u,f,d,m,p,g,_,a,l,C,s,r,N]}class Bs extends pe{constructor(e){super();ge(this,e,ys,As,me,{use:0,class:1,id:2,persistent:3,validationMsg:4,getElement:11})}get getElement(){return this.$$.ctx[11]}}export{ne as $,Fe as A,Ee as B,H as C,Pl as D,Tl as E,X as F,st as G,Ns as H,rt as I,Rs as J,Bs as K,Os as L,pl as M,Fs as N,Ps as O,Ms as P,He as Q,Us as R,pe as S,Ts as T,js as U,ks as V,Vs as W,Hs as X,Ds as Y,El as Z,Is as _,w as a,q as b,J as c,P as d,Z as e,Ss as f,K as g,gt as h,ge as i,Ct as j,_e as k,Pe as l,be as m,De as n,k as o,Me as p,M as q,mt as r,me as s,tt as t,Ls as u,Ge as v,Ie as w,Oe as x,ye as y,Q as z};
+ */
+var MDCTextFieldHelperTextFoundation = function(_super) {
+  __extends(MDCTextFieldHelperTextFoundation2, _super);
+  function MDCTextFieldHelperTextFoundation2(adapter) {
+    return _super.call(this, __assign(__assign({}, MDCTextFieldHelperTextFoundation2.defaultAdapter), adapter)) || this;
+  }
+  Object.defineProperty(MDCTextFieldHelperTextFoundation2, "cssClasses", {
+    get: function() {
+      return cssClasses;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldHelperTextFoundation2, "strings", {
+    get: function() {
+      return strings;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(MDCTextFieldHelperTextFoundation2, "defaultAdapter", {
+    get: function() {
+      return {
+        addClass: function() {
+          return void 0;
+        },
+        removeClass: function() {
+          return void 0;
+        },
+        hasClass: function() {
+          return false;
+        },
+        getAttr: function() {
+          return null;
+        },
+        setAttr: function() {
+          return void 0;
+        },
+        removeAttr: function() {
+          return void 0;
+        },
+        setContent: function() {
+          return void 0;
+        }
+      };
+    },
+    enumerable: false,
+    configurable: true
+  });
+  MDCTextFieldHelperTextFoundation2.prototype.getId = function() {
+    return this.adapter.getAttr("id");
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.isVisible = function() {
+    return this.adapter.getAttr(strings.ARIA_HIDDEN) !== "true";
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.setContent = function(content) {
+    this.adapter.setContent(content);
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.isPersistent = function() {
+    return this.adapter.hasClass(cssClasses.HELPER_TEXT_PERSISTENT);
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.setPersistent = function(isPersistent) {
+    if (isPersistent) {
+      this.adapter.addClass(cssClasses.HELPER_TEXT_PERSISTENT);
+    } else {
+      this.adapter.removeClass(cssClasses.HELPER_TEXT_PERSISTENT);
+    }
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.isValidation = function() {
+    return this.adapter.hasClass(cssClasses.HELPER_TEXT_VALIDATION_MSG);
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.setValidation = function(isValidation) {
+    if (isValidation) {
+      this.adapter.addClass(cssClasses.HELPER_TEXT_VALIDATION_MSG);
+    } else {
+      this.adapter.removeClass(cssClasses.HELPER_TEXT_VALIDATION_MSG);
+    }
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.showToScreenReader = function() {
+    this.adapter.removeAttr(strings.ARIA_HIDDEN);
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.setValidity = function(inputIsValid) {
+    var helperTextIsPersistent = this.adapter.hasClass(cssClasses.HELPER_TEXT_PERSISTENT);
+    var helperTextIsValidationMsg = this.adapter.hasClass(cssClasses.HELPER_TEXT_VALIDATION_MSG);
+    var validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
+    if (validationMsgNeedsDisplay) {
+      this.showToScreenReader();
+      if (this.adapter.getAttr(strings.ROLE) === "alert") {
+        this.refreshAlertRole();
+      } else {
+        this.adapter.setAttr(strings.ROLE, "alert");
+      }
+    } else {
+      this.adapter.removeAttr(strings.ROLE);
+    }
+    if (!helperTextIsPersistent && !validationMsgNeedsDisplay) {
+      this.hide();
+    }
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.hide = function() {
+    this.adapter.setAttr(strings.ARIA_HIDDEN, "true");
+  };
+  MDCTextFieldHelperTextFoundation2.prototype.refreshAlertRole = function() {
+    var _this = this;
+    this.adapter.removeAttr(strings.ROLE);
+    requestAnimationFrame(function() {
+      _this.adapter.setAttr(strings.ROLE, "alert");
+    });
+  };
+  return MDCTextFieldHelperTextFoundation2;
+}(MDCFoundation);
+function create_else_block$2(ctx) {
+  let label;
+  let label_class_value;
+  let label_style_value;
+  let label_for_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[22].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[21], null);
+  let label_levels = [
+    {
+      class: label_class_value = classMap(__spreadValues({
+        [ctx[3]]: true,
+        "mdc-floating-label": true,
+        "mdc-floating-label--float-above": ctx[0],
+        "mdc-floating-label--required": ctx[1]
+      }, ctx[8]))
+    },
+    {
+      style: label_style_value = Object.entries(ctx[9]).map(func_1$1).concat([ctx[4]]).join(" ")
+    },
+    {
+      for: label_for_value = ctx[5] || (ctx[11] ? ctx[11].id : void 0)
+    },
+    ctx[12]
+  ];
+  let label_data = {};
+  for (let i = 0; i < label_levels.length; i += 1) {
+    label_data = assign(label_data, label_levels[i]);
+  }
+  return {
+    c() {
+      label = element("label");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      label = claim_element(nodes, "LABEL", { class: true, style: true, for: true });
+      var label_nodes = children(label);
+      if (default_slot)
+        default_slot.l(label_nodes);
+      label_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(label, label_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, label, anchor);
+      if (default_slot) {
+        default_slot.m(label, null);
+      }
+      ctx[24](label);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, label, ctx[2])),
+          action_destroyer(ctx[10].call(null, label))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 2097152)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[21], !current ? get_all_dirty_from_scope(ctx2[21]) : get_slot_changes(default_slot_template, ctx2[21], dirty, null), null);
+        }
+      }
+      set_attributes(label, label_data = get_spread_update(label_levels, [
+        (!current || dirty & 267 && label_class_value !== (label_class_value = classMap(__spreadValues({
+          [ctx2[3]]: true,
+          "mdc-floating-label": true,
+          "mdc-floating-label--float-above": ctx2[0],
+          "mdc-floating-label--required": ctx2[1]
+        }, ctx2[8])))) && { class: label_class_value },
+        (!current || dirty & 528 && label_style_value !== (label_style_value = Object.entries(ctx2[9]).map(func_1$1).concat([ctx2[4]]).join(" "))) && { style: label_style_value },
+        (!current || dirty & 32 && label_for_value !== (label_for_value = ctx2[5] || (ctx2[11] ? ctx2[11].id : void 0))) && { for: label_for_value },
+        dirty & 4096 && ctx2[12]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 4)
+        useActions_action.update.call(null, ctx2[2]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(label);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[24](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function create_if_block$3(ctx) {
+  let span;
+  let span_class_value;
+  let span_style_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const default_slot_template = ctx[22].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[21], null);
+  let span_levels = [
+    {
+      class: span_class_value = classMap(__spreadValues({
+        [ctx[3]]: true,
+        "mdc-floating-label": true,
+        "mdc-floating-label--float-above": ctx[0],
+        "mdc-floating-label--required": ctx[1]
+      }, ctx[8]))
+    },
+    {
+      style: span_style_value = Object.entries(ctx[9]).map(func$3).concat([ctx[4]]).join(" ")
+    },
+    ctx[12]
+  ];
+  let span_data = {};
+  for (let i = 0; i < span_levels.length; i += 1) {
+    span_data = assign(span_data, span_levels[i]);
+  }
+  return {
+    c() {
+      span = element("span");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      span = claim_element(nodes, "SPAN", { class: true, style: true });
+      var span_nodes = children(span);
+      if (default_slot)
+        default_slot.l(span_nodes);
+      span_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(span, span_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, span, anchor);
+      if (default_slot) {
+        default_slot.m(span, null);
+      }
+      ctx[23](span);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, span, ctx[2])),
+          action_destroyer(ctx[10].call(null, span))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 2097152)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[21], !current ? get_all_dirty_from_scope(ctx2[21]) : get_slot_changes(default_slot_template, ctx2[21], dirty, null), null);
+        }
+      }
+      set_attributes(span, span_data = get_spread_update(span_levels, [
+        (!current || dirty & 267 && span_class_value !== (span_class_value = classMap(__spreadValues({
+          [ctx2[3]]: true,
+          "mdc-floating-label": true,
+          "mdc-floating-label--float-above": ctx2[0],
+          "mdc-floating-label--required": ctx2[1]
+        }, ctx2[8])))) && { class: span_class_value },
+        (!current || dirty & 528 && span_style_value !== (span_style_value = Object.entries(ctx2[9]).map(func$3).concat([ctx2[4]]).join(" "))) && { style: span_style_value },
+        dirty & 4096 && ctx2[12]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 4)
+        useActions_action.update.call(null, ctx2[2]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(span);
+      if (default_slot)
+        default_slot.d(detaching);
+      ctx[23](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function create_fragment$6(ctx) {
+  let current_block_type_index;
+  let if_block;
+  let if_block_anchor;
+  let current;
+  const if_block_creators = [create_if_block$3, create_else_block$2];
+  const if_blocks = [];
+  function select_block_type(ctx2, dirty) {
+    if (ctx2[6])
+      return 0;
+    return 1;
+  }
+  current_block_type_index = select_block_type(ctx);
+  if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  return {
+    c() {
+      if_block.c();
+      if_block_anchor = empty();
+    },
+    l(nodes) {
+      if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m(target, anchor) {
+      if_blocks[current_block_type_index].m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      let previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type(ctx2);
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(ctx2, dirty);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, () => {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+          if_block.c();
+        } else {
+          if_block.p(ctx2, dirty);
+        }
+        transition_in(if_block, 1);
+        if_block.m(if_block_anchor.parentNode, if_block_anchor);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if_blocks[current_block_type_index].d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+const func$3 = ([name, value]) => `${name}: ${value};`;
+const func_1$1 = ([name, value]) => `${name}: ${value};`;
+function instance_1$4($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "style",
+    "for",
+    "floatAbove",
+    "required",
+    "wrapped",
+    "shake",
+    "float",
+    "setRequired",
+    "getWidth",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  var _a;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { style = "" } = $$props;
+  let { for: forId = void 0 } = $$props;
+  let { floatAbove = false } = $$props;
+  let { required = false } = $$props;
+  let { wrapped = false } = $$props;
+  let element2;
+  let instance2;
+  let internalClasses = {};
+  let internalStyles = {};
+  let inputProps = (_a = getContext("SMUI:generic:input:props")) !== null && _a !== void 0 ? _a : {};
+  let previousFloatAbove = floatAbove;
+  let previousRequired = required;
+  onMount(() => {
+    $$invalidate(18, instance2 = new MDCFloatingLabelFoundation({
+      addClass,
+      removeClass,
+      getWidth: () => {
+        var _a2, _b;
+        const el = getElement();
+        const clone = el.cloneNode(true);
+        (_a2 = el.parentNode) === null || _a2 === void 0 ? void 0 : _a2.appendChild(clone);
+        clone.classList.add("smui-floating-label--remove-transition");
+        clone.classList.add("smui-floating-label--force-size");
+        clone.classList.remove("mdc-floating-label--float-above");
+        const scrollWidth = clone.scrollWidth;
+        (_b = el.parentNode) === null || _b === void 0 ? void 0 : _b.removeChild(clone);
+        return scrollWidth;
+      },
+      registerInteractionHandler: (evtType, handler) => getElement().addEventListener(evtType, handler),
+      deregisterInteractionHandler: (evtType, handler) => getElement().removeEventListener(evtType, handler)
+    }));
+    const accessor = {
+      get element() {
+        return getElement();
+      },
+      addStyle,
+      removeStyle
+    };
+    dispatch(element2, "SMUIFloatingLabel:mount", accessor);
+    instance2.init();
+    return () => {
+      dispatch(element2, "SMUIFloatingLabel:unmount", accessor);
+      instance2.destroy();
+    };
+  });
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(8, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(8, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addStyle(name, value) {
+    if (internalStyles[name] != value) {
+      if (value === "" || value == null) {
+        delete internalStyles[name];
+        $$invalidate(9, internalStyles);
+      } else {
+        $$invalidate(9, internalStyles[name] = value, internalStyles);
+      }
+    }
+  }
+  function removeStyle(name) {
+    if (name in internalStyles) {
+      delete internalStyles[name];
+      $$invalidate(9, internalStyles);
+    }
+  }
+  function shake(shouldShake) {
+    instance2.shake(shouldShake);
+  }
+  function float(shouldFloat) {
+    $$invalidate(0, floatAbove = shouldFloat);
+  }
+  function setRequired(isRequired) {
+    $$invalidate(1, required = isRequired);
+  }
+  function getWidth() {
+    return instance2.getWidth();
+  }
+  function getElement() {
+    return element2;
+  }
+  function span_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(7, element2);
+    });
+  }
+  function label_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(7, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(12, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(2, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(3, className = $$new_props.class);
+    if ("style" in $$new_props)
+      $$invalidate(4, style = $$new_props.style);
+    if ("for" in $$new_props)
+      $$invalidate(5, forId = $$new_props.for);
+    if ("floatAbove" in $$new_props)
+      $$invalidate(0, floatAbove = $$new_props.floatAbove);
+    if ("required" in $$new_props)
+      $$invalidate(1, required = $$new_props.required);
+    if ("wrapped" in $$new_props)
+      $$invalidate(6, wrapped = $$new_props.wrapped);
+    if ("$$scope" in $$new_props)
+      $$invalidate(21, $$scope = $$new_props.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 786433) {
+      if (instance2 && previousFloatAbove !== floatAbove) {
+        $$invalidate(19, previousFloatAbove = floatAbove);
+        instance2.float(floatAbove);
+      }
+    }
+    if ($$self.$$.dirty & 1310722) {
+      if (instance2 && previousRequired !== required) {
+        $$invalidate(20, previousRequired = required);
+        instance2.setRequired(required);
+      }
+    }
+  };
+  return [
+    floatAbove,
+    required,
+    use,
+    className,
+    style,
+    forId,
+    wrapped,
+    element2,
+    internalClasses,
+    internalStyles,
+    forwardEvents,
+    inputProps,
+    $$restProps,
+    shake,
+    float,
+    setRequired,
+    getWidth,
+    getElement,
+    instance2,
+    previousFloatAbove,
+    previousRequired,
+    $$scope,
+    slots,
+    span_binding,
+    label_binding
+  ];
+}
+class FloatingLabel extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$4, create_fragment$6, safe_not_equal, {
+      use: 2,
+      class: 3,
+      style: 4,
+      for: 5,
+      floatAbove: 0,
+      required: 1,
+      wrapped: 6,
+      shake: 13,
+      float: 14,
+      setRequired: 15,
+      getWidth: 16,
+      getElement: 17
+    });
+  }
+  get shake() {
+    return this.$$.ctx[13];
+  }
+  get float() {
+    return this.$$.ctx[14];
+  }
+  get setRequired() {
+    return this.$$.ctx[15];
+  }
+  get getWidth() {
+    return this.$$.ctx[16];
+  }
+  get getElement() {
+    return this.$$.ctx[17];
+  }
+}
+function create_fragment$5(ctx) {
+  let div;
+  let div_class_value;
+  let div_style_value;
+  let useActions_action;
+  let mounted;
+  let dispose;
+  let div_levels = [
+    {
+      class: div_class_value = classMap(__spreadValues({
+        [ctx[1]]: true,
+        "mdc-line-ripple": true,
+        "mdc-line-ripple--active": ctx[3]
+      }, ctx[5]))
+    },
+    {
+      style: div_style_value = Object.entries(ctx[6]).map(func$2).concat([ctx[2]]).join(" ")
+    },
+    ctx[8]
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true, style: true });
+      children(div).forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      ctx[13](div);
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[7].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        dirty & 42 && div_class_value !== (div_class_value = classMap(__spreadValues({
+          [ctx2[1]]: true,
+          "mdc-line-ripple": true,
+          "mdc-line-ripple--active": ctx2[3]
+        }, ctx2[5]))) && { class: div_class_value },
+        dirty & 68 && div_style_value !== (div_style_value = Object.entries(ctx2[6]).map(func$2).concat([ctx2[2]]).join(" ")) && { style: div_style_value },
+        dirty & 256 && ctx2[8]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      ctx[13](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+const func$2 = ([name, value]) => `${name}: ${value};`;
+function instance_1$3($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "style",
+    "active",
+    "activate",
+    "deactivate",
+    "setRippleCenter",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { style = "" } = $$props;
+  let { active = false } = $$props;
+  let element2;
+  let instance2;
+  let internalClasses = {};
+  let internalStyles = {};
+  onMount(() => {
+    instance2 = new MDCLineRippleFoundation({
+      addClass,
+      removeClass,
+      hasClass,
+      setStyle: addStyle,
+      registerEventHandler: (evtType, handler) => getElement().addEventListener(evtType, handler),
+      deregisterEventHandler: (evtType, handler) => getElement().removeEventListener(evtType, handler)
+    });
+    instance2.init();
+    return () => {
+      instance2.destroy();
+    };
+  });
+  function hasClass(className2) {
+    return className2 in internalClasses ? internalClasses[className2] : getElement().classList.contains(className2);
+  }
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(5, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(5, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addStyle(name, value) {
+    if (internalStyles[name] != value) {
+      if (value === "" || value == null) {
+        delete internalStyles[name];
+        $$invalidate(6, internalStyles);
+      } else {
+        $$invalidate(6, internalStyles[name] = value, internalStyles);
+      }
+    }
+  }
+  function activate() {
+    instance2.activate();
+  }
+  function deactivate() {
+    instance2.deactivate();
+  }
+  function setRippleCenter(xCoordinate) {
+    instance2.setRippleCenter(xCoordinate);
+  }
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(4, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(8, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("style" in $$new_props)
+      $$invalidate(2, style = $$new_props.style);
+    if ("active" in $$new_props)
+      $$invalidate(3, active = $$new_props.active);
+  };
+  return [
+    use,
+    className,
+    style,
+    active,
+    element2,
+    internalClasses,
+    internalStyles,
+    forwardEvents,
+    $$restProps,
+    activate,
+    deactivate,
+    setRippleCenter,
+    getElement,
+    div_binding
+  ];
+}
+class LineRipple extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$3, create_fragment$5, safe_not_equal, {
+      use: 0,
+      class: 1,
+      style: 2,
+      active: 3,
+      activate: 9,
+      deactivate: 10,
+      setRippleCenter: 11,
+      getElement: 12
+    });
+  }
+  get activate() {
+    return this.$$.ctx[9];
+  }
+  get deactivate() {
+    return this.$$.ctx[10];
+  }
+  get setRippleCenter() {
+    return this.$$.ctx[11];
+  }
+  get getElement() {
+    return this.$$.ctx[12];
+  }
+}
+function create_if_block$2(ctx) {
+  let div;
+  let div_style_value;
+  let current;
+  const default_slot_template = ctx[14].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[13], null);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true, style: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "mdc-notched-outline__notch");
+      attr(div, "style", div_style_value = Object.entries(ctx[7]).map(func$1).join(" "));
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 8192)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[13], !current ? get_all_dirty_from_scope(ctx2[13]) : get_slot_changes(default_slot_template, ctx2[13], dirty, null), null);
+        }
+      }
+      if (!current || dirty & 128 && div_style_value !== (div_style_value = Object.entries(ctx2[7]).map(func$1).join(" "))) {
+        attr(div, "style", div_style_value);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_fragment$4(ctx) {
+  let div2;
+  let div0;
+  let t0;
+  let t1;
+  let div1;
+  let div2_class_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  let if_block = !ctx[3] && create_if_block$2(ctx);
+  let div2_levels = [
+    {
+      class: div2_class_value = classMap(__spreadValues({
+        [ctx[1]]: true,
+        "mdc-notched-outline": true,
+        "mdc-notched-outline--notched": ctx[2],
+        "mdc-notched-outline--no-label": ctx[3]
+      }, ctx[6]))
+    },
+    ctx[9]
+  ];
+  let div2_data = {};
+  for (let i = 0; i < div2_levels.length; i += 1) {
+    div2_data = assign(div2_data, div2_levels[i]);
+  }
+  return {
+    c() {
+      div2 = element("div");
+      div0 = element("div");
+      t0 = space();
+      if (if_block)
+        if_block.c();
+      t1 = space();
+      div1 = element("div");
+      this.h();
+    },
+    l(nodes) {
+      div2 = claim_element(nodes, "DIV", { class: true });
+      var div2_nodes = children(div2);
+      div0 = claim_element(div2_nodes, "DIV", { class: true });
+      children(div0).forEach(detach);
+      t0 = claim_space(div2_nodes);
+      if (if_block)
+        if_block.l(div2_nodes);
+      t1 = claim_space(div2_nodes);
+      div1 = claim_element(div2_nodes, "DIV", { class: true });
+      children(div1).forEach(detach);
+      div2_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div0, "class", "mdc-notched-outline__leading");
+      attr(div1, "class", "mdc-notched-outline__trailing");
+      set_attributes(div2, div2_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div2, anchor);
+      append_hydration(div2, div0);
+      append_hydration(div2, t0);
+      if (if_block)
+        if_block.m(div2, null);
+      append_hydration(div2, t1);
+      append_hydration(div2, div1);
+      ctx[15](div2);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div2, ctx[0])),
+          action_destroyer(ctx[8].call(null, div2)),
+          listen(div2, "SMUIFloatingLabel:mount", ctx[16]),
+          listen(div2, "SMUIFloatingLabel:unmount", ctx[17])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (!ctx2[3]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+          if (dirty & 8) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block$2(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(div2, t1);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
+      set_attributes(div2, div2_data = get_spread_update(div2_levels, [
+        (!current || dirty & 78 && div2_class_value !== (div2_class_value = classMap(__spreadValues({
+          [ctx2[1]]: true,
+          "mdc-notched-outline": true,
+          "mdc-notched-outline--notched": ctx2[2],
+          "mdc-notched-outline--no-label": ctx2[3]
+        }, ctx2[6])))) && { class: div2_class_value },
+        dirty & 512 && ctx2[9]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div2);
+      if (if_block)
+        if_block.d();
+      ctx[15](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+const func$1 = ([name, value]) => `${name}: ${value};`;
+function instance_1$2($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "notched", "noLabel", "notch", "closeNotch", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { notched = false } = $$props;
+  let { noLabel = false } = $$props;
+  let element2;
+  let instance2;
+  let floatingLabel;
+  let internalClasses = {};
+  let notchStyles = {};
+  onMount(() => {
+    instance2 = new MDCNotchedOutlineFoundation({
+      addClass,
+      removeClass,
+      setNotchWidthProperty: (width) => addNotchStyle("width", width + "px"),
+      removeNotchWidthProperty: () => removeNotchStyle("width")
+    });
+    instance2.init();
+    return () => {
+      instance2.destroy();
+    };
+  });
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(6, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(6, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addNotchStyle(name, value) {
+    if (notchStyles[name] != value) {
+      if (value === "" || value == null) {
+        delete notchStyles[name];
+        $$invalidate(7, notchStyles);
+      } else {
+        $$invalidate(7, notchStyles[name] = value, notchStyles);
+      }
+    }
+  }
+  function removeNotchStyle(name) {
+    if (name in notchStyles) {
+      delete notchStyles[name];
+      $$invalidate(7, notchStyles);
+    }
+  }
+  function notch(notchWidth) {
+    instance2.notch(notchWidth);
+  }
+  function closeNotch() {
+    instance2.closeNotch();
+  }
+  function getElement() {
+    return element2;
+  }
+  function div2_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(5, element2);
+    });
+  }
+  const SMUIFloatingLabel_mount_handler = (event) => $$invalidate(4, floatingLabel = event.detail);
+  const SMUIFloatingLabel_unmount_handler = () => $$invalidate(4, floatingLabel = void 0);
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(9, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("notched" in $$new_props)
+      $$invalidate(2, notched = $$new_props.notched);
+    if ("noLabel" in $$new_props)
+      $$invalidate(3, noLabel = $$new_props.noLabel);
+    if ("$$scope" in $$new_props)
+      $$invalidate(13, $$scope = $$new_props.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 16) {
+      if (floatingLabel) {
+        floatingLabel.addStyle("transition-duration", "0s");
+        addClass("mdc-notched-outline--upgraded");
+        requestAnimationFrame(() => {
+          if (floatingLabel) {
+            floatingLabel.removeStyle("transition-duration");
+          }
+        });
+      } else {
+        removeClass("mdc-notched-outline--upgraded");
+      }
+    }
+  };
+  return [
+    use,
+    className,
+    notched,
+    noLabel,
+    floatingLabel,
+    element2,
+    internalClasses,
+    notchStyles,
+    forwardEvents,
+    $$restProps,
+    notch,
+    closeNotch,
+    getElement,
+    $$scope,
+    slots,
+    div2_binding,
+    SMUIFloatingLabel_mount_handler,
+    SMUIFloatingLabel_unmount_handler
+  ];
+}
+class NotchedOutline extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$2, create_fragment$4, safe_not_equal, {
+      use: 0,
+      class: 1,
+      notched: 2,
+      noLabel: 3,
+      notch: 10,
+      closeNotch: 11,
+      getElement: 12
+    });
+  }
+  get notch() {
+    return this.$$.ctx[10];
+  }
+  get closeNotch() {
+    return this.$$.ctx[11];
+  }
+  get getElement() {
+    return this.$$.ctx[12];
+  }
+}
+var HelperLine = classAdderBuilder({
+  class: "mdc-text-field-helper-line",
+  component: Div
+});
+var Prefix = classAdderBuilder({
+  class: "mdc-text-field__affix mdc-text-field__affix--prefix",
+  component: Span
+});
+var Suffix = classAdderBuilder({
+  class: "mdc-text-field__affix mdc-text-field__affix--suffix",
+  component: Span
+});
+function create_fragment$3(ctx) {
+  let input;
+  let input_class_value;
+  let useActions_action;
+  let mounted;
+  let dispose;
+  let input_levels = [
+    {
+      class: input_class_value = classMap({
+        [ctx[1]]: true,
+        "mdc-text-field__input": true
+      })
+    },
+    { type: ctx[2] },
+    { placeholder: ctx[3] },
+    ctx[4],
+    ctx[6],
+    ctx[10]
+  ];
+  let input_data = {};
+  for (let i = 0; i < input_levels.length; i += 1) {
+    input_data = assign(input_data, input_levels[i]);
+  }
+  return {
+    c() {
+      input = element("input");
+      this.h();
+    },
+    l(nodes) {
+      input = claim_element(nodes, "INPUT", {
+        class: true,
+        type: true,
+        placeholder: true
+      });
+      this.h();
+    },
+    h() {
+      set_attributes(input, input_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, input, anchor);
+      if (input.autofocus)
+        input.focus();
+      ctx[26](input);
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, input, ctx[0])),
+          action_destroyer(ctx[7].call(null, input)),
+          listen(input, "input", ctx[27]),
+          listen(input, "change", ctx[9]),
+          listen(input, "blur", ctx[24]),
+          listen(input, "focus", ctx[25])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      set_attributes(input, input_data = get_spread_update(input_levels, [
+        dirty & 2 && input_class_value !== (input_class_value = classMap({
+          [ctx2[1]]: true,
+          "mdc-text-field__input": true
+        })) && { class: input_class_value },
+        dirty & 4 && { type: ctx2[2] },
+        dirty & 8 && { placeholder: ctx2[3] },
+        dirty & 16 && ctx2[4],
+        dirty & 64 && ctx2[6],
+        dirty & 1024 && ctx2[10]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(input);
+      ctx[26](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function toNumber(value) {
+  if (value === "") {
+    const nan = new Number(Number.NaN);
+    nan.length = 0;
+    return nan;
+  }
+  return +value;
+}
+function instance$1($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "type",
+    "placeholder",
+    "value",
+    "files",
+    "dirty",
+    "invalid",
+    "updateInvalid",
+    "emptyValueNull",
+    "emptyValueUndefined",
+    "getAttr",
+    "addAttr",
+    "removeAttr",
+    "focus",
+    "blur",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let uninitializedValue = () => {
+  };
+  function isUninitializedValue(value2) {
+    return value2 === uninitializedValue;
+  }
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { type = "text" } = $$props;
+  let { placeholder = " " } = $$props;
+  let { value = uninitializedValue } = $$props;
+  const valueUninitialized = isUninitializedValue(value);
+  if (valueUninitialized) {
+    value = "";
+  }
+  let { files = null } = $$props;
+  let { dirty = false } = $$props;
+  let { invalid = false } = $$props;
+  let { updateInvalid = true } = $$props;
+  let { emptyValueNull = value === null } = $$props;
+  if (valueUninitialized && emptyValueNull) {
+    value = null;
+  }
+  let { emptyValueUndefined = value === void 0 } = $$props;
+  if (valueUninitialized && emptyValueUndefined) {
+    value = void 0;
+  }
+  let element2;
+  let internalAttrs = {};
+  let valueProp = {};
+  onMount(() => {
+    if (updateInvalid) {
+      $$invalidate(14, invalid = element2.matches(":invalid"));
+    }
+  });
+  function valueUpdater(e) {
+    if (type === "file") {
+      $$invalidate(12, files = e.currentTarget.files);
+      return;
+    }
+    if (e.currentTarget.value === "" && emptyValueNull) {
+      $$invalidate(11, value = null);
+      return;
+    }
+    if (e.currentTarget.value === "" && emptyValueUndefined) {
+      $$invalidate(11, value = void 0);
+      return;
+    }
+    switch (type) {
+      case "number":
+      case "range":
+        $$invalidate(11, value = toNumber(e.currentTarget.value));
+        break;
+      default:
+        $$invalidate(11, value = e.currentTarget.value);
+        break;
+    }
+  }
+  function changeHandler(e) {
+    if (type === "file" || type === "range") {
+      valueUpdater(e);
+    }
+    $$invalidate(13, dirty = true);
+    if (updateInvalid) {
+      $$invalidate(14, invalid = element2.matches(":invalid"));
+    }
+  }
+  function getAttr(name) {
+    var _a;
+    return name in internalAttrs ? (_a = internalAttrs[name]) !== null && _a !== void 0 ? _a : null : getElement().getAttribute(name);
+  }
+  function addAttr(name, value2) {
+    if (internalAttrs[name] !== value2) {
+      $$invalidate(6, internalAttrs[name] = value2, internalAttrs);
+    }
+  }
+  function removeAttr(name) {
+    if (!(name in internalAttrs) || internalAttrs[name] != null) {
+      $$invalidate(6, internalAttrs[name] = void 0, internalAttrs);
+    }
+  }
+  function focus() {
+    getElement().focus();
+  }
+  function blur() {
+    getElement().blur();
+  }
+  function getElement() {
+    return element2;
+  }
+  function blur_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function focus_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function input_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(5, element2);
+    });
+  }
+  const input_handler = (e) => type !== "file" && valueUpdater(e);
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(10, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("type" in $$new_props)
+      $$invalidate(2, type = $$new_props.type);
+    if ("placeholder" in $$new_props)
+      $$invalidate(3, placeholder = $$new_props.placeholder);
+    if ("value" in $$new_props)
+      $$invalidate(11, value = $$new_props.value);
+    if ("files" in $$new_props)
+      $$invalidate(12, files = $$new_props.files);
+    if ("dirty" in $$new_props)
+      $$invalidate(13, dirty = $$new_props.dirty);
+    if ("invalid" in $$new_props)
+      $$invalidate(14, invalid = $$new_props.invalid);
+    if ("updateInvalid" in $$new_props)
+      $$invalidate(15, updateInvalid = $$new_props.updateInvalid);
+    if ("emptyValueNull" in $$new_props)
+      $$invalidate(16, emptyValueNull = $$new_props.emptyValueNull);
+    if ("emptyValueUndefined" in $$new_props)
+      $$invalidate(17, emptyValueUndefined = $$new_props.emptyValueUndefined);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 2068) {
+      if (type === "file") {
+        delete valueProp.value;
+        $$invalidate(4, valueProp), $$invalidate(2, type), $$invalidate(11, value);
+      } else {
+        $$invalidate(4, valueProp.value = value == null ? "" : value, valueProp);
+      }
+    }
+  };
+  return [
+    use,
+    className,
+    type,
+    placeholder,
+    valueProp,
+    element2,
+    internalAttrs,
+    forwardEvents,
+    valueUpdater,
+    changeHandler,
+    $$restProps,
+    value,
+    files,
+    dirty,
+    invalid,
+    updateInvalid,
+    emptyValueNull,
+    emptyValueUndefined,
+    getAttr,
+    addAttr,
+    removeAttr,
+    focus,
+    blur,
+    getElement,
+    blur_handler,
+    focus_handler,
+    input_binding,
+    input_handler
+  ];
+}
+class Input extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$1, create_fragment$3, safe_not_equal, {
+      use: 0,
+      class: 1,
+      type: 2,
+      placeholder: 3,
+      value: 11,
+      files: 12,
+      dirty: 13,
+      invalid: 14,
+      updateInvalid: 15,
+      emptyValueNull: 16,
+      emptyValueUndefined: 17,
+      getAttr: 18,
+      addAttr: 19,
+      removeAttr: 20,
+      focus: 21,
+      blur: 22,
+      getElement: 23
+    });
+  }
+  get getAttr() {
+    return this.$$.ctx[18];
+  }
+  get addAttr() {
+    return this.$$.ctx[19];
+  }
+  get removeAttr() {
+    return this.$$.ctx[20];
+  }
+  get focus() {
+    return this.$$.ctx[21];
+  }
+  get blur() {
+    return this.$$.ctx[22];
+  }
+  get getElement() {
+    return this.$$.ctx[23];
+  }
+}
+function create_fragment$2(ctx) {
+  let textarea;
+  let textarea_class_value;
+  let textarea_style_value;
+  let useActions_action;
+  let mounted;
+  let dispose;
+  let textarea_levels = [
+    {
+      class: textarea_class_value = classMap({
+        [ctx[2]]: true,
+        "mdc-text-field__input": true
+      })
+    },
+    {
+      style: textarea_style_value = `${ctx[4] ? "" : "resize: none; "}${ctx[3]}`
+    },
+    ctx[6],
+    ctx[9]
+  ];
+  let textarea_data = {};
+  for (let i = 0; i < textarea_levels.length; i += 1) {
+    textarea_data = assign(textarea_data, textarea_levels[i]);
+  }
+  return {
+    c() {
+      textarea = element("textarea");
+      this.h();
+    },
+    l(nodes) {
+      textarea = claim_element(nodes, "TEXTAREA", { class: true, style: true });
+      children(textarea).forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(textarea, textarea_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, textarea, anchor);
+      if (textarea.autofocus)
+        textarea.focus();
+      ctx[21](textarea);
+      set_input_value(textarea, ctx[0]);
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, textarea, ctx[1])),
+          action_destroyer(ctx[7].call(null, textarea)),
+          listen(textarea, "change", ctx[8]),
+          listen(textarea, "blur", ctx[19]),
+          listen(textarea, "focus", ctx[20]),
+          listen(textarea, "input", ctx[22])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      set_attributes(textarea, textarea_data = get_spread_update(textarea_levels, [
+        dirty & 4 && textarea_class_value !== (textarea_class_value = classMap({
+          [ctx2[2]]: true,
+          "mdc-text-field__input": true
+        })) && { class: textarea_class_value },
+        dirty & 24 && textarea_style_value !== (textarea_style_value = `${ctx2[4] ? "" : "resize: none; "}${ctx2[3]}`) && { style: textarea_style_value },
+        dirty & 64 && ctx2[6],
+        dirty & 512 && ctx2[9]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 2)
+        useActions_action.update.call(null, ctx2[1]);
+      if (dirty & 1) {
+        set_input_value(textarea, ctx2[0]);
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(textarea);
+      ctx[21](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance($$self, $$props, $$invalidate) {
+  const omit_props_names = [
+    "use",
+    "class",
+    "style",
+    "value",
+    "dirty",
+    "invalid",
+    "updateInvalid",
+    "resizable",
+    "getAttr",
+    "addAttr",
+    "removeAttr",
+    "focus",
+    "blur",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { style = "" } = $$props;
+  let { value = "" } = $$props;
+  let { dirty = false } = $$props;
+  let { invalid = false } = $$props;
+  let { updateInvalid = true } = $$props;
+  let { resizable = true } = $$props;
+  let element2;
+  let internalAttrs = {};
+  onMount(() => {
+    if (updateInvalid) {
+      $$invalidate(11, invalid = element2.matches(":invalid"));
+    }
+  });
+  function changeHandler() {
+    $$invalidate(10, dirty = true);
+    if (updateInvalid) {
+      $$invalidate(11, invalid = element2.matches(":invalid"));
+    }
+  }
+  function getAttr(name) {
+    var _a;
+    return name in internalAttrs ? (_a = internalAttrs[name]) !== null && _a !== void 0 ? _a : null : getElement().getAttribute(name);
+  }
+  function addAttr(name, value2) {
+    if (internalAttrs[name] !== value2) {
+      $$invalidate(6, internalAttrs[name] = value2, internalAttrs);
+    }
+  }
+  function removeAttr(name) {
+    if (!(name in internalAttrs) || internalAttrs[name] != null) {
+      $$invalidate(6, internalAttrs[name] = void 0, internalAttrs);
+    }
+  }
+  function focus() {
+    getElement().focus();
+  }
+  function blur() {
+    getElement().blur();
+  }
+  function getElement() {
+    return element2;
+  }
+  function blur_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function focus_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function textarea_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(5, element2);
+    });
+  }
+  function textarea_input_handler() {
+    value = this.value;
+    $$invalidate(0, value);
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(9, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(1, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(2, className = $$new_props.class);
+    if ("style" in $$new_props)
+      $$invalidate(3, style = $$new_props.style);
+    if ("value" in $$new_props)
+      $$invalidate(0, value = $$new_props.value);
+    if ("dirty" in $$new_props)
+      $$invalidate(10, dirty = $$new_props.dirty);
+    if ("invalid" in $$new_props)
+      $$invalidate(11, invalid = $$new_props.invalid);
+    if ("updateInvalid" in $$new_props)
+      $$invalidate(12, updateInvalid = $$new_props.updateInvalid);
+    if ("resizable" in $$new_props)
+      $$invalidate(4, resizable = $$new_props.resizable);
+  };
+  return [
+    value,
+    use,
+    className,
+    style,
+    resizable,
+    element2,
+    internalAttrs,
+    forwardEvents,
+    changeHandler,
+    $$restProps,
+    dirty,
+    invalid,
+    updateInvalid,
+    getAttr,
+    addAttr,
+    removeAttr,
+    focus,
+    blur,
+    getElement,
+    blur_handler,
+    focus_handler,
+    textarea_binding,
+    textarea_input_handler
+  ];
+}
+class Textarea extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance, create_fragment$2, safe_not_equal, {
+      use: 1,
+      class: 2,
+      style: 3,
+      value: 0,
+      dirty: 10,
+      invalid: 11,
+      updateInvalid: 12,
+      resizable: 4,
+      getAttr: 13,
+      addAttr: 14,
+      removeAttr: 15,
+      focus: 16,
+      blur: 17,
+      getElement: 18
+    });
+  }
+  get getAttr() {
+    return this.$$.ctx[13];
+  }
+  get addAttr() {
+    return this.$$.ctx[14];
+  }
+  get removeAttr() {
+    return this.$$.ctx[15];
+  }
+  get focus() {
+    return this.$$.ctx[16];
+  }
+  get blur() {
+    return this.$$.ctx[17];
+  }
+  get getElement() {
+    return this.$$.ctx[18];
+  }
+}
+const get_helper_slot_changes = (dirty) => ({});
+const get_helper_slot_context = (ctx) => ({});
+const get_ripple_slot_changes = (dirty) => ({});
+const get_ripple_slot_context = (ctx) => ({});
+const get_trailingIcon_slot_changes_1 = (dirty) => ({});
+const get_trailingIcon_slot_context_1 = (ctx) => ({});
+const get_leadingIcon_slot_changes_1 = (dirty) => ({});
+const get_leadingIcon_slot_context_1 = (ctx) => ({});
+const get_label_slot_changes_2 = (dirty) => ({});
+const get_label_slot_context_2 = (ctx) => ({});
+const get_trailingIcon_slot_changes = (dirty) => ({});
+const get_trailingIcon_slot_context = (ctx) => ({});
+const get_suffix_slot_changes = (dirty) => ({});
+const get_suffix_slot_context = (ctx) => ({});
+const get_prefix_slot_changes = (dirty) => ({});
+const get_prefix_slot_context = (ctx) => ({});
+const get_internalCounter_slot_changes = (dirty) => ({});
+const get_internalCounter_slot_context = (ctx) => ({});
+const get_leadingIcon_slot_changes = (dirty) => ({});
+const get_leadingIcon_slot_context = (ctx) => ({});
+const get_label_slot_changes_1 = (dirty) => ({});
+const get_label_slot_context_1 = (ctx) => ({});
+const get_label_slot_changes = (dirty) => ({});
+const get_label_slot_context = (ctx) => ({});
+function create_else_block_1(ctx) {
+  let div;
+  let t0;
+  let contextfragment0;
+  let t1;
+  let t2;
+  let contextfragment1;
+  let t3;
+  let div_class_value;
+  let div_style_value;
+  let Ripple_action;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const label_slot_template = ctx[51].label;
+  const label_slot = create_slot(label_slot_template, ctx, ctx[90], get_label_slot_context_2);
+  contextfragment0 = new ContextFragment({
+    props: {
+      key: "SMUI:textfield:icon:leading",
+      value: true,
+      $$slots: { default: [create_default_slot_9] },
+      $$scope: { ctx }
+    }
+  });
+  const default_slot_template = ctx[51].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[90], null);
+  contextfragment1 = new ContextFragment({
+    props: {
+      key: "SMUI:textfield:icon:leading",
+      value: false,
+      $$slots: { default: [create_default_slot_8] },
+      $$scope: { ctx }
+    }
+  });
+  const ripple_slot_template = ctx[51].ripple;
+  const ripple_slot = create_slot(ripple_slot_template, ctx, ctx[90], get_ripple_slot_context);
+  let div_levels = [
+    {
+      class: div_class_value = classMap(__spreadValues({
+        [ctx[9]]: true,
+        "mdc-text-field": true,
+        "mdc-text-field--disabled": ctx[12],
+        "mdc-text-field--textarea": ctx[14],
+        "mdc-text-field--filled": ctx[15] === "filled",
+        "mdc-text-field--outlined": ctx[15] === "outlined",
+        "smui-text-field--standard": ctx[15] === "standard" && !ctx[14],
+        "mdc-text-field--no-label": ctx[16] || !ctx[42].label,
+        "mdc-text-field--with-leading-icon": ctx[42].leadingIcon,
+        "mdc-text-field--with-trailing-icon": ctx[42].trailingIcon,
+        "mdc-text-field--invalid": ctx[1]
+      }, ctx[25]))
+    },
+    {
+      style: div_style_value = Object.entries(ctx[26]).map(func_1).concat([ctx[10]]).join(" ")
+    },
+    exclude(ctx[41], ["input$", "label$", "ripple$", "outline$", "helperLine$"])
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      if (label_slot)
+        label_slot.c();
+      t0 = space();
+      create_component(contextfragment0.$$.fragment);
+      t1 = space();
+      if (default_slot)
+        default_slot.c();
+      t2 = space();
+      create_component(contextfragment1.$$.fragment);
+      t3 = space();
+      if (ripple_slot)
+        ripple_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true, style: true });
+      var div_nodes = children(div);
+      if (label_slot)
+        label_slot.l(div_nodes);
+      t0 = claim_space(div_nodes);
+      claim_component(contextfragment0.$$.fragment, div_nodes);
+      t1 = claim_space(div_nodes);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      t2 = claim_space(div_nodes);
+      claim_component(contextfragment1.$$.fragment, div_nodes);
+      t3 = claim_space(div_nodes);
+      if (ripple_slot)
+        ripple_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (label_slot) {
+        label_slot.m(div, null);
+      }
+      append_hydration(div, t0);
+      mount_component(contextfragment0, div, null);
+      append_hydration(div, t1);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      append_hydration(div, t2);
+      mount_component(contextfragment1, div, null);
+      append_hydration(div, t3);
+      if (ripple_slot) {
+        ripple_slot.m(div, null);
+      }
+      ctx[80](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(Ripple_action = Ripple.call(null, div, {
+            ripple: ctx[11],
+            unbounded: false,
+            addClass: ctx[38],
+            removeClass: ctx[39],
+            addStyle: ctx[40]
+          })),
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[8])),
+          action_destroyer(ctx[34].call(null, div)),
+          listen(div, "SMUITextfieldLeadingIcon:mount", ctx[81]),
+          listen(div, "SMUITextfieldLeadingIcon:unmount", ctx[82]),
+          listen(div, "SMUITextfieldTrailingIcon:mount", ctx[83]),
+          listen(div, "SMUITextfieldTrailingIcon:unmount", ctx[84])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      if (label_slot) {
+        if (label_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(label_slot, label_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(label_slot_template, ctx2[90], dirty, get_label_slot_changes_2), get_label_slot_context_2);
+        }
+      }
+      const contextfragment0_changes = {};
+      if (dirty[2] & 268435456) {
+        contextfragment0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      contextfragment0.$set(contextfragment0_changes);
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(default_slot_template, ctx2[90], dirty, null), null);
+        }
+      }
+      const contextfragment1_changes = {};
+      if (dirty[2] & 268435456) {
+        contextfragment1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      contextfragment1.$set(contextfragment1_changes);
+      if (ripple_slot) {
+        if (ripple_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(ripple_slot, ripple_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(ripple_slot_template, ctx2[90], dirty, get_ripple_slot_changes), get_ripple_slot_context);
+        }
+      }
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        (!current || dirty[0] & 33673730 | dirty[1] & 2048 && div_class_value !== (div_class_value = classMap(__spreadValues({
+          [ctx2[9]]: true,
+          "mdc-text-field": true,
+          "mdc-text-field--disabled": ctx2[12],
+          "mdc-text-field--textarea": ctx2[14],
+          "mdc-text-field--filled": ctx2[15] === "filled",
+          "mdc-text-field--outlined": ctx2[15] === "outlined",
+          "smui-text-field--standard": ctx2[15] === "standard" && !ctx2[14],
+          "mdc-text-field--no-label": ctx2[16] || !ctx2[42].label,
+          "mdc-text-field--with-leading-icon": ctx2[42].leadingIcon,
+          "mdc-text-field--with-trailing-icon": ctx2[42].trailingIcon,
+          "mdc-text-field--invalid": ctx2[1]
+        }, ctx2[25])))) && { class: div_class_value },
+        (!current || dirty[0] & 67109888 && div_style_value !== (div_style_value = Object.entries(ctx2[26]).map(func_1).concat([ctx2[10]]).join(" "))) && { style: div_style_value },
+        dirty[1] & 1024 && exclude(ctx2[41], ["input$", "label$", "ripple$", "outline$", "helperLine$"])
+      ]));
+      if (Ripple_action && is_function(Ripple_action.update) && dirty[0] & 2048)
+        Ripple_action.update.call(null, {
+          ripple: ctx2[11],
+          unbounded: false,
+          addClass: ctx2[38],
+          removeClass: ctx2[39],
+          addStyle: ctx2[40]
+        });
+      if (useActions_action && is_function(useActions_action.update) && dirty[0] & 256)
+        useActions_action.update.call(null, ctx2[8]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(label_slot, local);
+      transition_in(contextfragment0.$$.fragment, local);
+      transition_in(default_slot, local);
+      transition_in(contextfragment1.$$.fragment, local);
+      transition_in(ripple_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(label_slot, local);
+      transition_out(contextfragment0.$$.fragment, local);
+      transition_out(default_slot, local);
+      transition_out(contextfragment1.$$.fragment, local);
+      transition_out(ripple_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (label_slot)
+        label_slot.d(detaching);
+      destroy_component(contextfragment0);
+      if (default_slot)
+        default_slot.d(detaching);
+      destroy_component(contextfragment1);
+      if (ripple_slot)
+        ripple_slot.d(detaching);
+      ctx[80](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function create_if_block_1(ctx) {
+  let label_1;
+  let t0;
+  let t1;
+  let contextfragment0;
+  let t2;
+  let t3;
+  let current_block_type_index;
+  let if_block2;
+  let t4;
+  let contextfragment1;
+  let t5;
+  let label_1_class_value;
+  let label_1_style_value;
+  let Ripple_action;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  let if_block0 = !ctx[14] && ctx[15] !== "outlined" && create_if_block_8(ctx);
+  let if_block1 = (ctx[14] || ctx[15] === "outlined") && create_if_block_6(ctx);
+  contextfragment0 = new ContextFragment({
+    props: {
+      key: "SMUI:textfield:icon:leading",
+      value: true,
+      $$slots: { default: [create_default_slot_4] },
+      $$scope: { ctx }
+    }
+  });
+  const default_slot_template = ctx[51].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[90], null);
+  const if_block_creators = [create_if_block_3, create_else_block$1];
+  const if_blocks = [];
+  function select_block_type_1(ctx2, dirty) {
+    if (ctx2[14] && typeof ctx2[0] === "string")
+      return 0;
+    return 1;
+  }
+  current_block_type_index = select_block_type_1(ctx);
+  if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  contextfragment1 = new ContextFragment({
+    props: {
+      key: "SMUI:textfield:icon:leading",
+      value: false,
+      $$slots: { default: [create_default_slot_1] },
+      $$scope: { ctx }
+    }
+  });
+  let if_block3 = !ctx[14] && ctx[15] !== "outlined" && ctx[11] && create_if_block_2(ctx);
+  let label_1_levels = [
+    {
+      class: label_1_class_value = classMap(__spreadValues({
+        [ctx[9]]: true,
+        "mdc-text-field": true,
+        "mdc-text-field--disabled": ctx[12],
+        "mdc-text-field--textarea": ctx[14],
+        "mdc-text-field--filled": ctx[15] === "filled",
+        "mdc-text-field--outlined": ctx[15] === "outlined",
+        "smui-text-field--standard": ctx[15] === "standard" && !ctx[14],
+        "mdc-text-field--no-label": ctx[16] || ctx[17] == null && !ctx[42].label,
+        "mdc-text-field--label-floating": ctx[28] || ctx[0] != null && ctx[0] !== "",
+        "mdc-text-field--with-leading-icon": ctx[35](ctx[22]) ? ctx[42].leadingIcon : ctx[22],
+        "mdc-text-field--with-trailing-icon": ctx[35](ctx[23]) ? ctx[42].trailingIcon : ctx[23],
+        "mdc-text-field--with-internal-counter": ctx[14] && ctx[42].internalCounter,
+        "mdc-text-field--invalid": ctx[1]
+      }, ctx[25]))
+    },
+    {
+      style: label_1_style_value = Object.entries(ctx[26]).map(func).concat([ctx[10]]).join(" ")
+    },
+    {
+      for: void 0
+    },
+    exclude(ctx[41], ["input$", "label$", "ripple$", "outline$", "helperLine$"])
+  ];
+  let label_1_data = {};
+  for (let i = 0; i < label_1_levels.length; i += 1) {
+    label_1_data = assign(label_1_data, label_1_levels[i]);
+  }
+  return {
+    c() {
+      label_1 = element("label");
+      if (if_block0)
+        if_block0.c();
+      t0 = space();
+      if (if_block1)
+        if_block1.c();
+      t1 = space();
+      create_component(contextfragment0.$$.fragment);
+      t2 = space();
+      if (default_slot)
+        default_slot.c();
+      t3 = space();
+      if_block2.c();
+      t4 = space();
+      create_component(contextfragment1.$$.fragment);
+      t5 = space();
+      if (if_block3)
+        if_block3.c();
+      this.h();
+    },
+    l(nodes) {
+      label_1 = claim_element(nodes, "LABEL", { class: true, style: true, for: true });
+      var label_1_nodes = children(label_1);
+      if (if_block0)
+        if_block0.l(label_1_nodes);
+      t0 = claim_space(label_1_nodes);
+      if (if_block1)
+        if_block1.l(label_1_nodes);
+      t1 = claim_space(label_1_nodes);
+      claim_component(contextfragment0.$$.fragment, label_1_nodes);
+      t2 = claim_space(label_1_nodes);
+      if (default_slot)
+        default_slot.l(label_1_nodes);
+      t3 = claim_space(label_1_nodes);
+      if_block2.l(label_1_nodes);
+      t4 = claim_space(label_1_nodes);
+      claim_component(contextfragment1.$$.fragment, label_1_nodes);
+      t5 = claim_space(label_1_nodes);
+      if (if_block3)
+        if_block3.l(label_1_nodes);
+      label_1_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(label_1, label_1_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, label_1, anchor);
+      if (if_block0)
+        if_block0.m(label_1, null);
+      append_hydration(label_1, t0);
+      if (if_block1)
+        if_block1.m(label_1, null);
+      append_hydration(label_1, t1);
+      mount_component(contextfragment0, label_1, null);
+      append_hydration(label_1, t2);
+      if (default_slot) {
+        default_slot.m(label_1, null);
+      }
+      append_hydration(label_1, t3);
+      if_blocks[current_block_type_index].m(label_1, null);
+      append_hydration(label_1, t4);
+      mount_component(contextfragment1, label_1, null);
+      append_hydration(label_1, t5);
+      if (if_block3)
+        if_block3.m(label_1, null);
+      ctx[73](label_1);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(Ripple_action = Ripple.call(null, label_1, {
+            ripple: !ctx[14] && ctx[15] === "filled",
+            unbounded: false,
+            addClass: ctx[38],
+            removeClass: ctx[39],
+            addStyle: ctx[40],
+            eventTarget: ctx[33],
+            activeTarget: ctx[33],
+            initPromise: ctx[37]
+          })),
+          action_destroyer(useActions_action = useActions.call(null, label_1, ctx[8])),
+          action_destroyer(ctx[34].call(null, label_1)),
+          listen(label_1, "SMUITextfieldLeadingIcon:mount", ctx[74]),
+          listen(label_1, "SMUITextfieldLeadingIcon:unmount", ctx[75]),
+          listen(label_1, "SMUITextfieldTrailingIcon:mount", ctx[76]),
+          listen(label_1, "SMUITextfieldTrailingIcon:unmount", ctx[77]),
+          listen(label_1, "SMUITextfieldCharacterCounter:mount", ctx[78]),
+          listen(label_1, "SMUITextfieldCharacterCounter:unmount", ctx[79])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      if (!ctx2[14] && ctx2[15] !== "outlined") {
+        if (if_block0) {
+          if_block0.p(ctx2, dirty);
+          if (dirty[0] & 49152) {
+            transition_in(if_block0, 1);
+          }
+        } else {
+          if_block0 = create_if_block_8(ctx2);
+          if_block0.c();
+          transition_in(if_block0, 1);
+          if_block0.m(label_1, t0);
+        }
+      } else if (if_block0) {
+        group_outros();
+        transition_out(if_block0, 1, 1, () => {
+          if_block0 = null;
+        });
+        check_outros();
+      }
+      if (ctx2[14] || ctx2[15] === "outlined") {
+        if (if_block1) {
+          if_block1.p(ctx2, dirty);
+          if (dirty[0] & 49152) {
+            transition_in(if_block1, 1);
+          }
+        } else {
+          if_block1 = create_if_block_6(ctx2);
+          if_block1.c();
+          transition_in(if_block1, 1);
+          if_block1.m(label_1, t1);
+        }
+      } else if (if_block1) {
+        group_outros();
+        transition_out(if_block1, 1, 1, () => {
+          if_block1 = null;
+        });
+        check_outros();
+      }
+      const contextfragment0_changes = {};
+      if (dirty[2] & 268435456) {
+        contextfragment0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      contextfragment0.$set(contextfragment0_changes);
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(default_slot_template, ctx2[90], dirty, null), null);
+        }
+      }
+      let previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type_1(ctx2);
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(ctx2, dirty);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, () => {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block2 = if_blocks[current_block_type_index];
+        if (!if_block2) {
+          if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+          if_block2.c();
+        } else {
+          if_block2.p(ctx2, dirty);
+        }
+        transition_in(if_block2, 1);
+        if_block2.m(label_1, t4);
+      }
+      const contextfragment1_changes = {};
+      if (dirty[2] & 268435456) {
+        contextfragment1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      contextfragment1.$set(contextfragment1_changes);
+      if (!ctx2[14] && ctx2[15] !== "outlined" && ctx2[11]) {
+        if (if_block3) {
+          if_block3.p(ctx2, dirty);
+          if (dirty[0] & 51200) {
+            transition_in(if_block3, 1);
+          }
+        } else {
+          if_block3 = create_if_block_2(ctx2);
+          if_block3.c();
+          transition_in(if_block3, 1);
+          if_block3.m(label_1, null);
+        }
+      } else if (if_block3) {
+        group_outros();
+        transition_out(if_block3, 1, 1, () => {
+          if_block3 = null;
+        });
+        check_outros();
+      }
+      set_attributes(label_1, label_1_data = get_spread_update(label_1_levels, [
+        (!current || dirty[0] & 314823171 | dirty[1] & 2048 && label_1_class_value !== (label_1_class_value = classMap(__spreadValues({
+          [ctx2[9]]: true,
+          "mdc-text-field": true,
+          "mdc-text-field--disabled": ctx2[12],
+          "mdc-text-field--textarea": ctx2[14],
+          "mdc-text-field--filled": ctx2[15] === "filled",
+          "mdc-text-field--outlined": ctx2[15] === "outlined",
+          "smui-text-field--standard": ctx2[15] === "standard" && !ctx2[14],
+          "mdc-text-field--no-label": ctx2[16] || ctx2[17] == null && !ctx2[42].label,
+          "mdc-text-field--label-floating": ctx2[28] || ctx2[0] != null && ctx2[0] !== "",
+          "mdc-text-field--with-leading-icon": ctx2[35](ctx2[22]) ? ctx2[42].leadingIcon : ctx2[22],
+          "mdc-text-field--with-trailing-icon": ctx2[35](ctx2[23]) ? ctx2[42].trailingIcon : ctx2[23],
+          "mdc-text-field--with-internal-counter": ctx2[14] && ctx2[42].internalCounter,
+          "mdc-text-field--invalid": ctx2[1]
+        }, ctx2[25])))) && { class: label_1_class_value },
+        (!current || dirty[0] & 67109888 && label_1_style_value !== (label_1_style_value = Object.entries(ctx2[26]).map(func).concat([ctx2[10]]).join(" "))) && { style: label_1_style_value },
+        {
+          for: void 0
+        },
+        dirty[1] & 1024 && exclude(ctx2[41], ["input$", "label$", "ripple$", "outline$", "helperLine$"])
+      ]));
+      if (Ripple_action && is_function(Ripple_action.update) && dirty[0] & 49152 | dirty[1] & 4)
+        Ripple_action.update.call(null, {
+          ripple: !ctx2[14] && ctx2[15] === "filled",
+          unbounded: false,
+          addClass: ctx2[38],
+          removeClass: ctx2[39],
+          addStyle: ctx2[40],
+          eventTarget: ctx2[33],
+          activeTarget: ctx2[33],
+          initPromise: ctx2[37]
+        });
+      if (useActions_action && is_function(useActions_action.update) && dirty[0] & 256)
+        useActions_action.update.call(null, ctx2[8]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block0);
+      transition_in(if_block1);
+      transition_in(contextfragment0.$$.fragment, local);
+      transition_in(default_slot, local);
+      transition_in(if_block2);
+      transition_in(contextfragment1.$$.fragment, local);
+      transition_in(if_block3);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block0);
+      transition_out(if_block1);
+      transition_out(contextfragment0.$$.fragment, local);
+      transition_out(default_slot, local);
+      transition_out(if_block2);
+      transition_out(contextfragment1.$$.fragment, local);
+      transition_out(if_block3);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(label_1);
+      if (if_block0)
+        if_block0.d();
+      if (if_block1)
+        if_block1.d();
+      destroy_component(contextfragment0);
+      if (default_slot)
+        default_slot.d(detaching);
+      if_blocks[current_block_type_index].d();
+      destroy_component(contextfragment1);
+      if (if_block3)
+        if_block3.d();
+      ctx[73](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function create_default_slot_9(ctx) {
+  let current;
+  const leadingIcon_slot_template = ctx[51].leadingIcon;
+  const leadingIcon_slot = create_slot(leadingIcon_slot_template, ctx, ctx[90], get_leadingIcon_slot_context_1);
+  return {
+    c() {
+      if (leadingIcon_slot)
+        leadingIcon_slot.c();
+    },
+    l(nodes) {
+      if (leadingIcon_slot)
+        leadingIcon_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (leadingIcon_slot) {
+        leadingIcon_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (leadingIcon_slot) {
+        if (leadingIcon_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(leadingIcon_slot, leadingIcon_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(leadingIcon_slot_template, ctx2[90], dirty, get_leadingIcon_slot_changes_1), get_leadingIcon_slot_context_1);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(leadingIcon_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(leadingIcon_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (leadingIcon_slot)
+        leadingIcon_slot.d(detaching);
+    }
+  };
+}
+function create_default_slot_8(ctx) {
+  let current;
+  const trailingIcon_slot_template = ctx[51].trailingIcon;
+  const trailingIcon_slot = create_slot(trailingIcon_slot_template, ctx, ctx[90], get_trailingIcon_slot_context_1);
+  return {
+    c() {
+      if (trailingIcon_slot)
+        trailingIcon_slot.c();
+    },
+    l(nodes) {
+      if (trailingIcon_slot)
+        trailingIcon_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (trailingIcon_slot) {
+        trailingIcon_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (trailingIcon_slot) {
+        if (trailingIcon_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(trailingIcon_slot, trailingIcon_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(trailingIcon_slot_template, ctx2[90], dirty, get_trailingIcon_slot_changes_1), get_trailingIcon_slot_context_1);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(trailingIcon_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(trailingIcon_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (trailingIcon_slot)
+        trailingIcon_slot.d(detaching);
+    }
+  };
+}
+function create_if_block_8(ctx) {
+  let t;
+  let if_block1_anchor;
+  let current;
+  let if_block0 = ctx[15] === "filled" && create_if_block_10();
+  let if_block1 = !ctx[16] && (ctx[17] != null || ctx[42].label) && create_if_block_9(ctx);
+  return {
+    c() {
+      if (if_block0)
+        if_block0.c();
+      t = space();
+      if (if_block1)
+        if_block1.c();
+      if_block1_anchor = empty();
+    },
+    l(nodes) {
+      if (if_block0)
+        if_block0.l(nodes);
+      t = claim_space(nodes);
+      if (if_block1)
+        if_block1.l(nodes);
+      if_block1_anchor = empty();
+    },
+    m(target, anchor) {
+      if (if_block0)
+        if_block0.m(target, anchor);
+      insert_hydration(target, t, anchor);
+      if (if_block1)
+        if_block1.m(target, anchor);
+      insert_hydration(target, if_block1_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (ctx2[15] === "filled") {
+        if (if_block0)
+          ;
+        else {
+          if_block0 = create_if_block_10();
+          if_block0.c();
+          if_block0.m(t.parentNode, t);
+        }
+      } else if (if_block0) {
+        if_block0.d(1);
+        if_block0 = null;
+      }
+      if (!ctx2[16] && (ctx2[17] != null || ctx2[42].label)) {
+        if (if_block1) {
+          if_block1.p(ctx2, dirty);
+          if (dirty[0] & 196608 | dirty[1] & 2048) {
+            transition_in(if_block1, 1);
+          }
+        } else {
+          if_block1 = create_if_block_9(ctx2);
+          if_block1.c();
+          transition_in(if_block1, 1);
+          if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+        }
+      } else if (if_block1) {
+        group_outros();
+        transition_out(if_block1, 1, 1, () => {
+          if_block1 = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block1);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block1);
+      current = false;
+    },
+    d(detaching) {
+      if (if_block0)
+        if_block0.d(detaching);
+      if (detaching)
+        detach(t);
+      if (if_block1)
+        if_block1.d(detaching);
+      if (detaching)
+        detach(if_block1_anchor);
+    }
+  };
+}
+function create_if_block_10(ctx) {
+  let span;
+  return {
+    c() {
+      span = element("span");
+      this.h();
+    },
+    l(nodes) {
+      span = claim_element(nodes, "SPAN", { class: true });
+      children(span).forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(span, "class", "mdc-text-field__ripple");
+    },
+    m(target, anchor) {
+      insert_hydration(target, span, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(span);
+    }
+  };
+}
+function create_if_block_9(ctx) {
+  let floatinglabel;
+  let current;
+  const floatinglabel_spread_levels = [
+    {
+      floatAbove: ctx[28] || ctx[0] != null && ctx[0] !== ""
+    },
+    { required: ctx[13] },
+    { wrapped: true },
+    prefixFilter(ctx[41], "label$")
+  ];
+  let floatinglabel_props = {
+    $$slots: { default: [create_default_slot_7] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < floatinglabel_spread_levels.length; i += 1) {
+    floatinglabel_props = assign(floatinglabel_props, floatinglabel_spread_levels[i]);
+  }
+  floatinglabel = new FloatingLabel({ props: floatinglabel_props });
+  ctx[52](floatinglabel);
+  return {
+    c() {
+      create_component(floatinglabel.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(floatinglabel.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(floatinglabel, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const floatinglabel_changes = dirty[0] & 268443649 | dirty[1] & 1024 ? get_spread_update(floatinglabel_spread_levels, [
+        dirty[0] & 268435457 && {
+          floatAbove: ctx2[28] || ctx2[0] != null && ctx2[0] !== ""
+        },
+        dirty[0] & 8192 && { required: ctx2[13] },
+        floatinglabel_spread_levels[2],
+        dirty[1] & 1024 && get_spread_object(prefixFilter(ctx2[41], "label$"))
+      ]) : {};
+      if (dirty[0] & 131072 | dirty[2] & 268435456) {
+        floatinglabel_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      floatinglabel.$set(floatinglabel_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(floatinglabel.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(floatinglabel.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[52](null);
+      destroy_component(floatinglabel, detaching);
+    }
+  };
+}
+function create_default_slot_7(ctx) {
+  let t_value = (ctx[17] == null ? "" : ctx[17]) + "";
+  let t;
+  let current;
+  const label_slot_template = ctx[51].label;
+  const label_slot = create_slot(label_slot_template, ctx, ctx[90], get_label_slot_context);
+  return {
+    c() {
+      t = text(t_value);
+      if (label_slot)
+        label_slot.c();
+    },
+    l(nodes) {
+      t = claim_text(nodes, t_value);
+      if (label_slot)
+        label_slot.l(nodes);
+    },
+    m(target, anchor) {
+      insert_hydration(target, t, anchor);
+      if (label_slot) {
+        label_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if ((!current || dirty[0] & 131072) && t_value !== (t_value = (ctx2[17] == null ? "" : ctx2[17]) + ""))
+        set_data(t, t_value);
+      if (label_slot) {
+        if (label_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(label_slot, label_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(label_slot_template, ctx2[90], dirty, get_label_slot_changes), get_label_slot_context);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(label_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(label_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t);
+      if (label_slot)
+        label_slot.d(detaching);
+    }
+  };
+}
+function create_if_block_6(ctx) {
+  let notchedoutline;
+  let current;
+  const notchedoutline_spread_levels = [
+    {
+      noLabel: ctx[16] || ctx[17] == null && !ctx[42].label
+    },
+    prefixFilter(ctx[41], "outline$")
+  ];
+  let notchedoutline_props = {
+    $$slots: { default: [create_default_slot_5] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < notchedoutline_spread_levels.length; i += 1) {
+    notchedoutline_props = assign(notchedoutline_props, notchedoutline_spread_levels[i]);
+  }
+  notchedoutline = new NotchedOutline({ props: notchedoutline_props });
+  ctx[54](notchedoutline);
+  return {
+    c() {
+      create_component(notchedoutline.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(notchedoutline.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(notchedoutline, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const notchedoutline_changes = dirty[0] & 196608 | dirty[1] & 3072 ? get_spread_update(notchedoutline_spread_levels, [
+        dirty[0] & 196608 | dirty[1] & 2048 && {
+          noLabel: ctx2[16] || ctx2[17] == null && !ctx2[42].label
+        },
+        dirty[1] & 1024 && get_spread_object(prefixFilter(ctx2[41], "outline$"))
+      ]) : {};
+      if (dirty[0] & 268640289 | dirty[1] & 3072 | dirty[2] & 268435456) {
+        notchedoutline_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      notchedoutline.$set(notchedoutline_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(notchedoutline.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(notchedoutline.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[54](null);
+      destroy_component(notchedoutline, detaching);
+    }
+  };
+}
+function create_if_block_7(ctx) {
+  let floatinglabel;
+  let current;
+  const floatinglabel_spread_levels = [
+    {
+      floatAbove: ctx[28] || ctx[0] != null && ctx[0] !== ""
+    },
+    { required: ctx[13] },
+    { wrapped: true },
+    prefixFilter(ctx[41], "label$")
+  ];
+  let floatinglabel_props = {
+    $$slots: { default: [create_default_slot_6] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < floatinglabel_spread_levels.length; i += 1) {
+    floatinglabel_props = assign(floatinglabel_props, floatinglabel_spread_levels[i]);
+  }
+  floatinglabel = new FloatingLabel({ props: floatinglabel_props });
+  ctx[53](floatinglabel);
+  return {
+    c() {
+      create_component(floatinglabel.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(floatinglabel.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(floatinglabel, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const floatinglabel_changes = dirty[0] & 268443649 | dirty[1] & 1024 ? get_spread_update(floatinglabel_spread_levels, [
+        dirty[0] & 268435457 && {
+          floatAbove: ctx2[28] || ctx2[0] != null && ctx2[0] !== ""
+        },
+        dirty[0] & 8192 && { required: ctx2[13] },
+        floatinglabel_spread_levels[2],
+        dirty[1] & 1024 && get_spread_object(prefixFilter(ctx2[41], "label$"))
+      ]) : {};
+      if (dirty[0] & 131072 | dirty[2] & 268435456) {
+        floatinglabel_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      floatinglabel.$set(floatinglabel_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(floatinglabel.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(floatinglabel.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[53](null);
+      destroy_component(floatinglabel, detaching);
+    }
+  };
+}
+function create_default_slot_6(ctx) {
+  let t_value = (ctx[17] == null ? "" : ctx[17]) + "";
+  let t;
+  let current;
+  const label_slot_template = ctx[51].label;
+  const label_slot = create_slot(label_slot_template, ctx, ctx[90], get_label_slot_context_1);
+  return {
+    c() {
+      t = text(t_value);
+      if (label_slot)
+        label_slot.c();
+    },
+    l(nodes) {
+      t = claim_text(nodes, t_value);
+      if (label_slot)
+        label_slot.l(nodes);
+    },
+    m(target, anchor) {
+      insert_hydration(target, t, anchor);
+      if (label_slot) {
+        label_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if ((!current || dirty[0] & 131072) && t_value !== (t_value = (ctx2[17] == null ? "" : ctx2[17]) + ""))
+        set_data(t, t_value);
+      if (label_slot) {
+        if (label_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(label_slot, label_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(label_slot_template, ctx2[90], dirty, get_label_slot_changes_1), get_label_slot_context_1);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(label_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(label_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t);
+      if (label_slot)
+        label_slot.d(detaching);
+    }
+  };
+}
+function create_default_slot_5(ctx) {
+  let if_block_anchor;
+  let current;
+  let if_block = !ctx[16] && (ctx[17] != null || ctx[42].label) && create_if_block_7(ctx);
+  return {
+    c() {
+      if (if_block)
+        if_block.c();
+      if_block_anchor = empty();
+    },
+    l(nodes) {
+      if (if_block)
+        if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m(target, anchor) {
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (!ctx2[16] && (ctx2[17] != null || ctx2[42].label)) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+          if (dirty[0] & 196608 | dirty[1] & 2048) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block_7(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+function create_default_slot_4(ctx) {
+  let current;
+  const leadingIcon_slot_template = ctx[51].leadingIcon;
+  const leadingIcon_slot = create_slot(leadingIcon_slot_template, ctx, ctx[90], get_leadingIcon_slot_context);
+  return {
+    c() {
+      if (leadingIcon_slot)
+        leadingIcon_slot.c();
+    },
+    l(nodes) {
+      if (leadingIcon_slot)
+        leadingIcon_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (leadingIcon_slot) {
+        leadingIcon_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (leadingIcon_slot) {
+        if (leadingIcon_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(leadingIcon_slot, leadingIcon_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(leadingIcon_slot_template, ctx2[90], dirty, get_leadingIcon_slot_changes), get_leadingIcon_slot_context);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(leadingIcon_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(leadingIcon_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (leadingIcon_slot)
+        leadingIcon_slot.d(detaching);
+    }
+  };
+}
+function create_else_block$1(ctx) {
+  let t0;
+  let t1;
+  let input_1;
+  let updating_value;
+  let updating_files;
+  let updating_dirty;
+  let updating_invalid;
+  let t2;
+  let t3;
+  let current;
+  const prefix_slot_template = ctx[51].prefix;
+  const prefix_slot = create_slot(prefix_slot_template, ctx, ctx[90], get_prefix_slot_context);
+  let if_block0 = ctx[20] != null && create_if_block_5(ctx);
+  const input_1_spread_levels = [
+    { type: ctx[18] },
+    { disabled: ctx[12] },
+    { required: ctx[13] },
+    { updateInvalid: ctx[19] },
+    { "aria-controls": ctx[27] },
+    { "aria-describedby": ctx[27] },
+    ctx[16] && ctx[17] != null ? { placeholder: ctx[17] } : {},
+    prefixFilter(ctx[41], "input$")
+  ];
+  function input_1_value_binding(value) {
+    ctx[64](value);
+  }
+  function input_1_files_binding(value) {
+    ctx[65](value);
+  }
+  function input_1_dirty_binding(value) {
+    ctx[66](value);
+  }
+  function input_1_invalid_binding(value) {
+    ctx[67](value);
+  }
+  let input_1_props = {};
+  for (let i = 0; i < input_1_spread_levels.length; i += 1) {
+    input_1_props = assign(input_1_props, input_1_spread_levels[i]);
+  }
+  if (ctx[0] !== void 0) {
+    input_1_props.value = ctx[0];
+  }
+  if (ctx[3] !== void 0) {
+    input_1_props.files = ctx[3];
+  }
+  if (ctx[4] !== void 0) {
+    input_1_props.dirty = ctx[4];
+  }
+  if (ctx[1] !== void 0) {
+    input_1_props.invalid = ctx[1];
+  }
+  input_1 = new Input({ props: input_1_props });
+  ctx[63](input_1);
+  binding_callbacks.push(() => bind(input_1, "value", input_1_value_binding));
+  binding_callbacks.push(() => bind(input_1, "files", input_1_files_binding));
+  binding_callbacks.push(() => bind(input_1, "dirty", input_1_dirty_binding));
+  binding_callbacks.push(() => bind(input_1, "invalid", input_1_invalid_binding));
+  input_1.$on("blur", ctx[68]);
+  input_1.$on("focus", ctx[69]);
+  input_1.$on("blur", ctx[70]);
+  input_1.$on("focus", ctx[71]);
+  let if_block1 = ctx[21] != null && create_if_block_4(ctx);
+  const suffix_slot_template = ctx[51].suffix;
+  const suffix_slot = create_slot(suffix_slot_template, ctx, ctx[90], get_suffix_slot_context);
+  return {
+    c() {
+      if (prefix_slot)
+        prefix_slot.c();
+      t0 = space();
+      if (if_block0)
+        if_block0.c();
+      t1 = space();
+      create_component(input_1.$$.fragment);
+      t2 = space();
+      if (if_block1)
+        if_block1.c();
+      t3 = space();
+      if (suffix_slot)
+        suffix_slot.c();
+    },
+    l(nodes) {
+      if (prefix_slot)
+        prefix_slot.l(nodes);
+      t0 = claim_space(nodes);
+      if (if_block0)
+        if_block0.l(nodes);
+      t1 = claim_space(nodes);
+      claim_component(input_1.$$.fragment, nodes);
+      t2 = claim_space(nodes);
+      if (if_block1)
+        if_block1.l(nodes);
+      t3 = claim_space(nodes);
+      if (suffix_slot)
+        suffix_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (prefix_slot) {
+        prefix_slot.m(target, anchor);
+      }
+      insert_hydration(target, t0, anchor);
+      if (if_block0)
+        if_block0.m(target, anchor);
+      insert_hydration(target, t1, anchor);
+      mount_component(input_1, target, anchor);
+      insert_hydration(target, t2, anchor);
+      if (if_block1)
+        if_block1.m(target, anchor);
+      insert_hydration(target, t3, anchor);
+      if (suffix_slot) {
+        suffix_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (prefix_slot) {
+        if (prefix_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(prefix_slot, prefix_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(prefix_slot_template, ctx2[90], dirty, get_prefix_slot_changes), get_prefix_slot_context);
+        }
+      }
+      if (ctx2[20] != null) {
+        if (if_block0) {
+          if_block0.p(ctx2, dirty);
+          if (dirty[0] & 1048576) {
+            transition_in(if_block0, 1);
+          }
+        } else {
+          if_block0 = create_if_block_5(ctx2);
+          if_block0.c();
+          transition_in(if_block0, 1);
+          if_block0.m(t1.parentNode, t1);
+        }
+      } else if (if_block0) {
+        group_outros();
+        transition_out(if_block0, 1, 1, () => {
+          if_block0 = null;
+        });
+        check_outros();
+      }
+      const input_1_changes = dirty[0] & 135213056 | dirty[1] & 1024 ? get_spread_update(input_1_spread_levels, [
+        dirty[0] & 262144 && { type: ctx2[18] },
+        dirty[0] & 4096 && { disabled: ctx2[12] },
+        dirty[0] & 8192 && { required: ctx2[13] },
+        dirty[0] & 524288 && { updateInvalid: ctx2[19] },
+        dirty[0] & 134217728 && { "aria-controls": ctx2[27] },
+        dirty[0] & 134217728 && { "aria-describedby": ctx2[27] },
+        dirty[0] & 196608 && get_spread_object(ctx2[16] && ctx2[17] != null ? { placeholder: ctx2[17] } : {}),
+        dirty[1] & 1024 && get_spread_object(prefixFilter(ctx2[41], "input$"))
+      ]) : {};
+      if (!updating_value && dirty[0] & 1) {
+        updating_value = true;
+        input_1_changes.value = ctx2[0];
+        add_flush_callback(() => updating_value = false);
+      }
+      if (!updating_files && dirty[0] & 8) {
+        updating_files = true;
+        input_1_changes.files = ctx2[3];
+        add_flush_callback(() => updating_files = false);
+      }
+      if (!updating_dirty && dirty[0] & 16) {
+        updating_dirty = true;
+        input_1_changes.dirty = ctx2[4];
+        add_flush_callback(() => updating_dirty = false);
+      }
+      if (!updating_invalid && dirty[0] & 2) {
+        updating_invalid = true;
+        input_1_changes.invalid = ctx2[1];
+        add_flush_callback(() => updating_invalid = false);
+      }
+      input_1.$set(input_1_changes);
+      if (ctx2[21] != null) {
+        if (if_block1) {
+          if_block1.p(ctx2, dirty);
+          if (dirty[0] & 2097152) {
+            transition_in(if_block1, 1);
+          }
+        } else {
+          if_block1 = create_if_block_4(ctx2);
+          if_block1.c();
+          transition_in(if_block1, 1);
+          if_block1.m(t3.parentNode, t3);
+        }
+      } else if (if_block1) {
+        group_outros();
+        transition_out(if_block1, 1, 1, () => {
+          if_block1 = null;
+        });
+        check_outros();
+      }
+      if (suffix_slot) {
+        if (suffix_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(suffix_slot, suffix_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(suffix_slot_template, ctx2[90], dirty, get_suffix_slot_changes), get_suffix_slot_context);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(prefix_slot, local);
+      transition_in(if_block0);
+      transition_in(input_1.$$.fragment, local);
+      transition_in(if_block1);
+      transition_in(suffix_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(prefix_slot, local);
+      transition_out(if_block0);
+      transition_out(input_1.$$.fragment, local);
+      transition_out(if_block1);
+      transition_out(suffix_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (prefix_slot)
+        prefix_slot.d(detaching);
+      if (detaching)
+        detach(t0);
+      if (if_block0)
+        if_block0.d(detaching);
+      if (detaching)
+        detach(t1);
+      ctx[63](null);
+      destroy_component(input_1, detaching);
+      if (detaching)
+        detach(t2);
+      if (if_block1)
+        if_block1.d(detaching);
+      if (detaching)
+        detach(t3);
+      if (suffix_slot)
+        suffix_slot.d(detaching);
+    }
+  };
+}
+function create_if_block_3(ctx) {
+  let span;
+  let textarea_1;
+  let updating_value;
+  let updating_dirty;
+  let updating_invalid;
+  let t;
+  let span_class_value;
+  let current;
+  const textarea_1_spread_levels = [
+    { disabled: ctx[12] },
+    { required: ctx[13] },
+    { updateInvalid: ctx[19] },
+    { "aria-controls": ctx[27] },
+    { "aria-describedby": ctx[27] },
+    prefixFilter(ctx[41], "input$")
+  ];
+  function textarea_1_value_binding(value) {
+    ctx[56](value);
+  }
+  function textarea_1_dirty_binding(value) {
+    ctx[57](value);
+  }
+  function textarea_1_invalid_binding(value) {
+    ctx[58](value);
+  }
+  let textarea_1_props = {};
+  for (let i = 0; i < textarea_1_spread_levels.length; i += 1) {
+    textarea_1_props = assign(textarea_1_props, textarea_1_spread_levels[i]);
+  }
+  if (ctx[0] !== void 0) {
+    textarea_1_props.value = ctx[0];
+  }
+  if (ctx[4] !== void 0) {
+    textarea_1_props.dirty = ctx[4];
+  }
+  if (ctx[1] !== void 0) {
+    textarea_1_props.invalid = ctx[1];
+  }
+  textarea_1 = new Textarea({ props: textarea_1_props });
+  ctx[55](textarea_1);
+  binding_callbacks.push(() => bind(textarea_1, "value", textarea_1_value_binding));
+  binding_callbacks.push(() => bind(textarea_1, "dirty", textarea_1_dirty_binding));
+  binding_callbacks.push(() => bind(textarea_1, "invalid", textarea_1_invalid_binding));
+  textarea_1.$on("blur", ctx[59]);
+  textarea_1.$on("focus", ctx[60]);
+  textarea_1.$on("blur", ctx[61]);
+  textarea_1.$on("focus", ctx[62]);
+  const internalCounter_slot_template = ctx[51].internalCounter;
+  const internalCounter_slot = create_slot(internalCounter_slot_template, ctx, ctx[90], get_internalCounter_slot_context);
+  return {
+    c() {
+      span = element("span");
+      create_component(textarea_1.$$.fragment);
+      t = space();
+      if (internalCounter_slot)
+        internalCounter_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      span = claim_element(nodes, "SPAN", { class: true });
+      var span_nodes = children(span);
+      claim_component(textarea_1.$$.fragment, span_nodes);
+      t = claim_space(span_nodes);
+      if (internalCounter_slot)
+        internalCounter_slot.l(span_nodes);
+      span_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(span, "class", span_class_value = classMap({
+        "mdc-text-field__resizer": !("input$resizable" in ctx[41]) || ctx[41].input$resizable
+      }));
+    },
+    m(target, anchor) {
+      insert_hydration(target, span, anchor);
+      mount_component(textarea_1, span, null);
+      append_hydration(span, t);
+      if (internalCounter_slot) {
+        internalCounter_slot.m(span, null);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const textarea_1_changes = dirty[0] & 134754304 | dirty[1] & 1024 ? get_spread_update(textarea_1_spread_levels, [
+        dirty[0] & 4096 && { disabled: ctx2[12] },
+        dirty[0] & 8192 && { required: ctx2[13] },
+        dirty[0] & 524288 && { updateInvalid: ctx2[19] },
+        dirty[0] & 134217728 && { "aria-controls": ctx2[27] },
+        dirty[0] & 134217728 && { "aria-describedby": ctx2[27] },
+        dirty[1] & 1024 && get_spread_object(prefixFilter(ctx2[41], "input$"))
+      ]) : {};
+      if (!updating_value && dirty[0] & 1) {
+        updating_value = true;
+        textarea_1_changes.value = ctx2[0];
+        add_flush_callback(() => updating_value = false);
+      }
+      if (!updating_dirty && dirty[0] & 16) {
+        updating_dirty = true;
+        textarea_1_changes.dirty = ctx2[4];
+        add_flush_callback(() => updating_dirty = false);
+      }
+      if (!updating_invalid && dirty[0] & 2) {
+        updating_invalid = true;
+        textarea_1_changes.invalid = ctx2[1];
+        add_flush_callback(() => updating_invalid = false);
+      }
+      textarea_1.$set(textarea_1_changes);
+      if (internalCounter_slot) {
+        if (internalCounter_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(internalCounter_slot, internalCounter_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(internalCounter_slot_template, ctx2[90], dirty, get_internalCounter_slot_changes), get_internalCounter_slot_context);
+        }
+      }
+      if (!current || dirty[1] & 1024 && span_class_value !== (span_class_value = classMap({
+        "mdc-text-field__resizer": !("input$resizable" in ctx2[41]) || ctx2[41].input$resizable
+      }))) {
+        attr(span, "class", span_class_value);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(textarea_1.$$.fragment, local);
+      transition_in(internalCounter_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(textarea_1.$$.fragment, local);
+      transition_out(internalCounter_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(span);
+      ctx[55](null);
+      destroy_component(textarea_1);
+      if (internalCounter_slot)
+        internalCounter_slot.d(detaching);
+    }
+  };
+}
+function create_if_block_5(ctx) {
+  let prefix_1;
+  let current;
+  prefix_1 = new Prefix({
+    props: {
+      $$slots: { default: [create_default_slot_3] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(prefix_1.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(prefix_1.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(prefix_1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const prefix_1_changes = {};
+      if (dirty[0] & 1048576 | dirty[2] & 268435456) {
+        prefix_1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      prefix_1.$set(prefix_1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(prefix_1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(prefix_1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(prefix_1, detaching);
+    }
+  };
+}
+function create_default_slot_3(ctx) {
+  let t;
+  return {
+    c() {
+      t = text(ctx[20]);
+    },
+    l(nodes) {
+      t = claim_text(nodes, ctx[20]);
+    },
+    m(target, anchor) {
+      insert_hydration(target, t, anchor);
+    },
+    p(ctx2, dirty) {
+      if (dirty[0] & 1048576)
+        set_data(t, ctx2[20]);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t);
+    }
+  };
+}
+function create_if_block_4(ctx) {
+  let suffix_1;
+  let current;
+  suffix_1 = new Suffix({
+    props: {
+      $$slots: { default: [create_default_slot_2] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(suffix_1.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(suffix_1.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(suffix_1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const suffix_1_changes = {};
+      if (dirty[0] & 2097152 | dirty[2] & 268435456) {
+        suffix_1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      suffix_1.$set(suffix_1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(suffix_1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(suffix_1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(suffix_1, detaching);
+    }
+  };
+}
+function create_default_slot_2(ctx) {
+  let t;
+  return {
+    c() {
+      t = text(ctx[21]);
+    },
+    l(nodes) {
+      t = claim_text(nodes, ctx[21]);
+    },
+    m(target, anchor) {
+      insert_hydration(target, t, anchor);
+    },
+    p(ctx2, dirty) {
+      if (dirty[0] & 2097152)
+        set_data(t, ctx2[21]);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t);
+    }
+  };
+}
+function create_default_slot_1(ctx) {
+  let current;
+  const trailingIcon_slot_template = ctx[51].trailingIcon;
+  const trailingIcon_slot = create_slot(trailingIcon_slot_template, ctx, ctx[90], get_trailingIcon_slot_context);
+  return {
+    c() {
+      if (trailingIcon_slot)
+        trailingIcon_slot.c();
+    },
+    l(nodes) {
+      if (trailingIcon_slot)
+        trailingIcon_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (trailingIcon_slot) {
+        trailingIcon_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (trailingIcon_slot) {
+        if (trailingIcon_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(trailingIcon_slot, trailingIcon_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(trailingIcon_slot_template, ctx2[90], dirty, get_trailingIcon_slot_changes), get_trailingIcon_slot_context);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(trailingIcon_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(trailingIcon_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (trailingIcon_slot)
+        trailingIcon_slot.d(detaching);
+    }
+  };
+}
+function create_if_block_2(ctx) {
+  let lineripple;
+  let current;
+  const lineripple_spread_levels = [prefixFilter(ctx[41], "ripple$")];
+  let lineripple_props = {};
+  for (let i = 0; i < lineripple_spread_levels.length; i += 1) {
+    lineripple_props = assign(lineripple_props, lineripple_spread_levels[i]);
+  }
+  lineripple = new LineRipple({ props: lineripple_props });
+  ctx[72](lineripple);
+  return {
+    c() {
+      create_component(lineripple.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(lineripple.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(lineripple, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const lineripple_changes = dirty[1] & 1024 ? get_spread_update(lineripple_spread_levels, [get_spread_object(prefixFilter(ctx2[41], "ripple$"))]) : {};
+      lineripple.$set(lineripple_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(lineripple.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(lineripple.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      ctx[72](null);
+      destroy_component(lineripple, detaching);
+    }
+  };
+}
+function create_if_block$1(ctx) {
+  let helperline;
+  let current;
+  const helperline_spread_levels = [prefixFilter(ctx[41], "helperLine$")];
+  let helperline_props = {
+    $$slots: { default: [create_default_slot] },
+    $$scope: { ctx }
+  };
+  for (let i = 0; i < helperline_spread_levels.length; i += 1) {
+    helperline_props = assign(helperline_props, helperline_spread_levels[i]);
+  }
+  helperline = new HelperLine({ props: helperline_props });
+  helperline.$on("SMUITextfieldHelperText:id", ctx[85]);
+  helperline.$on("SMUITextfieldHelperText:mount", ctx[86]);
+  helperline.$on("SMUITextfieldHelperText:unmount", ctx[87]);
+  helperline.$on("SMUITextfieldCharacterCounter:mount", ctx[88]);
+  helperline.$on("SMUITextfieldCharacterCounter:unmount", ctx[89]);
+  return {
+    c() {
+      create_component(helperline.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(helperline.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(helperline, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const helperline_changes = dirty[1] & 1024 ? get_spread_update(helperline_spread_levels, [get_spread_object(prefixFilter(ctx2[41], "helperLine$"))]) : {};
+      if (dirty[2] & 268435456) {
+        helperline_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      helperline.$set(helperline_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(helperline.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(helperline.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(helperline, detaching);
+    }
+  };
+}
+function create_default_slot(ctx) {
+  let current;
+  const helper_slot_template = ctx[51].helper;
+  const helper_slot = create_slot(helper_slot_template, ctx, ctx[90], get_helper_slot_context);
+  return {
+    c() {
+      if (helper_slot)
+        helper_slot.c();
+    },
+    l(nodes) {
+      if (helper_slot)
+        helper_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (helper_slot) {
+        helper_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (helper_slot) {
+        if (helper_slot.p && (!current || dirty[2] & 268435456)) {
+          update_slot_base(helper_slot, helper_slot_template, ctx2, ctx2[90], !current ? get_all_dirty_from_scope(ctx2[90]) : get_slot_changes(helper_slot_template, ctx2[90], dirty, get_helper_slot_changes), get_helper_slot_context);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(helper_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(helper_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (helper_slot)
+        helper_slot.d(detaching);
+    }
+  };
+}
+function create_fragment$1(ctx) {
+  let current_block_type_index;
+  let if_block0;
+  let t;
+  let if_block1_anchor;
+  let current;
+  const if_block_creators = [create_if_block_1, create_else_block_1];
+  const if_blocks = [];
+  function select_block_type(ctx2, dirty) {
+    if (ctx2[36])
+      return 0;
+    return 1;
+  }
+  current_block_type_index = select_block_type(ctx);
+  if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  let if_block1 = ctx[42].helper && create_if_block$1(ctx);
+  return {
+    c() {
+      if_block0.c();
+      t = space();
+      if (if_block1)
+        if_block1.c();
+      if_block1_anchor = empty();
+    },
+    l(nodes) {
+      if_block0.l(nodes);
+      t = claim_space(nodes);
+      if (if_block1)
+        if_block1.l(nodes);
+      if_block1_anchor = empty();
+    },
+    m(target, anchor) {
+      if_blocks[current_block_type_index].m(target, anchor);
+      insert_hydration(target, t, anchor);
+      if (if_block1)
+        if_block1.m(target, anchor);
+      insert_hydration(target, if_block1_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if_block0.p(ctx2, dirty);
+      if (ctx2[42].helper) {
+        if (if_block1) {
+          if_block1.p(ctx2, dirty);
+          if (dirty[1] & 2048) {
+            transition_in(if_block1, 1);
+          }
+        } else {
+          if_block1 = create_if_block$1(ctx2);
+          if_block1.c();
+          transition_in(if_block1, 1);
+          if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+        }
+      } else if (if_block1) {
+        group_outros();
+        transition_out(if_block1, 1, 1, () => {
+          if_block1 = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block0);
+      transition_in(if_block1);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block0);
+      transition_out(if_block1);
+      current = false;
+    },
+    d(detaching) {
+      if_blocks[current_block_type_index].d(detaching);
+      if (detaching)
+        detach(t);
+      if (if_block1)
+        if_block1.d(detaching);
+      if (detaching)
+        detach(if_block1_anchor);
+    }
+  };
+}
+const func = ([name, value]) => `${name}: ${value};`;
+const func_1 = ([name, value]) => `${name}: ${value};`;
+function instance_1$1($$self, $$props, $$invalidate) {
+  let inputElement;
+  const omit_props_names = [
+    "use",
+    "class",
+    "style",
+    "ripple",
+    "disabled",
+    "required",
+    "textarea",
+    "variant",
+    "noLabel",
+    "label",
+    "type",
+    "value",
+    "files",
+    "invalid",
+    "updateInvalid",
+    "dirty",
+    "prefix",
+    "suffix",
+    "validateOnValueChange",
+    "useNativeValidation",
+    "withLeadingIcon",
+    "withTrailingIcon",
+    "input",
+    "floatingLabel",
+    "lineRipple",
+    "notchedOutline",
+    "focus",
+    "blur",
+    "layout",
+    "getElement"
+  ];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const $$slots = compute_slots(slots);
+  const { applyPassive: applyPassive2 } = events;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let uninitializedValue = () => {
+  };
+  function isUninitializedValue(value2) {
+    return value2 === uninitializedValue;
+  }
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { style = "" } = $$props;
+  let { ripple = true } = $$props;
+  let { disabled = false } = $$props;
+  let { required = false } = $$props;
+  let { textarea = false } = $$props;
+  let { variant = textarea ? "outlined" : "standard" } = $$props;
+  let { noLabel = false } = $$props;
+  let { label = void 0 } = $$props;
+  let { type = "text" } = $$props;
+  let { value = $$restProps.input$emptyValueUndefined ? void 0 : uninitializedValue } = $$props;
+  let { files = uninitializedValue } = $$props;
+  const valued = !isUninitializedValue(value) || !isUninitializedValue(files);
+  if (isUninitializedValue(value)) {
+    value = void 0;
+  }
+  if (isUninitializedValue(files)) {
+    files = null;
+  }
+  let { invalid = uninitializedValue } = $$props;
+  let { updateInvalid = isUninitializedValue(invalid) } = $$props;
+  if (isUninitializedValue(invalid)) {
+    invalid = false;
+  }
+  let { dirty = false } = $$props;
+  let { prefix = void 0 } = $$props;
+  let { suffix = void 0 } = $$props;
+  let { validateOnValueChange = updateInvalid } = $$props;
+  let { useNativeValidation = updateInvalid } = $$props;
+  let { withLeadingIcon = uninitializedValue } = $$props;
+  let { withTrailingIcon = uninitializedValue } = $$props;
+  let { input = void 0 } = $$props;
+  let { floatingLabel = void 0 } = $$props;
+  let { lineRipple = void 0 } = $$props;
+  let { notchedOutline = void 0 } = $$props;
+  let element2;
+  let instance2;
+  let internalClasses = {};
+  let internalStyles = {};
+  let helperId = void 0;
+  let focused = false;
+  let addLayoutListener = getContext("SMUI:addLayoutListener");
+  let removeLayoutListener;
+  let initPromiseResolve;
+  let initPromise = new Promise((resolve) => initPromiseResolve = resolve);
+  let leadingIcon = void 0;
+  let trailingIcon = void 0;
+  let helperText = void 0;
+  let characterCounter = void 0;
+  let previousValue = value;
+  if (addLayoutListener) {
+    removeLayoutListener = addLayoutListener(layout);
+  }
+  onMount(() => {
+    $$invalidate(49, instance2 = new MDCTextFieldFoundation({
+      addClass,
+      removeClass,
+      hasClass,
+      registerTextFieldInteractionHandler: (evtType, handler) => getElement().addEventListener(evtType, handler),
+      deregisterTextFieldInteractionHandler: (evtType, handler) => getElement().removeEventListener(evtType, handler),
+      registerValidationAttributeChangeHandler: (handler) => {
+        const getAttributesList = (mutationsList) => {
+          return mutationsList.map((mutation) => mutation.attributeName).filter((attributeName) => attributeName);
+        };
+        const observer = new MutationObserver((mutationsList) => {
+          if (useNativeValidation) {
+            handler(getAttributesList(mutationsList));
+          }
+        });
+        const config = { attributes: true };
+        if (input) {
+          observer.observe(input.getElement(), config);
+        }
+        return observer;
+      },
+      deregisterValidationAttributeChangeHandler: (observer) => {
+        observer.disconnect();
+      },
+      getNativeInput: () => {
+        var _a;
+        return (_a = input === null || input === void 0 ? void 0 : input.getElement()) !== null && _a !== void 0 ? _a : null;
+      },
+      setInputAttr: (name, value2) => {
+        input === null || input === void 0 ? void 0 : input.addAttr(name, value2);
+      },
+      removeInputAttr: (name) => {
+        input === null || input === void 0 ? void 0 : input.removeAttr(name);
+      },
+      isFocused: () => document.activeElement === (input === null || input === void 0 ? void 0 : input.getElement()),
+      registerInputInteractionHandler: (evtType, handler) => {
+        input === null || input === void 0 ? void 0 : input.getElement().addEventListener(evtType, handler, applyPassive2());
+      },
+      deregisterInputInteractionHandler: (evtType, handler) => {
+        input === null || input === void 0 ? void 0 : input.getElement().removeEventListener(evtType, handler, applyPassive2());
+      },
+      floatLabel: (shouldFloat) => floatingLabel && floatingLabel.float(shouldFloat),
+      getLabelWidth: () => floatingLabel ? floatingLabel.getWidth() : 0,
+      hasLabel: () => !!floatingLabel,
+      shakeLabel: (shouldShake) => floatingLabel && floatingLabel.shake(shouldShake),
+      setLabelRequired: (isRequired) => floatingLabel && floatingLabel.setRequired(isRequired),
+      activateLineRipple: () => lineRipple && lineRipple.activate(),
+      deactivateLineRipple: () => lineRipple && lineRipple.deactivate(),
+      setLineRippleTransformOrigin: (normalizedX) => lineRipple && lineRipple.setRippleCenter(normalizedX),
+      closeOutline: () => notchedOutline && notchedOutline.closeNotch(),
+      hasOutline: () => !!notchedOutline,
+      notchOutline: (labelWidth) => notchedOutline && notchedOutline.notch(labelWidth)
+    }, {
+      get helperText() {
+        return helperText;
+      },
+      get characterCounter() {
+        return characterCounter;
+      },
+      get leadingIcon() {
+        return leadingIcon;
+      },
+      get trailingIcon() {
+        return trailingIcon;
+      }
+    }));
+    if (valued) {
+      if (input == null) {
+        throw new Error("SMUI Textfield initialized without Input component.");
+      }
+      instance2.init();
+    } else {
+      tick().then(() => {
+        if (input == null) {
+          throw new Error("SMUI Textfield initialized without Input component.");
+        }
+        instance2.init();
+      });
+    }
+    initPromiseResolve();
+    return () => {
+      instance2.destroy();
+    };
+  });
+  onDestroy(() => {
+    if (removeLayoutListener) {
+      removeLayoutListener();
+    }
+  });
+  function hasClass(className2) {
+    var _a;
+    return className2 in internalClasses ? (_a = internalClasses[className2]) !== null && _a !== void 0 ? _a : null : getElement().classList.contains(className2);
+  }
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(25, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(25, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function addStyle(name, value2) {
+    if (internalStyles[name] != value2) {
+      if (value2 === "" || value2 == null) {
+        delete internalStyles[name];
+        $$invalidate(26, internalStyles);
+      } else {
+        $$invalidate(26, internalStyles[name] = value2, internalStyles);
+      }
+    }
+  }
+  function focus() {
+    input === null || input === void 0 ? void 0 : input.focus();
+  }
+  function blur() {
+    input === null || input === void 0 ? void 0 : input.blur();
+  }
+  function layout() {
+    if (instance2) {
+      const openNotch = instance2.shouldFloat;
+      instance2.notchOutline(openNotch);
+    }
+  }
+  function getElement() {
+    return element2;
+  }
+  function floatinglabel_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      floatingLabel = $$value;
+      $$invalidate(5, floatingLabel);
+    });
+  }
+  function floatinglabel_binding_1($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      floatingLabel = $$value;
+      $$invalidate(5, floatingLabel);
+    });
+  }
+  function notchedoutline_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      notchedOutline = $$value;
+      $$invalidate(7, notchedOutline);
+    });
+  }
+  function textarea_1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      input = $$value;
+      $$invalidate(2, input);
+    });
+  }
+  function textarea_1_value_binding(value$1) {
+    value = value$1;
+    $$invalidate(0, value);
+  }
+  function textarea_1_dirty_binding(value2) {
+    dirty = value2;
+    $$invalidate(4, dirty);
+  }
+  function textarea_1_invalid_binding(value2) {
+    invalid = value2;
+    $$invalidate(1, invalid), $$invalidate(49, instance2), $$invalidate(19, updateInvalid);
+  }
+  const blur_handler = () => $$invalidate(28, focused = false);
+  const focus_handler = () => $$invalidate(28, focused = true);
+  const blur_handler_1 = (event) => dispatch(element2, "blur", event);
+  const focus_handler_1 = (event) => dispatch(element2, "focus", event);
+  function input_1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      input = $$value;
+      $$invalidate(2, input);
+    });
+  }
+  function input_1_value_binding(value$1) {
+    value = value$1;
+    $$invalidate(0, value);
+  }
+  function input_1_files_binding(value2) {
+    files = value2;
+    $$invalidate(3, files);
+  }
+  function input_1_dirty_binding(value2) {
+    dirty = value2;
+    $$invalidate(4, dirty);
+  }
+  function input_1_invalid_binding(value2) {
+    invalid = value2;
+    $$invalidate(1, invalid), $$invalidate(49, instance2), $$invalidate(19, updateInvalid);
+  }
+  const blur_handler_2 = () => $$invalidate(28, focused = false);
+  const focus_handler_2 = () => $$invalidate(28, focused = true);
+  const blur_handler_3 = (event) => dispatch(element2, "blur", event);
+  const focus_handler_3 = (event) => dispatch(element2, "focus", event);
+  function lineripple_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      lineRipple = $$value;
+      $$invalidate(6, lineRipple);
+    });
+  }
+  function label_1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(24, element2);
+    });
+  }
+  const SMUITextfieldLeadingIcon_mount_handler = (event) => $$invalidate(29, leadingIcon = event.detail);
+  const SMUITextfieldLeadingIcon_unmount_handler = () => $$invalidate(29, leadingIcon = void 0);
+  const SMUITextfieldTrailingIcon_mount_handler = (event) => $$invalidate(30, trailingIcon = event.detail);
+  const SMUITextfieldTrailingIcon_unmount_handler = () => $$invalidate(30, trailingIcon = void 0);
+  const SMUITextfieldCharacterCounter_mount_handler = (event) => $$invalidate(32, characterCounter = event.detail);
+  const SMUITextfieldCharacterCounter_unmount_handler = () => $$invalidate(32, characterCounter = void 0);
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(24, element2);
+    });
+  }
+  const SMUITextfieldLeadingIcon_mount_handler_1 = (event) => $$invalidate(29, leadingIcon = event.detail);
+  const SMUITextfieldLeadingIcon_unmount_handler_1 = () => $$invalidate(29, leadingIcon = void 0);
+  const SMUITextfieldTrailingIcon_mount_handler_1 = (event) => $$invalidate(30, trailingIcon = event.detail);
+  const SMUITextfieldTrailingIcon_unmount_handler_1 = () => $$invalidate(30, trailingIcon = void 0);
+  const SMUITextfieldHelperText_id_handler = (event) => $$invalidate(27, helperId = event.detail);
+  const SMUITextfieldHelperText_mount_handler = (event) => $$invalidate(31, helperText = event.detail);
+  const SMUITextfieldHelperText_unmount_handler = () => {
+    $$invalidate(27, helperId = void 0);
+    $$invalidate(31, helperText = void 0);
+  };
+  const SMUITextfieldCharacterCounter_mount_handler_1 = (event) => $$invalidate(32, characterCounter = event.detail);
+  const SMUITextfieldCharacterCounter_unmount_handler_1 = () => $$invalidate(32, characterCounter = void 0);
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(41, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(8, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(9, className = $$new_props.class);
+    if ("style" in $$new_props)
+      $$invalidate(10, style = $$new_props.style);
+    if ("ripple" in $$new_props)
+      $$invalidate(11, ripple = $$new_props.ripple);
+    if ("disabled" in $$new_props)
+      $$invalidate(12, disabled = $$new_props.disabled);
+    if ("required" in $$new_props)
+      $$invalidate(13, required = $$new_props.required);
+    if ("textarea" in $$new_props)
+      $$invalidate(14, textarea = $$new_props.textarea);
+    if ("variant" in $$new_props)
+      $$invalidate(15, variant = $$new_props.variant);
+    if ("noLabel" in $$new_props)
+      $$invalidate(16, noLabel = $$new_props.noLabel);
+    if ("label" in $$new_props)
+      $$invalidate(17, label = $$new_props.label);
+    if ("type" in $$new_props)
+      $$invalidate(18, type = $$new_props.type);
+    if ("value" in $$new_props)
+      $$invalidate(0, value = $$new_props.value);
+    if ("files" in $$new_props)
+      $$invalidate(3, files = $$new_props.files);
+    if ("invalid" in $$new_props)
+      $$invalidate(1, invalid = $$new_props.invalid);
+    if ("updateInvalid" in $$new_props)
+      $$invalidate(19, updateInvalid = $$new_props.updateInvalid);
+    if ("dirty" in $$new_props)
+      $$invalidate(4, dirty = $$new_props.dirty);
+    if ("prefix" in $$new_props)
+      $$invalidate(20, prefix = $$new_props.prefix);
+    if ("suffix" in $$new_props)
+      $$invalidate(21, suffix = $$new_props.suffix);
+    if ("validateOnValueChange" in $$new_props)
+      $$invalidate(43, validateOnValueChange = $$new_props.validateOnValueChange);
+    if ("useNativeValidation" in $$new_props)
+      $$invalidate(44, useNativeValidation = $$new_props.useNativeValidation);
+    if ("withLeadingIcon" in $$new_props)
+      $$invalidate(22, withLeadingIcon = $$new_props.withLeadingIcon);
+    if ("withTrailingIcon" in $$new_props)
+      $$invalidate(23, withTrailingIcon = $$new_props.withTrailingIcon);
+    if ("input" in $$new_props)
+      $$invalidate(2, input = $$new_props.input);
+    if ("floatingLabel" in $$new_props)
+      $$invalidate(5, floatingLabel = $$new_props.floatingLabel);
+    if ("lineRipple" in $$new_props)
+      $$invalidate(6, lineRipple = $$new_props.lineRipple);
+    if ("notchedOutline" in $$new_props)
+      $$invalidate(7, notchedOutline = $$new_props.notchedOutline);
+    if ("$$scope" in $$new_props)
+      $$invalidate(90, $$scope = $$new_props.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty[0] & 4) {
+      $$invalidate(33, inputElement = input && input.getElement());
+    }
+    if ($$self.$$.dirty[0] & 524290 | $$self.$$.dirty[1] & 262144) {
+      if (instance2 && instance2.isValid() !== !invalid) {
+        if (updateInvalid) {
+          $$invalidate(1, invalid = !instance2.isValid());
+        } else {
+          instance2.setValid(!invalid);
+        }
+      }
+    }
+    if ($$self.$$.dirty[1] & 266240) {
+      if (instance2 && instance2.getValidateOnValueChange() !== validateOnValueChange) {
+        instance2.setValidateOnValueChange(isUninitializedValue(validateOnValueChange) ? false : validateOnValueChange);
+      }
+    }
+    if ($$self.$$.dirty[1] & 270336) {
+      if (instance2) {
+        instance2.setUseNativeValidation(isUninitializedValue(useNativeValidation) ? true : useNativeValidation);
+      }
+    }
+    if ($$self.$$.dirty[0] & 4096 | $$self.$$.dirty[1] & 262144) {
+      if (instance2) {
+        instance2.setDisabled(disabled);
+      }
+    }
+    if ($$self.$$.dirty[0] & 1 | $$self.$$.dirty[1] & 786432) {
+      if (instance2 && valued && previousValue !== value) {
+        $$invalidate(50, previousValue = value);
+        const stringValue = `${value}`;
+        if (instance2.getValue() !== stringValue) {
+          instance2.setValue(stringValue);
+        }
+      }
+    }
+  };
+  return [
+    value,
+    invalid,
+    input,
+    files,
+    dirty,
+    floatingLabel,
+    lineRipple,
+    notchedOutline,
+    use,
+    className,
+    style,
+    ripple,
+    disabled,
+    required,
+    textarea,
+    variant,
+    noLabel,
+    label,
+    type,
+    updateInvalid,
+    prefix,
+    suffix,
+    withLeadingIcon,
+    withTrailingIcon,
+    element2,
+    internalClasses,
+    internalStyles,
+    helperId,
+    focused,
+    leadingIcon,
+    trailingIcon,
+    helperText,
+    characterCounter,
+    inputElement,
+    forwardEvents,
+    isUninitializedValue,
+    valued,
+    initPromise,
+    addClass,
+    removeClass,
+    addStyle,
+    $$restProps,
+    $$slots,
+    validateOnValueChange,
+    useNativeValidation,
+    focus,
+    blur,
+    layout,
+    getElement,
+    instance2,
+    previousValue,
+    slots,
+    floatinglabel_binding,
+    floatinglabel_binding_1,
+    notchedoutline_binding,
+    textarea_1_binding,
+    textarea_1_value_binding,
+    textarea_1_dirty_binding,
+    textarea_1_invalid_binding,
+    blur_handler,
+    focus_handler,
+    blur_handler_1,
+    focus_handler_1,
+    input_1_binding,
+    input_1_value_binding,
+    input_1_files_binding,
+    input_1_dirty_binding,
+    input_1_invalid_binding,
+    blur_handler_2,
+    focus_handler_2,
+    blur_handler_3,
+    focus_handler_3,
+    lineripple_binding,
+    label_1_binding,
+    SMUITextfieldLeadingIcon_mount_handler,
+    SMUITextfieldLeadingIcon_unmount_handler,
+    SMUITextfieldTrailingIcon_mount_handler,
+    SMUITextfieldTrailingIcon_unmount_handler,
+    SMUITextfieldCharacterCounter_mount_handler,
+    SMUITextfieldCharacterCounter_unmount_handler,
+    div_binding,
+    SMUITextfieldLeadingIcon_mount_handler_1,
+    SMUITextfieldLeadingIcon_unmount_handler_1,
+    SMUITextfieldTrailingIcon_mount_handler_1,
+    SMUITextfieldTrailingIcon_unmount_handler_1,
+    SMUITextfieldHelperText_id_handler,
+    SMUITextfieldHelperText_mount_handler,
+    SMUITextfieldHelperText_unmount_handler,
+    SMUITextfieldCharacterCounter_mount_handler_1,
+    SMUITextfieldCharacterCounter_unmount_handler_1,
+    $$scope
+  ];
+}
+class Textfield extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1$1, create_fragment$1, safe_not_equal, {
+      use: 8,
+      class: 9,
+      style: 10,
+      ripple: 11,
+      disabled: 12,
+      required: 13,
+      textarea: 14,
+      variant: 15,
+      noLabel: 16,
+      label: 17,
+      type: 18,
+      value: 0,
+      files: 3,
+      invalid: 1,
+      updateInvalid: 19,
+      dirty: 4,
+      prefix: 20,
+      suffix: 21,
+      validateOnValueChange: 43,
+      useNativeValidation: 44,
+      withLeadingIcon: 22,
+      withTrailingIcon: 23,
+      input: 2,
+      floatingLabel: 5,
+      lineRipple: 6,
+      notchedOutline: 7,
+      focus: 45,
+      blur: 46,
+      layout: 47,
+      getElement: 48
+    }, null, [-1, -1, -1, -1]);
+  }
+  get focus() {
+    return this.$$.ctx[45];
+  }
+  get blur() {
+    return this.$$.ctx[46];
+  }
+  get layout() {
+    return this.$$.ctx[47];
+  }
+  get getElement() {
+    return this.$$.ctx[48];
+  }
+}
+function create_else_block(ctx) {
+  let t;
+  return {
+    c() {
+      t = text(ctx[8]);
+    },
+    l(nodes) {
+      t = claim_text(nodes, ctx[8]);
+    },
+    m(target, anchor) {
+      insert_hydration(target, t, anchor);
+    },
+    p(ctx2, dirty) {
+      if (dirty & 256)
+        set_data(t, ctx2[8]);
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(t);
+    }
+  };
+}
+function create_if_block(ctx) {
+  let current;
+  const default_slot_template = ctx[13].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[12], null);
+  return {
+    c() {
+      if (default_slot)
+        default_slot.c();
+    },
+    l(nodes) {
+      if (default_slot)
+        default_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (default_slot) {
+        default_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 4096)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[12], !current ? get_all_dirty_from_scope(ctx2[12]) : get_slot_changes(default_slot_template, ctx2[12], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_fragment(ctx) {
+  let div;
+  let current_block_type_index;
+  let if_block;
+  let div_class_value;
+  let div_aria_hidden_value;
+  let useActions_action;
+  let current;
+  let mounted;
+  let dispose;
+  const if_block_creators = [create_if_block, create_else_block];
+  const if_blocks = [];
+  function select_block_type(ctx2, dirty) {
+    if (ctx2[8] == null)
+      return 0;
+    return 1;
+  }
+  current_block_type_index = select_block_type(ctx);
+  if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  let div_levels = [
+    {
+      class: div_class_value = classMap(__spreadValues({
+        [ctx[1]]: true,
+        "mdc-text-field-helper-text": true,
+        "mdc-text-field-helper-text--persistent": ctx[3],
+        "mdc-text-field-helper-text--validation-msg": ctx[4]
+      }, ctx[6]))
+    },
+    {
+      "aria-hidden": div_aria_hidden_value = ctx[3] ? void 0 : "true"
+    },
+    { id: ctx[2] },
+    ctx[7],
+    ctx[10]
+  ];
+  let div_data = {};
+  for (let i = 0; i < div_levels.length; i += 1) {
+    div_data = assign(div_data, div_levels[i]);
+  }
+  return {
+    c() {
+      div = element("div");
+      if_block.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", {
+        class: true,
+        "aria-hidden": true,
+        id: true
+      });
+      var div_nodes = children(div);
+      if_block.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      set_attributes(div, div_data);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if_blocks[current_block_type_index].m(div, null);
+      ctx[14](div);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useActions_action = useActions.call(null, div, ctx[0])),
+          action_destroyer(ctx[9].call(null, div))
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      let previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type(ctx2);
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(ctx2, dirty);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, () => {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+          if_block.c();
+        } else {
+          if_block.p(ctx2, dirty);
+        }
+        transition_in(if_block, 1);
+        if_block.m(div, null);
+      }
+      set_attributes(div, div_data = get_spread_update(div_levels, [
+        (!current || dirty & 90 && div_class_value !== (div_class_value = classMap(__spreadValues({
+          [ctx2[1]]: true,
+          "mdc-text-field-helper-text": true,
+          "mdc-text-field-helper-text--persistent": ctx2[3],
+          "mdc-text-field-helper-text--validation-msg": ctx2[4]
+        }, ctx2[6])))) && { class: div_class_value },
+        (!current || dirty & 8 && div_aria_hidden_value !== (div_aria_hidden_value = ctx2[3] ? void 0 : "true")) && { "aria-hidden": div_aria_hidden_value },
+        (!current || dirty & 4) && { id: ctx2[2] },
+        dirty & 128 && ctx2[7],
+        dirty & 1024 && ctx2[10]
+      ]));
+      if (useActions_action && is_function(useActions_action.update) && dirty & 1)
+        useActions_action.update.call(null, ctx2[0]);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if_blocks[current_block_type_index].d();
+      ctx[14](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+let counter = 0;
+function instance_1($$self, $$props, $$invalidate) {
+  const omit_props_names = ["use", "class", "id", "persistent", "validationMsg", "getElement"];
+  let $$restProps = compute_rest_props($$props, omit_props_names);
+  let { $$slots: slots = {}, $$scope } = $$props;
+  const forwardEvents = forwardEventsBuilder(get_current_component());
+  let { use = [] } = $$props;
+  let { class: className = "" } = $$props;
+  let { id = "SMUI-textfield-helper-text-" + counter++ } = $$props;
+  let { persistent = false } = $$props;
+  let { validationMsg = false } = $$props;
+  let element2;
+  let instance2;
+  let internalClasses = {};
+  let internalAttrs = {};
+  let content = void 0;
+  onMount(() => {
+    instance2 = new MDCTextFieldHelperTextFoundation({
+      addClass,
+      removeClass,
+      hasClass,
+      getAttr,
+      setAttr: addAttr,
+      removeAttr,
+      setContent: (value) => {
+        $$invalidate(8, content = value);
+      }
+    });
+    if (id.startsWith("SMUI-textfield-helper-text-")) {
+      dispatch(getElement(), "SMUITextfieldHelperText:id", id);
+    }
+    dispatch(getElement(), "SMUITextfieldHelperText:mount", instance2);
+    instance2.init();
+    return () => {
+      dispatch(getElement(), "SMUITextfieldHelperText:unmount", instance2);
+      instance2.destroy();
+    };
+  });
+  function hasClass(className2) {
+    return className2 in internalClasses ? internalClasses[className2] : getElement().classList.contains(className2);
+  }
+  function addClass(className2) {
+    if (!internalClasses[className2]) {
+      $$invalidate(6, internalClasses[className2] = true, internalClasses);
+    }
+  }
+  function removeClass(className2) {
+    if (!(className2 in internalClasses) || internalClasses[className2]) {
+      $$invalidate(6, internalClasses[className2] = false, internalClasses);
+    }
+  }
+  function getAttr(name) {
+    var _a;
+    return name in internalAttrs ? (_a = internalAttrs[name]) !== null && _a !== void 0 ? _a : null : getElement().getAttribute(name);
+  }
+  function addAttr(name, value) {
+    if (internalAttrs[name] !== value) {
+      $$invalidate(7, internalAttrs[name] = value, internalAttrs);
+    }
+  }
+  function removeAttr(name) {
+    if (!(name in internalAttrs) || internalAttrs[name] != null) {
+      $$invalidate(7, internalAttrs[name] = void 0, internalAttrs);
+    }
+  }
+  function getElement() {
+    return element2;
+  }
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      element2 = $$value;
+      $$invalidate(5, element2);
+    });
+  }
+  $$self.$$set = ($$new_props) => {
+    $$props = assign(assign({}, $$props), exclude_internal_props($$new_props));
+    $$invalidate(10, $$restProps = compute_rest_props($$props, omit_props_names));
+    if ("use" in $$new_props)
+      $$invalidate(0, use = $$new_props.use);
+    if ("class" in $$new_props)
+      $$invalidate(1, className = $$new_props.class);
+    if ("id" in $$new_props)
+      $$invalidate(2, id = $$new_props.id);
+    if ("persistent" in $$new_props)
+      $$invalidate(3, persistent = $$new_props.persistent);
+    if ("validationMsg" in $$new_props)
+      $$invalidate(4, validationMsg = $$new_props.validationMsg);
+    if ("$$scope" in $$new_props)
+      $$invalidate(12, $$scope = $$new_props.$$scope);
+  };
+  return [
+    use,
+    className,
+    id,
+    persistent,
+    validationMsg,
+    element2,
+    internalClasses,
+    internalAttrs,
+    content,
+    forwardEvents,
+    $$restProps,
+    getElement,
+    $$scope,
+    slots,
+    div_binding
+  ];
+}
+class HelperText extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance_1, create_fragment, safe_not_equal, {
+      use: 0,
+      class: 1,
+      id: 2,
+      persistent: 3,
+      validationMsg: 4,
+      getElement: 11
+    });
+  }
+  get getElement() {
+    return this.$$.ctx[11];
+  }
+}
+export { append_hydration as $, get_spread_object as A, destroy_component as B, assign as C, writable as D, tick as E, binding_callbacks as F, bind as G, Textfield as H, add_flush_callback as I, Tab as J, HelperText as K, Label as L, component_subscribe as M, Title$1 as N, Content$1 as O, Paper as P, noop as Q, LayoutGrid as R, SvelteComponent as S, TabBar as T, Cell as U, Title as V, Content as W, Card as X, CircularProgress as Y, destroy_each as Z, src_url_equal as _, children as a, attr as b, claim_element as c, detach as d, element as e, set_style as f, insert_hydration as g, claim_text as h, init as i, set_data as j, space as k, empty as l, claim_space as m, group_outros as n, transition_out as o, check_outros as p, transition_in as q, setContext as r, safe_not_equal as s, text as t, afterUpdate as u, onMount as v, create_component as w, claim_component as x, mount_component as y, get_spread_update as z };
