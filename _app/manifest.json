@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-d383d0c9.js",
+    "file": "start-109b2658.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -14,7 +14,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-8f9bd3b5.js",
+    "file": "pages/__layout.svelte-9865dd86.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -26,29 +26,23 @@
     ]
   },
   "src/routes/current.svelte": {
-    "file": "pages/current.svelte-d42a3666.js",
+    "file": "pages/current.svelte-59de5f11.js",
     "src": "src/routes/current.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-ec34ed73.js",
       "_weather-cd971f37.js"
-    ],
-    "css": [
-      "assets/pages/current.svelte-3f781a36.css"
     ]
   },
   "src/routes/forecast.svelte": {
-    "file": "pages/forecast.svelte-e6ea955e.js",
+    "file": "pages/forecast.svelte-d6acd1cd.js",
     "src": "src/routes/forecast.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-ec34ed73.js",
       "_weather-cd971f37.js"
-    ],
-    "css": [
-      "assets/pages/forecast.svelte-901b4dc9.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
