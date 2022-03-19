@@ -29,7 +29,7 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import { S as SvelteComponent, i as init, s as safe_not_equal, e as element, c as claim_element, a as children, d as detach, b as attr, f as set_style, g as insert_hydration, t as text, h as claim_text, j as set_data, k as space, l as empty, m as claim_space, n as group_outros, o as transition_out, p as check_outros, q as transition_in, r as setContext, u as afterUpdate, v as onMount, w as create_component, x as claim_component, y as mount_component, z as get_spread_update, A as get_spread_object, B as destroy_component, C as assign, D as writable, E as tick } from "./chunks/vendor-7769e93b.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, e as element, c as claim_element, a as children, d as detach, b as attr, f as set_style, g as insert_hydration, t as text, h as claim_text, j as set_data, k as space, l as empty, m as claim_space, n as group_outros, o as transition_out, p as check_outros, q as transition_in, r as setContext, u as afterUpdate, v as onMount, w as create_component, x as claim_component, y as mount_component, z as get_spread_update, A as get_spread_object, B as destroy_component, C as assign, D as writable, E as tick } from "./chunks/vendor-952a8a66.js";
 let base$1 = "";
 let assets = "";
 function set_paths(paths) {
@@ -770,11 +770,11 @@ const __vitePreload = function preload(baseModule, deps) {
   })).then(() => baseModule());
 };
 const c = [
-  () => __vitePreload(() => import("./pages/__layout.svelte-c30c5245.js"), true ? ["pages/__layout.svelte-c30c5245.js","chunks/vendor-7769e93b.js","pages/current.svelte-91a16f9c.js","chunks/weather-c1e54da2.js","pages/forecast.svelte-7400071a.js"] : void 0),
-  () => __vitePreload(() => import("./error.svelte-cb4dc999.js"), true ? ["error.svelte-cb4dc999.js","chunks/vendor-7769e93b.js"] : void 0),
-  () => __vitePreload(() => import("./pages/index.svelte-d597af98.js"), true ? ["pages/index.svelte-d597af98.js","chunks/vendor-7769e93b.js"] : void 0),
-  () => __vitePreload(() => import("./pages/forecast.svelte-7400071a.js"), true ? ["pages/forecast.svelte-7400071a.js","chunks/vendor-7769e93b.js","chunks/weather-c1e54da2.js"] : void 0),
-  () => __vitePreload(() => import("./pages/current.svelte-91a16f9c.js"), true ? ["pages/current.svelte-91a16f9c.js","chunks/vendor-7769e93b.js","chunks/weather-c1e54da2.js"] : void 0)
+  () => __vitePreload(() => import("./pages/__layout.svelte-dd997e27.js"), true ? ["pages/__layout.svelte-dd997e27.js","chunks/vendor-952a8a66.js","pages/current.svelte-e7418c89.js","chunks/weather-a3c2c240.js","pages/forecast.svelte-18a2d6bf.js"] : void 0),
+  () => __vitePreload(() => import("./error.svelte-13842a49.js"), true ? ["error.svelte-13842a49.js","chunks/vendor-952a8a66.js"] : void 0),
+  () => __vitePreload(() => import("./pages/index.svelte-f0b42ac7.js"), true ? ["pages/index.svelte-f0b42ac7.js","chunks/vendor-952a8a66.js","chunks/weather-a3c2c240.js"] : void 0),
+  () => __vitePreload(() => import("./pages/forecast.svelte-18a2d6bf.js"), true ? ["pages/forecast.svelte-18a2d6bf.js","chunks/vendor-952a8a66.js","chunks/weather-a3c2c240.js"] : void 0),
+  () => __vitePreload(() => import("./pages/current.svelte-e7418c89.js"), true ? ["pages/current.svelte-e7418c89.js","chunks/vendor-952a8a66.js","chunks/weather-a3c2c240.js"] : void 0)
 ];
 const routes = [
   [/^\/$/, [c[0], c[2]], [c[1]]],
@@ -893,7 +893,7 @@ function notifiable_store(value) {
 }
 function create_updated_store() {
   const { set, subscribe } = writable(false);
-  const initial = "1647662402027";
+  const initial = "1647692107119";
   let timeout;
   async function check() {
     clearTimeout(timeout);

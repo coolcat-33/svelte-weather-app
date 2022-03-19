@@ -1,9 +1,9 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, T as TabBar, F as binding_callbacks, G as bind, H as Textfield, w as create_component, k as space, e as element, l as empty, x as claim_component, m as claim_space, c as claim_element, a as children, d as detach, y as mount_component, g as insert_hydration, I as add_flush_callback, o as transition_out, p as check_outros, q as transition_in, B as destroy_component, n as group_outros, J as Tab, K as HelperText, L as Label, t as text, h as claim_text, j as set_data } from "../chunks/vendor-7769e93b.js";
-import Current from "./current.svelte-91a16f9c.js";
-import Forecast from "./forecast.svelte-7400071a.js";
-import { u as update_store } from "../chunks/weather-c1e54da2.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, T as TabBar, F as binding_callbacks, G as bind, H as Textfield, w as create_component, k as space, e as element, l as empty, x as claim_component, m as claim_space, c as claim_element, a as children, d as detach, y as mount_component, g as insert_hydration, I as add_flush_callback, o as transition_out, p as check_outros, q as transition_in, B as destroy_component, J as component_subscribe, n as group_outros, K as Tab, L as HelperText, M as Label, t as text, h as claim_text, j as set_data } from "../chunks/vendor-952a8a66.js";
+import Current from "./current.svelte-e7418c89.js";
+import Forecast from "./forecast.svelte-18a2d6bf.js";
+import { u as update_store, l as location } from "../chunks/weather-a3c2c240.js";
 function create_default_slot_3(ctx) {
-  let t_value = ctx[5] + "";
+  let t_value = ctx[6] + "";
   let t;
   return {
     c() {
@@ -16,7 +16,7 @@ function create_default_slot_3(ctx) {
       insert_hydration(target, t, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty & 32 && t_value !== (t_value = ctx2[5] + ""))
+      if (dirty & 64 && t_value !== (t_value = ctx2[6] + ""))
         set_data(t, t_value);
     },
     d(detaching) {
@@ -47,7 +47,7 @@ function create_default_slot_2(ctx) {
     },
     p(ctx2, dirty) {
       const label_changes = {};
-      if (dirty & 96) {
+      if (dirty & 192) {
         label_changes.$$scope = { dirty, ctx: ctx2 };
       }
       label.$set(label_changes);
@@ -72,7 +72,7 @@ function create_default_slot_1(ctx) {
   let current;
   tab = new Tab({
     props: {
-      tab: ctx[5],
+      tab: ctx[6],
       $$slots: { default: [create_default_slot_2] },
       $$scope: { ctx }
     }
@@ -90,9 +90,9 @@ function create_default_slot_1(ctx) {
     },
     p(ctx2, dirty) {
       const tab_changes = {};
-      if (dirty & 32)
-        tab_changes.tab = ctx2[5];
-      if (dirty & 96) {
+      if (dirty & 64)
+        tab_changes.tab = ctx2[6];
+      if (dirty & 192) {
         tab_changes.$$scope = { dirty, ctx: ctx2 };
       }
       tab.$set(tab_changes);
@@ -153,7 +153,7 @@ function create_helper_slot(ctx) {
     },
     p(ctx2, dirty) {
       const helpertext_changes = {};
-      if (dirty & 64) {
+      if (dirty & 128) {
         helpertext_changes.$$scope = { dirty, ctx: ctx2 };
       }
       helpertext.$set(helpertext_changes);
@@ -246,15 +246,15 @@ function create_fragment(ctx) {
   let if_block_anchor;
   let current;
   function tabbar_active_binding(value) {
-    ctx[3](value);
+    ctx[4](value);
   }
   let tabbar_props = {
     tabs: ["Current", "Forecast"],
     $$slots: {
       default: [
         create_default_slot_1,
-        ({ tab }) => ({ 5: tab }),
-        ({ tab }) => tab ? 32 : 0
+        ({ tab }) => ({ 6: tab }),
+        ({ tab }) => tab ? 64 : 0
       ]
     },
     $$scope: { ctx }
@@ -265,7 +265,7 @@ function create_fragment(ctx) {
   tabbar = new TabBar({ props: tabbar_props });
   binding_callbacks.push(() => bind(tabbar, "active", tabbar_active_binding));
   function textfield_value_binding(value) {
-    ctx[4](value);
+    ctx[5](value);
   }
   let textfield_props = {
     label: "Location",
@@ -320,7 +320,7 @@ function create_fragment(ctx) {
     },
     p(ctx2, [dirty]) {
       const tabbar_changes = {};
-      if (dirty & 96) {
+      if (dirty & 192) {
         tabbar_changes.$$scope = { dirty, ctx: ctx2 };
       }
       if (!updating_active && dirty & 1) {
@@ -330,7 +330,7 @@ function create_fragment(ctx) {
       }
       tabbar.$set(tabbar_changes);
       const textfield_changes = {};
-      if (dirty & 64) {
+      if (dirty & 128) {
         textfield_changes.$$scope = { dirty, ctx: ctx2 };
       }
       if (!updating_value && dirty & 2) {
@@ -386,8 +386,10 @@ function create_fragment(ctx) {
   };
 }
 function instance($$self, $$props, $$invalidate) {
+  let loc;
+  let $location;
+  component_subscribe($$self, location, ($$value) => $$invalidate(3, $location = $$value));
   let active = "Forecast";
-  let loc = "Irving,TX,USA";
   const onKeyPress = (e) => {
     if (e.charCode === 13) {
       update_store(loc.trim());
@@ -399,9 +401,21 @@ function instance($$self, $$props, $$invalidate) {
   }
   function textfield_value_binding(value) {
     loc = value;
-    $$invalidate(1, loc);
+    $$invalidate(1, loc), $$invalidate(3, $location);
   }
-  return [active, loc, onKeyPress, tabbar_active_binding, textfield_value_binding];
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 8) {
+      $$invalidate(1, loc = $location);
+    }
+  };
+  return [
+    active,
+    loc,
+    onKeyPress,
+    $location,
+    tabbar_active_binding,
+    textfield_value_binding
+  ];
 }
 class _layout extends SvelteComponent {
   constructor(options) {

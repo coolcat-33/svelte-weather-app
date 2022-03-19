@@ -1,8 +1,10 @@
-import { D as writable } from "./vendor-7769e93b.js";
+import { D as writable } from "./vendor-952a8a66.js";
 const weather_data = writable({ "list": [] });
 const forecast_data = writable({});
 const current_data = writable({});
+const location = writable("");
 async function update_store(loc) {
+  location.set(loc);
   let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${loc}&appid=d36b7ad4bedaeb47cb38553a4123c082&units=imperial`);
   let data = await res.json();
   console.log(data);
@@ -18,5 +20,14 @@ async function update_store(loc) {
   console.log(data);
   current_data.set(data);
 }
-update_store("Irving,TX,US");
-export { current_data as c, forecast_data as f, update_store as u, weather_data as w };
+async function getPosition(position) {
+  console.log(position);
+  let res = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=d36b7ad4bedaeb47cb38553a4123c082`);
+  let data = await res.json();
+  console.log(data);
+  update_store(data[0]["name"] + "," + data[0]["state"] + "," + data[0]["country"]);
+}
+{
+  navigator.geolocation.getCurrentPosition(getPosition);
+}
+export { current_data as c, forecast_data as f, location as l, update_store as u, weather_data as w };
